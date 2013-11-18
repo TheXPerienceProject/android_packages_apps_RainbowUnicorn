@@ -86,6 +86,10 @@
     <string name="battery_percent_none">Don\'t show</string>
     <string name="battery_percent_outside">Show near icon</string>
     <string name="battery_percent_inside">Show inside icon</string>
+    <!-- Status bar battery style-->
+    <string name="status_bar_battery_style_title">Battery style</string>
+    <string name="status_bar_battery_style_port">Portrait</string>
+    <string name="status_bar_battery_style_circle">Circle</string>
 
 	<!--XPerience Active Display -->
    <string name="ActiveDisplay_title">XPerience™ Active Display</string>

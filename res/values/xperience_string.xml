@@ -47,7 +47,7 @@
 
     <!-- Navbar tuner -->
     <string name="navbar_tuner_title">Navbar buttons</string>
-    
+
     <!--Lockscreen tuner-->
     <string name="lockscreen_tuner_title">Lockscreen shortcuts</string>
 
@@ -139,8 +139,8 @@
     <string name="show_4g_title">Show 4G</string>
     <string name="show_4g_summary">Show 4G instead of LTE in signal icons</string>
 
-    <!-- Statusbar logo --> 
-    <string name="status_bar_logo_title">XPerience Shield</string> 
+    <!-- Statusbar logo -->
+    <string name="status_bar_logo_title">XPerience Shield</string>
     <string name="status_bar_logo_dialog_title">XPerience shield logo position</string>
     <string name="status_bar_logo_disabled">Disabled</string>
     <string name="status_bar_logo_left">Left</string>
@@ -204,4 +204,8 @@
     <string name="clock_date_left">Left of time</string>
     <string name="clock_date_position">Date position</string>
 
-</resources> 
+    <!-- Notification count -->
+    <string name="status_bar_notif_count_title">Show notification count</string>
+    <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
+
+</resources>

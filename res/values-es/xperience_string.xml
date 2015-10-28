@@ -264,4 +264,11 @@
   <string name="lockscreen_weather_title">Tiempo en la pantalla de bloqueo</string>
   <string name="lockscreen_weather_summary">Mostrar la condición actual del tiempo y temperatura en lockscreen</string>
   <string name="lockscreen_items_aod_info_title">Esta configuración de la visibilidad también se aplica a la pantalla de ambiente</string>
+
+    <!-- Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Porcentaje de Bateria</string>
+    <string name="status_bar_battery_percentage_default">Oculto</string>
+    <string name="status_bar_battery_percentage_text_next">Aun lado del icono</string>
+    <string name="status_bar_battery_percentage_text_inside">Dentro del icono</string>
+
 </resources>

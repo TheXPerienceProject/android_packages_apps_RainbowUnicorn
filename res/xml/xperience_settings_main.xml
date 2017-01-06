@@ -24,7 +24,10 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
             android:key="xperience_statusbar_settings"
             android:title="@string/statusbar_settings_title"/>
-
+        <PreferenceScreen
+            android:fragment="mx.xperience.rainbowunicorn.fragments.BatteryBar"
+            android:key="batterybar"
+            android:title="@string/battery_bar_title"/>
     </PreferenceCategory>
 <!--Finish interface-->	
 

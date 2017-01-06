@@ -16,5 +16,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         androidtitle=@string/xperience_settings_title" >
+    <PreferenceCategory
+        android:key="xperience_interface"
+        android:title="@string/xperience_interface">
+        <PreferenceScreen
+            android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
+            android:key="xperience_statusbar_settings"
+            android:title="@string/statusbar_settings_title"/>
+
+    </PreferenceCategory>
+<!--Finish interface-->	
 
 </PreferenceScreen>

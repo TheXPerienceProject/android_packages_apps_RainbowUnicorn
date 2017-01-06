@@ -18,8 +18,14 @@
 
      <PreferenceScreen
         android:fragment="mx.xperience.rainbowunicorn.fragments.CarrierLabelSettings"
-        android:key="cosmic_carrier_label_settings"
+        android:key="xperience_carrier_label_settings"
         android:title="@string/carrier_label_settings_title"
         android:summary="@string/carrier_label_settings_summary" />
+
+    <PreferenceScreen
+        android:fragment="mx.xperience.rainbowunicorn.fragments.NetworkTrafficSettings"
+        android:key="xperience_nettraffic_settings"
+        android:title="@string/nettraffic_settings_title"
+        android:summary="@string/nettraffic_settings_summary" />
 
 </PreferenceScreen>

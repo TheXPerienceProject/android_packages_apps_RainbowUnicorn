@@ -46,7 +46,7 @@ import com.android.settings.Utils;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-/**import net.margaritov.preference.colorpicker.ColorPickerPreference;*/
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 /**
  * Created by cedwards on 6/3/2016.

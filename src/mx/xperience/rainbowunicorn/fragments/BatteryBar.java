@@ -67,9 +67,9 @@ public class BatteryBar extends SettingsPreferenceFragment implements
     private ListPreference mBatteryBarStyle;
     private ListPreference mBatteryBarThickness;
     private SwitchPreference mBatteryBarChargingAnimation;
-    /*private ColorPickerPreference mBatteryBarColor;
+    private ColorPickerPreference mBatteryBarColor;
     private ColorPickerPreference mBatteryBarChargingColor;
-    private ColorPickerPreference mBatteryBarBatteryLowColor;*/
+    private ColorPickerPreference mBatteryBarBatteryLowColor;
 
 
     @Override
@@ -131,11 +131,9 @@ public class BatteryBar extends SettingsPreferenceFragment implements
 
             boolean hasNavBarByDefault = getResources().getBoolean(
                     com.android.internal.R.bool.config_showNavigationBar);
-<<<<<<< HEAD
-=======
+
             //boolean enableNavigationBar = Settings.Secure.getInt(resolver,
             //    Settings.Secure.NAVIGATION_BAR_VISIBLE, hasNavBarByDefault ? 1 : 0) == 1;
->>>>>>> parent of 25d6bc4... fixes on battery bar
 
             //if (!hasNavBarByDefault || !enableNavigationBar) {
                 prefSet.removePreference(mBatteryBar);
@@ -150,7 +148,7 @@ public class BatteryBar extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-            /*if (preference == mBatteryBarColor) {
+            if (preference == mBatteryBarColor) {
                 String hex = ColorPickerPreference.convertToARGB(Integer
                         .valueOf(String.valueOf(newValue)));
                 preference.setSummary(hex);
@@ -174,7 +172,7 @@ public class BatteryBar extends SettingsPreferenceFragment implements
                 Settings.System.putInt(resolver,
                         Settings.System.STATUSBAR_BATTERY_BAR_BATTERY_LOW_COLOR, intHex);
                 return true;
-            } else */if (preference == mBatteryBar) {
+            } else if (preference == mBatteryBar) {
                 int val = Integer.valueOf((String) newValue);
                 int index = mBatteryBar.findIndexOfValue((String) newValue);
                 Settings.System.putInt(resolver,
@@ -230,16 +228,16 @@ public class BatteryBar extends SettingsPreferenceFragment implements
                 mBatteryBarStyle.setEnabled(false);
                 mBatteryBarThickness.setEnabled(false);
                 mBatteryBarChargingAnimation.setEnabled(false);
-/*                mBatteryBarColor.setEnabled(false);
+                mBatteryBarColor.setEnabled(false);
                 mBatteryBarChargingColor.setEnabled(false);
-                mBatteryBarBatteryLowColor.setEnabled(false);*/
+                mBatteryBarBatteryLowColor.setEnabled(false);
             } else {
                 mBatteryBarStyle.setEnabled(true);
                 mBatteryBarThickness.setEnabled(true);
                 mBatteryBarChargingAnimation.setEnabled(true);
-                /*mBatteryBarColor.setEnabled(true)
+                mBatteryBarColor.setEnabled(true)
                 mBatteryBarChargingColor.setEnabled(true);
-                mBatteryBarBatteryLowColor.setEnabled(true);*/
+                mBatteryBarBatteryLowColor.setEnabled(true);
             }
     }
 

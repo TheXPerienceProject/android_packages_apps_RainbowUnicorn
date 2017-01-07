@@ -1,0 +1,26 @@
+From 52e96f99b92590cfe2470381370be964ed5bd53a Mon Sep 17 00:00:00 2001
+From: "klozz (TeamMEX)" <xxx.reptar.rawrr.xxx@gmail.com>
+Date: Fri, 6 Jan 2017 22:12:09 -0600
+Subject: [PATCH] Networktrafficmetter:fix trafficmetter
+
+Signed-off-by: klozz (TeamMEX) <xxx.reptar.rawrr.xxx@gmail.com>
+---
+ src/mx/xperience/rainbowunicorn/fragments/NetworkTrafficSettings.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mx/xperience/rainbowunicorn/fragments/NetworkTrafficSettings.java b/src/mx/xperience/rainbowunicorn/fragments/NetworkTrafficSettings.java
+index 162d7dc..6caa8b0 100644
+--- a/src/mx/xperience/rainbowunicorn/fragments/NetworkTrafficSettings.java
++++ b/src/mx/xperience/rainbowunicorn/fragments/NetworkTrafficSettings.java
+@@ -91,7 +91,7 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
+             if (intIndex <= 0) {
+                 mNetTrafficUnit.setEnabled(false);
+                 mNetTrafficPeriod.setEnabled(false);
+-                mNetTrafficHidearrow.setEnabled(false);
++                //mNetTrafficHidearrow.setEnabled(false);
+                 mNetTrafficAutohide.setEnabled(false);
+                 mNetTrafficAutohideThreshold.setEnabled(false);
+             }
+-- 
+2.10.2.windows.1
+

@@ -91,7 +91,7 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
             if (intIndex <= 0) {
                 mNetTrafficUnit.setEnabled(false);
                 mNetTrafficPeriod.setEnabled(false);
-                mNetTrafficHidearrow.setEnabled(false);
+                //mNetTrafficHidearrow.setEnabled(false);
                 mNetTrafficAutohide.setEnabled(false);
                 mNetTrafficAutohideThreshold.setEnabled(false);
             }

@@ -25,7 +25,7 @@
     <PreferenceScreen
         android:fragment="mx.xperience.rainbowunicorn.fragments.NetworkTrafficSettings"
         android:key="xperience_nettraffic_settings"
-        android:title="@string/nettraffic_settings_title"
-        android:summary="@string/nettraffic_settings_summary" />
+        android:title="@string/network_traffic_title"
+        android:summary="@string/network_traffic_summary" />
 
 </PreferenceScreen>

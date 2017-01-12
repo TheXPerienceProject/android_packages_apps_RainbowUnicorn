@@ -20,6 +20,11 @@
     <PreferenceCategory
         android:key="xperience_interface"
         android:title="@string/xperience_interface">
+         <PreferenceScreen
+            android:fragment="mx.xperience.rainbowunicorn.fragments.NotificationDrawerSettings"
+            android:key="xperience_notification_drawer_settings"
+            android:title="@string/notification_drawer_settings_title"/>
+
         <PreferenceScreen
             android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
             android:key="xperience_statusbar_settings"

@@ -30,5 +30,15 @@
             android:title="@string/battery_bar_title"/>
     </PreferenceCategory>
 <!--Finish interface-->	
+    <PreferenceCategory
+        android:key="xperience_system"
+        android:title="@string/xperience_system">
+
+        <PreferenceScreen
+            android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
+            android:key="xperience_display_settings"
+            android:title="@string/display_settings_title"/>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

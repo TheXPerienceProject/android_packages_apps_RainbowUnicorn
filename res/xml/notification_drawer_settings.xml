@@ -15,6 +15,13 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    xmlns:cm="http://schemas.android.com/apk/res/cyanogenmod.platform" >
+
+    <!-- Heads up -->
+    <cyanogenmod.preference.GlobalSettingSwitchPreference
+        android:key="heads_up_notifications_enabled"
+        android:title="@string/heads_up_notifications_enabled_title"
+        android:summary="@string/heads_up_notifications_enabled_summary" />
 
 </PreferenceScreen>

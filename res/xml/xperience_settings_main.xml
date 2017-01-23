@@ -44,6 +44,12 @@
             android:key="xperience_display_settings"
             android:title="@string/display_settings_title"/>
 
+        <PreferenceScreen
+            android:fragment="mx.xperience.rainbowunicorn.fragments.NavBarSettings"
+            android:key="xperience_navbar_settings"
+            android:title="@string/navbar_settings_title"/>
+
+
     </PreferenceCategory>
 
 </PreferenceScreen>

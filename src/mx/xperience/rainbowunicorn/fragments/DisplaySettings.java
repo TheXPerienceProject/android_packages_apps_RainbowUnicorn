@@ -28,7 +28,7 @@ public class DisplaySettings extends SettingsPreferenceFragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.display_settings);
+        addPreferencesFromResource(R.xml.display_settings_xpe);
         PreferenceScreen prefScreen = getPreferenceScreen();
     }
 

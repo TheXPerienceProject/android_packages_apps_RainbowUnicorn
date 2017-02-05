@@ -17,4 +17,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+     <Preference
+        android:id="@+id/alarm_blocker"
+        android:title="@string/alarm_blocker"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.AlarmBlocker" />
+
 </PreferenceScreen>

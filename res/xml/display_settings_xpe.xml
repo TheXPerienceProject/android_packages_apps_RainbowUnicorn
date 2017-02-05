@@ -22,4 +22,9 @@
         android:title="@string/alarm_blocker"
         android:fragment="mx.xperience.rainbowunicorn.fragments.AlarmBlocker" />
 
+     <Preference
+        android:key="wakelock_blocker"
+        android:title="@string/wakelock_blocker_title"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.WakeLockBlocker" />
+
 </PreferenceScreen>

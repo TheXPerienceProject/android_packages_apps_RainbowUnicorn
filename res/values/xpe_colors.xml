@@ -1,4 +1,0 @@
-<resources>
-    <!-- General -->
-    <color name="theme_accent">@*android:color/material_deep_teal_500</color>
-</resources>

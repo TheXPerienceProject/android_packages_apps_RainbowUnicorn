@@ -27,6 +27,7 @@ public class AppSidebar extends SettingsPreferenceFragment implements
     private static final String KEY_TRIGGER_WIDTH = "trigger_width";
     private static final String KEY_TRIGGER_TOP = "trigger_top";
     private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
+	private static final String KEY_HIDE_TIMEOUT = "app_sidebar_hide_timeout";
 
     private SwitchPreference mEnabledPref;
     private CustomSeekBarPreference mTransparencyPref;
@@ -35,6 +36,7 @@ public class AppSidebar extends SettingsPreferenceFragment implements
     private CustomSeekBarPreference mTriggerWidthPref;
     private CustomSeekBarPreference mTriggerTopPref;
     private CustomSeekBarPreference mTriggerBottomPref;
+	private CustomSeekBarPreference mHideTimeoutPref;
 
     @Override
     protected int getMetricsCategory() {
@@ -83,6 +85,11 @@ public class AppSidebar extends SettingsPreferenceFragment implements
                 Settings.System.APP_SIDEBAR_TRIGGER_HEIGHT, 100));
         mTriggerBottomPref.setOnPreferenceChangeListener(this);
 
+        mHideTimeoutPref = (CustomSeekBarPreference) findPreference(KEY_HIDE_TIMEOUT);
+        mHideTimeoutPref.setValue(Settings.System.getInt(getContentResolver(),
+            Settings.System.APP_SIDEBAR_HIDE_TIMEOUT, 3000));
+        mHideTimeoutPref.setOnPreferenceChangeListener(this);
+
         findPreference(KEY_SETUP_ITEMS).setOnPreferenceClickListener(this);
     }
 
@@ -116,6 +123,11 @@ public class AppSidebar extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.APP_SIDEBAR_ENABLED,
                     value ? 1 : 0);
+            return true;
+        } else if (preference == mHideTimeoutPref) {
+            int timeout = ((Integer)newValue).intValue();
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.APP_SIDEBAR_HIDE_TIMEOUT, timeout);
             return true;
         }
         return false;

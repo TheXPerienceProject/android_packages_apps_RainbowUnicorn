@@ -58,6 +58,16 @@
         android:defaultValue="0"
         android:dependency="sidebar_enable" />
 
+    <mx.xperience.rainbowunicorn.preferences.CustomSeekBarPreference
+        android:key="app_sidebar_hide_timeout"
+        android:title="@string/app_sidebar_hide_timeout_title"
+        android:summary="@string/app_sidebar_hide_timeout_summary"
+        android:max="10000"
+        settings:min="0"
+        settings:units="ms"
+        android:defaultValue="3000"
+        android:dependency="sidebar_enable" />
+
     <PreferenceCategory
         android:title="@string/trigger_category" />
 

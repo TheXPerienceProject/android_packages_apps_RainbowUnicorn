@@ -15,11 +15,61 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="xperience_settings_title">Configurações XPerience</string>
+  <string name="xperience_interface">Interface XPerience</string>
   <!-- Status Bar fragment -->
+  <string name="statusbar_settings_title">Barra de status</string>
   <!-- Battery Bar fragment -->
+  <string name="battery_bar_title">Barra da bateria</string>
+  <string name="battery_bar">Localização da barra da bateria</string>
+  <string name="battery_bar_no_navbar">Localização da barra da bateria</string>
+  <string name="battery_bar_color">Cor da barra da bateria</string>
+  <string name="battery_bar_charging_color">Cor de carregamento da barra da bateria</string>
+  <string name="battery_bar_battery_low_color">Cor da barra de bateria fraca</string>
+  <string name="battery_bar_cat">Estilo de barra de bateria</string>
+  <string name="battery_bar_style_title">Posição da barra de bateria</string>
+  <string name="battery_bar_thickness_title">Espessura da barra da bateria</string>
+  <string name="battery_bar_animate_title">Animação de carregamento</string>
+  <string name="battery_bar_style_regular">Normal</string>
+  <string name="battery_bar_style_center_mirrored">Centro-espelhado</string>
+  <string name="battery_bar_style_reversed">Invertido</string>
+  <string name="battery_bar_use_charging_color">Personalizar cor de carregamento</string>
+  <string name="battery_bar_blend_color_title">Mistura de cores</string>
+  <string name="battery_bar_blend_color_summary">Misturar cores cheio/vazio correspondente a porcentagem da bateria</string>
+  <string name="battery_bar_blend_color_reverse_title">Inverter a direção de cor</string>
+  <string name="battery_bar_blend_color_reverse_summary_off">Completo → Vazio: vermelho ← verde ← azul ← vermelho</string>
+  <string name="battery_bar_blend_color_reverse_summary_on">Completo → Vazio: vermelho ← verde ← azul ← vermelho</string>
   <!-- Custom carrier label and position -->
+  <string name="carrier_label_settings_title">Nome da operadora</string>
+  <string name="carrier_label_settings_summary">Personalizar nome de operadora</string>
+  <string name="custom_carrier_label_title">Personalizar nome de operadora</string>
+  <string name="custom_carrier_label_explain">Por favor, insira um novo texto. Deixe em branco para reverter para o original.</string>
+  <string name="custom_carrier_label_notset">Nome personalizado não definido</string>
+  <string name="show_carrier_title">Nome da operadora</string>
+  <string name="show_carrier_disabled">Desativado</string>
+  <string name="show_carrier_keyguard">Apenas tela de bloqueio</string>
+  <string name="show_carrier_statusbar">Apenas barra de status</string>
+  <string name="show_carrier_enabled">Tela de bloqueio &amp; barra de status</string>
   <!-- Network traffic -->
+  <string name="network_traffic_title">Tráfego de rede</string>
+  <string name="show_network_traffic_state">Monitor de tráfego na barra de status</string>
+  <string name="network_traffic_summary">Permitir várias opções de tráfego de rede na barra de status</string>
+  <string name="show_network_traffic_unit">Unidade de exibição</string>
+  <string name="show_network_traffic_frequency">Intervalo de atualização</string>
+  <string name="show_network_traffic_disable">Desabilitado</string>
+  <string name="show_network_traffic_up">Saída</string>
+  <string name="show_network_traffic_down">Entrada</string>
+  <string name="show_network_traffic_all">Entrada e saída</string>
+  <string name="show_network_traffic_bit">Bits por segundo</string>
+  <string name="show_network_traffic_byte">Bytes por segundo</string>
+  <string name="network_traffic_autohide">Ocultar automaticamente</string>
+  <string name="network_traffic_autohide_summary">Ocultar o monitor de tráfego quando não houver nenhuma atividade</string>
+  <string name="network_traffic_autohide_threshold">Limite de inatividade</string>
+  <string name="network_traffic_hidearrow_title">Esconder as setas</string>
+  <string name="network_traffic_hidearrow_summary">Esconder as setas de atividade de monitor de tráfego</string>
   <!-- Color Picker -->
+  <string name="dialog_color_picker">Seletor de cores</string>
+  <string name="press_color_to_apply">Selecione a cor abaixo para aplicar</string>
   <!-- Display fragment -->
   <!-- Notification drawer fragment -->
   <!-- Navbar fragment -->

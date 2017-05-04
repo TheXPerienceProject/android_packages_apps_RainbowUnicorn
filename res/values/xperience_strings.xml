@@ -92,6 +92,8 @@
     <string name="notification_drawer_settings_title">Notification drawer</string>
     <!-- Navbar fragment -->
     <string name="navbar_settings_title">Navigation bar</string>
+    <!-- Fingerprint fragment -->
+    <string name="fingerprint_settings_title">Fingerprint</string>
 
     <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">Heads-up</string>
@@ -142,5 +144,9 @@
     <string name="alarm_blocker_reload">Reload</string>
     <string name="alarm_blocker_warning_title">Proceed with caution</string>
     <string name="alarm_blocker_warning">Blocking alarms have the potential to cause instability, crashes or data loss.</string>
+
+    <!-- Fingerprint unlock keystore -->
+    <string name="fp_unlock_keystore_title">Fingerprint reboot unlock</string>
+    <string name="fp_unlock_keystore_summary">Unlock the device with your fingerprint after a reboot without entering your Pin/Password/Pattern</string>
 
 </resources>

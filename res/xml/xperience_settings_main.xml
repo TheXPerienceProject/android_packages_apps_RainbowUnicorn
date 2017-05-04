@@ -49,6 +49,10 @@
             android:key="xperience_navbar_settings"
             android:title="@string/navbar_settings_title"/>
 
+        <PreferenceScreen
+            android:fragment="mx.xperience.rainbowunicorn.fragments.FingerprintSettings"
+            android:key="xperience_fingerprint_settings"
+            android:title="@string/fingerprint_settings_title"/>
 
     </PreferenceCategory>
 

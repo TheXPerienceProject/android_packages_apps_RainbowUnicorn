@@ -19,7 +19,9 @@ import android.os.Bundle;
 import android.content.Context;
 import android.content.ContentResolver;
 
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
 
@@ -31,12 +33,21 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import android.hardware.fingerprint.FingerprintManager;
+
 import mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference;
+import mx.xperience.rainbowunicorn.utils.Utils;
 
-public class FingerprintSettings extends SettingsPreferenceFragment{
+import cyanogenmod.providers.CMSettings;
 
+public class FingerprintSettings extends SettingsPreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
+
+
+    private static final String TAG = "FingerprintSettings";
 
     private static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
+
+    private int activate = 0;
 
     private SystemSettingSwitchPreference mFpKeystore;
     private FingerprintManager mFingerprintManager;
@@ -50,15 +61,11 @@ public class FingerprintSettings extends SettingsPreferenceFragment{
         ContentResolver resolver = getActivity().getContentResolver();
 
         //Fingerprint
-        mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
         mFpKeystore = (SystemSettingSwitchPreference) findPreference(FP_UNLOCK_KEYSTORE);
-        if (!mFingerprintManager.isHardwareDetected()){
-            prefScreen.removePreference(mFpKeystore);
-        } else {
-            mFpKeystore.setChecked((Settings.System.getInt(getContentResolver(),
-                    Settings.System.FP_UNLOCK_KEYSTORE, 0) == 1));
-            mFpKeystore.setOnPreferenceChangeListener(this);
-          }
+        mFpKeystore.setChecked((Settings.System.getInt(getContentResolver(),
+               Settings.Global.FP_UNLOCK_KEYSTORE, 0) == 1));
+        mFpKeystore.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
@@ -82,7 +89,7 @@ public class FingerprintSettings extends SettingsPreferenceFragment{
         if (preference == mFpKeystore) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.FP_UNLOCK_KEYSTORE, value ? 1 : 0);
+                    Settings.Global.FP_UNLOCK_KEYSTORE, value ? 1 : 0);
             return true;
         }
        return false;

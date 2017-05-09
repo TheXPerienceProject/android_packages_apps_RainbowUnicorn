@@ -54,6 +54,11 @@
             android:key="xperience_fingerprint_settings"
             android:title="@string/fingerprint_settings_title"/>
 
+       <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+        android:key="enable_task_manager"
+        android:title="@string/enable_task_manager_title"
+        android:summary="@string/enable_task_manager_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

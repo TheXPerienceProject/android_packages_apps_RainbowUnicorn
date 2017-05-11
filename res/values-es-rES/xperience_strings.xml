@@ -79,6 +79,8 @@
   <string name="notification_drawer_settings_title">Área de notificación</string>
   <!-- Navbar fragment -->
   <string name="navbar_settings_title">Barra de navegación</string>
+  <!-- Fingerprint fragment -->
+  <string name="fingerprint_settings_title">Huella digital</string>
   <!-- Heads-up -->
   <string name="heads_up_notifications_enabled_title">Notificaciones emergentes</string>
   <string name="heads_up_notifications_enabled_summary">Muestra las notificaciones prioritarias en una pequeña ventana flotante</string>
@@ -125,7 +127,10 @@
   <string name="alarm_blocker_reload">Actualizar</string>
   <string name="alarm_blocker_warning_title">Proceda con precaución</string>
   <string name="alarm_blocker_warning">Bloquear alarmas puede causar inestabilidad, cierres forzados o pérdida de datos.</string>
-  <!-- Pocket judge -->
-  <string name="pocket_judge_title">Detección de bolsillo</string>
-  <string name="pocket_judge_summary">Evitar activaciones accidentales cuando el dispositivo está en el bolsillo</string>
+  <!-- Fingerprint unlock keystore -->
+  <string name="fp_unlock_keystore_title">Desbloqueo de reinicio de la huella digital</string>
+  <string name="fp_unlock_keystore_summary">Desbloquear el dispositivo con su huella digital después de reiniciar sin tener que ingresar su Pin/Contraseña/Patrón</string>
+  <!-- Task Manager -->
+  <string name="enable_task_manager_title">Administrador de tareas</string>
+  <string name="enable_task_manager_summary">Habilitar/Deshabilitar la acción para el botón del administrador de tareas en el área expandida de la barra de estado</string>
 </resources>

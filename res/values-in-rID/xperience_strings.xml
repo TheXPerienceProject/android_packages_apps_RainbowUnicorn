@@ -23,9 +23,11 @@
   <!-- Display fragment -->
   <!-- Notification drawer fragment -->
   <!-- Navbar fragment -->
+  <!-- Fingerprint fragment -->
   <!-- Heads-up -->
   <!-- One handed mode -->
   <!-- App sidebar -->
   <!-- Alarm blocker -->
-  <!-- Pocket judge -->
+  <!-- Fingerprint unlock keystore -->
+  <!-- Task Manager -->
 </resources>

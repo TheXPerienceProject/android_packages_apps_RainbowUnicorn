@@ -149,8 +149,4 @@
     <string name="fp_unlock_keystore_title">Fingerprint reboot unlock</string>
     <string name="fp_unlock_keystore_summary">Unlock the device with your fingerprint after a reboot without entering your Pin/Password/Pattern</string>
 
-    <!-- Task Manager -->
-    <string name="enable_task_manager_title">Task Manager</string>
-    <string name="enable_task_manager_summary">Enable/Disable action for the task manager button in the expanded statusbar area</string>
-
 </resources>

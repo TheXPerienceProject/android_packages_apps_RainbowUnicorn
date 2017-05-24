@@ -85,15 +85,6 @@ public class AnimationControls extends SettingsPreferenceFragment implements Pre
         return MetricsEvent.RAINBOW_UNICORN;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_aokp_animation_main, container, false);
-
-        Resources res = getResources();
-
-        return v;
-    }
-
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);

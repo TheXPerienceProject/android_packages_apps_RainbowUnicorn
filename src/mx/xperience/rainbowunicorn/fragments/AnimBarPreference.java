@@ -49,6 +49,8 @@ public class AnimBarPreference extends Preference
 
 /*    @Override
     protected View onCreateView(ViewGroup parent) {
+        super.onCreateView(parent);
+
         mContext = getContext();
         View layout = View.inflate(mContext, R.layout.slider_preference, null);
 

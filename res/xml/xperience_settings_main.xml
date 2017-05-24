@@ -23,17 +23,22 @@
          <PreferenceScreen
             android:fragment="mx.xperience.rainbowunicorn.fragments.NotificationDrawerSettings"
             android:key="xperience_notification_drawer_settings"
+			android:icon="@drawable/ic_notifications"
             android:title="@string/notification_drawer_settings_title"/>
 
         <PreferenceScreen
             android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
             android:key="xperience_statusbar_settings"
+            android:icon="@drawable/ic_statusbar"
             android:title="@string/statusbar_settings_title"/>
+
         <PreferenceScreen
             android:fragment="mx.xperience.rainbowunicorn.fragments.BatteryBar"
             android:key="batterybar"
+            android:icon="@drawable/ic_battery_bar"
             android:title="@string/battery_bar_title"/>
     </PreferenceCategory>
+
 <!--Finish interface-->	
     <PreferenceCategory
         android:key="xperience_system"
@@ -47,16 +52,25 @@
         <PreferenceScreen
             android:fragment="mx.xperience.rainbowunicorn.fragments.DisplayAnimationsSettings"
             android:key="xperience_display_animation_settings"
+            android:icon="@drawable/ic_display_settings"
             android:title="@string/display_animation_settings_title"/>
-   
+
+        <PreferenceScreen
+            android:fragment="mx.xperience.rainbowunicorn.fragments.AnimationControls"
+            android:key="xperience_system_AnimationControls"
+            android:icon="@drawable/ic_animation"
+            android:title="@string/aokp_animation_title"/>
+
         <PreferenceScreen
             android:fragment="mx.xperience.rainbowunicorn.fragments.NavBarSettings"
             android:key="xperience_navbar_settings"
+            android:icon="@drawable/ic_navigation_menu"
             android:title="@string/navbar_settings_title"/>
 
         <PreferenceScreen
             android:fragment="mx.xperience.rainbowunicorn.fragments.FingerprintSettings"
             android:key="xperience_fingerprint_settings"
+            android:icon="@drawable/ic_fingerprint"
             android:title="@string/fingerprint_settings_title"/>
 
     </PreferenceCategory>

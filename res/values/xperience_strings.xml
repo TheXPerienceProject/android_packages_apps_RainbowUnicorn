@@ -200,6 +200,8 @@
     <!-- ****************************** UI Interface Cat ends ****************************** -->
 
     <!-- Toast Animation -->
+    <string name="toast_icon_title">Toast icon</string>
+    <string name="toast_icon_summary">Show app icon behind toast notification</string>
     <string name="toast_animation_title">Toast animation</string>
     <string name="toast_none_animation">None</string>
     <string name="toast_default_animation">Default</string>
@@ -218,4 +220,20 @@
     <string name="toast_SlideLeftRight_animation">Slide left to right</string>
     <string name="toast_SlideRightLeft_animation">Slide right to left</string>
 
+    <!-- AOKP custom system animations -->
+    <string name="aokp_animation_title">AOKP Animations</string>
+    <string name="aokp_animation_summary">AOKP system custom animation</string>
+    <string name="activity_open_title">Activity open animation</string>
+    <string name="activity_close_title">Activity close animation</string>
+    <string name="task_open_title">Task open animation</string>
+    <string name="task_open_behind_title">Task open behind animation</string>
+    <string name="task_close_title">Task close animation</string>
+    <string name="task_move_to_front_title">Move to front animation</string>
+    <string name="task_move_to_back_title">Move to back animation</string>
+    <string name="wallpaper_open_title">Wallpaper open animation</string>
+    <string name="wallpaper_close_title">Wallpaper close animation</string>
+    <string name="wallpaper_intra_open_title">Wallpaper intra open animation</string>
+    <string name="wallpaper_intra_close_title">Wallpaper intra close animation</string>
+    <string name="animation_duration_title">Animation duration</string>
+    <string name="animation_duration_default">Default</string>
 </resources>

@@ -36,4 +36,9 @@
            android:defaultValue="3"
            android:dependency="show_clear_all_recents" />
 
+     <Preference
+        android:key="wakelock_blocker"
+        android:title="@string/wakelock_blocker_title"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.WakeLockBlocker" />
+
 </PreferenceScreen>

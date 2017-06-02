@@ -24,10 +24,17 @@
   <!-- Notification drawer fragment -->
   <!-- Navbar fragment -->
   <!-- Fingerprint fragment -->
+  <!-- display_animation_settings_title-->
   <!-- Heads-up -->
   <!-- One handed mode -->
   <!-- App sidebar -->
   <!-- Alarm blocker -->
   <!-- Fingerprint unlock keystore -->
-  <!-- Task Manager -->
+  <!--FAB -->
+  <!-- Wakelock blocker -->
+  <!-- ListView animation -->
+  <!-- ListView interpolator -->
+  <!-- ****************************** UI Interface Cat ends ****************************** -->
+  <!-- Toast Animation -->
+  <!-- AOKP custom system animations -->
 </resources>

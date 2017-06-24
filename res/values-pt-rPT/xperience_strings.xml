@@ -15,10 +15,44 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="xperience_settings_title">Ajustes XPerience</string>
+  <string name="xperience_interface">Interface XPerience</string>
   <!-- Status Bar fragment -->
+  <string name="statusbar_settings_title">Barra de estado</string>
   <!-- Battery Bar fragment -->
+  <string name="battery_bar_title">Barra de bateria</string>
+  <string name="battery_bar">Localização da barra de bateria</string>
+  <string name="battery_bar_no_navbar">Localização da barra de bateria</string>
+  <string name="battery_bar_color">Cor da barra da bateria</string>
+  <string name="battery_bar_charging_color">Cor da barra em carregamento</string>
+  <string name="battery_bar_battery_low_color">Cor da barra em bateria fraca</string>
+  <string name="battery_bar_cat">Estilo da barra da bateria</string>
+  <string name="battery_bar_style_title">Alinhamento da barra de bateria</string>
+  <string name="battery_bar_thickness_title">Espessura da barra de bateria</string>
+  <string name="battery_bar_animate_title">Animação de carga</string>
+  <string name="battery_bar_style_regular">Regular</string>
+  <string name="battery_bar_style_center_mirrored">Centro-espelhado</string>
+  <string name="battery_bar_style_reversed">Invertido</string>
+  <string name="battery_bar_use_charging_color">Cor de carregamento personalizada</string>
+  <string name="battery_bar_blend_color_title">Misturar cores</string>
+  <string name="battery_bar_blend_color_summary">Misturar cores cheias/vazias correspondente à porcentagem da bateria</string>
+  <string name="battery_bar_blend_color_reverse_title">Inverter a direção da cor</string>
+  <string name="battery_bar_blend_color_reverse_summary_off">Cheio → vazio: vermelho ← verde ← azul ← vermelho</string>
+  <string name="battery_bar_blend_color_reverse_summary_on">Cheio → vazio: vermelho ← verde ← azul ← vermelho</string>
   <!-- Custom carrier label and position -->
+  <string name="carrier_label_settings_title">Nome da operadora</string>
+  <string name="carrier_label_settings_summary">Personalizar o nome da operadora</string>
+  <string name="custom_carrier_label_title">Nome de operadora personalizado</string>
+  <string name="custom_carrier_label_explain">Inserir um novo nome. Deixar em branco para reverter para o nome padrão.</string>
+  <string name="custom_carrier_label_notset">Nome personalizado não estabelecido</string>
+  <string name="show_carrier_title">Nome da operadora</string>
+  <string name="show_carrier_disabled">Desabilitado</string>
+  <string name="show_carrier_keyguard">Apenas ecrã de bloqueio</string>
+  <string name="show_carrier_statusbar">Barra de estado somente</string>
+  <string name="show_carrier_enabled">Ecrã de bloqueio e barra de estado</string>
   <!-- Network traffic -->
+  <string name="network_traffic_title">Tráfego de rede</string>
+  <string name="show_network_traffic_state">Monitor de tráfego na barra de estado</string>
   <!-- Color Picker -->
   <!-- Display fragment -->
   <!-- Notification drawer fragment -->

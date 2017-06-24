@@ -70,15 +70,65 @@
   <!-- Color Picker -->
   <string name="dialog_color_picker">Seletor de cores</string>
   <string name="press_color_to_apply">Selecione a cor abaixo para aplicar</string>
+  <string name="set">Definir</string>
+  <string name="color_default">Padrão</string>
+  <string name="xperience_system">Sistema</string>
   <!-- Display fragment -->
+  <string name="display_settings_title">Tela</string>
   <!-- Notification drawer fragment -->
+  <string name="notification_drawer_settings_title">Gaveta de notificações</string>
   <!-- Navbar fragment -->
+  <string name="navbar_settings_title">Barra de navegação</string>
   <!-- Fingerprint fragment -->
+  <string name="fingerprint_settings_title">Impressão digital</string>
   <!-- display_animation_settings_title-->
+  <string name="display_animation_settings_title"> Animações </string>
+  <string name="notification_drawer_settings_summary">Configurações da gaveta de notificações</string>
+  <string name="statusbar_settings_summary">Configurações da barra de status</string>
+  <string name="batterybar_settings_summary">Configurações da Barra de Bateria</string>
+  <string name="display_settings_summary">Configurações de tela</string>
+  <string name="displayanimations_settings_summary">Configurações de animação da tela</string>
+  <string name="system_animation_summary"> Configurações de animação do sistema </string>
   <!-- Heads-up -->
+  <string name="heads_up_notifications_enabled_title">Notificações \"heads-up\"</string>
+  <string name="heads_up_notifications_enabled_summary">Mostrar notificações prioritárias em uma pequena janela flutuante</string>
   <!-- One handed mode -->
+  <string name="one_handed_mode_title">Modo de uma mão</string>
+  <string name="one_handed_mode_summary">Permite deslizar na barra de navegação para habilitar o modo de uma mão</string>
   <!-- App sidebar -->
+  <string name="app_sidebar_title">Barra lateral de apps</string>
+  <string name="app_sidebar_enable_title">Ativar barra lateral de apps</string>
+  <string name="app_sidebar_enable_summaryOn">Barra lateral de apps está ativado</string>
+  <string name="app_sidebar_enable_summaryOff">Barra lateral de apps está desativada</string>
+  <string name="app_sidebar_setup_items_title">Configurar conteúdo da barra lateral</string>
+  <string name="app_sidebar_setup_items_summary">Adicionar, remover e posicionar itens na barra lateral</string>
+  <string name="app_sidebar_transparency_title">Transparência da barra lateral</string>
+  <string name="app_sidebar_transparency_summary">Ajustar o nível de transparência da barra lateral</string>
+  <string name="app_sidebar_position_title">Posição da barra lateral</string>
+  <string name="app_sidebar_position_summary">Posicionar a barra lateral nos lados esquerdo ou direito da tela</string>
+  <string name="app_sidebar_position_left">Esquerda</string>
+  <string name="app_sidebar_position_right">Direita</string>
+  <string name="app_sidebar_hide_labels_title">Ocultar rótulos de ícone</string>
+  <string name="app_sidebar_hide_labels_summary">Ocultar rótulos de ícone na barra lateral</string>
+  <string name="tab_category">Guia Visível</string>
+  <string name="use_tab_title">Guia Tela</string>
+  <string name="use_tab_summary">Mostrar uma barra visível na lateral que mostra a barra lateral quando tocada.</string>
+  <string name="tab_position_title">Localização da guia</string>
+  <string name="tab_position_summary">Mostrar a guia em cima, no meio, ou em baixo na lateral da tela.</string>
+  <string name="tab_size_title">Tamanho da guia</string>
+  <string name="tab_size_summary">Mudar tamanho da barra visível.</string>
+  <string name="trigger_category">Região de acionamento</string>
+  <string name="trigger_width_title">Largura do acionamento</string>
+  <string name="trigger_width_summary">Ajustar largura da área de acionamento</string>
+  <string name="trigger_top_title">Posição de acionamento</string>
+  <string name="trigger_top_summary">Ajustar a posução vertical da área de acionamento</string>
+  <string name="trigger_bottom_title">Altura do acionamento</string>
+  <string name="trigger_bottom_summary">Ajustar a altura da área de acionamento</string>
+  <string name="app_sidebar_hide_timeout_title">Ocultar appbar automaticamente</string>
+  <string name="app_sidebar_hide_timeout_summary">Tempo de espera para ocultar appbar automaticamente.</string>
   <!-- Alarm blocker -->
+  <string name="alarm_blocker">Bloqueador de alarmes</string>
+  <string name="alarm_blocker_title">Ativar</string>
   <!-- Fingerprint unlock keystore -->
   <!--FAB -->
   <!-- Wakelock blocker -->
@@ -86,5 +136,30 @@
   <!-- ListView interpolator -->
   <!-- ****************************** UI Interface Cat ends ****************************** -->
   <!-- Toast Animation -->
+  <string name="toast_none_animation">Nenhum</string>
+  <string name="toast_default_animation">Padrão</string>
+  <string name="toast_fade_animation">Esmaecer</string>
+  <string name="toast_SlideRight_animation">Deslizar para a direita</string>
+  <string name="toast_SlideLeft_animation">Deslizar para a esquerda</string>
+  <string name="toast_FastFade_animation">Esmaecer rápido</string>
+  <string name="toast_GrowFade_animation">Aumentar esmaecimento</string>
+  <string name="toast_GrowFadeCenter_animation">Aumentar centro do esmaecimento</string>
+  <string name="toast_Translucent_animation">Translúcido</string>
+  <string name="toast_SlideLeftRight_animation">Deslizar da esquerda para a direita</string>
+  <string name="toast_SlideRightLeft_animation">Deslizar da direita para a esquerda</string>
   <!-- AOKP custom system animations -->
+  <string name="aokp_animation_title">Animações XPerience</string>
+  <string name="aokp_animation_summary">Animação personalizada do sistema</string>
+  <string name="activity_open_title">Animação ao abrir atividade</string>
+  <string name="activity_close_title">Animação ao fechar atividade</string>
+  <string name="task_open_title">Animação ao abrir tarefa</string>
+  <string name="task_close_title">Animação ao fechar tarefa</string>
+  <string name="task_move_to_front_title">Animação ao mover para frente</string>
+  <string name="task_move_to_back_title">Animação ao mover para trás</string>
+  <string name="wallpaper_open_title">Animação ao abrir plano de fundo</string>
+  <string name="wallpaper_close_title">Animação ao fechar plano de fundo</string>
+  <string name="wallpaper_intra_open_title">Animação de intra abertura do papel de parede</string>
+  <string name="wallpaper_intra_close_title">Animação de intra fechamento do papel de parede</string>
+  <string name="animation_duration_title">Duração da animação</string>
+  <string name="animation_duration_default">Padrão</string>
 </resources>

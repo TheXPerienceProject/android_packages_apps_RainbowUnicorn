@@ -15,8 +15,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="xperience_settings_title">Ustawienia XPerience™</string>
+  <string name="xperience_interface">Interfejs XPerience™</string>
   <!-- Status Bar fragment -->
+  <string name="statusbar_settings_title">Pasek statusu</string>
   <!-- Battery Bar fragment -->
+  <string name="battery_bar_title">Pasek poziomu baterii</string>
   <!-- Custom carrier label and position -->
   <!-- Network traffic -->
   <!-- Color Picker -->

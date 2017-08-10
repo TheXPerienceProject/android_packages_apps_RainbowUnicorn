@@ -26,4 +26,10 @@
         android:fragment="mx.xperience.rainbowunicorn.fragments.AppSidebar"
         android:title="@string/app_sidebar_title" />
 
+     <Preference
+        android:key="pie_settings"
+        android:fragment="mx.xperience.rainbowunicorn.PieSettings"
+        android:layout="@layout/preference_pie_settings"
+        android:title="@string/pie_settings" />
+
 </PreferenceScreen>

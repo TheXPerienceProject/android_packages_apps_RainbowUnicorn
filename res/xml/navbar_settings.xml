@@ -15,11 +15,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-         <mx.xperience.rainbowunicorn.preferences.SecureSettingSwitchPreference
-            android:key="one_handed_mode_ui"
-            android:title="@string/one_handed_mode_title"
-            android:summary="@string/one_handed_mode_summary"
-            android:defaultValue="false" />
+     <mx.xperience.rainbowunicorn.preferences.SecureSettingSwitchPreference
+        android:key="one_handed_mode_ui"
+        android:title="@string/one_handed_mode_title"
+        android:summary="@string/one_handed_mode_summary"
+        android:defaultValue="false" />
 
      <Preference
         android:key="appsidebar"
@@ -31,5 +31,10 @@
         android:fragment="mx.xperience.rainbowunicorn.PieSettings"
         android:layout="@layout/preference_pie_settings"
         android:title="@string/pie_settings" />
+
+     <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+        android:key="anbi"
+        android:title="@string/anbi_title"
+        android:summary="@string/anbi_summary"/>
 
 </PreferenceScreen>

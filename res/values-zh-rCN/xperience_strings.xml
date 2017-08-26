@@ -15,26 +15,258 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Status Bar fragment -->
-  <!-- Battery Bar fragment -->
-  <!-- Custom carrier label and position -->
-  <!-- Network traffic -->
-  <!-- Color Picker -->
-  <!-- Display fragment -->
-  <!-- Notification drawer fragment -->
-  <!-- Navbar fragment -->
-  <!-- Fingerprint fragment -->
-  <!-- display_animation_settings_title-->
-  <!-- Heads-up -->
-  <!-- One handed mode -->
-  <!-- App sidebar -->
-  <!-- Alarm blocker -->
-  <!-- Fingerprint unlock keystore -->
-  <!--FAB -->
-  <!-- Wakelock blocker -->
-  <!-- ListView animation -->
-  <!-- ListView interpolator -->
-  <!-- ****************************** UI Interface Cat ends ****************************** -->
-  <!-- Toast Animation -->
-  <!-- AOKP custom system animations -->
+    <string name="xperience_settings_title">XPerience 设置</string>
+    <string name="xperience_interface">XPerience 界面</string>
+    <!-- Status Bar fragment -->
+    <string name="statusbar_settings_title">状态栏</string>
+    <!-- Battery Bar fragment -->
+    <string name="battery_bar_title">电池图标</string>
+    <string name="battery_bar">电池图标位置</string>
+    <string name="battery_bar_no_navbar">电池图标位置</string>
+    <string name="battery_bar_color">电池图标颜色</string>
+    <string name="battery_bar_charging_color">电池图标充电颜色</string>
+    <string name="battery_bar_battery_low_color">B电池图标低电量颜色</string>
+    <string name="battery_bar_cat">电池图标风格</string>
+    <string name="battery_bar_style_title">电量栏对齐</string>
+    <string name="battery_bar_thickness_title">电量栏厚度</string>
+    <string name="battery_bar_animate_title">充电动画</string>
+    <string name="battery_bar_style_regular">正常</string>
+    <string name="battery_bar_style_center_mirrored">中心镜像</string>
+    <string name="battery_bar_style_reversed">反向</string>
+    <string name="battery_bar_use_charging_color">自定义充电颜色</string>
+    <string name="battery_bar_blend_color_title">混合颜色</string>
+    <string name="battery_bar_blend_color_summary">混合充满/为空颜色对应于电池百分比</string>
+    <string name="battery_bar_blend_color_reverse_title">反色方向</string>
+    <string name="battery_bar_blend_color_reverse_summary_off">Full &#8594; empty: red &#8592; green &#8592; blue &#8592; red</string>
+    <string name="battery_bar_blend_color_reverse_summary_on">Full &#8594; empty: red &#8594; green &#8594; blue &#8594; red</string>
+
+    <!-- Custom carrier label and position -->
+    <string name="carrier_label_settings_title">运营商标签</string>
+    <string name="carrier_label_settings_summary">自定义运营商标签</string>
+    <string name="custom_carrier_label_title">自定义运营商标签</string>
+    <string name="custom_carrier_label_explain">请输入一个新标签，留空则使用默认标签。</string>
+    <string name="custom_carrier_label_notset">自定义运营商标签没有设置</string>
+    <string name="show_carrier_title">运营商标签</string>
+    <string name="show_carrier_disabled">禁用</string>
+    <string name="show_carrier_keyguard">仅锁屏</string>
+    <string name="show_carrier_statusbar">仅状态栏</string>
+    <string name="show_carrier_enabled">锁屏和状态栏</string>
+	
+    <!-- Network traffic -->
+    <string name="network_traffic_title">网络流量</string>
+    <string name="show_network_traffic_state">状态栏网络流量监视器</string>
+    <string name="network_traffic_summary">在状态栏启用网络流量监视器</string>
+    <string name="show_network_traffic_unit">显示单位</string>
+    <string name="show_network_traffic_frequency">更新间隔</string>
+    <string name="show_network_traffic_disable">禁用</string>
+    <string name="show_network_traffic_up">上传</string>
+    <string name="show_network_traffic_down">下载</string>
+    <string name="show_network_traffic_all">上传和下载</string>
+    <string name="show_network_traffic_bit">比特每秒</string>
+    <string name="show_network_traffic_byte">字节每秒</string>
+    <string name="show_network_traffic_500">500 毫秒</string>
+    <string name="show_network_traffic_1000">1000 毫秒</string>
+    <string name="show_network_traffic_1500">1500 毫秒</string>
+    <string name="show_network_traffic_2000">2000 毫秒</string>
+    <string name="network_traffic_autohide">Auto hide</string>
+    <string name="network_traffic_autohide_summary">当无活动时自动隐藏流量监视器</string>
+    <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
+    <string name="network_traffic_hidearrow_title">隐藏箭头</string>
+    <string name="network_traffic_hidearrow_summary">隐藏网络流量箭头</string>
+
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">颜色拾取器</string>
+    <string name="press_color_to_apply">按下面的颜色来应用</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">十六进制:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">设置</string>
+    <string name="color_default">默认</string>
+
+    <string name="xperience_system">System</string>
+
+    <!-- Display fragment -->
+    <string name="display_settings_title">显示</string>
+    <!-- Notification drawer fragment -->
+    <string name="notification_drawer_settings_title">通知绘制器</string>
+    <!-- Navbar fragment -->
+    <string name="navbar_settings_title">导航栏</string>
+    <!-- Fingerprint fragment -->
+    <string name="fingerprint_settings_title">指纹</string>
+    <!-- display_animation_settings_title-->
+    <string name="display_animation_settings_title"> 动画 </string>
+    <string name="notification_drawer_settings_summary">通知绘制器设置</string>
+    <string name="statusbar_settings_summary">状态栏设置</string>
+    <string name="batterybar_settings_summary">电量栏设置</string>
+    <string name="display_settings_summary">显示设置</string>
+    <string name="displayanimations_settings_summary">显示动画设置</string>
+    <string name="system_animation_summary">系统动画设置 </string>
+
+    <!-- Heads-up -->
+    <string name="heads_up_notifications_enabled_title">Heads-up</string>
+    <string name="heads_up_notifications_enabled_summary">在浮动窗口中显示优先通知</string>
+
+    <!-- One handed mode -->
+    <string name="one_handed_mode_title">单手模式</string>
+    <string name="one_handed_mode_summary">允许在导航栏上滑动以启用单手模式</string>
+
+    <!-- App sidebar -->
+    <string name="app_sidebar_title">App侧边栏</string>
+    <string name="app_sidebar_enable_title">启用App侧边栏</string>
+    <string name="app_sidebar_enable_summaryOn">App侧边栏已启用</string>
+    <string name="app_sidebar_enable_summaryOff">App侧边栏已禁用/string>
+    <string name="app_sidebar_setup_items_title">Setup sidebar content</string>
+    <string name="app_sidebar_setup_items_summary">Add, remove, and position items in the sidebar</string>
+    <string name="app_sidebar_transparency_title">侧边栏透明度</string>
+    <string name="app_sidebar_transparency_summary">调整侧边栏透明度等级</string>
+    <string name="app_sidebar_position_title">侧边栏位置</string>
+    <string name="app_sidebar_position_summary">选择侧边栏在屏幕左边还是右边</string>
+    <string name="app_sidebar_position_left">左边</string>
+    <string name="app_sidebar_position_right">右边</string>
+    <string name="app_sidebar_hide_labels_title">隐藏图标标签</string>
+    <string name="app_sidebar_hide_labels_summary">隐藏侧边栏图标标签/string>
+    <string name="tab_category">可视标签</string>
+    <string name="use_tab_title">显示标签</string>
+    <string name="use_tab_summary">在侧面显示一个可见的标签，在触摸时显示侧边栏。</string>
+    <string name="tab_position_title">标签位置</string>
+    <string name="tab_position_summary">显示屏幕顶部，中间或底部的标签。</string>
+    <string name="tab_size_title">标签大小</string>
+    <string name="tab_size_summary">改变可见标签的大小。</string>
+    <string name="trigger_category">触发区域</string>
+    <string name="trigger_width_title">触发的宽度</string>
+    <string name="trigger_width_summary">调整触发区域的宽度</string>
+    <string name="trigger_top_title">触发的位置</string>
+    <string name="trigger_top_summary">调整触发区域的位置</string>
+    <string name="trigger_bottom_title">触发的高度</string>
+    <string name="trigger_bottom_summary">调整触发区域的高度</string>
+    <string name="app_sidebar_hide_timeout_title">Appbar自动隐藏</string>
+    <string name="app_sidebar_hide_timeout_summary">超时自动隐藏Appbar。</string>
+ 
+    <!-- Alarm blocker -->
+    <string name="alarm_blocker">报警</string>
+    <string name="alarm_blocker_title">启用</string>
+    <string name="alarm_blocker_summary">Block alarms while screen off</string>
+    <string name="alarm_blocker_save">保存</string>
+    <string name="alarm_list_header">可用闹钟</string>
+    <string name="alarm_blocker_reload">重载</string>
+    <string name="alarm_blocker_warning_title">Proceed with caution</string>
+    <string name="alarm_blocker_warning">Blocking alarms have the potential to cause instability, crashes or data loss.</string>
+
+    <!-- Fingerprint unlock keystore -->
+    <string name="fp_unlock_keystore_title">指纹重启解锁</string>
+    <string name="fp_unlock_keystore_summary">重新启动设备后，用指纹解锁设备，无需输入您的PIN/密码/模式</string>
+
+    <!--FAB -->
+    <string name="show_clear_all_recents_button_title">清楚所有按钮</string>
+    <string name="show_clear_all_recents_button_summary">显示所有按钮</string>
+    <string name="recents_clear_all_location_title">Clear all location</string>
+    <string name="recents_clear_all_location_top_right">右上</string>
+    <string name="recents_clear_all_location_top_left">左上</string>
+    <string name="recents_clear_all_location_top_center">顶部中间</string>
+    <string name="recents_clear_all_location_bottom_right">右下</string>
+    <string name="recents_clear_all_location_bottom_left">左下</string>
+    <string name="recents_clear_all_location_bottom_center">底部中间</string>
+    <string name="recents_clear_all_title">清除全部</string>
+    <string name="recents_anim_title">Recents Animations</string>
+    <string name="recents_anim_summary">自定义延迟窗口及其动作</string>
+
+    <!-- Wakelock blocker -->
+    <string name="wakelock_blocker_title">锁定唤醒锁</string>
+    <string name="wakelock_blocker_summary">锁定系统唤醒锁</string>
+    <string name="wakelock_blocker_save">保存</string>
+    <string name="wakelock_list_header">可用的唤醒锁</string>
+    <string name="wakelock_blocker_reload">重新载入</string>
+    <string name="wakelock_blocker_warning_title">请谨慎处理</string>
+    <string name="wakelock_blocker_warning">锁定唤醒锁可能导致不稳定，崩溃或数据丢失</string>
+
+    <!-- ListView animation -->
+    <string name="listview_animation_title">ListView动画</string>
+    <string name="listview_off">默认</string>
+    <string name="listview_wave_left">波浪(左边)</string>
+    <string name="listview_wave_right">波浪(右边)</string>
+    <string name="listview_alpha">Alpha</string>
+    <string name="listview_scale">缩放</string>
+    <string name="listview_stack_top">Stack (top)</string>
+    <string name="listview_stack_bottom">Stack (bottom)</string>
+    <string name="listview_unfold">Unfold</string>
+    <string name="listview_fold">Fold</string>
+    <string name="listview_translate_left">Translate (left)</string>
+    <string name="listview_translate_right">Translate (right)</string>
+
+    <!-- ListView interpolator -->
+    <string name="listview_interpolator_title">ListView 插值r</string>
+    <string name="listview_accelerate_interpolator">加速</string>
+    <string name="listview_decelerate_interpolator">减速</string>
+    <string name="listview_accelerate_decelerate_interpolator">加速和减速</string>
+    <string name="listview_anticipate_interpolator">Anticipate</string>
+    <string name="listview_overshoot_interpolator">Overshoot</string>
+    <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
+    <string name="listview_bounce_interpolator">弹跳</string>
+    <!-- ****************************** UI Interface Cat ends ****************************** -->
+
+    <!-- Toast Animation -->
+    <string name="toast_icon_title">Toast 图标</string>
+    <string name="toast_icon_summary">Show app icon behind toast notification</string>
+    <string name="toast_animation_title">Toast 动画</string>
+    <string name="toast_none_animation">None</string>
+    <string name="toast_default_animation">默认</string>
+    <string name="toast_fade_animation">Fade</string>
+    <string name="toast_SlideRight_animation">向右滑动</string>
+    <string name="toast_SlideLeft_animation">向左滑动</string>
+    <string name="toast_Xylon_animation">Xylon</string>
+    <string name="toast_Toko_animation">Toko</string>
+    <string name="toast_Tn_animation">Tn</string>
+    <string name="toast_Honami_animation">Honami</string>
+    <string name="toast_FastFade_animation">Fast fade</string>
+    <string name="toast_GrowFade_animation">淡出</string>
+    <string name="toast_GrowFadeCenter_animation">淡出中心</string>
+    <string name="toast_GrowFadeBottom_animation">淡出底部</string>
+    <string name="toast_Translucent_animation">Translucent</string>
+    <string name="toast_SlideLeftRight_animation">从左到右滑动</string>
+    <string name="toast_SlideRightLeft_animation">从右到左滑动</string>
+
+    <!-- AOKP custom system animations -->
+    <string name="aokp_animation_title">XPerience 动画</string>
+    <string name="aokp_animation_summary">自定义系统动画</string>
+    <string name="activity_open_title">Activity打开动画</string>
+    <string name="activity_close_title">Activity关闭动画</string>
+    <string name="task_open_title">任务打开动画</string>
+    <string name="task_open_behind_title">Task open behind animation</string>
+    <string name="task_close_title">任务关闭动画</string>
+    <string name="task_move_to_front_title">移动到前面时的动画</string>
+    <string name="task_move_to_back_title">移动到后面时的动画</string>
+    <string name="wallpaper_open_title">壁纸打开动画</string>
+    <string name="wallpaper_close_title">壁纸关闭动画</string>
+    <string name="wallpaper_intra_open_title">Wallpaper intra open animation</string>
+    <string name="wallpaper_intra_close_title">Wallpaper intra close animation</string>
+    <string name="animation_duration_title">动画持续时间</string>
+    <string name="animation_duration_default">默认</string>
+
+    <!-- Pie -->
+    <string name="pie_enable_title">启用pie控制</string>
+    <string name="pie_settings">Pie 设置</string>
+    <string name="pie_settings_summary">Adjust pie to your liking</string>
+    <string name="pie_theme_mode_title">主题</string>
+    <string name="pie_auto">Automatic</string>
+    <string name="pie_white">白色</string>
+    <string name="pie_dark">黑色</string>
+    <string name="pie_battery_title">电池指示器</string>
+    <string name="pie_battery_text">仅文字</string>
+    <string name="pie_battery_circle">仅圆形</string>
+    <string name="pie_battery_both">Both</string>
+    <string name="pie_status_indicator">网络指示器</string>
+    <string name="pie_status_wifi">仅Wifi</string>
+    <string name="pie_status_mobile">仅移动数据</string>
+    <string name="pie_status_none">没有</string>
+    <string name="pie_status_both">两者</string>
+    <string name="pa_pie_gravity_title">Pie Gravity</string>
+    <string name="pa_pie_gravity_summary">选择Pie放置的位置</string>
+    <string name="pa_pie_gravity_bottom">底部</string>
+    <string name="pa_pie_gravity_right">右边</string>
+    <string name="pa_pie_gravity_left">左边</string>
+
+    <!-- ANBI -->
+    <string name="anbi_title">意外触摸</string>
+    <string name="anbi_summary">屏幕被触摸时，防止与导航按钮进行交互</string>
 </resources>

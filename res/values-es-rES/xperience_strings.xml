@@ -218,4 +218,29 @@
   <string name="wallpaper_intra_close_title">Wallpaper intra close animation</string>
   <string name="animation_duration_title">Duración de la animación</string>
   <string name="animation_duration_default">Por defecto</string>
+  <!-- Pie -->
+  <string name="pie_enable_title">Habilitar controles Pie</string>
+  <string name="pie_settings">Ajustes de pie</string>
+  <string name="pie_settings_summary">Ajusta Pie a tu gusto</string>
+  <string name="pie_theme_mode_title">Temas</string>
+  <string name="pie_auto">Automatico</string>
+  <string name="pie_white">Blanco</string>
+  <string name="pie_dark">Oscuro</string>
+  <string name="pie_battery_title">Indicador de batería</string>
+  <string name="pie_battery_text">Sólo texto</string>
+  <string name="pie_battery_circle">Sólo círculo</string>
+  <string name="pie_battery_both">Ambos</string>
+  <string name="pie_status_indicator">Indicador de red</string>
+  <string name="pie_status_wifi">Sólo WiFi</string>
+  <string name="pie_status_mobile">Sólo red móvil</string>
+  <string name="pie_status_none">Ninguno</string>
+  <string name="pie_status_both">Ambos</string>
+  <string name="pa_pie_gravity_title">Posición de Pie</string>
+  <string name="pa_pie_gravity_summary">Selecione el lugar donde Pie será colocado</string>
+  <string name="pa_pie_gravity_bottom">Inferior</string>
+  <string name="pa_pie_gravity_right">Derecha</string>
+  <string name="pa_pie_gravity_left">Izquierda</string>
+  <!-- ANBI -->
+  <string name="anbi_title">Toque accidental</string>
+  <string name="anbi_summary">Previene la interacción con los botones de navegación mientras se está tocando la pantalla</string>
 </resources>

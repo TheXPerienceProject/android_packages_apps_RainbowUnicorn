@@ -115,7 +115,7 @@
     <string name="app_sidebar_title">App侧边栏</string>
     <string name="app_sidebar_enable_title">启用App侧边栏</string>
     <string name="app_sidebar_enable_summaryOn">App侧边栏已启用</string>
-    <string name="app_sidebar_enable_summaryOff">App侧边栏已禁用/string>
+    <string name="app_sidebar_enable_summaryOff">App侧边栏已禁用</string>
     <string name="app_sidebar_setup_items_title">Setup sidebar content</string>
     <string name="app_sidebar_setup_items_summary">Add, remove, and position items in the sidebar</string>
     <string name="app_sidebar_transparency_title">侧边栏透明度</string>

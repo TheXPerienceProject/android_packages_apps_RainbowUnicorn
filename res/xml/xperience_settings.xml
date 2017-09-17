@@ -51,12 +51,12 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
             android:icon="@drawable/ic_xperience_display"/>
 			
-        <!-- Status Bar 
+        <!-- Status Bar -->
         <Preference
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
-            android:icon="@drawable/ic_xperience_statusbar" />-->
+            android:icon="@drawable/ic_xperience_statusbar" />
 
 
         <!-- lockscreen -->

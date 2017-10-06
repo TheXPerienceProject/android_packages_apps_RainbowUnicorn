@@ -125,7 +125,7 @@
     <string name="app_sidebar_position_left">左边</string>
     <string name="app_sidebar_position_right">右边</string>
     <string name="app_sidebar_hide_labels_title">隐藏图标标签</string>
-    <string name="app_sidebar_hide_labels_summary">隐藏侧边栏图标标签/string>
+    <string name="app_sidebar_hide_labels_summary">隐藏侧边栏图标标签</string>
     <string name="tab_category">可视标签</string>
     <string name="use_tab_title">显示标签</string>
     <string name="use_tab_summary">在侧面显示一个可见的标签，在触摸时显示侧边栏。</string>

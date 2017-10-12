@@ -141,6 +141,9 @@
 
     <!-- Statusbar logo --> 
     <string name="status_bar_logo_title">XPerience Shield</string> 
-    <string name="status_bar_logo_summary">Enable to show XPerience shield logo in the statusbar</string>
+    <string name="status_bar_logo_dialog_title">XPerience shield logo position</string>
+    <string name="status_bar_logo_disabled">Disabled</string>
+    <string name="status_bar_logo_left">Left</string>
+    <string name="status_bar_logo_right">Right</string>
 
 </resources> 

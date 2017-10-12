@@ -37,11 +37,13 @@
        android:summary="@string/show_4g_summary"
        android:defaultValue="false" />
 
-    <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+    <mx.xperience.rainbowunicorn.preferences.SystemSettingListPreference
         android:key="status_bar_logo"
         android:title="@string/status_bar_logo_title"
-        android:summary="@string/status_bar_logo_summary"
-        android:defaultValue="true"/>
+        android:dialogTitle="@string/status_bar_logo_dialog_title"
+        android:entries="@array/status_bar_logo_entries"
+        android:entryValues="@array/status_bar_logo_values"
+        android:defaultValue="2" />
 
     <Preference
             android:key="battery_settings"

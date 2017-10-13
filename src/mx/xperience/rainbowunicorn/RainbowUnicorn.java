@@ -36,4 +36,4 @@ public class RainbowUnicorn extends SettingsPreferenceFragment {
     protected int getMetricsCategory() {
         return MetricsEvent.RAINBOW_UNICORN;
     }
-}
+} 

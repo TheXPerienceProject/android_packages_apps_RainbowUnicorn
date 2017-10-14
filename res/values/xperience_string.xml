@@ -20,6 +20,7 @@
 	<string name="display_title">Display Settings </string>
 	<string name="recents_title">Recents Settings</string>
 	<string name="misc_title">Miscellaneous Settings</string>
+	<string name="nabvar_title">Nabvar Settings</string>
 
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
     <string name="show_cpu_info">Show CPU info</string>
@@ -41,4 +42,7 @@
     <string name="network_traffic_state_title">Network traffic</string>
     <string name="network_traffic_state_summary">Show net activity in statusbar</string>
     <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
+
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Navbar buttons</string>
 </resources> 

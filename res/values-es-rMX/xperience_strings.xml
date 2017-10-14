@@ -38,4 +38,6 @@
     <string name="recents_clear_all_location_bottom_center">Centro inferior</string>
     <string name="recents_clear_all_title">Eliminar todo</string>
 
-</resources> 
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Botones de barra de navegación</string>
+</resources>

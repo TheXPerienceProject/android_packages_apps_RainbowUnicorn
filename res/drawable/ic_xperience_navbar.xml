@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--  Copyright (C) 2007 The Android Open Source Project
+          Copyright (C) 2011-2017 The XPerience Project
+
+         Licensed under the Apache License, Version 2.0 (the "License");
+         you may not use this file except in compliance with the License.
+         You may obtain a copy of the License at
+
+              http://www.apache.org/licenses/LICENSE-2.0
+
+         Unless required by applicable law or agreed to in writing, software
+         distributed under the License is distributed on an "AS IS" BASIS,
+         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+         See the License for the specific language governing permissions and
+         limitations under the License.
+     -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60">
+
+    <path
+        android:fillColor="?android:attr/colorControlNormal"
+        android:pathData="M41.349,42h-3.697c-0.635,0-1.151,0.517-1.151,1.151v3.697c0,0.635,0.517,1.151,1.151,1.151h3.697
+c0.635,0,1.151-0.517,1.151-1.151v-3.697C42.5,42.517,41.984,42,41.349,42z
+M40.5,46h-2v-2h2V46z" />
+    <path
+        android:fillColor="?android:attr/colorControlNormal"
+        android:pathData="M32.349,42h-3.697c-0.635,0-1.151,0.517-1.151,1.151v3.697c0,0.635,0.517,1.151,1.151,1.151h3.697
+c0.635,0,1.151-0.517,1.151-1.151v-3.697C33.5,42.517,32.984,42,32.349,42z
+M31.5,46h-2v-2h2V46z" />
+    <path
+        android:fillColor="?android:attr/colorControlNormal"
+        android:pathData="M23.35,42h-3.697c-0.635,0-1.151,0.517-1.151,1.151v3.697c0,0.635,0.517,1.151,1.151,1.151h3.697
+c0.635,0,1.151-0.517,1.151-1.151v-3.697C24.5,42.517,23.983,42,23.35,42z
+M22.5,46h-2v-2h2V46z" />
+    <path
+        android:fillColor="?android:attr/colorControlNormal"
+        android:pathData="M43.54,0H17.462C15.278,0,13.5,1.777,13.5,3.962V6v3c-0.552,0-1,0.447-1,1v1c0,0.553,0.448,1,1,1v1c-0.552,0-1,0.447-1,1
+v1c0,0.553,0.448,1,1,1v1c-0.552,0-1,0.447-1,1v1c0,0.553,0.448,1,1,1v32v4.038c0,2.185,1.777,3.962,3.961,3.962h26.077
+c2.185,0,3.961-1.777,3.961-3.962V52V6V3.962C47.5,1.777,45.723,0,43.54,0z
+M30.5,57c-1.103,0-2-0.897-2-2s0.897-2,2-2 s2,0.897,2,2S31.604,57,30.5,57z
+M15.5,8h30v42h-30V8z M15.5,56.038V52h12.382c-0.84,0.734-1.382,1.799-1.382,3
+s0.542,2.266,1.382,3H17.462C16.38,58,15.5,57.12,15.5,56.038z
+M45.5,56.038C45.5,57.12,44.62,58,43.54,58H33.118
+c0.84-0.734,1.382-1.799,1.382-3s-0.542-2.266-1.382-3H45.5V56.038z
+M15.5,6V3.962C15.5,2.88,16.38,2,17.462,2h26.077
+C44.62,2,45.5,2.88,45.5,3.962V6H15.5z" />
+    <path
+        android:fillColor="?android:attr/colorControlNormal"
+        android:pathData="M34.5,3h-5c-0.552,0-1,0.447-1,1s0.448,1,1,1h5c0.552,0,1-0.447,1-1S35.052,3,34.5,3z" />
+    <path
+        android:fillColor="?android:attr/colorControlNormal"
+        android:pathData="M26.5,3h-1c-0.552,0-1,0.447-1,1s0.448,1,1,1h1c0.552,0,1-0.447,1-1S27.052,3,26.5,3z" />
+</vector>

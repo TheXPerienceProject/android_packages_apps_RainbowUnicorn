@@ -16,55 +16,38 @@
 
 package mx.xperience.rainbowunicorn.fragments;
 
-import com.android.internal.logging.nano.MetricsProto;
+import java.util.ArrayList;
 
-import android.os.Bundle;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.os.Bundle;
 import android.os.UserHandle;
-import android.content.ContentResolver;
-import android.content.res.Resources;
 import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceGroup;
-import android.support.v7.preference.PreferenceScreen;
-import android.support.v7.preference.PreferenceCategory;
-import android.support.v7.preference.Preference.OnPreferenceChangeListener;
-import android.support.v14.preference.PreferenceFragment;
 import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
-import com.android.settings.R;
-
-import java.util.Locale;
-import android.text.TextUtils;
-import android.view.View;
 
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
-import android.util.Log;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto;
+import com.android.settings.R;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Collections;
-
-public class DisplaySettings extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener {
+public class NavbarSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
-        addPreferencesFromResource(R.xml.xperience_display);
-
-        PreferenceScreen prefSet = getPreferenceScreen();
+        addPreferencesFromResource(R.xml.xperience_nabvar);
 
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
 
         return false;
     }
@@ -73,5 +56,4 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.RAINBOW_UNICORN;
     }
-
 }

@@ -19,7 +19,7 @@ package mx.xperience.rainbowunicorn;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceScreen;
 
-import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.logging.nano.MetricsProto;
 
 import com.android.settings.SettingsPreferenceFragment;
 

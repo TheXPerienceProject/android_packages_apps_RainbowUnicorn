@@ -31,12 +31,26 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
             android:icon="@drawable/ic_xperience_display"/>
 
+        <!-- lockscreen -->
+        <Preference
+            android:key="lockscreen_category"
+            android:title="@string/lockscreen_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.LockScreenSettings"
+            android:icon="@drawable/ic_xperience_lockscreen"/>
+
         <!-- Misc -->
         <Preference
             android:key="misc_category"
             android:title="@string/misc_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.MiscSettings"
             android:icon="@drawable/ic_xperience_misc"/>
+			
+        <!-- navbar -->
+        <Preference
+            android:key="navbar_category"
+            android:title="@string/navbar_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.NavbarSettings"
+            android:icon="@drawable/ic_xperience_navbar"/>
 
         <!-- Recents -->
         <Preference

@@ -21,7 +21,21 @@
         <Preference
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
-            android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings" />
-            <!--android:icon="@drawable/ic_settings_statusbar"/> not yet--> 
+            android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
+            android:icon="@drawable/ic_xperience_statusbar" />
+
+        <!-- Recents -->
+        <Preference
+            android:key="display_category"
+            android:title="@string/display_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
+            android:icon="@drawable/ic_xperience_display"/>
+			
+        <!-- Recents -->
+        <Preference
+            android:key="recents_category"
+            android:title="@string/recents_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.RecentsSettings"
+            android:icon="@drawable/ic_xperience_recents"/>
 
 </PreferenceScreen>

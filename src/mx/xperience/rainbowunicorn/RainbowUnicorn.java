@@ -34,6 +34,6 @@ public class RainbowUnicorn extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.RAINBOW_UNICORN;
+        return MetricsProto.MetricsEvent.RAINBOW_UNICORN;
     }
 } 

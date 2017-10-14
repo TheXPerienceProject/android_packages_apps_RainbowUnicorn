@@ -42,6 +42,7 @@ import android.view.View;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.systemui.tuner.TunerSwitch;
 import android.util.Log;
 
 import java.util.List;

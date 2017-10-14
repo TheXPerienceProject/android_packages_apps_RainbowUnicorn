@@ -46,5 +46,9 @@
 
     <!-- Navbar tuner -->
     <string name="navbar_tuner_title">Navbar buttons</string>
-    <string name="lockscreen_tuner_title">Lockscreen shortcuts</string>
+    
+	<!--Lockscreen tuner-->
+	<string name="lockscreen_tuner_title">Lockscreen shortcuts</string>
+	
+	<string name="tuner_doze_always_o">Always ON</string>
 </resources> 

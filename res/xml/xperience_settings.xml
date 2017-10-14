@@ -1,4 +1,4 @@
-<xml version=1.0 encoding=utf-8
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2017 The XPerience Project
 
      Licensed under the Apache License, Version 2.0 (the License);
@@ -13,8 +13,15 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<Preference xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-        androidtitle=@string/xperience_settings_title" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/xperience_settings_title" >
+		
+        <!-- Status Bar -->
+        <Preference
+            android:key="statusbar_category"
+            android:title="@string/statusbar_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings" />
+            <!--android:icon="@drawable/ic_settings_statusbar"/> not yet--> 
 
-</Preference>
+</PreferenceScreen>

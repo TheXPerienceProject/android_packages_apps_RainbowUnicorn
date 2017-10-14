@@ -24,13 +24,20 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
             android:icon="@drawable/ic_xperience_statusbar" />
 
-        <!-- Recents -->
+        <!-- Display -->
         <Preference
             android:key="display_category"
             android:title="@string/display_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
             android:icon="@drawable/ic_xperience_display"/>
-			
+
+        <!-- Misc -->
+        <Preference
+            android:key="misc_category"
+            android:title="@string/misc_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.MiscSettings"
+            android:icon="@drawable/ic_xperience_misc"/>
+
         <!-- Recents -->
         <Preference
             android:key="recents_category"

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 The XPerience Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Settings Titles-->
+    <string name="xperience_settings_title">XPerience™ 自定义设置</string>
+    <string name="statusbar_title">状态栏</string>
+    <string name="display_title">显示设置 </string>
+    <string name="recents_title">最近任务设置</string>
+    <string name="misc_title">杂项</string>
+    <string name="navbar_title">导航栏设置</string>
+    <string name="lockscreen_title">锁屏设置</string>
+
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">显示CPU信息</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">覆盖当前屏幕来显示CPU信息</string>
+
+    <!-- Recents panel settings -->
+    <string name="show_clear_all_recents_button_title">清除清除按钮</string>
+    <string name="show_clear_all_recents_button_summary">显示清除全部的按钮</string>
+    <string name="recents_clear_all_location_title">清除全部位置</string>
+    <string name="recents_clear_all_location_top_right">顶部右侧</string>
+    <string name="recents_clear_all_location_top_left">顶部左侧</string>
+    <string name="recents_clear_all_location_top_center">顶部中间</string>
+    <string name="recents_clear_all_location_bottom_right">底部右侧</string>
+    <string name="recents_clear_all_location_bottom_left">底部左侧</string>
+    <string name="recents_clear_all_location_bottom_center">底部中间</string>
+
+    <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">网络流量</string>
+    <string name="network_traffic_state_summary">在状态栏显示网络流量</string>
+    <string name="network_traffic_autohide_threshold_title">自动隐藏的阈值(KB/s)</string>
+
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">导航栏按钮</string>
+    
+    <!--Lockscreen tuner-->
+    <string name="lockscreen_tuner_title">锁屏快捷方式</string>
+
+    <string name="tuner_doze_always_on">总是开启</string>
+
+    <!-- Show navbar -->
+    <string name="navigation_bar_enabled_title">启用</string>
+</resources> 

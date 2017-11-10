@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 The XPerience Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Settings Titles-->
+	<string name="xperience_settings_title">Setări XPerience™</string>
+	<string name="statusbar_title">Bară de stare</string>
+	<string name="display_title">Setări Afişaj</string>
+	<string name="recents_title">Setări Aplicaţii recente</string>
+	<string name="misc_title">Setări diverse</string>
+	<string name="navbar_title">Setări Bară de navigare</string>
+	<string name="lockscreen_title">Setări Blocare ecran</string>
+
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">Afişare informaţii CPU</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">Suprapunere a ecranului care arată informațiile curente ale CPU</string>
+
+    <!-- Recents panel settings -->
+    <string name="show_clear_all_recents_button_title">Butonul Eliminare toate</string>
+    <string name="show_clear_all_recents_button_summary">Afişare buton</string>
+    <string name="recents_clear_all_location_title">Locaţie buton</string>
+    <string name="recents_clear_all_location_top_right">Dreapta sus</string>
+    <string name="recents_clear_all_location_top_left">Stânga sus</string>
+    <string name="recents_clear_all_location_top_center">Centru sus</string>
+    <string name="recents_clear_all_location_bottom_right">Dreapta jos</string>
+    <string name="recents_clear_all_location_bottom_left">Stânga jos</string>
+    <string name="recents_clear_all_location_bottom_center">Centru jos</string>
+
+    <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Trafic reţea</string>
+    <string name="network_traffic_state_summary">Afișare activitate reţea în bara de stare</string>
+    <string name="network_traffic_autohide_threshold_title">Pragul de ascundere a activităţii reţelei (KB/s)</string>
+
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Butoane bară de navigare</string>
+    
+    <!--Lockscreen tuner-->
+    <string name="lockscreen_tuner_title">Comenzi rapide ale ecranului de blocare</string>
+
+    <string name="tuner_doze_always_on">Activ mereu</string>
+
+    <!-- Show navbar -->
+    <string name="navigation_bar_enabled_title">Activare</string>
+</resources> 

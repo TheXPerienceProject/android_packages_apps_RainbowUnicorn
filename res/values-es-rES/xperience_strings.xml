@@ -20,6 +20,8 @@
 	<string name="display_title">Configuración de pantalla</string>
 	<string name="recents_title">Configuración de Recientes</string>
 	<string name="misc_title">Otras configuraciones</string>
+	<string name="navbar_title">Configuración de Navbar</string>
+	<string name="lockscreen_title">Configuracion de pantalla de bloqueo</string>
 
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
     <string name="show_cpu_info">Mostrar información de la CPU</string>

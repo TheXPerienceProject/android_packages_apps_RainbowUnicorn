@@ -17,6 +17,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/lockscreen_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
     <Preference
             android:title="@string/lockscreen_tuner_title" >
             <intent android:action="android.intent.action.MAIN"
@@ -28,6 +29,12 @@
         android:key="lockscreen_battery_info"
         android:title="@string/lockscreen_battery_info_title"
         android:summary="@string/lockscreen_battery_info_summary"
+        android:defaultValue="true" />
+
+    <mx.xperience.rainbowunicorn..preferences.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_lockscreen"
+        android:title="@string/double_tap_to_sleep_lockscreen_title"
+        android:summary="@string/double_tap_to_sleep_lockscreen_summary"
         android:defaultValue="true" />
 
 </PreferenceScreen>

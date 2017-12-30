@@ -62,4 +62,15 @@
             android:key="powermenu_logout"
             android:title="@string/powermenu_logout"
             android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:title="@string/powermenu_category_other">
+
+		<mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+            android:key="powermenu_lockscreen"
+            android:title="@string/powermenu_lockscreen_title"
+            android:summary="@string/powermenu_lockscreen_summary"
+            android:defaultValue="true" />
+
+     </PreferenceCategory>
 </PreferenceScreen>

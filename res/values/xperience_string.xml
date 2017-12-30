@@ -289,5 +289,11 @@
     <string name="anbi_summary">Prevent interaction with navigation buttons while the screen is being touched</string>
 
     <string name="navbar_visibility">Allow navigation bar</string>
+	
+    <string name="powermenu_category_other">Other</string>
+    <string name="powermenu_lockscreen_title">Lockscreen visibility</string>
+    <string name="powermenu_lockscreen_summary">Enable the ability to show and use the power menu dialog while on the lockscreen</string>
+</resources>
+
 
 </resources>

@@ -225,4 +225,7 @@
     <string name="powermenu_users">Users</string>
     <string name="powermenu_logout">Logout</string>
 
+    <string name="face_auto_unlock_title">Face auto unlock</string>
+    <string name="face_auto_unlock_summary">Dismiss lockscreen after face unlocking</string>
+
 </resources>

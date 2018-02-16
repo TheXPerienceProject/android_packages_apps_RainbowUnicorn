@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Nitrogen Project
  * Copyright (C) 2017 The XPerience Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package mx.xperience.rainbowunicorn.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -44,52 +44,35 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import android.util.Log;
 
-import mx.xperience.rainbowunicorn.preferences.CustomSeekBarPreference;
-import mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-public class StatusBarSettings extends SettingsPreferenceFragment implements
+public class StatusBarBattery extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String BATTERY_STYLE = "battery_style";
 
-    private CustomSeekBarPreference mThreshold;
-    private SystemSettingSwitchPreference mNetMonitor;
-	private ListPreference mBatteryIconStyle;
-	private SwitchPreference mBatteryPercentage;
+    private ListPreference mBatteryIconStyle;
+    private SwitchPreference mBatteryPercentage;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        addPreferencesFromResource(R.xml.xperience_statusbar);
+        addPreferencesFromResource(R.xml.statusbar_battery);
 
         PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
 
-        boolean isNetMonitorEnabled = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_STATE, 1, UserHandle.USER_CURRENT) == 1;
-        mNetMonitor = (SystemSettingSwitchPreference) findPreference("network_traffic_state");
-        mNetMonitor.setChecked(isNetMonitorEnabled);
-        mNetMonitor.setOnPreferenceChangeListener(this);
-
-        int value = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 1, UserHandle.USER_CURRENT);
-        mThreshold = (CustomSeekBarPreference) findPreference("network_traffic_autohide_threshold");
-        mThreshold.setValue(value);
-        mThreshold.setOnPreferenceChangeListener(this);
-        mThreshold.setEnabled(isNetMonitorEnabled);
-        //Battery things
         int batteryStyle = Settings.Secure.getInt(resolver,
                 Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);
         mBatteryIconStyle = (ListPreference) findPreference(BATTERY_STYLE);
         mBatteryIconStyle.setValue(Integer.toString(batteryStyle));
         mBatteryIconStyle.setOnPreferenceChangeListener(this);
+
         boolean show = Settings.System.getInt(resolver,
                 Settings.System.SHOW_BATTERY_PERCENT, 1) == 1;
         mBatteryPercentage = (SwitchPreference) findPreference("show_battery_percent");
@@ -97,26 +80,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         mBatteryPercentage.setOnPreferenceChangeListener(this);
         boolean hideForcePercentage = batteryStyle == 6 || batteryStyle == 7; /*text or hidden style*/
         mBatteryPercentage.setEnabled(!hideForcePercentage);
-
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mNetMonitor) {
-            boolean value = (Boolean) objValue;
-            Settings.System.putIntForUser(getActivity().getContentResolver(),
-                    Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0,
-                    UserHandle.USER_CURRENT);
-            mNetMonitor.setChecked(value);
-            mThreshold.setEnabled(value);
-            return true;
-        } else if (preference == mThreshold) {
-            int val = (Integer) objValue;
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, val,
-                    UserHandle.USER_CURRENT);
-            return true;
-        } else  if (preference == mBatteryIconStyle) {
+        if (preference == mBatteryIconStyle) {
             int value = Integer.valueOf((String) objValue);
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE, value);
@@ -130,7 +98,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             mBatteryPercentage.setChecked(value);
             return true;
         }
-
         return false;
     }
 

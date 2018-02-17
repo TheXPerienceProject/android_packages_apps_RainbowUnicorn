@@ -46,4 +46,11 @@
         android:persistent="false"
         android:summary="@string/lockscreen_items_aod_info_title" />
 
+    <ListPreference
+        android:key="status_bar_show_weather_temp"
+        android:title="@string/statusbar_weather_title"
+        android:dialogTitle="@string/statusbar_weather_dialog_title"
+        android:entries="@array/status_bar_weather_entries"
+        android:entryValues="@array/status_bar_weather_values" />
+
 </PreferenceScreen>

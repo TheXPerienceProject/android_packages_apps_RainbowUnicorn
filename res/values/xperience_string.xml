@@ -79,4 +79,8 @@
     <string name="battery_percent_none">Don\'t show</string>
     <string name="battery_percent_outside">Show near icon</string>
     <string name="battery_percent_inside">Show inside icon</string>
+
+	<!--XPerience Active Display -->
+   <string name="ActiveDisplay_title">XPerience™ Active Display</string>
+   <string name="ActiveDisplay_summary">Active Display is a new way of handling notifications in Android.</string>
 </resources> 

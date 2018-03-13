@@ -16,13 +16,26 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/xperience_settings_title" >
-		
-        <!-- Status Bar -->
-        <Preference
-            android:key="statusbar_category"
-            android:title="@string/statusbar_title"
-            android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
-            android:icon="@drawable/ic_xperience_statusbar" />
+
+	<!--Alessa-->
+        <Preference android:key="xpe_alessa"
+            android:title="@string/alessa_title"
+            android:summary="@string/alessa_settings_summary"
+		    android:icon="@drawable/ic_settings_alessa">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="mx.klozz.xperience.robaalmas"
+                android:targetClass="mx.klozz.xperience.robaalmas.MainActivity" />
+      </Preference>
+
+	<!--XPerience Active Display-->
+        <!--<Preference android:key="xpe_active_display"
+            android:title="@string/ActiveDisplay_title"
+            android:summary="@string/ActiveDisplay_summary"
+		    android:icon="@drawable/ic_xperience_active_display">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="mx.xperience.XPeNotify.peek"
+                android:targetClass="mx.xperience.XPeNotify.peek.MainActivity" />
+      </Preference>-->
 
         <!-- Display -->
         <Preference
@@ -30,6 +43,14 @@
             android:title="@string/display_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
             android:icon="@drawable/ic_xperience_display"/>
+			
+        <!-- Status Bar -->
+        <Preference
+            android:key="statusbar_category"
+            android:title="@string/statusbar_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
+            android:icon="@drawable/ic_xperience_statusbar" />
+
 
         <!-- lockscreen -->
         <Preference

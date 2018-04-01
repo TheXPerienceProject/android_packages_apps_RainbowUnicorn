@@ -83,4 +83,14 @@
 	<!--XPerience Active Display -->
    <string name="ActiveDisplay_title">XPerience™ Active Display</string>
    <string name="ActiveDisplay_summary">Active Display is a new way of handling notifications in Android.</string>
+
+    <!-- Ambient music -->
+    <string name="force_ambient_for_media_pref_title">Now playing</string>
+    <string name="force_ambient_for_media_pref_summary">Show current music track information</string>
+    <string name="ambient_ticker_footer">This feature allows for the ability to show the current music track info on the lockscreen with or without Ambient display enabled.\n\nYou can select from two layouts, normal and minimal. While this feature takes advantage of ambient display, it does not depend on it. It can be triggered without having ambient display enabled by using the (forced) options.\n\nNormal view includes the lockscreen clock, date and music information.\n\nMinimal view includes just the music information at the center of the screen.</string>
+    <string name="force_ambient_for_media_title">Select layout</string>
+    <string name="force_ambient_for_media_off">Disabled</string>
+    <string name="force_ambient_for_media_on">Normal</string>
+    <string name="force_ambient_for_media_on_forced">Normal (forced)</string>
+    <string name="force_ambient_for_media_on_forced_clean">Minimal (forced)</string>
 </resources> 

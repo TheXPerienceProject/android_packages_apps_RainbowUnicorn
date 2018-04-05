@@ -20,9 +20,10 @@
     android:title="@string/buttons_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-   <PreferenceCategory
+	<PreferenceCategory
         android:key="volume_category"
         android:title="@string/volume_category">
+
         <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
             android:key="swap_volume_buttons"
             android:title="@string/swap_volume_buttons_title"

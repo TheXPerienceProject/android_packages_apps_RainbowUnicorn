@@ -23,4 +23,5 @@
             android:title="@string/show_cpu_info"
             android:summary="@string/show_cpu_info_summary" 
             android:defaultValue="false" />
+			
 </PreferenceScreen>

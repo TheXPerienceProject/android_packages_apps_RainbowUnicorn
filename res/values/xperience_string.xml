@@ -22,6 +22,7 @@
 	<string name="misc_title">Miscellaneous Settings</string>
 	<string name="navbar_title">Nabvar Settings</string>
 	<string name="lockscreen_title">LockScreen Settings</string>
+	<string name="buttons_title">Buttons Settings</string>
 
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
     <string name="show_cpu_info">Show CPU info</string>

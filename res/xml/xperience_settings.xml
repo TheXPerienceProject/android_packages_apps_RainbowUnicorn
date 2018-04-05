@@ -37,6 +37,13 @@
                 android:targetClass="mx.xperience.XPeNotify.peek.MainActivity" />
       </Preference>-->
 
+        <!-- Buttons Settings -->
+        <Preference
+            android:key="buttons_category"
+            android:title="@string/buttons_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.ButtonsSettings"
+            android:icon="@drawable/ic_xperience_buttons" />
+
         <!-- Display -->
         <!--<Preference
             android:key="display_category"

@@ -125,6 +125,10 @@
     <string name="volume_answer_call_title">Volume keys answer</string>
     <string name="volume_answer_call_summary">Answer the call when volume keys pressed</string>
 
+    <!-- Volume rocker music control -->
+    <string name="volume_button_music_control_title">Playback control</string>
+    <string name="volume_button_music_control_summary">When the screen is off, long-pressing the volume keys will skip music tracks</string>
+
     <!-- Navigation bar theme -->
     <string name="navbar_theme_title">Theme</string>
     <string name="navbar_theme_default">Default</string>

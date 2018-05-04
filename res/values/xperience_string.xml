@@ -131,4 +131,8 @@
     <string name="navbar_theme_xperia">XPERIA</string>
     <string name="navbar_theme_plusone">Plus One</string>
 
+    <!-- System default animation -->
+    <string name="system_default_animation_title">Android P animation style</string>
+    <string name="system_default_animation_summary">Enable Android P \"Default\" animations</string>
+
 </resources> 

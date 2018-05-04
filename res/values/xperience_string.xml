@@ -122,4 +122,13 @@
     <string name="volume_answer_call_title">Volume keys answer</string>
     <string name="volume_answer_call_summary">Answer the call when volume keys pressed</string>
 
+    <!-- Navigation bar theme -->
+    <string name="navbar_theme_title">Theme</string>
+    <string name="navbar_theme_default">Default</string>
+    <string name="navbar_theme_pixel">Pixel</string>
+    <string name="navbar_theme_pixel_hola">Pixel Hola</string>
+    <string name="navbar_theme_samsung">Samsung</string>
+    <string name="navbar_theme_xperia">XPERIA</string>
+    <string name="navbar_theme_plusone">Plus One</string>
+
 </resources> 

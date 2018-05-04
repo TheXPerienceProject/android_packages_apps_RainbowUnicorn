@@ -50,6 +50,8 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
+import com.android.settings.aoscp.buttons.NavbarThemePreferenceController;
+
 public class ButtonSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 

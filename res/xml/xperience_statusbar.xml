@@ -46,8 +46,13 @@
         android:defaultValue="2" />
 
     <Preference
-            android:key="battery_settings"
-            android:title="@string/battery_style_category_title"
-            android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarBattery" />
+        android:key="battery_settings"
+        android:title="@string/battery_style_category_title"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarBattery" />
+
+    <Preference
+        android:key="status_bar_carrier"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.CarrierLabelSettings"
+        android:title="@string/carrier_category" />
 
 </PreferenceScreen>

@@ -62,4 +62,10 @@
         android:summary="%s"
         android:title="@string/ticker_mode_title" />
 
+    <Preference
+            android:key="clock_settings"
+            android:title="@string/status_bar_clock"
+            android:summary="@string/status_bar_clock_summary"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.ClockDateSettings" />
+
 </PreferenceScreen>

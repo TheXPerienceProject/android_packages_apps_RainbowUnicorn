@@ -23,6 +23,7 @@
   <string name="misc_title">Ajustes varios</string>
   <string name="navbar_title">Ajustes de barra de navegación</string>
   <string name="lockscreen_title">Ajustes de pantalla de bloqueo</string>
+  <string name="buttons_title">Configuración de botones</string>
   <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
   <string name="show_cpu_info">Mostrar información de la CPU</string>
   <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
@@ -85,4 +86,90 @@
   <!-- Pocket judge -->
   <string name="pocket_judge_title">Detección de bolsillo</string>
   <string name="pocket_judge_summary">Evita activaciones accidentales cuando el dispositivo está en el bolsillo</string>
+  <!-- Volume category -->
+  <string name="volume_category">Control de volumen</string>
+  <!-- Volume button orientation based on current rotation -->
+  <string name="swap_volume_buttons_title">Cambiar la orientación de los botones de volumen</string>
+  <string name="swap_volume_buttons_summary">Ajustar la orientación de los botones de volumen según la rotación actual</string>
+  <!-- Volume key controls media stream -->
+  <string name="volume_keys_control_media_stream_title">Las teclas de volumen controlan el volumen multimedia</string>
+  <string name="volume_keys_control_media_stream_summary">Forzar botones de volumen para control de música</string>
+  <!-- Volume rocker music control -->
+  <string name="volume_rocker_music_controls_title">Control de reproducción</string>
+  <string name="volume_rocker_music_controls_summary">Cuando la pantalla esté apagada, una pulsación larga de los controles de volumen, avanzará o retrocederá las canciones</string>
+  <!-- Volume rocker wake -->
+  <string name="volume_rocker_wake_title">Despertar con botones de volumen</string>
+  <string name="volume_rocker_wake_summary">Presionar cualquier botón de volumen despertará su dispositivo</string>
+  <!-- The volume key answer -->
+  <string name="volume_answer_call_title">Responder con las teclas de volumen</string>
+  <string name="volume_answer_call_summary">Responder a la llamada cuando se presionan las teclas de volumen</string>
+  <!-- Navigation bar theme -->
+  <string name="navbar_theme_title">Aspecto</string>
+  <string name="navbar_theme_default">Predeterminado</string>
+  <!-- System default animation -->
+  <string name="system_default_animation_title">Animaciones al estilo de Android P</string>
+  <string name="system_default_animation_summary">Activar animaciones \"por defecto\" de Android P</string>
+  <!-- Show 4G instead of LTE -->
+  <string name="show_4g_title">Mostrar 4G</string>
+  <string name="show_4g_summary">Mostrar 4G en lugar de LTE en los iconos de señal</string>
+  <!-- Statusbar logo -->
+  <string name="status_bar_logo_title">Escudo de XPerience</string>
+  <string name="status_bar_logo_dialog_title">Posición del escudo de XPerience</string>
+  <string name="status_bar_logo_disabled">Desactivado</string>
+  <string name="status_bar_logo_left">Izquierda</string>
+  <string name="status_bar_logo_right">Derecha</string>
+  <!-- Carrier Label -->
+  <string name="carrier_category">Etiqueta de Operador</string>
+  <string name="carrier_options">Seleccione la ubicación de visualización</string>
+  <string name="custom_carrier_label_title">Nombre de operador personalizado</string>
+  <string name="custom_carrier_label_explain">Por favor, introduzca una nueva etiqueta. Déjala en blanco para volver a la etiqueta por defecto.</string>
+  <string name="custom_carrier_label_notset">Etiqueta personalizada actualmente no establecida</string>
+  <string name="show_carrier_title">Se muestra en</string>
+  <string name="show_carrier_disabled">Oculto</string>
+  <string name="show_carrier_keyguard">Sólo en la pantalla de bloqueo</string>
+  <string name="show_carrier_statusbar">Sólo en la barra de estado</string>
+  <string name="show_carrier_enabled">Pantalla de bloqueo y barra de estado</string>
+  <!-- Statusbar ticker -->
+  <string name="ticker_mode_title">Notificaciones de texto en la barra de estado</string>
+  <string name="ticker_disabled">Desactivado</string>
+  <string name="ticker_enabled">Texto de notificación en la barra de estado</string>
+  <string name="ticker_media_enabled">Texto de notificaciones y música en barra de estado</string>
+  <!-- Three-fingers-swipe to screenshot -->
+  <string name="three_finger_gesture">Gesto de tres dedos</string>
+  <string name="three_finger_gesture_summary">Desliza tres dedos por la pantalla para hacer una captura</string>
+  <!-- Status bar clock options -->
+  <string name="status_bar_clock">Fecha y Hora</string>
+  <string name="status_bar_clock_summary">Configurar el reloj de la barra de estado y la apariencia de la fecha</string>
+  <string name="clock_title_enable">Posición</string>
+  <string name="clock_enabled">Activo</string>
+  <string name="clock_disabled">Desactivado</string>
+  <string name="status_bar_clock_style_reset">Restablecer color</string>
+  <string name="status_bar_show_clock_title">Mostrar el reloj y la fecha</string>
+  <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
+  <string name="status_bar_am_pm_title">Estilo AM/PM</string>
+  <string name="status_bar_am_pm_info">El reloj de 24 horas está habilitado</string>
+  <string name="enable_clock_weekday">Día de la semana</string>
+  <string name="enable_clock_weekday_summary">Día de semana abreviado antes del reloj</string>
+  <string name="right_clock">Reloj a la derecha</string>
+  <string name="left_clock">Reloj a la izquierda</string>
+  <string name="dont_show">No mostrar</string>
+  <string name="clock_date_display">Fecha</string>
+  <string name="clock_date_display_summary">Mostrar fecha personalizada antes del reloj</string>
+  <string name="clock_date_style">Estilo de la fecha</string>
+  <string name="clock_date_format">Formato de fecha</string>
+  <string name="clock_date_string_edittext_title">Debe estar en un formato de fecha, por ejemplo: MM/dd/yy</string>
+  <string name="clock_date_string_edittext_summary">Introduzca el texto</string>
+  <string name="am_pm_clock_normal">Tamaño de fuente normal</string>
+  <string name="am_pm_clock_small">Tamaño de fuente pequeña</string>
+  <string name="am_pm_clock_none">No mostrar</string>
+  <string name="clock_date_display_none">No mostrar</string>
+  <string name="clock_date_display_small">Tamaño de fuente pequeña</string>
+  <string name="clock_date_display_normal">Tamaño de fuente normal</string>
+  <string name="clock_date_style_normal">Normal</string>
+  <string name="clock_date_style_lowercase">Minúscula</string>
+  <string name="clock_date_style_uppercase">Mayúscula</string>
+  <string name="clock_date_format_custom">Formato java personalizado</string>
+  <string name="clock_date_right">A la derecha de la hora</string>
+  <string name="clock_date_left">A la izquierda de la hora</string>
+  <string name="clock_date_position">Posición de la fecha</string>
 </resources>

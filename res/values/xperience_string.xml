@@ -125,11 +125,11 @@
     <!-- Navigation bar theme -->
     <string name="navbar_theme_title">Theme</string>
     <string name="navbar_theme_default">Default</string>
-    <string name="navbar_theme_pixel">Pixel</string>
-    <string name="navbar_theme_pixel_hola">Pixel Hola</string>
-    <string name="navbar_theme_samsung">Samsung</string>
-    <string name="navbar_theme_xperia">XPERIA</string>
-    <string name="navbar_theme_plusone">Plus One</string>
+    <string name="navbar_theme_pixel" translatable="false">Pixel</string>
+    <string name="navbar_theme_pixel_hola" translatable="false">Pixel Hola</string>
+    <string name="navbar_theme_samsung" translatable="false">Samsung</string>
+    <string name="navbar_theme_xperia" translatable="false">XPERIA</string>
+    <string name="navbar_theme_plusone" translatable="false">Plus One</string>
 
     <!-- System default animation -->
     <string name="system_default_animation_title">Android P animation style</string>

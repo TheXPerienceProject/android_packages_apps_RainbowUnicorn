@@ -112,10 +112,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference.equals(mTickerMode)) {
-            int tickerMode = Integer.parseInt(((String) objValue.toString());
+            int tickerMode = Integer.parseInt(((String) objValue).toString());
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.STATUS_BAR_SHOW_TICKER, tickerMode, UserHandle.USER_CURRENT);
-            int index = mTickerMode.findIndexOfValue((String) objValue;
+            int index = mTickerMode.findIndexOfValue((String) objValue);
             mTickerMode.setSummary(
                     mTickerMode.getEntries()[index]);
             return true;

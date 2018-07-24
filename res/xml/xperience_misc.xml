@@ -42,4 +42,10 @@
             android:summary="@string/status_bar_notif_count_summary"
             android:defaultValue="false" />
 
+        <mx.xperience.rainbowunicorn.preferences.GlobalSettingSwitchPreference
+            android:key="enable_freeform_support"
+            android:title="@string/free_from"
+            android:summary="@string/free_form_summary"
+            android:defaultValue="false" />
+
 </PreferenceScreen>

@@ -208,4 +208,8 @@
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
 
+   <!-- Free form -->
+	 <string name="free_from">Free form Multi-window</string>
+	 <string name="free_form_summary">This mode allows Android to present apps as floating windows that can be moved and resized at will by the user.</string>
+
 </resources>

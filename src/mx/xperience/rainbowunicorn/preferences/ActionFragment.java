@@ -163,7 +163,7 @@ public class ActionFragment extends SettingsPreferenceFragment implements
         switch (dialogId) {
             case DIALOG_CATEGORY:
             case DIALOG_CUSTOM_ACTIONS:
-                return MetricsEvent.NITROGEN_SETTINGS;
+                return MetricsEvent.RAINBOW_UNICORN;
             default:
                 return 0;
         }

@@ -59,6 +59,9 @@
     <!-- Show navbar -->
     <string name="navigation_bar_enabled_title">Enable</string>
 
+	
+    <string name="hardware_keys_volume_keys_title">Volume rocker</string>
+	
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
     <string name="lockscreen_battery_info_summary">Display negociated charger max current and voltage and battery temperature on lockscreen while charging</string>
@@ -204,6 +207,10 @@
 
     <!-- Power Menu -->
     <string name="powermenu_title">Power Menu Settings</string>
+    <string name="powermenu_airplane_title">Airplane mode</string>
+    <string name="powermenu_screenshot_title">Screenshot</string>
+    <string name="powermenu_advanced_reboot_title">Advanced reboot</string>
+    <string name="powermenu_reboot_title">Reboot</string>
     <string name="powermenu_screenshot">Screenshot</string>
     <string name="powermenu_power">Power</string>
     <string name="powermenu_restart">Restart</string>

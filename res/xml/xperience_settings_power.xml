@@ -77,14 +77,14 @@
             android:key="powermenu_ls_reboot"
             android:title="@string/powermenu_reboot_title"
             android:summary="@string/powermenu_ls_reboot_summary"
-            android:dependency="powermenu_reboot"
+            android:dependency="powermenu_restart"
             android:defaultValue="true" />
 
          <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
             android:key="powermenu_ls_advanced_reboot"
             android:title="@string/powermenu_advanced_reboot_title"
             android:summary="@string/powermenu_ls_advanced_reboot_summary"
-            android:dependency="powermenu_advanced_reboot"
+            android:dependency="powermenu_restart_recovery"
             android:defaultValue="false" />
 
          <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference

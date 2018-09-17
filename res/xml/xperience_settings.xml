@@ -45,11 +45,11 @@
             android:icon="@drawable/ic_xperience_buttons" />
 
         <!-- Display -->
-        <!--<Preference
+        <Preference
             android:key="display_category"
             android:title="@string/display_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
-            android:icon="@drawable/ic_xperience_display"/>-->
+            android:icon="@drawable/ic_xperience_display"/>
 			
         <!-- Status Bar 
         <Preference

@@ -244,21 +244,6 @@ public class AccentPicker extends InstrumentedDialogFragment implements OnClickL
             });
         }
 
-        Button limeAccent = null;
-        if (mView != null) {
-            limeAccent = mView.findViewById(R.id.limeAccent);
-        }
-        if (limeAccent != null) {
-            limeAccent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Settings.System.putIntForUser(resolver,
-                            Settings.System.ACCENT_PICKER, 12, UserHandle.USER_CURRENT);
-                    dismiss();
-                }
-            });
-        }
-
         Button yellowAccent = null;
         if (mView != null) {
             yellowAccent = mView.findViewById(R.id.yellowAccent);
@@ -268,7 +253,7 @@ public class AccentPicker extends InstrumentedDialogFragment implements OnClickL
                 @Override
                 public void onClick(View v) {
                     Settings.System.putIntForUser(resolver,
-                            Settings.System.ACCENT_PICKER, 13, UserHandle.USER_CURRENT);
+                            Settings.System.ACCENT_PICKER, 12, UserHandle.USER_CURRENT);
                     dismiss();
                 }
             });
@@ -280,6 +265,21 @@ public class AccentPicker extends InstrumentedDialogFragment implements OnClickL
         }
         if (amberAccent != null) {
             amberAccent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Settings.System.putIntForUser(resolver,
+                            Settings.System.ACCENT_PICKER, 13, UserHandle.USER_CURRENT);
+                    dismiss();
+                }
+            });
+        }
+
+        Button limeAccent = null;
+        if (mView != null) {
+            limeAccent = mView.findViewById(R.id.limeAccent);
+        }
+        if (limeAccent != null) {
+            limeAccent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Settings.System.putIntForUser(resolver,

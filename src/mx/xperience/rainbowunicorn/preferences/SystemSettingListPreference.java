@@ -67,7 +67,7 @@ public class SystemSettingListPreference extends ListPreference {
         setValue(restoreValue ? getPersistedString((String) defaultValue) : (String) defaultValue);
     }
 
-    @Override
+    //@Override
     protected boolean isPersisted() {
         // Using getString instead of getInt so we can simply check for null
         // instead of catching an exception. (All values are stored as strings.)

@@ -80,6 +80,13 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.NavbarSettings"
             android:icon="@drawable/ic_xperience_navbar"/>
 
+        <!-- Power Menu -->
+        <Preference
+            android:key="powermenu_category"
+            android:title="@string/powermenu_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.PowerMenuSettings"
+            android:icon="@drawable/ic_xperience_powermenu"/>
+
         <!-- Recents -->
         <Preference
             android:key="recents_category"

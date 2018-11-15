@@ -66,12 +66,12 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.LockScreenSettings"
             android:icon="@drawable/ic_xperience_lockscreen"/>
 
-        <!-- Misc 
+        <!-- Misc -->
         <Preference
             android:key="misc_category"
             android:title="@string/misc_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.MiscSettings"
-            android:icon="@drawable/ic_xperience_misc"/>-->
+            android:icon="@drawable/ic_xperience_misc"/>
 			
         <!-- navbar -->
         <Preference

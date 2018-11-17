@@ -53,6 +53,10 @@ import java.util.Collections;
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String POWER_MENU_ANIMATIONS = "power_menu_animations";
+
+    private ListPreference mPowerMenuAnimations;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -68,11 +72,23 @@ public class MiscSettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(SmartPixels);
         }*/
 
+	    mPowerMenuAnimations = (ListPreference) findPreference(POWER_MENU_ANIMATIONS);
+        mPowerMenuAnimations.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.POWER_MENU_ANIMATIONS, 0)));
+        mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+        mPowerMenuAnimations.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 
+	if (preference == mPowerMenuAnimations) {
+            Settings.System.putInt(getContentResolver(), Settings.System.POWER_MENU_ANIMATIONS,
+                    Integer.valueOf((String) newValue));
+            mPowerMenuAnimations.setValue(String.valueOf(newValue));
+            mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+            return true;
+        }
         return false;
     }
 

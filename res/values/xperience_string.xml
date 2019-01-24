@@ -15,14 +15,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Settings Titles-->
-	<string name="xperience_settings_title">XPerience™ Settings</string>
-	<string name="statusbar_title">Status Bar </string>
-	<string name="display_title">Display Settings </string>
-	<string name="recents_title">Recents Settings</string>
-	<string name="misc_title">Miscellaneous Settings</string>
-	<string name="navbar_title">Nabvar Settings</string>
-	<string name="lockscreen_title">LockScreen Settings</string>
-	<string name="buttons_title">Buttons Settings</string>
+    <string name="xperience_settings_title">XPerience™ Settings</string>
+    <string name="statusbar_title">Status Bar </string>
+    <string name="display_title">Display Settings </string>
+    <string name="recents_title">Recents Settings</string>
+    <string name="misc_title">Miscellaneous Settings</string>
+    <string name="navbar_title">Nabvar Settings</string>
+    <string name="lockscreen_title">LockScreen Settings</string>
+    <string name="buttons_title">Buttons Settings</string>
 
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
     <string name="show_cpu_info">Show CPU info</string>
@@ -72,7 +72,7 @@
 
     <!-- Battery Styles -->
     <string name="battery_style_title">Battery icon style</string>
-	<string name="battery_style_percent_title">Battery percentage</string>
+    <string name="battery_style_percent_title">Battery percentage</string>
     <string name="battery_style_land">Landscape</string>
     <string name="battery_style_dotted_circle">Dotted circle</string>
     <string name="battery_style_big_circle">Big circle</string>
@@ -89,9 +89,9 @@
     <string name="status_bar_battery_style_text">Text</string>
     <string name="status_bar_battery_style_hidden">Hidden</string>
 
-	<!--XPerience Active Display -->
-   <string name="ActiveDisplay_title">XPerience™ Active Display</string>
-   <string name="ActiveDisplay_summary">Active Display is a new way of handling notifications in Android.</string>
+    <!--XPerience Active Display -->
+    <string name="ActiveDisplay_title">XPerience™ Active Display</string>
+    <string name="ActiveDisplay_summary">Active Display is a new way of handling notifications in Android.</string>
 
     <!-- Ambient music -->
     <string name="force_ambient_for_media_pref_title">Now playing</string>
@@ -204,8 +204,8 @@
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
 
    <!-- Free form -->
-	 <string name="free_from">Free form Multi-window</string>
-	 <string name="free_form_summary">This mode allows Android to present apps as floating windows that can be moved and resized at will by the user.</string>
+    <string name="free_from">Free form Multi-window</string>
+    <string name="free_form_summary">This mode allows Android to present apps as floating windows that can be moved and resized at will by the user.</string>
 
     <!-- Power Menu -->
     <string name="powermenu_title">Power Menu Settings</string>
@@ -229,7 +229,7 @@
 
     <!-- Hardware keys -->
     <string name="hardware_keys_category">Hardware keys</string>
-     <!-- Buttons backlight timeout -->
+    <!-- Buttons backlight timeout -->
     <string name="backlight_timeout_title">Buttons backlight timeout</string>
     <string name="backlight_timeout_on">Enabled always</string>
     <string name="backlight_timeout_3s">3 sec</string>
@@ -238,7 +238,7 @@
     <string name="backlight_timeout_15s">15 sec</string>
     <string name="backlight_timeout_20s">20 sec</string>
     <string name="backlight_timeout_30s">30 sec</string>
-     <!-- Enable keys backlight-->
+    <!-- Enable keys backlight-->
     <string name="button_brightness_title">Backlight</string>
     <!-- Enable keys backlight-->
     <string name="button_backlight_on_touch_only_title">Button touch</string>
@@ -284,8 +284,10 @@
     <string name="anbi_title">Accidental touch</string>
     <string name="anbi_summary">Prevent interaction with navigation buttons while the screen is being touched</string>
 
+    <!-- navbar-->
     <string name="navbar_visibility">Allow navigation bar</string>
-	
+
+    <!--Power menu-->
     <string name="powermenu_category_visibility">Lockscreen options</string>
     <string name="powermenu_lockscreen_title">Visibility on the lockscreen</string>
     <string name="powermenu_lockscreen_summary">Enable the ability to show and use the power menu dialog while on the lockscreen</string>

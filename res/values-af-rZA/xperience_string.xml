@@ -27,6 +27,7 @@
     <!-- Lockscreen battery info indicator  -->
     <!-- Double Tap Lockscreen to Sleep -->
     <!-- Battery Styles -->
+    <!-- Status bar battery style-->
     <!--XPerience Active Display -->
     <!-- Ambient music -->
     <!-- Pocket judge -->
@@ -56,4 +57,7 @@
     <!-- SystemUI theme -->
     <!-- Weather - OmniJaws Settings -->
     <!-- Lockscreen weather settings -->
+    <!-- Fingerprint unlock keystore -->
+    <!-- Battery percentage -->
+    <!-- Smart Pixels -->
 </resources>

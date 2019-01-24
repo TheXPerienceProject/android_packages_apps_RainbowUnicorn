@@ -61,19 +61,21 @@
     <!-- Battery Styles -->
     <string name="battery_style_title">Estilo de icono de batería</string>
     <string name="battery_style_percent_title">Porcentaje de batería</string>
-    <string name="battery_style_port">Vertical</string>
     <string name="battery_style_land">Horizontal</string>
-    <string name="battery_style_circle">Circular</string>
     <string name="battery_style_dotted_circle">Círculo punteado</string>
     <string name="battery_style_big_circle">Gran círculo</string>
     <string name="battery_style_big_dotted_circle">Gran círculo punteado</string>
-    <string name="battery_style_text">Texto</string>
-    <string name="battery_style_hidden">Oculto</string>
     <string name="show_battery_percent_summary">Mostrar porcentaje nivel de la batería cerca del icono</string>
     <string name="battery_style_category_title">Icono de batería</string>
     <string name="battery_percent_none">No mostrar</string>
     <string name="battery_percent_outside">Mostrar cerca de icono</string>
     <string name="battery_percent_inside">Mostrar en el icono</string>
+    <!-- Status bar battery style-->
+    <string name="status_bar_battery_style_title">Estilo de la batería</string>
+    <string name="status_bar_battery_style_port">Vertical</string>
+    <string name="status_bar_battery_style_circle">Circular</string>
+    <string name="status_bar_battery_style_text">Texto</string>
+    <string name="status_bar_battery_style_hidden">Oculto</string>
     <!--XPerience Active Display -->
     <string name="ActiveDisplay_title">Pantalla activa XPerience™</string>
     <string name="ActiveDisplay_summary">Pantalla activa es una nueva forma de manejo de notificaciones en Android.</string>
@@ -267,4 +269,30 @@
     <string name="lockscreen_weather_title">Tiempo en la pantalla de bloqueo</string>
     <string name="lockscreen_weather_summary">Mostrar la condición actual del tiempo y temperatura en lockscreen</string>
     <string name="lockscreen_items_aod_info_title">Esta configuración de la visibilidad también se aplica a la pantalla de ambiente</string>
+    <!-- Fingerprint unlock keystore -->
+    <string name="fp_unlock_keystore_title">Desbloqueo con huella dactilar</string>
+    <string name="fp_unlock_keystore_summary">Desbloqueo con huella digital después de reiniciar el dispositivo sin PIN/contraseña/patrón\nNota: ¡bajo su propio riesgo!</string>
+    <!-- Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Porcentaje de batería</string>
+    <string name="status_bar_battery_percentage_default">Oculto</string>
+    <string name="status_bar_battery_percentage_text_next">Junto al icono</string>
+    <string name="status_bar_battery_percentage_text_inside">Dentro del icono</string>
+    <!-- Smart Pixels -->
+    <string name="smart_pixels_title">Píxeles inteligentes</string>
+    <string name="smart_pixels_enable_title">Habilitar píxeles inteligentes</string>
+    <string name="smart_pixels_enable_summary">Apagar píxeles para reducir el consumo de energía</string>
+    <string name="smart_pixels_on_power_save_title">Activar automáticamente en modo ahorro de batería</string>
+    <string name="smart_pixels_on_power_save_summary">Habilitar Píxeles Inteligentes cuando el ahorro de batería esté habilitado</string>
+    <string name="smart_pixels_percent">Porcentaje de píxeles a desactivar</string>
+    <string name="smart_pixels_info">Se dibuja sobre aplicaciones y pueden causar algunos problemas con Google play y etc.\n\nDeshabilitarlo antes de agregar tarjetas pagar o habilitar/deshabilitar administradores de dispositivo</string>
+    <string name="smart_pixels_shift">Evitar quemaduras desplazando los píxeles</string>
+    <string name="smart_pixels_shift_times_15s">15 segundos</string>
+    <string name="smart_pixels_shift_times_30s">30 segundos</string>
+    <string name="smart_pixels_shift_times_1min">1 minuto</string>
+    <string name="smart_pixels_shift_times_2min">2 minutos</string>
+    <string name="smart_pixels_shift_times_5min">5 minutos</string>
+    <string name="smart_pixels_shift_times_10min">10 minutos</string>
+    <string name="smart_pixels_shift_times_20min">20 minutos</string>
+    <string name="smart_pixels_shift_times_30min">30 minutos</string>
+    <string name="smart_pixels_shift_times_1h">1 hora</string>
 </resources>

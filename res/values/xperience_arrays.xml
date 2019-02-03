@@ -33,12 +33,10 @@
     <string-array name="status_bar_battery_percentage_entries" translatable="false">
         <item>@string/status_bar_battery_percentage_default</item>
         <item>@string/status_bar_battery_percentage_text_next</item>
-        <!--<item>@string/status_bar_battery_percentage_text_inside</item>-->
     </string-array>
      <string-array name="status_bar_battery_percentage_values" translatable="false">
         <item>0</item>
         <item>1</item>
-<!--    <item>2</item>-->
     </string-array>
 
     <!-- Battery Styles -->
@@ -64,14 +62,12 @@
     <string-array name="qs_battery_mode_entries">
         <item>@string/battery_percentage_off</item>
         <item>@string/battery_percentage_next</item>
-      <!--  <item>@string/battery_percentage_inside</item>-->
         <item>@string/battery_percentage_estimate</item>
     </string-array>
 
     <string-array name="qs_battery_mode_values" translatable="false">
         <item>0</item>
         <item>1</item>
-      <!--  <item>2</item>-->
         <item>3</item>
     </string-array>
 
@@ -270,7 +266,7 @@
     </string-array>
 
     <!-- SystemUI theme -->
-<!--    <string-array name="systemui_theme_style_entries" translatable="false">
+   <string-array name="systemui_theme_style_entries" translatable="false">
         <item>@string/systemui_theme_style_auto</item>
         <item>@string/systemui_theme_style_light</item>
         <item>@string/systemui_theme_style_dark</item>
@@ -288,7 +284,7 @@
         <item>5</item>
     </string-array>
 
-     Smart Pixels
+    <!-- Smart Pixels-->
     <string-array name="smart_pixels_percent_strings" translatable="false">
         <item>12</item>
         <item>25</item>
@@ -328,7 +324,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
-    </string-array>-->
+    </string-array>
 
     <!-- Blink flashlight for incoming calls -->
     <string-array name="flashlight_on_call_entries">
@@ -358,4 +354,13 @@
         <item>2</item>
     </string-array>
 
+    <!-- QS header image -->
+    <string-array name="custom_header_provider_entries" translatable="false">
+        <item>@string/daylight_header_provider_title</item>
+        <item>@string/file_header_provider_title</item>
+    </string-array>
+    <string-array name="custom_header_provider_values" translatable="false">
+        <item>@string/daylight_header_provider</item>
+        <item>@string/file_header_provider</item>
+    </string-array>
 </resources>

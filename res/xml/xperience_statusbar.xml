@@ -100,4 +100,12 @@
         android:summary="@string/qs_brightness_position_bottom_summary"
         android:defaultValue="false"
         android:dependency="qs_show_brightness" />
+
+
+    <mx.xperience.rainbowunicorn.preferences.SystemSettingMasterSwitchPreference
+        android:key="status_bar_custom_header"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.QsHeader"
+        android:title="@string/status_bar_custom_header_title"
+        android:summary="@string/status_bar_custom_header_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>

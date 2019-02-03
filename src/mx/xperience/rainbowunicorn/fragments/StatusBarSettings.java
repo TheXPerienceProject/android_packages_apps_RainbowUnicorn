@@ -46,6 +46,7 @@ import android.util.Log;
 
 import mx.xperience.rainbowunicorn.preferences.CustomSeekBarPreference;
 import mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference;
+import mx.xperience.rainbowunicorn.preferences.SystemSettingMasterSwitchPreference;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -58,6 +59,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
     private CustomSeekBarPreference mThreshold;
     private SystemSettingSwitchPreference mNetMonitor;
+    private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
+
+    private SystemSettingMasterSwitchPreference mCustomHeader;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -79,6 +83,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         mThreshold.setValue(value);
         mThreshold.setOnPreferenceChangeListener(this);
         mThreshold.setEnabled(isNetMonitorEnabled);
+
+        mCustomHeader = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_CUSTOM_HEADER);
+        int qsHeader = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0);
+        mCustomHeader.setChecked(qsHeader != 0);
+        mCustomHeader.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -97,6 +107,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                   Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, val,
                   UserHandle.USER_CURRENT);
           return true;
+        } else if (preference == mCustomHeader) {
+            boolean header = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER, header ? 1 : 0);
+            return true;
       }
         return false;
     }

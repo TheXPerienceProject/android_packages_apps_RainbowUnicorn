@@ -312,6 +312,7 @@
     <string name="systemui_theme_style_light">Light</string>
     <string name="systemui_theme_style_dark">Dark</string>
     <string name="system_theme_style_black">Black</string>
+    <string name="system_theme_style_lunar">Lunar</string>
 
     <!-- Weather - OmniJaws Settings -->
     <string name="weather_title">Weather</string>

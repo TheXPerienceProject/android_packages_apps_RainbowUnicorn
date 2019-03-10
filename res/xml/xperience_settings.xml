@@ -23,8 +23,8 @@
             android:summary="@string/alessa_settings_summary"
 		    android:icon="@drawable/ic_settings_alessa">
             <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="mx.klozz.xperience.robaalmas"
-                android:targetClass="mx.klozz.xperience.robaalmas.MainActivity" />
+                android:targetPackage="mx.klozz.xperience.tweaker"
+                android:targetClass="mx.klozz.xperience.tweaker.MainActivity" />
       </Preference>
 
 	<!--XPerience Active Display-->

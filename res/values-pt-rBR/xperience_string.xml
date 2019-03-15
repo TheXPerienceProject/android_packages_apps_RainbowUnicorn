@@ -16,48 +16,283 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Settings Titles-->
+    <string name="xperience_settings_title">Configurações XPerience™</string>
+    <string name="statusbar_title">Barra de status </string>
+    <string name="display_title">Configurações de tela </string>
+    <string name="recents_title">Configurações do Painel de Recentes</string>
+    <string name="misc_title">Configurações diversas</string>
+    <string name="navbar_title">Configurações da Barra de navegação</string>
+    <string name="lockscreen_title">Configurações da Tela de bloqueio</string>
+    <string name="buttons_title">Configurações dos botões</string>
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">Mostrar informações da CPU</string>
     <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">Sobreposição de tela mostrando informações atuais da CPU</string>
     <!-- Recents panel settings -->
+    <string name="show_clear_all_recents_button_title">Botão limpar tudo</string>
+    <string name="show_clear_all_recents_button_summary">Mostrar botão limpar tudo</string>
+    <string name="recents_clear_all_location_title">Localização do botão limpar tudo</string>
+    <string name="recents_clear_all_location_top_right">Canto superior direito</string>
+    <string name="recents_clear_all_location_top_left">Canto superior esquerdo</string>
+    <string name="recents_clear_all_location_top_center">Superior no centro</string>
+    <string name="recents_clear_all_location_bottom_right">Canto inferior direito</string>
+    <string name="recents_clear_all_location_bottom_left">Canto inferior esquerdo</string>
+    <string name="recents_clear_all_location_bottom_center">Inferior no centro</string>
     <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Tráfego de rede</string>
+    <string name="network_traffic_state_summary">Mostrar a atividade da rede na barra de status</string>
+    <string name="network_traffic_autohide_threshold_title">Limite para ocultar automaticamente a atividade de rede (KB/s)</string>
     <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Botões da barra de navegação</string>
     <!-- Statusbar Tuner -->
+    <string name="statusbar_items_title">Itens da barra de status</string>
     <!--Lockscreen tuner-->
+    <string name="lockscreen_tuner_title">Atalhos da tela de bloqueio</string>
+    <string name="tuner_doze_always_on">Sempre ligado</string>
     <!-- Show navbar -->
+    <string name="navigation_bar_enabled_title">Ativar</string>
+    <string name="hardware_keys_volume_keys_title">Botões de volume</string>
     <!-- Lockscreen battery info indicator  -->
+    <string name="lockscreen_battery_info_title">Informação de carregamento na tela de bloqueio</string>
+    <string name="lockscreen_battery_info_summary">Exibe a corrente máxima e tensão do carregador e a temperatura da bateria na tela de bloqueio durante o carregamento</string>
     <!-- Double Tap Lockscreen to Sleep -->
+    <string name="double_tap_to_sleep_lockscreen_title">Bloqueio de tela</string>
+    <string name="double_tap_to_sleep_lockscreen_summary">Toque duas vezes na área superior ou inferior da tela de bloqueio para desligar a tela</string>
     <!-- Battery Styles -->
+    <string name="battery_style_title">Estilo do ícone da bateria</string>
+    <string name="battery_style_percent_title">Porcentagem da bateria</string>
+    <string name="battery_style_land">Paisagem</string>
+    <string name="battery_style_dotted_circle">Círculo pontilhado</string>
+    <string name="battery_style_big_circle">Círculo grande</string>
+    <string name="battery_style_big_dotted_circle">Círculo pontilhado grande</string>
+    <string name="show_battery_percent_summary">Mostrar a porcentagem da bateria ao lado do ícone</string>
+    <string name="battery_style_category_title">Ícone de bateria</string>
+    <string name="battery_percent_none">Não exibir</string>
+    <string name="battery_percent_outside">Mostrar próximo ao ícone</string>
+    <string name="battery_percent_inside">Mostrar dentro do ícone</string>
     <!-- Status bar battery style-->
+    <string name="status_bar_battery_style_title">Estilo da bateria</string>
+    <string name="status_bar_battery_style_port">Retrato</string>
+    <string name="status_bar_battery_style_circle">Círculo</string>
+    <string name="status_bar_battery_style_text">Texto</string>
+    <string name="status_bar_battery_style_hidden">Oculto</string>
     <!--XPerience Active Display -->
+    <string name="ActiveDisplay_title">XPerience™ Active Display</string>
+    <string name="ActiveDisplay_summary">O Active Display é uma nova forma de gerenciar notificações no Android.</string>
     <!-- Ambient music -->
+    <string name="force_ambient_for_media_pref_title">Em reprodução</string>
+    <string name="force_ambient_for_media_pref_summary">Mostrar informações da música atual</string>
+    <string name="ambient_ticker_footer">Este recurso possibilita mostrar as informações da música atual na tela de bloqueio com a tela de ambiente ligada ou não.\n\nVocê pode escolher entre o layout normal e o minimalista. Embora este recurso use o layout da exibição de ambiente, não é necessário que essa opção esteja ativada (você poderá usar o modo forçado).\n\nO layout normal inclui o relógio, a data e a informação da música.\n\nO layout minimalista inclui apenas a informação da música no centro da tela.</string>
+    <string name="force_ambient_for_media_title">Selecionar layout</string>
+    <string name="force_ambient_for_media_off">Desabilitado</string>
+    <string name="force_ambient_for_media_on">Normal</string>
+    <string name="force_ambient_for_media_on_forced">Normal (forçado)</string>
+    <string name="force_ambient_for_media_on_forced_clean">Minimalista (forçado)</string>
     <!-- Pocket judge -->
+    <string name="pocket_judge_title">Detecção de bolso</string>
+    <string name="pocket_judge_summary">Evita que a tela seja ativada acidentalmente com o dispositivo no bolso</string>
     <!-- Volume category -->
+    <string name="volume_category">Botões de volume</string>
     <!-- Volume rocker music control -->
+    <string name="volume_button_music_control_title">Controle de reprodução</string>
+    <string name="volume_button_music_control_summary">Com a tela desligada, pressione e segure as teclas de volume para pular faixas de música</string>
     <!-- Volume rocker wake -->
+    <string name="volume_rocker_wake_title">Acordar com os botões de volume</string>
+    <string name="volume_rocker_wake_summary">Ligue a tela do dispositivo pressionando as teclas de volume</string>
     <!-- Navigation bar theme -->
+    <string name="navbar_theme_title">Tema</string>
+    <string name="navbar_theme_default">Padrão</string>
     <!-- System default animation -->
+    <string name="system_default_animation_title">Estilo de animação Android P</string>
+    <string name="system_default_animation_summary">Ativar animações \"Padrão\" do Android P</string>
     <!-- Show 4G instead of LTE -->
+    <string name="show_4g_title">Mostrar 4G</string>
+    <string name="show_4g_summary">Mostrar 4G ao invés de LTE nos ícones de sinal</string>
     <!-- Statusbar logo -->
+    <string name="status_bar_logo_title">Brasão XPerience</string>
+    <string name="status_bar_logo_dialog_title">Posição do brasão XPerience</string>
+    <string name="status_bar_logo_disabled">Desativado</string>
+    <string name="status_bar_logo_left">Esquerda</string>
+    <string name="status_bar_logo_right">Direita</string>
     <!-- Carrier Label -->
+    <string name="carrier_category">Nome da operadora</string>
+    <string name="carrier_options">Selecione os locais de exibição</string>
+    <string name="custom_carrier_label_title">Nome personalizado da operadora</string>
+    <string name="custom_carrier_label_explain">Por favor, insira um novo texto. Deixe em branco para reverter para o original.</string>
+    <string name="custom_carrier_label_notset">Nome personalizado não definido</string>
+    <string name="show_carrier_title">É exibido em</string>
+    <string name="show_carrier_disabled">Lugar nenhum</string>
+    <string name="show_carrier_keyguard">Apenas tela de bloqueio</string>
+    <string name="show_carrier_statusbar">Apenas barra de status</string>
+    <string name="show_carrier_enabled">Tela de bloqueio &amp; barra de status</string>
     <!-- Statusbar ticker -->
+    <string name="ticker_mode_title">Ticker de notificação na barra de status</string>
+    <string name="ticker_disabled">Desativado</string>
+    <string name="ticker_enabled">Ticker de notificação</string>
+    <string name="ticker_media_enabled">Ticker para notificações e música</string>
     <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Gesto de três dedos</string>
+    <string name="three_finger_gesture_summary">Deslizar 3 dedos para capturar tela</string>
     <!-- Status bar clock options -->
+    <string name="status_bar_clock">Relógio e Data</string>
+    <string name="status_bar_clock_summary">Configurar a aparência do relógio e da data na barra de status</string>
+    <string name="clock_title_enable">Alinhamento</string>
+    <string name="clock_enabled">Habilitado</string>
+    <string name="clock_disabled">Desabilitado</string>
+    <string name="status_bar_clock_style_reset">Redefinir cor</string>
+    <string name="status_bar_show_clock_title">Exibir data e hora</string>
+    <string name="status_bar_clock_seconds_title">Exibir segundos</string>
+    <string name="status_bar_am_pm_title">Estilo AM/PM</string>
+    <string name="status_bar_am_pm_info">O relógio 24 horas está ativo</string>
+    <string name="enable_clock_weekday">Dia da semana</string>
+    <string name="enable_clock_weekday_summary">Dia da semana abreviado antes da hora</string>
+    <string name="right_clock">Relógio na direita</string>
+    <string name="left_clock">Relógio na esquerda</string>
+    <string name="dont_show">Não exibir</string>
+    <string name="clock_date_display">Data</string>
+    <string name="clock_date_display_summary">Exibir data personalizada antes do relógio</string>
+    <string name="clock_date_style">Estilo de data</string>
+    <string name="clock_date_format">Formato de data</string>
+    <string name="clock_date_string_edittext_title">Deve estar em formato de data, por exemplo: MM/DD/AA</string>
+    <string name="clock_date_string_edittext_summary">Digite o texto</string>
+    <string name="am_pm_clock_normal">Tamanho de fonte normal</string>
+    <string name="am_pm_clock_small">Tamanho de fonte pequeno</string>
+    <string name="am_pm_clock_none">Não exibir</string>
+    <string name="clock_date_display_none">Não exibir</string>
+    <string name="clock_date_display_small">Tamanho de fonte pequeno</string>
+    <string name="clock_date_display_normal">Tamanho de fonte normal</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Letras minúsculas</string>
+    <string name="clock_date_style_uppercase">Letras maiúsculas</string>
+    <string name="clock_date_format_custom">Formato Java personalizado</string>
+    <string name="clock_date_right">À direita do relógio</string>
+    <string name="clock_date_left">À esquerda do relógio</string>
+    <string name="clock_date_position">Posição da data</string>
     <!-- Notification count -->
+    <string name="status_bar_notif_count_title">Mostrar contador de notificação</string>
+    <string name="status_bar_notif_count_summary">Exibir o número de notificações pendentes</string>
     <!-- Free form -->
+    <string name="free_from">Janelas redimensionáveis</string>
+    <string name="free_form_summary">Este modo permite a exibição de aplicativos como janelas flutuantes que podem ser movidas e redimensionadas pelo usuário.</string>
     <!-- Power Menu -->
+    <string name="powermenu_title">Opções do menu de energia</string>
+    <string name="powermenu_airplane_title">Modo avião</string>
+    <string name="powermenu_screenshot_title">Captura de tela</string>
+    <string name="powermenu_advanced_reboot_title">Reinicialização avançada</string>
+    <string name="powermenu_reboot_title">Reiniciar</string>
+    <string name="powermenu_screenshot">Captura de tela</string>
+    <string name="powermenu_power">Liga/Desliga</string>
+    <string name="powermenu_restart">Reiniciar</string>
+    <string name="powermenu_restart_recovery">Reinicialização avançada</string>
+    <string name="powermenu_airplane">Modo avião</string>
+    <string name="powermenu_settings">Configurações</string>
+    <string name="powermenu_lockdown">Bloquear</string>
+    <string name="powermenu_soundpanel">Painel de som</string>
+    <string name="powermenu_users">Usuários</string>
+    <string name="powermenu_logout">Encerrar sessão</string>
+    <string name="face_auto_unlock_title">Desbloqueio facial automático</string>
+    <string name="face_auto_unlock_summary">Pular o bloqueio de tela após o desbloqueio facial</string>
     <!-- Hardware keys -->
+    <string name="hardware_keys_category">Botões físicos</string>
     <!-- Buttons backlight timeout -->
+    <string name="backlight_timeout_title">Tempo de iluminação dos botões</string>
+    <string name="backlight_timeout_on">Sempre ativo</string>
+    <string name="backlight_timeout_3s">3 seg</string>
+    <string name="backlight_timeout_default">5 seg (padrão)</string>
+    <string name="backlight_timeout_10s">10 seg</string>
+    <string name="backlight_timeout_15s">15 seg</string>
+    <string name="backlight_timeout_20s">20 seg</string>
+    <string name="backlight_timeout_30s">30 seg</string>
     <!-- Enable keys backlight-->
+    <string name="button_brightness_title">Luz de fundo</string>
     <!-- Enable keys backlight-->
+    <string name="button_backlight_on_touch_only_title">Luz de fundo ao tocar</string>
+    <string name="button_backlight_on_touch_only_summary">Ativar a luz de fundo das teclas físicas apenas quando tocar o botão</string>
     <!-- Enable keys backlight-->
+    <string name="button_brightness_sw_title">Ativar luz de fundo</string>
     <!-- HW Keys customization -->
+    <string name="allow_incall_home_title">Botão início quando estiver tocando</string>
+    <string name="allow_incall_home_summary">Permitir que o botão de início seja usado quando o dispositivo estiver tocando</string>
+    <string name="picker_activities">Atividades</string>
+    <string name="select_custom_app_title">Selecionar aplicativo personalizado</string>
+    <string name="select_custom_activity_title">Selecione a atividade personalizada</string>
+    <string name="profile_applist_title">Aplicativos</string>
+    <string name="choose_action_title">Selecionar ação</string>
+    <string name="action_entry_default_action">Definições padrão</string>
+    <string name="action_entry_select_app">Selecionar aplicativo</string>
+    <string name="action_entry_custom_action">Selecionar ação personalizada</string>
+    <string name="hardware_keys_home_key_title">Botão de início</string>
+    <string name="hardware_keys_menu_key_title">Botão de Menu</string>
+    <string name="hardware_keys_assist_key_title">Botão de pesquisa</string>
+    <string name="hardware_keys_appswitch_key_title">Botão de recentes</string>
+    <string name="hardware_keys_back_key_title">Botão voltar</string>
+    <string name="hardware_keys_double_tap_summary">Definir ação para toque duplo</string>
+    <string name="hardware_keys_single_tap_summary">Definir ação para toque único</string>
+    <string name="hardware_keys_long_press_summary">Definir ação para toque longo</string>
+    <string name="hardware_keys_single_tap_title">Ação de toque único</string>
+    <string name="hardware_keys_long_press_title">Ação para toque longo</string>
+    <string name="hardware_keys_double_tap_title">Ação para toque duplo</string>
+    <string name="hardware_keys_disable_title">Desabilitar teclas</string>
     <!-- ANBI -->
+    <string name="anbi_title">Toque acidental</string>
+    <string name="anbi_summary">Bloquear interação com os botões de navegação enquanto a tela estiver sendo tocada</string>
+    <string name="navbar_visibility">Ativar barra de navegação</string>
+    <string name="powermenu_category_visibility">Opções de bloqueio de tela</string>
+    <string name="powermenu_lockscreen_title">Visibilidade na tela de bloqueio</string>
+    <string name="powermenu_lockscreen_summary">Permite exibir e usar o menu de energia na tela de bloqueio</string>
+    <string name="powermenu_ls_reboot_summary">Exibir a opção de reiniciar na tela de bloqueio</string>
+    <string name="powermenu_ls_advanced_reboot_summary">Exibir a opção de reinício avançado na tela de bloqueio</string>
+    <string name="powermenu_ls_screenshot_summary">Exibir a opção de captura de tela na tela de bloqueio</string>
+    <string name="powermenu_ls_airplane_summary">Mostrar a opção do modo avião na tela de bloqueio</string>
     <!-- Hide Lockscreen clock, date, & alarm -->
+    <string name="lockscreen_items_other">Outros</string>
     <!-- Accent picker -->
+    <string name="theme_category_title">Tema do sistema</string>
+    <string name="accent_picker_dialog_title">Selecione uma cor de destaque</string>
+    <string name="theme_accent_picker_title">Cor de destaque</string>
+    <string name="theme_accent_picker_summary">Selecione a cor de destaque do tema do sistema</string>
+    <string name="theme_accent_picker_default">Padrão</string>
     <!-- SystemUI theme -->
+    <string name="systemui_theme_style_title">Tema do SystemUI</string>
+    <string name="systemui_theme_style_auto">Automático (baseado no papel de parede)</string>
+    <string name="systemui_theme_style_light">Claro</string>
+    <string name="systemui_theme_style_dark">Escuro</string>
+    <string name="system_theme_style_black">Preto</string>
     <!-- Weather - OmniJaws Settings -->
+    <string name="weather_title">Tempo</string>
+    <string name="weather_config_title">Configurações do serviço</string>
+    <string name="header_weather_title">Previsão do tempo no cabeçalho</string>
+    <string name="header_weather_summary">Habilitar previsão do tempo no cabeçalho</string>
+    <string name="weather_icon_pack_title">Pacote de ícones climáticos</string>
+    <string name="weather_icon_pack_note">Nota\u003a Você pode instalar novos pacotes de ícones da Play Store procurando por \"Chronus icons\"</string>
     <!-- Lockscreen weather settings -->
+    <string name="lockscreen_weather_title">Tempo na tela de bloqueio</string>
+    <string name="lockscreen_weather_summary">Mostrar as condições atuais de tempo e temperatura na tela de bloqueio</string>
+    <string name="lockscreen_items_aod_info_title">Esta configuração de visibilidade também se aplica à exibição de ambiente</string>
     <!-- Fingerprint unlock keystore -->
+    <string name="fp_unlock_keystore_title">Desbloqueio com impressão digital</string>
+    <string name="fp_unlock_keystore_summary">Desbloquear o dispositivo com impressão digital após a reinicialização sem pedir o PIN/Senha/Padrão.\nAtenção: Use por sua conta e risco!</string>
     <!-- Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Porcentagem da bateria</string>
+    <string name="status_bar_battery_percentage_default">Oculto</string>
+    <string name="status_bar_battery_percentage_text_next">Próximo ao ícone</string>
+    <string name="status_bar_battery_percentage_text_inside">Dentro do ícone</string>
     <!-- Smart Pixels -->
+    <string name="smart_pixels_title">Pixels Inteligentes</string>
+    <string name="smart_pixels_enable_title">Ativar Pixels Inteligentes</string>
+    <string name="smart_pixels_enable_summary">Desliga alguns pixels para reduzir o consumo de energia</string>
+    <string name="smart_pixels_on_power_save_title">Ativar automaticamente no modo de economia de bateria</string>
+    <string name="smart_pixels_on_power_save_summary">Ativa os Pixels Inteligentes quando a economia de bateria estiver ativa</string>
+    <string name="smart_pixels_percent">Porcentagem de pixels a desativar</string>
+    <string name="smart_pixels_info">Sobrepõe aplicativos e pode causar alguns problemas com Google Pay, etc.\n\nDesative a opção antes de adicionar cartões ao Google Pay ou ativar/desativar administradores do dispositivo</string>
+    <string name="smart_pixels_shift">Evita o efeito burn-in ao deslocar os pixels a cada</string>
+    <string name="smart_pixels_shift_times_15s">15 segundos</string>
+    <string name="smart_pixels_shift_times_30s">30 segundos</string>
+    <string name="smart_pixels_shift_times_1min">1 minuto</string>
+    <string name="smart_pixels_shift_times_2min">2 minutos</string>
+    <string name="smart_pixels_shift_times_5min">5 minutos</string>
+    <string name="smart_pixels_shift_times_10min">10 minutos</string>
+    <string name="smart_pixels_shift_times_20min">20 minutos</string>
+    <string name="smart_pixels_shift_times_30min">30 minutos</string>
+    <string name="smart_pixels_shift_times_1h">1 hora</string>
 </resources>

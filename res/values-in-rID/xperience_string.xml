@@ -16,19 +16,69 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Settings Titles-->
+    <string name="xperience_settings_title">Pengaturan XPerience™</string>
+    <string name="statusbar_title">Bilah Status </string>
+    <string name="display_title">Pengaturan Tampilan </string>
+    <string name="recents_title">Pengaturan Recents</string>
+    <string name="misc_title">Pengaturan Miscellaneous</string>
+    <string name="navbar_title">Pengaturan Nabvar</string>
+    <string name="lockscreen_title">Pengaturan Kunci Layar</string>
+    <string name="buttons_title">Pengaturan Tombol</string>
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">Tampilkan info CPU</string>
     <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">Tampilan layar menampilkan info CPU saat ini</string>
     <!-- Recents panel settings -->
+    <string name="show_clear_all_recents_button_title">Tombol bersihkan semua</string>
+    <string name="show_clear_all_recents_button_summary">Tampilkan tombol bersihkan semua</string>
+    <string name="recents_clear_all_location_title">Lokasi tombol bersihkan semua</string>
+    <string name="recents_clear_all_location_top_right">Kanan Atas</string>
+    <string name="recents_clear_all_location_top_left">Kiri atas</string>
+    <string name="recents_clear_all_location_top_center">Tengah atas</string>
+    <string name="recents_clear_all_location_bottom_right">Kanan bawah</string>
+    <string name="recents_clear_all_location_bottom_left">Kiri bawah</string>
+    <string name="recents_clear_all_location_bottom_center">Tengah bawah</string>
     <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Lalu lintas jaringan</string>
+    <string name="network_traffic_state_summary">Tampilkan aktivitas jaringan di bilah status</string>
+    <string name="network_traffic_autohide_threshold_title">Otomatis menyembunyikan aktivitas jaringan (KB/s)</string>
     <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Tombol bilah navigasi</string>
     <!-- Statusbar Tuner -->
+    <string name="statusbar_items_title">Item bilah status</string>
     <!--Lockscreen tuner-->
+    <string name="lockscreen_tuner_title">Pintasan kunci layar</string>
+    <string name="tuner_doze_always_on">Selalu Aktif</string>
     <!-- Show navbar -->
+    <string name="navigation_bar_enabled_title">Aktifkan</string>
+    <string name="hardware_keys_volume_keys_title">Volume rocker</string>
     <!-- Lockscreen battery info indicator  -->
+    <string name="lockscreen_battery_info_title">Info pengisian daya pada kunci layar</string>
+    <string name="lockscreen_battery_info_summary">Menampilkan arus maksimum tegangan dan suhu baterai pada saat mengisi daya di layar kunci</string>
     <!-- Double Tap Lockscreen to Sleep -->
+    <string name="double_tap_to_sleep_lockscreen_title">Layar kunci</string>
+    <string name="double_tap_to_sleep_lockscreen_summary">Ketuk dua kali pada bagian atas atau bawah layar kunci akan membuat perangkat menjadi mode tidur</string>
     <!-- Battery Styles -->
+    <string name="battery_style_title">Gaya ikon baterai</string>
+    <string name="battery_style_percent_title">Persentase baterai</string>
+    <string name="battery_style_land">Mendatar</string>
+    <string name="battery_style_dotted_circle">Lingkaran bertitik</string>
+    <string name="battery_style_big_circle">Lingkaran besar</string>
+    <string name="battery_style_big_dotted_circle">Lingkaran besar bertitik-titik</string>
+    <string name="show_battery_percent_summary">Tampilkan persentase tingkat baterai di dekat ikon</string>
+    <string name="battery_style_category_title">Ikon baterai</string>
+    <string name="battery_percent_none">Jangan Tampilkan</string>
+    <string name="battery_percent_outside">Tampilkan dekat icon</string>
+    <string name="battery_percent_inside">Tampilkan di dalam ikon</string>
     <!-- Status bar battery style-->
+    <string name="status_bar_battery_style_title">Gaya Baterai</string>
+    <string name="status_bar_battery_style_port">Tegak</string>
+    <string name="status_bar_battery_style_circle">Lingkaran</string>
+    <string name="status_bar_battery_style_text">Teks</string>
+    <string name="status_bar_battery_style_hidden">Tersembunyi</string>
     <!--XPerience Active Display -->
+    <string name="ActiveDisplay_title">XPerience™ Active Display</string>
+    <string name="ActiveDisplay_summary">Tampilan Aktif adalah cara baru untuk penanganan pemberitahuan di Android.</string>
     <!-- Ambient music -->
     <!-- Pocket judge -->
     <!-- Volume category -->
@@ -42,6 +92,29 @@
     <!-- Statusbar ticker -->
     <!-- Three-fingers-swipe to screenshot -->
     <!-- Status bar clock options -->
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">Waktu 24-jam diaktifkan</string>
+    <string name="enable_clock_weekday">Hari dalam seminggu</string>
+    <string name="enable_clock_weekday_summary">Singkatan hari dalam seminggu sebelum waktunya</string>
+    <string name="right_clock">Jam kanan</string>
+    <string name="left_clock">Jam kiri</string>
+    <string name="dont_show">Jangan Tampilkan</string>
+    <string name="clock_date_display">Tanggal</string>
+    <string name="clock_date_display_summary">Tampilan tanggal kustom sebelum jam</string>
+    <string name="clock_date_style">Gaya tanggal</string>
+    <string name="clock_date_format">Format tanggal</string>
+    <string name="clock_date_string_edittext_title">Harus sesuai format tanggal contoh. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Masukan teks</string>
+    <string name="am_pm_clock_normal">Ukuran huruf normal</string>
+    <string name="am_pm_clock_small">Ukuran huruf kecil</string>
+    <string name="am_pm_clock_none">Jangan Tampilkan</string>
+    <string name="clock_date_display_none">Jangan Tampilkan</string>
+    <string name="clock_date_display_small">Ukuran huruf kecil</string>
+    <string name="clock_date_display_normal">Ukuran huruf normal</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Huruf kecil</string>
+    <string name="clock_date_style_uppercase">Huruf besar</string>
+    <string name="clock_date_format_custom">Custom java format</string>
     <!-- Notification count -->
     <!-- Free form -->
     <!-- Power Menu -->

@@ -18,9 +18,9 @@
     android:title="@string/display_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <Preference
-        android:key="weather"
-        android:fragment="mx.xperience.rainbowunicorn.fragments.Weather"
-        android:title="@string/weather_title" />
+        <mx.xperience.rainbowunicorn.preferences.GlobalSettingSwitchPreference
+          android:key="doze_always_on"
+          android:title="@string/tuner_doze_always_on"
+          android:defaultValue="false" />
 
 </PreferenceScreen>

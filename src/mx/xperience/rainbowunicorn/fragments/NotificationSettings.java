@@ -40,6 +40,8 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 
+import com.android.internal.util.xperience.XPerienceUtils;
+
 public class NotificationSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String FLASHLIGHT_ON_CALL = "flashlight_on_call";
@@ -50,6 +52,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.xperience_notifications);
+        PreferenceScreen prefScreen = getPreferenceScreen();
 
        mFlashlightOnCall = (ListPreference) findPreference(FLASHLIGHT_ON_CALL);
         Preference FlashOnCall = findPreference("flashlight_on_call");
@@ -59,7 +62,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mFlashlightOnCall.setSummary(mFlashlightOnCall.getEntry());
         mFlashlightOnCall.setOnPreferenceChangeListener(this);
 
-         if (!XUtils.deviceSupportsFlashLight(getActivity())) {
+         if (!XPerienceUtils.deviceHasFlashlight(getActivity())) {
             prefScreen.removePreference(FlashOnCall);
         }
     }

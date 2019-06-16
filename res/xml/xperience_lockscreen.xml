@@ -55,4 +55,10 @@
         android:summary="@string/fp_unlock_keystore_summary" 
         android:defaultValue="false" /> 
 
+    <mx.xperience.rainbowunicorn.preferences.SecureSettingSwitchPreference
+        android:key="status_bar_locked_on_secure_keyguard"
+        android:title="@string/lockscreen_qs_disabled_title"
+        android:summary="@string/lockscreen_qs_disabled_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>

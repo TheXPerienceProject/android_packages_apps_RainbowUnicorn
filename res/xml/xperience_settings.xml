@@ -58,6 +58,12 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarSettings"
             android:icon="@drawable/ic_xperience_statusbar" />
 
+        <!-- notifications -->
+        <Preference
+            android:key="notification_category"
+            android:title="@string/notifications_title"
+            android:fragment="mx.xperience.rainbowunicorn.fragments.NotificationSettings"
+            android:icon="@drawable/ic_xperience_notification"/>
 
         <!-- lockscreen -->
         <Preference

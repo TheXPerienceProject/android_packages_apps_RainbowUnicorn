@@ -31,12 +31,6 @@
             android:defaultValue="true" />
 
         <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
-            android:key="three_finger_gesture"
-            android:title="@string/three_finger_gesture"
-            android:summary="@string/three_finger_gesture_summary"
-            android:defaultValue="false" />
-
-        <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
             android:key="status_bar_notif_count"
             android:title="@string/status_bar_notif_count_title"
             android:summary="@string/status_bar_notif_count_summary"
@@ -47,6 +41,12 @@
             android:title="@string/free_from"
             android:summary="@string/free_form_summary"
             android:defaultValue="false" />-->
+
+        <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+            android:key="three_finger_gesture"
+            android:title="@string/three_finger_gesture"
+            android:summary="@string/three_finger_gesture_summary"
+            android:defaultValue="false" />
 
         <Preference
             android:key="smart_pixels"

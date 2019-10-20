@@ -63,7 +63,7 @@
             android:title="@string/powermenu_logout"
             android:defaultValue="false" />
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="powermenu_category_visibility"
         android:title="@string/powermenu_category_visibility">
 
@@ -102,5 +102,5 @@
             android:defaultValue="false" />
 
 
-     </PreferenceCategory>
+     </PreferenceCategory>-->
 </PreferenceScreen>

@@ -18,14 +18,14 @@
     android:title="@string/xperience_settings_title" >
 
 	<!--Alessa-->
-        <Preference android:key="xpe_alessa"
+        <!--<Preference android:key="xpe_alessa"
             android:title="@string/alessa_title"
             android:summary="@string/alessa_settings_summary"
 		    android:icon="@drawable/ic_settings_alessa">
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="mx.klozz.xperience.tweaker"
                 android:targetClass="mx.klozz.xperience.tweaker.MainActivity" />
-      </Preference>
+      </Preference>-->
 
 	<!--XPerience Active Display-->
         <!--<Preference android:key="xpe_active_display"
@@ -73,11 +73,11 @@
             android:icon="@drawable/ic_xperience_lockscreen"/>
 
         <!-- Misc -->
-        <Preference
+        <!--<Preference
             android:key="misc_category"
             android:title="@string/misc_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.MiscSettings"
-            android:icon="@drawable/ic_xperience_misc"/>
+            android:icon="@drawable/ic_xperience_misc"/>-->
 			
         <!-- navbar -->
         <Preference

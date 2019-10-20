@@ -25,11 +25,11 @@
              android:targetClass="com.android.systemui.tuner.LockscreenActivity" />
     </Preference>
 
-    <!--<mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+    <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
         android:key="lockscreen_battery_info"
         android:title="@string/lockscreen_battery_info_title"
         android:summary="@string/lockscreen_battery_info_summary"
-        android:defaultValue="true" />-->
+        android:defaultValue="true" />
 
     <!--<mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
         android:key="double_tap_sleep_lockscreen"
@@ -61,9 +61,4 @@
         android:summary="@string/lockscreen_qs_disabled_summary"
         android:defaultValue="false" />-->
 
-    <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
-        android:key="lockscreen_battery_info"
-        android:title="@string/lockscreen_battery_info_title"
-        android:summary="@string/lockscreen_battery_info_summary"
-        android:defaultValue="true" />
 </PreferenceScreen>

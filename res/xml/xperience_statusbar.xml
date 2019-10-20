@@ -25,11 +25,6 @@
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
     </Preference>
 
-    <!--<Preference
-        android:key="battery_settings"
-        android:title="@string/battery_style_category_title"
-        android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarBattery" />
-
    <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
         android:key="network_traffic_state"
         android:title="@string/network_traffic_state_title"
@@ -42,6 +37,18 @@
         android:max="10"
         settings:min="0"
         settings:units="" />
+
+     <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+        android:key="network_traffic_hidearrow"
+        android:title="@string/network_traffic_hidearrow"
+        android:summary="@string/network_traffic_hidearrow_summary"
+        android:dependency="network_traffic_state"
+        android:defaultValue="false" />
+
+    <!--<Preference
+        android:key="battery_settings"
+        android:title="@string/battery_style_category_title"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.StatusBarBattery" />
 
     <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
          android:key="volte_icon"

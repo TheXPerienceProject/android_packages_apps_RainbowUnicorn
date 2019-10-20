@@ -20,7 +20,7 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.preference.Preference;
+import androidx.preference.Preference;
 import android.view.Surface;
 import com.android.settings.R;
 

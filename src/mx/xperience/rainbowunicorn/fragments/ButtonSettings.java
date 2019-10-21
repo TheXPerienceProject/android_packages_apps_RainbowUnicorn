@@ -57,7 +57,7 @@ import com.android.internal.util.hwkeys.ActionUtils;
 
 
 public class ButtonSettings extends ActionFragment implements
-        Preference.OnPreferenceChangeListener {
+        OnPreferenceChangeListener {
 
     private static final String HWKEY_DISABLE = "hardware_keys_disable";
     private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";

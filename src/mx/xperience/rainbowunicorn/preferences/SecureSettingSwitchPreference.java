@@ -17,10 +17,9 @@
 package mx.xperience.rainbowunicorn.preferences;
 
 import android.content.Context;
+import android.provider.Settings;
 import androidx.preference.SwitchPreference;
 import android.util.AttributeSet;
-
-import android.provider.Settings;
 
 public class SecureSettingSwitchPreference extends SwitchPreference {
     public SecureSettingSwitchPreference(Context context, AttributeSet attrs, int defStyle) {

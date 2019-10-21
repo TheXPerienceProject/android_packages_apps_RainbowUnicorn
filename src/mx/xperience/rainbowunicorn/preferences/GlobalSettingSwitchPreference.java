@@ -20,7 +20,6 @@ import android.content.Context;
 import android.provider.Settings;
 import androidx.preference.SwitchPreference;
 import android.util.AttributeSet;
-import android.provider.Settings;
 
 public class GlobalSettingSwitchPreference extends SwitchPreference {
     public GlobalSettingSwitchPreference(Context context, AttributeSet attrs, int defStyle) {

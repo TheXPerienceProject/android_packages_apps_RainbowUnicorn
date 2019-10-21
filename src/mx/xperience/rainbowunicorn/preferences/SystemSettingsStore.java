@@ -17,7 +17,7 @@
 package mx.xperience.rainbowunicorn.preferences;
 
 import android.content.ContentResolver;
-import androidx.preference.PreferenceDataStore;
+import android.preference.PreferenceDataStore;
 import android.provider.Settings;
 
 public class SystemSettingsStore extends android.support.v7.preference.PreferenceDataStore

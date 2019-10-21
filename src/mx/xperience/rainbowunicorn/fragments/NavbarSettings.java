@@ -52,12 +52,12 @@ public class NavbarSettings extends SettingsPreferenceFragment implements OnPref
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.xperience_nabvar);
 
-        mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
+       /* mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
          boolean showing = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.NAVIGATION_BAR_VISIBLE,
                 ActionUtils.hasNavbarByDefault(getActivity()) ? 1 : 0) != 0;
         updateBarVisibleAndUpdatePrefs(showing);
-        mNavbarVisibility.setOnPreferenceChangeListener(this);
+        mNavbarVisibility.setOnPreferenceChangeListener(this);*/
          mHandler = new Handler();
 
     }
@@ -73,10 +73,10 @@ public class NavbarSettings extends SettingsPreferenceFragment implements OnPref
               return false;
           }
           mIsNavSwitchingMode = true;
-          boolean showing = ((Boolean)newValue);
+          /*boolean showing = ((Boolean)newValue);
           Settings.Secure.putInt(getContentResolver(), Settings.Secure.NAVIGATION_BAR_VISIBLE,
                   showing ? 1 : 0);
-          updateBarVisibleAndUpdatePrefs(showing);
+          updateBarVisibleAndUpdatePrefs(showing);*/
           mHandler.postDelayed(new Runnable() {
               @Override
               public void run() {

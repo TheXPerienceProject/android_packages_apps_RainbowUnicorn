@@ -20,8 +20,7 @@ import android.content.ContentResolver;
 import androidx.preference.PreferenceDataStore;
 import android.provider.Settings;
 
-public class SystemSettingsStore extends androidx.preference.PreferenceDataStore
-        implements PreferenceDataStore {
+public class SystemSettingsStore extends PreferenceDataStore {
 
     private ContentResolver mContentResolver;
 

@@ -54,7 +54,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         addPreferencesFromResource(R.xml.xperience_notifications);
         PreferenceScreen prefScreen = getPreferenceScreen();
 
-       mFlashlightOnCall = (ListPreference) findPreference(FLASHLIGHT_ON_CALL);
+/*       mFlashlightOnCall = (ListPreference) findPreference(FLASHLIGHT_ON_CALL);
         Preference FlashOnCall = findPreference("flashlight_on_call");
         int flashlightValue = Settings.System.getInt(getContentResolver(),
                 Settings.System.FLASHLIGHT_ON_CALL, 1);
@@ -64,20 +64,20 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
          if (!XPerienceUtils.deviceHasFlashlight(getActivity())) {
             prefScreen.removePreference(FlashOnCall);
-        }
+        }*/
     }
 
      public boolean onPreferenceChange(Preference preference, Object newValue) {
          ContentResolver resolver = getActivity().getContentResolver();
 
-             if (preference == mFlashlightOnCall) {
+           /*  if (preference == mFlashlightOnCall) {
                int flashlightValue = Integer.parseInt(((String) newValue).toString());
                Settings.System.putInt(resolver,
                      Settings.System.FLASHLIGHT_ON_CALL, flashlightValue);
                mFlashlightOnCall.setValue(String.valueOf(flashlightValue));
                mFlashlightOnCall.setSummary(mFlashlightOnCall.getEntry());
                return true;
-            }
+            }*/
         return false;
     }
 

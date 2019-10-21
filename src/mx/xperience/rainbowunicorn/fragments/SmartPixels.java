@@ -51,14 +51,14 @@ public class SmartPixels extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.smart_pixels);
+/*        addPreferencesFromResource(R.xml.smart_pixels);
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.smart_pixels_info);
 
         resolver = getActivity().getContentResolver();
 
         mSmartPixelsOnPowerSave = (SystemSettingSwitchPreference) findPreference(ON_POWER_SAVE);
 
-        updateDependency();
+        updateDependency();*/
     }
 
     @Override
@@ -77,13 +77,13 @@ public class SmartPixels extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-        updateDependency();
+    /*    final String key = preference.getKey();
+        updateDependency();*/
         return true;
     }
 
     private void updateDependency() {
-        boolean mUseOnPowerSave = (Settings.System.getIntForUser(
+        /*boolean mUseOnPowerSave = (Settings.System.getIntForUser(
                 resolver, Settings.System.SMART_PIXELS_ON_POWER_SAVE,
                 0, UserHandle.USER_CURRENT) == 1);
         PowerManager pm = (PowerManager)getActivity().getSystemService(Context.POWER_SERVICE);
@@ -91,7 +91,7 @@ public class SmartPixels extends SettingsPreferenceFragment implements
             mSmartPixelsOnPowerSave.setEnabled(false);
         } else {
             mSmartPixelsOnPowerSave.setEnabled(true);
-        }
+        }*/
     }
 
 }

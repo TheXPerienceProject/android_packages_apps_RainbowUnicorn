@@ -61,12 +61,12 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        boolean enableSmartPixels = getContext().getResources().
+        /*boolean enableSmartPixels = getContext().getResources().
                 getBoolean(com.android.internal.R.bool.config_enableSmartPixels);
         Preference SmartPixels = findPreference("smart_pixels");
          if (!enableSmartPixels){
             getPreferenceScreen().removePreference(SmartPixels);
-        }
+        }*/
 
     }
 

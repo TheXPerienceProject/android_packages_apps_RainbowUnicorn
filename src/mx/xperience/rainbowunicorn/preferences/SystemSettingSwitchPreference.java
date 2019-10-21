@@ -18,7 +18,7 @@ package mx.xperience.rainbowunicorn.preferences;
 
 import android.content.Context;
 import android.provider.Settings;
-import android.support.v14.preference.SwitchPreference;
+import androidx.preference.SwitchPreference;
 import android.util.AttributeSet;
 
 public class SystemSettingSwitchPreference extends SwitchPreference {
@@ -41,7 +41,7 @@ public class SystemSettingSwitchPreference extends SwitchPreference {
                 // It's already there, so the same as persisting
                 return true;
             }
-            Settings.System.putInt(getContext().getContentResolver(), getKey(), value ? 1 : 0);
+            Settings.System.putInt(getContext().getContentResolver(), preference.getKey(), value ? 1 : 0);
             return true;
         }
         return false;
@@ -53,12 +53,12 @@ public class SystemSettingSwitchPreference extends SwitchPreference {
             return defaultReturnValue;
         }
         return Settings.System.getInt(getContext().getContentResolver(),
-                getKey(), defaultReturnValue ? 1 : 0) != 0;
+                preference.getKey(), defaultReturnValue ? 1 : 0) != 0;
     }
 
     @Override
     protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        setChecked(Settings.System.getString(getContext().getContentResolver(), getKey()) != null ? getPersistedBoolean(isChecked())
+        setChecked(Settings.System.getString(getContext().getContentResolver(), preference.getKey()) != null ? getPersistedBoolean(isChecked())
                 : (Boolean) defaultValue);
     }
 }

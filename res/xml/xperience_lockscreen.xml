@@ -61,4 +61,10 @@
         android:summary="@string/lockscreen_qs_disabled_summary"
         android:defaultValue="false" />-->
 
+
+    <mx.xperience.rainbowunicorn.preferences.SecureSettingSwitchPreference
+        android:key="lockscreen_visualizer_enabled"
+        android:title="@string/lockscreen_visualizer_enable"
+        android:summary="@string/lockscreen_visualizer_enable_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>

@@ -62,8 +62,9 @@
         android:defaultValue="false" />-->
 
 
-    <mx.xperience.rainbowunicorn.preferences.SecureSettingSwitchPreference
+    <mx.xperience.rainbowunicorn.preferences.SecureSettingMasterSwitchPreference
         android:key="lockscreen_visualizer_enabled"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.Visualizer"
         android:title="@string/lockscreen_visualizer_enable"
         android:summary="@string/lockscreen_visualizer_enable_summary"
         android:defaultValue="false" />

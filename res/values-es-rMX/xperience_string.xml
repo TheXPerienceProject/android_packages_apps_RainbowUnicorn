@@ -295,4 +295,14 @@
     <string name="smart_pixels_shift_times_20min">20 minutos</string>
     <string name="smart_pixels_shift_times_30min">30 minutos</string>
     <string name="smart_pixels_shift_times_1h">1 hora</string>
+
+    <!-- Donators -->
+    <string name="donators_title">Lista de donadores</string>
+    <string name="donators_summary">Gracias a todas las personas que han decidido apoyar mi pequeño proyecto a lo largo de los años.</string>
+    <string name="donators_error">Imposible listado de donadores.</string>
+
+    <!-- Changelog -->
+    <string name="changelog_title">Registro de cambios</string>
+    <string name="changelog_summary">Desde la ultima actualización.</string>
+    <string name="changelog_error">Imposible leer lista de cambios.</string>
 </resources>

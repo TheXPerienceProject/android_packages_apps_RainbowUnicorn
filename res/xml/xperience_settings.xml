@@ -100,4 +100,25 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.RecentsSettings"
             android:icon="@drawable/ic_xperience_recents"/> -->
 
+
+    <PreferenceCategory
+        android:key="info_category"
+        android:title="@string/information_category">
+
+    <!-- Donators -->
+    <Preference
+        android:key="donators"
+        android:title="@string/donators_title"
+        android:summary="@string/donators_summary"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.Donators" />
+
+    <!-- Donators -->
+    <Preference
+        android:key="changelog"
+        android:title="@string/changelog_title"
+        android:summary="@string/changelog_summary"
+        android:fragment="mx.xperience.rainbowunicorn.fragments.Changelog" />
+
+	</PreferenceCategory>
+
 </PreferenceScreen>

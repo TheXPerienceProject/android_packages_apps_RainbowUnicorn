@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+-<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2017 The XPerience Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -381,4 +381,14 @@
     <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
     <string name="notification_light_settings">Notifications light</string>
+
+    <!-- Donators -->
+    <string name="donators_title">Donators List</string>
+    <string name="donators_summary">Thanks to all the people who have decided to support my small project over the years.</string>
+    <string name="donators_error">Unable to load donators list</string>
+
+    <!-- Changelog -->
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_summary">Since the last update</string>
+    <string name="changelog_error">Unable to load changelog.</string>
 </resources>

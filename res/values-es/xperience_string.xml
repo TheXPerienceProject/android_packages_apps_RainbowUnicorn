@@ -271,4 +271,22 @@
     <string name="status_bar_battery_percentage_text_next">Aun lado del icono</string>
     <string name="status_bar_battery_percentage_text_inside">Dentro del icono</string>
 
+    <!-- Language options - Volume rocker cursor control -->
+    <string name="cursor_section_header">Cursor</string>
+    <string name="volume_key_cursor_control_title">Control del cursor usando teclas de volumen</string>
+    <string name="volume_key_cursor_control_off">desactivado</string>
+    <string name="volume_key_cursor_control_on">Volumen arriba/abajo mueve el cursor de izquierda/derecha</string>
+    <string name="volume_key_cursor_control_on_reverse">Volumen arriba/abajo mueve el cursor de derecha/izquierda</string>
+
+    <string name="notification_light_settings">Luces de notificación</string>
+
+    <!-- Donators -->
+    <string name="donators_title">Lista de donadores</string>
+    <string name="donators_summary">Gracias a todas las personas que han decidido apoyar mi pequeño proyecto a lo largo de los años.</string>
+    <string name="donators_error">Imposible listado de donadores.</string>
+
+    <!-- Changelog -->
+    <string name="changelog_title">Registro de cambios</string>
+    <string name="changelog_summary">Desde la ultima actualización.</string>
+    <string name="changelog_error">Imposible leer lista de cambios.</string>
 </resources>

@@ -296,6 +296,15 @@
     <string name="smart_pixels_shift_times_30min">30 minutos</string>
     <string name="smart_pixels_shift_times_1h">1 hora</string>
 
+    <!-- Language options - Volume rocker cursor control -->
+    <string name="cursor_section_header">Cursor</string>
+    <string name="volume_key_cursor_control_title">Control del cursor usando teclas de volumen</string>
+    <string name="volume_key_cursor_control_off">desactivado</string>
+    <string name="volume_key_cursor_control_on">Volumen arriba/abajo mueve el cursor de izquierda/derecha</string>
+    <string name="volume_key_cursor_control_on_reverse">Volumen arriba/abajo mueve el cursor de derecha/izquierda</string>
+
+    <string name="notification_light_settings">Luces de notificación</string>
+
     <!-- Donators -->
     <string name="donators_title">Lista de donadores</string>
     <string name="donators_summary">Gracias a todas las personas que han decidido apoyar mi pequeño proyecto a lo largo de los años.</string>

@@ -55,12 +55,14 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
 
     private static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
+    private static final String STATUS_BAR_BATTERY_TEXT_CHARGING = "status_bar_battery_text_charging";
 
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 3;
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
 
     private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarBattery;
+    private SwitchPreference mBatteryCharging;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,11 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBattery.setOnPreferenceChangeListener(this);
+
+        mBatteryCharging = (SwitchPreference) findPreference(STATUS_BAR_BATTERY_TEXT_CHARGING);
+        /*int mChargingText = Settings.System.getInt(resolver,
+               Settings.System.STATUS_BAR_BATTERY_TEXT_CHARGING, 0);*/
+
     }
 
     @Override

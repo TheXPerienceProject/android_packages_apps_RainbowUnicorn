@@ -46,6 +46,7 @@
         <item>@string/status_bar_battery_style_port</item>
         <item>@string/battery_style_dotted_circle</item>
         <item>@string/status_bar_battery_style_pa_circle</item>
+        <item>@string/status_bar_battery_style_cm_circle</item>
         <item>@string/status_bar_battery_style_text</item>
         <item>@string/status_bar_battery_style_hidden</item>
     </string-array>
@@ -54,6 +55,7 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>5</item>
         <item>3</item>
         <item>4</item>
     </string-array>
@@ -62,7 +64,7 @@
     <string-array name="qs_battery_mode_entries">
         <item>@string/battery_percentage_off</item>
         <item>@string/battery_percentage_next</item>
-        <!--<item>@string/battery_percentage_inside</item>-->
+        <item>@string/battery_percentage_inside</item>
         <item>@string/battery_percentage_estimate</item>
     </string-array>
 

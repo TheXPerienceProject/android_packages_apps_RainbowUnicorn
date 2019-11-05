@@ -36,7 +36,8 @@
         android:title="@string/status_bar_battery_percentage_title"
         android:dialogTitle="@string/status_bar_battery_percentage_title"
         android:entries="@array/status_bar_battery_percentage_entries"
-        android:entryValues="@array/status_bar_battery_percentage_values" />
+        android:entryValues="@array/status_bar_battery_percentage_values"
+        android:defaultValue="0" />
 
     <!-- Battery mode -->
     <mx.xperience.rainbowunicorn.preferences.SystemSettingListPreference
@@ -45,5 +46,11 @@
         android:entries="@array/qs_battery_mode_entries"
         android:entryValues="@array/qs_battery_mode_values"
         android:defaultValue="3" />
+
+  <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+      android:key="status_bar_battery_text_charging"
+      android:title="@string/status_bar_battery_text_charging_title"
+      android:summary="@string/status_bar_battery_text_charging_summary"
+      android:defaultValue="true" />
 
 </PreferenceScreen>

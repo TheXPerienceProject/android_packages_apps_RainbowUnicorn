@@ -38,4 +38,12 @@
         android:entries="@array/status_bar_battery_percentage_entries"
         android:entryValues="@array/status_bar_battery_percentage_values" />
 
+    <!-- Battery mode -->
+    <mx.xperience.rainbowunicorn.preferences.SystemSettingListPreference
+        android:key="qs_battery_mode"
+        android:title="@string/battery_percentage_title"
+        android:entries="@array/qs_battery_mode_entries"
+        android:entryValues="@array/qs_battery_mode_values"
+        android:defaultValue="3" />
+
 </PreferenceScreen>

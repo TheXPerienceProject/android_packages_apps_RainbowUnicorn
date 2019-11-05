@@ -66,7 +66,7 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          addPreferencesFromResource(R.xml.statusbar_battery);
-/*         ContentResolver resolver = getActivity().getContentResolver();
+         ContentResolver resolver = getActivity().getContentResolver();
          mStatusBarBatteryShowPercent =
                 (ListPreference) findPreference(SHOW_BATTERY_PERCENT);
          int batteryShowPercent = Settings.System.getInt(resolver,
@@ -76,12 +76,12 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
 
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
-         int batteryStyle = Settings.Secure.getInt(resolver,
-                Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);
+         int batteryStyle = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_BATTERY_STYLE, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
-        mStatusBarBattery.setOnPreferenceChangeListener(this);*/
+        mStatusBarBattery.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -92,7 +92,7 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-  /*      if (preference == mStatusBarBatteryShowPercent) {
+      if (preference == mStatusBarBatteryShowPercent) {
             int batteryShowPercent = Integer.valueOf((String) newValue);
             int index = mStatusBarBatteryShowPercent.findIndexOfValue((String) newValue);
             Settings.System.putInt(
@@ -103,21 +103,21 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
           } else if (preference == mStatusBarBattery) {
               int batteryStyle = Integer.valueOf((String) newValue);
               int index = mStatusBarBattery.findIndexOfValue((String) newValue);
-              Settings.Secure.putInt(resolver,
-                      Settings.Secure.STATUS_BAR_BATTERY_STYLE, batteryStyle);
+              Settings.System.putInt(resolver,
+                      Settings.System.STATUS_BAR_BATTERY_STYLE, batteryStyle);
               mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
               enableStatusBarBatteryDependents(batteryStyle);
               return true;
-        }*/
+        }
         return false;
     }
 
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
-      /*if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT
+      if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT
               || batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN) {
             mStatusBarBatteryShowPercent.setEnabled(false);
         } else {
             mStatusBarBatteryShowPercent.setEnabled(true);
-        }*/
+        }
     }
   }

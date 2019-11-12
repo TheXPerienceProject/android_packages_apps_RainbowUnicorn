@@ -44,13 +44,13 @@
             android:fragment="mx.xperience.rainbowunicorn.fragments.ButtonSettings"
             android:icon="@drawable/ic_xperience_buttons" />
 
-        <!-- Display 
+        <!-- Display
         <Preference
             android:key="display_category"
             android:title="@string/display_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.DisplaySettings"
             android:icon="@drawable/ic_xperience_display"/>-->
-			
+
         <!-- Status Bar -->
         <Preference
             android:key="statusbar_category"
@@ -78,7 +78,7 @@
             android:title="@string/misc_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.MiscSettings"
             android:icon="@drawable/ic_xperience_misc"/>-->
-			
+
         <!-- navbar -->
         <Preference
             android:key="navbar_category"
@@ -87,11 +87,11 @@
             android:icon="@drawable/ic_xperience_navbar"/>
 
         <!-- Power Menu -->
-        <Preference
+        <!--<Preference
             android:key="powermenu_category"
             android:title="@string/powermenu_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.PowerMenuSettings"
-            android:icon="@drawable/ic_xperience_powermenu"/>
+            android:icon="@drawable/ic_xperience_powermenu"/>-->
 
         <!-- Recents
         <Preference

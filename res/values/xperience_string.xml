@@ -62,7 +62,7 @@
 
     <!-- Show navbar -->
     <string name="navigation_bar_enabled_title">Enable</string>
-
+    <string name="navbar_invert_layout_title">Invert layout</string>
 
     <string name="hardware_keys_volume_keys_title">Volume rocker</string>
 

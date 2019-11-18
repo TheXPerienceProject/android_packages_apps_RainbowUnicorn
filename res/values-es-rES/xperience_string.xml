@@ -24,6 +24,8 @@
     <string name="navbar_title">Ajustes de barra de navegación</string>
     <string name="lockscreen_title">Ajustes de pantalla de bloqueo</string>
     <string name="buttons_title">Configuración de botones</string>
+    <string name="notifications_title">Ajuste de notificaciones</string>
+    <string name="information_category">Información</string>
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
     <string name="show_cpu_info">Mostrar información de la CPU</string>
     <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
@@ -42,6 +44,8 @@
     <string name="network_traffic_state_title">Tráfico de red</string>
     <string name="network_traffic_state_summary">Muestra la actividad de red en la barra de estado</string>
     <string name="network_traffic_autohide_threshold_title">Umbral de ocultación automática de la actividad de red (KB/s)</string>
+    <string name="network_traffic_hidearrow">Ocultar flechas</string>
+    <string name="network_traffic_hidearrow_summary">Ocultar las flechas del indicador de tráfico de red</string>
     <!-- Navbar tuner -->
     <string name="navbar_tuner_title">Botones de la barra de navegación</string>
     <!-- Statusbar Tuner -->
@@ -51,6 +55,7 @@
     <string name="tuner_doze_always_on">Siempre encendido</string>
     <!-- Show navbar -->
     <string name="navigation_bar_enabled_title">Activar</string>
+    <string name="navbar_invert_layout_title">Invertir barra de navegación</string>
     <string name="hardware_keys_volume_keys_title">Control de volumen</string>
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">Información de carga en pantalla de bloqueo</string>
@@ -73,9 +78,19 @@
     <!-- Status bar battery style-->
     <string name="status_bar_battery_style_title">Estilo de la batería</string>
     <string name="status_bar_battery_style_port">Vertical</string>
+    <string name="status_bar_battery_style_pa_circle">Círculo ParanoidAndroid</string>
+    <string name="status_bar_battery_style_cm_circle">Círculo CM</string>
     <string name="status_bar_battery_style_circle">Circular</string>
     <string name="status_bar_battery_style_text">Texto</string>
     <string name="status_bar_battery_style_hidden">Oculto</string>
+    <string name="status_bar_battery_text_charging_title">Porcentaje de batería al cargar</string>
+    <string name="status_bar_battery_text_charging_summary">Mostrar siempre porcentaje de batería al cargar</string>
+    <!-- Battery mode -->
+    <string name="battery_percentage_title">Porcentaje de batería</string>
+    <string name="battery_percentage_off">Desabilitado</string>
+    <string name="battery_percentage_next">Habilitado</string>
+    <string name="battery_percentage_inside">Habilitado (icono interior)</string>
+    <string name="battery_percentage_estimate">Habilitado (estimado)</string>
     <!--XPerience Active Display -->
     <string name="ActiveDisplay_title">Pantalla activa XPerience™</string>
     <string name="ActiveDisplay_summary">Pantalla activa es una nueva forma de manejo de notificaciones en Android.</string>
@@ -121,7 +136,7 @@
     <string name="custom_carrier_label_explain">Por favor, introduzca una nueva etiqueta. Déjala en blanco para volver a la etiqueta por defecto.</string>
     <string name="custom_carrier_label_notset">Etiqueta personalizada actualmente no establecida</string>
     <string name="show_carrier_title">Se muestra en</string>
-    <string name="show_carrier_disabled">Oculto</string>
+    <string name="show_carrier_disabled">Ninguna parte</string>
     <string name="show_carrier_keyguard">Sólo en la pantalla de bloqueo</string>
     <string name="show_carrier_statusbar">Sólo en la barra de estado</string>
     <string name="show_carrier_enabled">Pantalla de bloqueo y barra de estado</string>
@@ -236,7 +251,9 @@
     <!-- ANBI -->
     <string name="anbi_title">Toque accidental</string>
     <string name="anbi_summary">Previene la interacción con los botones de navegación mientras se está tocando la pantalla</string>
+    <!-- navbar-->
     <string name="navbar_visibility">Permitir barra de navegación</string>
+    <!--Power menu-->
     <string name="powermenu_category_visibility">Opciones de pantalla de bloqueo</string>
     <string name="powermenu_lockscreen_title">Visibilidad en la pantalla de bloqueo</string>
     <string name="powermenu_lockscreen_summary">Habilitar la capacidad para mostrar y usar el menú de apagado en la pantalla de bloqueo</string>
@@ -258,17 +275,8 @@
     <string name="systemui_theme_style_light">Claro</string>
     <string name="systemui_theme_style_dark">Oscuro</string>
     <string name="system_theme_style_black">Negro</string>
-    <!-- Weather - OmniJaws Settings -->
-    <string name="weather_title">Clima</string>
-    <string name="weather_config_title">Configuración del servicio</string>
-    <string name="header_weather_title">Vista del tiempo en el encabezado</string>
-    <string name="header_weather_summary">Habilitar mostrar el tiempo en la cabecera del panel de notificaciones</string>
-    <string name="weather_icon_pack_title">Paquete de iconos de clima</string>
-    <string name="weather_icon_pack_note">Nota\u003a puede instalar nuevos paquetes de iconos desde la play store buscando \"Chronus icono\"\u003a</string>
-    <!-- Lockscreen weather settings -->
-    <string name="lockscreen_weather_title">Tiempo en la pantalla de bloqueo</string>
-    <string name="lockscreen_weather_summary">Mostrar la condición actual del tiempo y temperatura en lockscreen</string>
-    <string name="lockscreen_items_aod_info_title">Esta configuración de la visibilidad también se aplica a la pantalla de ambiente</string>
+    <string name="system_theme_style_lunar">Lunar</string>
+    <string name="system_theme_style_ilta">Ilta</string>
     <!-- Fingerprint unlock keystore -->
     <string name="fp_unlock_keystore_title">Desbloqueo con huella dactilar</string>
     <string name="fp_unlock_keystore_summary">Desbloqueo con huella digital después de reiniciar el dispositivo sin PIN/contraseña/patrón\nNota: ¡bajo su propio riesgo!</string>
@@ -295,4 +303,37 @@
     <string name="smart_pixels_shift_times_20min">20 minutos</string>
     <string name="smart_pixels_shift_times_30min">30 minutos</string>
     <string name="smart_pixels_shift_times_1h">1 hora</string>
+    <!-- Quick Settings -->
+    <string name="lockscreen_qs_disabled_title">Desactivar los accesos rápidos cuando está bloqueado</string>
+    <string name="lockscreen_qs_disabled_summary">Desactivar la expansión de los ajustes rápidos en la pantalla de bloqueo</string>
+    <!--Notify cat -->
+    <!-- Blink flashlight for incoming calls -->
+    <string name="flashlight_on_call_title">Flash Parpadeante en llamada</string>
+    <string name="flashlight_on_call_disabled">Desactivado</string>
+    <string name="flashlight_on_call_not_dnd">Parpadear linterna solo en modo timbre</string>
+    <string name="flashlight_on_call_dnd">Parpadear linterna solo en modo no molestar</string>
+    <string name="flashlight_on_call_always">Siempre parpadear linterna</string>
+    <!-- Onehand UI mode -->
+    <string name="one_hand_mode_title">Habilitar el uso de modo de una mano</string>
+    <string name="one_hand_mode_summary">Permitir deslizar a derecha o izquierda en la barra de navegación para activar</string>
+    <!-- 4G icon -->
+    <string name="show_fourg_icon_title">Ícono 4G</string>
+    <string name="show_fourg_icon_summary">Mostrar ícono de 4G en lugar de LTE</string>
+    <!-- Show VoLTE icon on statusbar -->
+    <string name="volte_icon_title">Ícono de VoLTE</string>
+    <string name="volte_icon_summary">Mostrar el ícono VoLTE</string>
+    <!-- Language options - Volume rocker cursor control -->
+    <string name="cursor_section_header">Cursor</string>
+    <string name="volume_key_cursor_control_title">Control del cursor con teclas de volumen</string>
+    <string name="volume_key_cursor_control_off">Desactivado</string>
+    <string name="volume_key_cursor_control_on">Volumen arriba/abajo mueve el cursor hacia la izquierda/derecha</string>
+    <string name="volume_key_cursor_control_on_reverse">Volumen arriba/abajo mueve el cursor hacia la derecha/izquierda</string>
+    <string name="notification_light_settings">Led de notificaciones</string>
+    <!-- Donators -->
+    <string name="donators_title">Lista de donantes</string>
+    <string name="donators_summary">Gracias a todas las personas que han decidido apoyar mi pequeño proyecto a lo largo de los años.</string>
+    <!-- Changelog -->
+    <!-- Quick Settings brightness slider -->
+    <!-- Lock screen visualizer -->
+    <!-- Display : Rotation  -->
 </resources>

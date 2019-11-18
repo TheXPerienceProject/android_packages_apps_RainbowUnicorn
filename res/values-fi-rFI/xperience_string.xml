@@ -28,6 +28,7 @@
     <!-- Double Tap Lockscreen to Sleep -->
     <!-- Battery Styles -->
     <!-- Status bar battery style-->
+    <!-- Battery mode -->
     <!--XPerience Active Display -->
     <!-- Ambient music -->
     <!-- Pocket judge -->
@@ -52,12 +53,24 @@
     <!-- Enable keys backlight-->
     <!-- HW Keys customization -->
     <!-- ANBI -->
+    <!-- navbar-->
+    <!--Power menu-->
     <!-- Hide Lockscreen clock, date, & alarm -->
     <!-- Accent picker -->
     <!-- SystemUI theme -->
-    <!-- Weather - OmniJaws Settings -->
-    <!-- Lockscreen weather settings -->
     <!-- Fingerprint unlock keystore -->
     <!-- Battery percentage -->
     <!-- Smart Pixels -->
+    <!-- Quick Settings -->
+    <!--Notify cat -->
+    <!-- Blink flashlight for incoming calls -->
+    <!-- Onehand UI mode -->
+    <!-- 4G icon -->
+    <!-- Show VoLTE icon on statusbar -->
+    <!-- Language options - Volume rocker cursor control -->
+    <!-- Donators -->
+    <!-- Changelog -->
+    <!-- Quick Settings brightness slider -->
+    <!-- Lock screen visualizer -->
+    <!-- Display : Rotation  -->
 </resources>

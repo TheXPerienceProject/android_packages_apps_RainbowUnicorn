@@ -332,8 +332,39 @@
     <!-- Donators -->
     <string name="donators_title">Lista de donantes</string>
     <string name="donators_summary">Gracias a todas las personas que han decidido apoyar mi pequeño proyecto a lo largo de los años.</string>
+    <string name="donators_error">No se puede cargar el texto de los donantes</string>
     <!-- Changelog -->
+    <string name="changelog_title">Registro de cambios</string>
+    <string name="changelog_summary">Desde la última actualización</string>
+    <string name="changelog_error">No se pudo cargar la lista de cambios.</string>
     <!-- Quick Settings brightness slider -->
+    <string name="qs_show_brightness_title">Control deslizante de brillo</string>
+    <string name="qs_show_brightness_summary">Mostrar la barra de brillo en el panel de ajustes rápidos</string>
+    <string name="qs_brightness_position_bottom_title">Mostrar la barra de brillo abajo</string>
+    <string name="qs_brightness_position_bottom_summary">Mostrar la barra de brillo debajo de los ajustes rápidos</string>
     <!-- Lock screen visualizer -->
+    <string name="lockscreen_visualizer_enable">Visualizador de música</string>
+    <string name="lockscreen_visualizer_enable_summary">Mostrar barras de visualizador mientras se reproduce música</string>
+    <string name="lockscreen_autocolor_title">Color automático</string>
+    <string name="lockscreen_autocolor_summary">Sincronizar color con fondo en la pantalla de bloqueo</string>
+    <string name="lockscreen_autocolor_lavalamp">Requiere desactivar la lámpara de lava</string>
+    <string name="lockscreen_lavalamp_title">Lámpara de lava</string>
+    <string name="lockscreen_lavalamp_summary">Usa una suave animación de mezcla de color de lámpara de lava</string>
+    <string name="lockscreen_lavalamp_speed_title">Intervalo de mezcla de color</string>
+    <string name="lockscreen_solid_lines_category">Líneas sólidas</string>
+    <string name="lockscreen_solid_units_count_title">Conteo de líneas</string>
+    <string name="lockscreen_solid_fudge_factor_title">Nivel de cordura</string>
+    <string name="lockscreen_solid_units_opacity_title">Opacidad de líneas</string>
     <!-- Display : Rotation  -->
+    <string name="accelerometer_title">Rotación de pantalla automática</string>
+    <string name="display_rotation_title">Ajustes de rotación</string>
+    <string name="display_rotation_enabled">Rotación automática está activada</string>
+    <string name="display_rotation_disabled">Rotación automática está deshabilitada</string>
+    <string name="display_rotation_unit">grados</string>
+    <string name="display_lockscreen_rotation_title">Rotar la pantalla de bloqueo</string>
+    <string name="display_rotation_category_title">Modos de rotación</string>
+    <string name="display_rotation_0_title">0 grados</string>
+    <string name="display_rotation_90_title">90 grados</string>
+    <string name="display_rotation_180_title">180 grados</string>
+    <string name="display_rotation_270_title">270 grados</string>
 </resources>

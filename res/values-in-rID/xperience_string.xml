@@ -28,9 +28,22 @@
     <!-- Double Tap Lockscreen to Sleep -->
     <!-- Battery Styles -->
     <!-- Status bar battery style-->
+    <string name="status_bar_battery_style_title">Gaya Baterai</string>
+    <string name="status_bar_battery_style_port">Tegak</string>
+    <string name="status_bar_battery_style_circle">Lingkaran</string>
+    <string name="status_bar_battery_style_text">Teks</string>
+    <string name="status_bar_battery_style_hidden">Tersembunyi</string>
     <!-- Battery mode -->
     <!--XPerience Active Display -->
+    <string name="ActiveDisplay_summary">Tampilan Aktif adalah cara baru untuk penanganan pemberitahuan di Android.</string>
     <!-- Ambient music -->
+    <string name="force_ambient_for_media_pref_title">Sedang Diputar</string>
+    <string name="force_ambient_for_media_pref_summary">Tampilkan informasi trek musik saat ini</string>
+    <string name="ambient_ticker_footer">Fitur ini memungkinkan kemampuan untuk menunjukkan informasi trek musik saat ini pada layar kunci dengan atau tanpa tampilan Ambien diaktifkan.\n\n Anda dapat memilih dari dua tata letak, normal dan minimal. Fitur ini mengambil keuntungan dari tampilan Ambient, tidak tergantung di atasnya. Ini dapat disebabkan tanpa mengaktifkan tampilan Ambient dengan menggunakan opsi tampilan.\n\nNormal (paksa) termasuk jam layar kunci, tanggal dan informasi musik.\n\nMinimal pemandangan hanya memuat informasi musik di tengah layar.</string>
+    <string name="force_ambient_for_media_title">Pilih tata letak</string>
+    <string name="force_ambient_for_media_off">Nonaktif</string>
+    <string name="force_ambient_for_media_on_forced">Normal (paksa)</string>
+    <string name="force_ambient_for_media_on_forced_clean">Minimal (paksa)</string>
     <!-- Pocket judge -->
     <!-- Volume category -->
     <!-- Volume rocker music control -->

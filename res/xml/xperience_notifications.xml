@@ -26,12 +26,30 @@
             android:name="classname"
             android:value="com.android.settings.Settings$NotificationAppListActivity" />
     </Preference>
-	
+
 		<!-- Flashlight on incoming calls -->
         <!--<ListPreference
             android:key="flashlight_on_call"
             android:title="@string/flashlight_on_call_title"
             android:entries="@array/flashlight_on_call_entries"
             android:entryValues="@array/flashlight_on_call_values" />-->
+
+            <PreferenceCategory
+                android:key="notification_screen"
+                android:title="@string/notification_screen_title" >
+
+            <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+                android:key="pulse_ambient_light"
+                android:title="@string/pulse_ambient_light_title"
+                android:summary="@string/pulse_ambient_light_summary"
+                android:defaultValue="false" />
+
+           <mx.xperience.rainbowunicorn.colorpicker.ColorPickerPreference
+                android:key="pulse_ambient_light_color"
+                android:title="@string/pulse_ambient_light_color_title"
+                android:persistent="false"
+                android:dependency="pulse_ambient_light"
+                settings:defaultColorValue="0xFF3980FF" />
+        </PreferenceCategory>
 
 </PreferenceScreen>

@@ -367,4 +367,19 @@
     <string name="display_rotation_90_title">90 grados</string>
     <string name="display_rotation_180_title">180 grados</string>
     <string name="display_rotation_270_title">270 grados</string>
+    <!--Edge lighting -->
+    <string name="notification_screen_title">Pantalla</string>
+    <string name="pulse_ambient_light_title">Iluminación del borde</string>
+    <string name="pulse_ambient_light_summary">Enciende los bordes laterales de la pantalla en el pulso de notificación</string>
+    <string name="pulse_ambient_light_color_title">Color de la luz del borde</string>
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Selector de Color</string>
+    <string name="press_color_to_apply">Presiona el color de abajo para aplicar</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Aplicar</string>
+    <string name="color_default">Por defecto</string>
+    <string name="default_string">Por defecto</string>
 </resources>

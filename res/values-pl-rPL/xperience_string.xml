@@ -28,11 +28,6 @@
     <!-- Double Tap Lockscreen to Sleep -->
     <!-- Battery Styles -->
     <!-- Status bar battery style-->
-    <string name="status_bar_battery_style_title">Styl wskaźnika baterii</string>
-    <string name="status_bar_battery_style_port">Pionowo</string>
-    <string name="status_bar_battery_style_circle">Okrąg</string>
-    <string name="status_bar_battery_style_text">Tekst</string>
-    <string name="status_bar_battery_style_hidden">Ukryte</string>
     <!-- Battery mode -->
     <!--XPerience Active Display -->
     <!-- Ambient music -->
@@ -64,11 +59,7 @@
     <!-- Accent picker -->
     <!-- SystemUI theme -->
     <!-- Fingerprint unlock keystore -->
-    <string name="fp_unlock_keystore_title">Odblokowywanie odciskiem palca</string>
-    <string name="fp_unlock_keystore_summary">Odblokuj urządzenie za pomocą odcisku palca po ponownym uruchomieniu, bez podawania kodu PIN/hasła/wzoru\nUwaga: na własne ryzyko!</string>
     <!-- Battery percentage -->
-    <string name="status_bar_battery_percentage_title">Procent baterii</string>
-    <string name="status_bar_battery_percentage_default">Ukryte</string>
     <!-- Smart Pixels -->
     <!-- Quick Settings -->
     <!--Notify cat -->
@@ -82,4 +73,6 @@
     <!-- Quick Settings brightness slider -->
     <!-- Lock screen visualizer -->
     <!-- Display : Rotation  -->
+    <!--Edge lighting -->
+    <!-- Color Picker -->
 </resources>

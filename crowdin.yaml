@@ -1,7 +1,7 @@
 preserve_hierarchy: true
 
 files:
-  - source: 'res/values/xperience_strings.xml'
+  - source: 'res/values/xperience_string.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
 languages_mapping: &anchor
       android_code:

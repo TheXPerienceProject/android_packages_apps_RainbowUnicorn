@@ -43,14 +43,17 @@ import com.android.settings.R;
 import com.android.internal.util.xperience.XPerienceUtils;
 
 import mx.xperience.rainbowunicorn.colorpicker.ColorPickerPreference;
+import mx.xperience.rainbowunicorn.preferences.CustomSeekBarPreference;
 
 public class NotificationSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String FLASHLIGHT_ON_CALL = "flashlight_on_call";
     private static final String PULSE_AMBIENT_LIGHT_COLOR = "pulse_ambient_light_color";
+    private static final String PULSE_AMBIENT_LIGHT_DURATION = "pulse_ambient_light_duration";
 
     private ListPreference mFlashlightOnCall;
     private ColorPickerPreference mEdgeLightColorPreference;
+    private CustomSeekBarPreference mEdgeLightDurationPreference;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -74,14 +77,21 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         int edgeLightColor = Settings.System.getInt(getContentResolver(),
                 Settings.System.PULSE_AMBIENT_LIGHT_COLOR, 0xFF280022);
         mEdgeLightColorPreference.setNewPreviewColor(edgeLightColor);
-        #mEdgeLightColorPreference.setAlphaSliderEnabled(false);
+        /*#mEdgeLightColorPreference.setAlphaSliderEnabled(false);*/
         String edgeLightColorHex = String.format("#%08x", (0xFF280022 & edgeLightColor));
-        if (edgeLightColorHex.equals("#ff3980ff")) {
+        if (edgeLightColorHex.equals("#ff280022")) {
             mEdgeLightColorPreference.setSummary(R.string.default_string);
         } else {
             mEdgeLightColorPreference.setSummary(edgeLightColorHex);
         }
         mEdgeLightColorPreference.setOnPreferenceChangeListener(this);
+
+        /*EdgeLightDuration*/
+        mEdgeLightDurationPreference = (CustomSeekBarPreference) findPreference(PULSE_AMBIENT_LIGHT_DURATION);
+        int lightDuration = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.PULSE_AMBIENT_LIGHT_DURATION, 2, UserHandle.USER_CURRENT);
+        mEdgeLightDurationPreference.setValue(lightDuration);
+        mEdgeLightDurationPreference.setOnPreferenceChangeListener(this);
     }
 
      public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -107,7 +117,12 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             Settings.System.putInt(getContentResolver(),
                     Settings.System.PULSE_AMBIENT_LIGHT_COLOR, intHex);
             return true;
-		}
+        } else if (preference == mEdgeLightDurationPreference) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.PULSE_AMBIENT_LIGHT_DURATION, value, UserHandle.USER_CURRENT);
+            return true;
+        }
         return false;
     }
 

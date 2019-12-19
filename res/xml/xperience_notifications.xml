@@ -47,7 +47,6 @@
            <mx.xperience.rainbowunicorn.colorpicker.ColorPickerPreference
                 android:key="pulse_ambient_light_color"
                 android:title="@string/pulse_ambient_light_color_title"
-                android:persistent="false"
                 android:dependency="pulse_ambient_light"
                 settings:defaultColorValue="0xFF280022" />
 
@@ -57,6 +56,16 @@
                 android:summary="@string/pulse_ambient_light_auto_color_summary"
                 android:dependency="pulse_ambient_light"
                 android:defaultValue="false" />
+
+            <mx.xperience.rainbowunicorn.preferences.CustomSeekBarPreference
+                android:key="pulse_ambient_light_duration"
+                android:title="@string/pulse_ambient_light_duration_title"
+                android:persistent="false"
+                android:defaultValue="2"
+                android:max="10"
+                settings:min="1"
+                settings:units="sec"
+                android:dependency="pulse_ambient_light" />
         </PreferenceCategory>
 
 </PreferenceScreen>

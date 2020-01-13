@@ -284,7 +284,7 @@
     <string name="status_bar_battery_percentage_title">Porcentaje de batería</string>
     <string name="status_bar_battery_percentage_default">Oculto</string>
     <string name="status_bar_battery_percentage_text_next">Junto al icono</string>
-    <string name="status_bar_battery_percentage_text_inside">Dentro del icono</string>
+    <!--<string name="status_bar_battery_percentage_text_inside">Inside the icon</string>-->
     <!-- Smart Pixels -->
     <string name="smart_pixels_title">Píxeles inteligentes</string>
     <string name="smart_pixels_enable_title">Habilitar píxeles inteligentes</string>
@@ -372,6 +372,9 @@
     <string name="pulse_ambient_light_title">Iluminación del borde</string>
     <string name="pulse_ambient_light_summary">Enciende los bordes laterales de la pantalla en el pulso de notificación</string>
     <string name="pulse_ambient_light_color_title">Color de la luz del borde</string>
+    <string name="pulse_ambient_light_auto_color_title">Color automático</string>
+    <string name="pulse_ambient_light_auto_color_summary">Establece el color de la luz del borde al color primario de tu fondo de pantalla</string>
+    <string name="pulse_ambient_light_duration_title">Duración de las luces</string>
     <!-- Color Picker -->
     <string name="dialog_color_picker">Selector de Color</string>
     <string name="press_color_to_apply">Presiona el color de abajo para aplicar</string>
@@ -382,4 +385,7 @@
     <string name="set">Aplicar</string>
     <string name="color_default">Por defecto</string>
     <string name="default_string">Por defecto</string>
+    <!-- Ambient visualizer -->
+    <string name="ambient_visualizer_title">Mostrar en pantalla ambiente</string>
+    <string name="ambient_visualizer_summary">Mostrar las barras de visualización en la pantalla ambiente</string>
 </resources>

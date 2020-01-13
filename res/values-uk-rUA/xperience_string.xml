@@ -60,6 +60,7 @@
     <!-- SystemUI theme -->
     <!-- Fingerprint unlock keystore -->
     <!-- Battery percentage -->
+    <!--<string name="status_bar_battery_percentage_text_inside">Inside the icon</string>-->
     <!-- Smart Pixels -->
     <!-- Quick Settings -->
     <!--Notify cat -->
@@ -75,4 +76,5 @@
     <!-- Display : Rotation  -->
     <!--Edge lighting -->
     <!-- Color Picker -->
+    <!-- Ambient visualizer -->
 </resources>

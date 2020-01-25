@@ -388,4 +388,20 @@
     <!-- Ambient visualizer -->
     <string name="ambient_visualizer_title">Mostrar en pantalla ambiente</string>
     <string name="ambient_visualizer_summary">Mostrar las barras de visualización en la pantalla ambiente</string>
+    <!-- QS header image -->
+    <string name="status_bar_custom_header_title">Imagen del encabezado</string>
+    <string name="status_bar_custom_header_summary">Usar una imagen personalizada para la cabecera QS</string>
+    <string name="custom_header_provider_title">Tipo de imagen</string>
+    <string name="daylight_header_provider_title">Automático (basado en la hora)</string>
+    <string name="file_header_provider_title">Estático</string>
+    <string name="daylight_header_pack_title">Colección de imágenes</string>
+    <string name="header_provider_disabled">Desactivado</string>
+    <string name="custom_header_pick_title">Elegir imagen de la colección</string>
+    <string name="custom_header_pick_summary">Seleccione una imagen de colecciones de imágenes preinstaladas</string>
+    <string name="file_header_select_title">Elegir imagen del almacenamiento</string>
+    <string name="file_header_select_summary">Seleccione una imagen del almacenamiento interno</string>
+    <string name="status_bar_custom_header_shadow_title">Imagen oscura</string>
+    <!-- Old mobile type icons -->
+    <string name="use_old_mobiletype_title">Icono pequeño de tipo de red móvil</string>
+    <string name="use_old_mobiletype_summary">Muestra el icono del tipo de señal en la parte superior del indicador de señal</string>
 </resources>

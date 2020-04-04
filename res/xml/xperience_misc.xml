@@ -42,17 +42,17 @@
             android:summary="@string/free_form_summary"
             android:defaultValue="false" />
 
-        <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
-            android:key="three_finger_gesture"
-            android:title="@string/three_finger_gesture"
-            android:summary="@string/three_finger_gesture_summary"
-            android:defaultValue="false" />
 
         <Preference
             android:key="smart_pixels"
             android:title="@string/smart_pixels_title"
             android:fragment="mx.xperience.rainbowunicorn.fragments.SmartPixels" />-->
 
+        <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
+            android:key="three_finger_gesture"
+            android:title="@string/three_finger_gesture"
+            android:summary="@string/three_finger_gesture_summary"
+            android:defaultValue="false" />
 
         <mx.xperience.rainbowunicorn.preferences.SystemSettingIntListPreference
             android:key="qs_system_info"

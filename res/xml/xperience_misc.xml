@@ -40,7 +40,7 @@
             android:key="enable_freeform_support"
             android:title="@string/free_from"
             android:summary="@string/free_form_summary"
-            android:defaultValue="false" />-->
+            android:defaultValue="false" />
 
         <mx.xperience.rainbowunicorn.preferences.SystemSettingSwitchPreference
             android:key="three_finger_gesture"
@@ -51,6 +51,15 @@
         <Preference
             android:key="smart_pixels"
             android:title="@string/smart_pixels_title"
-            android:fragment="mx.xperience.rainbowunicorn.fragments.SmartPixels" />
+            android:fragment="mx.xperience.rainbowunicorn.fragments.SmartPixels" />-->
+
+
+        <mx.xperience.rainbowunicorn.preferences.SystemSettingIntListPreference
+            android:key="qs_system_info"
+            android:title="@string/qs_system_info_title"
+            android:entries="@array/qs_system_info_entries"
+            android:entryValues="@array/qs_system_info_values"
+            android:defaultValue="0"
+            android:summary="%s" />
 
 </PreferenceScreen>

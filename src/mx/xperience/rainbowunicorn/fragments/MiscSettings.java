@@ -44,6 +44,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import android.util.Log;
 
+import mx.xperience.rainbowunicorn.preferences.SystemSettingListPreference;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;

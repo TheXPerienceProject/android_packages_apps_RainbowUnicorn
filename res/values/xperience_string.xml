@@ -310,7 +310,6 @@
     <string name="ActiveDisplay_summary">Active Display is a new way of handling notifications in Android.</string>
 
     <!--XPerience custom settings -->
-    <string name="xperience_settings_title">XPerience™ Settings</string>
     <string name="xperience_settings_summary">Customize ROM features</string> 
 
    

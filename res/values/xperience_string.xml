@@ -14,65 +14,16 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Settings Titles-->
-    <string name="xperience_settings_title">XPerience™ Settings</string>
-    <string name="statusbar_title">Status Bar </string>
-    <string name="display_title">Display Settings </string>
-    <string name="recents_title">Recents Settings</string>
-    <string name="misc_title">Miscellaneous Settings</string>
-    <string name="navbar_title">Nabvar Settings</string>
-    <string name="lockscreen_title">LockScreen Settings</string>
-    <string name="buttons_title">Buttons Settings</string>
-    <string name="notifications_title">Notification Settings</string>
-    <string name="information_category">Information category</string>
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <string name="xpe_firmware_version">XPerience Version</string>
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <string name="xpe_build_code">XPerience Codename</string>
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <string name="build_channel">Channel</string>
 
-    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
-    <string name="show_cpu_info">Show CPU info</string>
-    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
-    <string name="show_cpu_info_summary">Screen overlay showing current CPU info</string>
-
-    <!-- Recents panel settings -->
-    <string name="show_clear_all_recents_button_title">Clear all button</string>
-    <string name="show_clear_all_recents_button_summary">Show clear all button</string>
-    <string name="recents_clear_all_location_title">Clear all location</string>
-    <string name="recents_clear_all_location_top_right">Top right</string>
-    <string name="recents_clear_all_location_top_left">Top left</string>
-    <string name="recents_clear_all_location_top_center">Top center</string>
-    <string name="recents_clear_all_location_bottom_right">Bottom right</string>
-    <string name="recents_clear_all_location_bottom_left">Bottom left</string>
-    <string name="recents_clear_all_location_bottom_center">Bottom center</string>
-
-    <!-- Statusbar net monitor -->
-    <string name="network_traffic_state_title">Network traffic</string>
-    <string name="network_traffic_state_summary">Show net activity in statusbar</string>
-    <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
-    <string name="network_traffic_hidearrow">Hide arrows</string>
-    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
-
-    <!-- Navbar tuner -->
-    <string name="navbar_tuner_title">Navbar buttons</string>
-
-    <!-- Statusbar Tuner -->
-    <string name="statusbar_items_title">Statusbar items</string>
-
-    <!--Lockscreen tuner-->
-    <string name="lockscreen_tuner_title">Lockscreen shortcuts</string>
-
-    <string name="tuner_doze_always_on">Always ON</string>
-
-    <!-- Show navbar -->
-    <string name="navigation_bar_enabled_title">Enable</string>
-    <string name="navbar_invert_layout_title">Invert layout</string>
-
-    <string name="hardware_keys_volume_keys_title">Volume rocker</string>
-
-    <!-- Lockscreen battery info indicator  -->
-    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
-    <string name="lockscreen_battery_info_summary">Display negociated charger max current and voltage and battery temperature on lockscreen while charging</string>
-
-    <!-- Double Tap Lockscreen to Sleep -->
-    <string name="double_tap_to_sleep_lockscreen_title">Lockscreen</string>
-    <string name="double_tap_to_sleep_lockscreen_summary">Double tap on the top third or bottom shortcut area of the lock screen to put the device to sleep</string>
+    <!-- ANBI -->
+    <string name="anbi_title">Accidental touch</string>
+    <string name="anbi_summary">Prevent interaction with navigation buttons while the screen is being touched</string>
 
     <!-- Battery Styles -->
     <string name="battery_style_title">Battery icon style</string>
@@ -104,58 +55,6 @@
     <string name="battery_percentage_inside">Enabled (inside icon)</string>
     <string name="battery_percentage_estimate">Enabled (estimate)</string>
 
-    <!--XPerience Active Display -->
-    <string name="ActiveDisplay_title">XPerience™ Active Display</string>
-    <string name="ActiveDisplay_summary">Active Display is a new way of handling notifications in Android.</string>
-
-    <!-- Ambient music -->
-    <string name="force_ambient_for_media_pref_title">Now playing</string>
-    <string name="force_ambient_for_media_pref_summary">Show current music track information</string>
-    <string name="ambient_ticker_footer">This feature allows for the ability to show the current music track info on the lockscreen with or without Ambient display enabled.\n\nYou can select from two layouts, normal and minimal. While this feature takes advantage of ambient display, it does not depend on it. It can be triggered without having ambient display enabled by using the (forced) options.\n\nNormal view includes the lockscreen clock, date and music information.\n\nMinimal view includes just the music information at the center of the screen.</string>
-    <string name="force_ambient_for_media_title">Select layout</string>
-    <string name="force_ambient_for_media_off">Disabled</string>
-    <string name="force_ambient_for_media_on">Normal</string>
-    <string name="force_ambient_for_media_on_forced">Normal (forced)</string>
-    <string name="force_ambient_for_media_on_forced_clean">Minimal (forced)</string>
-
-    <!-- Pocket judge -->
-    <string name="pocket_judge_title">Pocket detection</string>
-    <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
-
-    <!-- Volume category -->
-    <string name="volume_category">Volume Rocker</string>
-
-    <!-- Volume rocker music control -->
-    <string name="volume_button_music_control_title">Playback control</string>
-    <string name="volume_button_music_control_summary">When the screen is off, long-pressing the volume keys will skip music tracks</string>
-    <!-- Volume rocker wake -->
-    <string name="volume_rocker_wake_title">Volume wake</string>
-    <string name="volume_rocker_wake_summary">Wake your device up by pressing the volume keys</string>
-
-    <!-- Navigation bar theme -->
-    <string name="navbar_theme_title">Theme</string>
-    <string name="navbar_theme_default">Default</string>
-    <string name="navbar_theme_pixel" translatable="false">Pixel</string>
-    <string name="navbar_theme_pixel_hola" translatable="false">Pixel Hola</string>
-    <string name="navbar_theme_samsung" translatable="false">Samsung</string>
-    <string name="navbar_theme_xperia" translatable="false">XPERIA</string>
-    <string name="navbar_theme_plusone" translatable="false">Plus One</string>
-
-    <!-- System default animation -->
-    <string name="system_default_animation_title">Android P animation style</string>
-    <string name="system_default_animation_summary">Enable Android P \"Default\" animations</string>
-
-    <!-- Show 4G instead of LTE -->
-    <string name="show_4g_title">Show 4G</string>
-    <string name="show_4g_summary">Show 4G instead of LTE in signal icons</string>
-
-    <!-- Statusbar logo -->
-    <string name="status_bar_logo_title">XPerience Shield</string>
-    <string name="status_bar_logo_dialog_title">XPerience shield logo position</string>
-    <string name="status_bar_logo_disabled">Disabled</string>
-    <string name="status_bar_logo_left">Left</string>
-    <string name="status_bar_logo_right">Right</string>
-
     <!-- Carrier Label -->
     <string name="carrier_category">Carrier label</string>
     <string name="carrier_options">Select display locations</string>
@@ -168,79 +67,20 @@
     <string name="show_carrier_statusbar">Statusbar only</string>
     <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
 
-    <!-- Statusbar ticker -->
-    <string name="ticker_mode_title">Statusbar notification ticker</string>
-    <string name="ticker_disabled">Disabled</string>
-    <string name="ticker_enabled">Notification ticker</string>
-    <string name="ticker_media_enabled">Notification and music ticker</string>
+    <!-- Double Tap Lockscreen to Sleep -->
+    <string name="double_tap_to_sleep_lockscreen_title">Lockscreen</string>
+    <string name="double_tap_to_sleep_lockscreen_summary">Double tap on the top third or bottom shortcut area of the lock screen to put the device to sleep</string>
 
-    <!-- Three-fingers-swipe to screenshot -->
-    <string name="three_finger_gesture">Three Finger Gesture</string>
-    <string name="three_finger_gesture_summary">Swipe 3 fingers to take a screenshot</string>
+    <!-- Face unlock deprecated on Q -->
+    <string name="face_auto_unlock_title">Face auto unlock</string>
+    <string name="face_auto_unlock_summary">Dismiss lockscreen after face unlocking</string>
 
-    <!-- Status bar clock options -->
-    <string name="status_bar_clock">Clock and Date</string>
-    <string name="status_bar_clock_summary">Configure statusbar clock and date appearance</string>
-    <string name="clock_title_enable">Alignment</string>
-    <string name="clock_enabled">Enabled</string>
-    <string name="clock_disabled">Disabled</string>
-    <string name="status_bar_clock_style_reset">Reset color</string>
-    <string name="status_bar_show_clock_title">Show clock and date</string>
-    <string name="status_bar_clock_seconds_title">Show seconds</string>
-    <string name="status_bar_am_pm_title">AM/PM</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="enable_clock_weekday">Day of the week</string>
-    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
-    <string name="right_clock">Right clock</string>
-    <string name="left_clock">Left clock</string>
-    <string name="dont_show">Don\'t show</string>
-    <string name="clock_date_display">Date</string>
-    <string name="clock_date_display_summary">Display custom date before the clock</string>
-    <string name="clock_date_style">Date style</string>
-    <string name="clock_date_format">Date format</string>
-    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
-    <string name="clock_date_string_edittext_summary">Enter string</string>
-    <string name="am_pm_clock_normal">Normal font size</string>
-    <string name="am_pm_clock_small">Small font size</string>
-    <string name="am_pm_clock_none">Don\'t show</string>
-    <string name="clock_date_display_none">Don\'t show</string>
-    <string name="clock_date_display_small">Small font size</string>
-    <string name="clock_date_display_normal">Normal font size</string>
-    <string name="clock_date_style_normal">Normal</string>
-    <string name="clock_date_style_lowercase">Lowercase</string>
-    <string name="clock_date_style_uppercase">Uppercase</string>
-    <string name="clock_date_format_custom">Custom java format</string>
-    <string name="clock_date_right">Right of time</string>
-    <string name="clock_date_left">Left of time</string>
-    <string name="clock_date_position">Date position</string>
-
-    <!-- Notification count -->
-    <string name="status_bar_notif_count_title">Show notification count</string>
-    <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
-
-   <!-- Free form -->
+    <!-- Free form -->
     <string name="free_from">Free form Multi-window</string>
     <string name="free_form_summary">This mode allows Android to present apps as floating windows that can be moved and resized at will by the user.</string>
 
-    <!-- Power Menu -->
-    <string name="powermenu_title">Power Menu Settings</string>
-    <string name="powermenu_airplane_title">Airplane mode</string>
-    <string name="powermenu_screenshot_title">Screenshot</string>
-    <string name="powermenu_advanced_reboot_title">Advanced reboot</string>
-    <string name="powermenu_reboot_title">Reboot</string>
-    <string name="powermenu_screenshot">Screenshot</string>
-    <string name="powermenu_power">Power</string>
-    <string name="powermenu_restart">Restart</string>
-    <string name="powermenu_restart_recovery">Advanced restart</string>
-    <string name="powermenu_airplane">Airplane</string>
-    <string name="powermenu_settings">Settings</string>
-    <string name="powermenu_lockdown">Lock Down</string>
-    <string name="powermenu_soundpanel">Sound Panel</string>
-    <string name="powermenu_users">Users</string>
-    <string name="powermenu_logout">Logout</string>
-
-    <string name="face_auto_unlock_title">Face auto unlock</string>
-    <string name="face_auto_unlock_summary">Dismiss lockscreen after face unlocking</string>
+    <!-- Hardware buttons -->
+    <string name="hardware_keys_volume_keys_title">Volume rocker</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_category">Hardware keys</string>
@@ -295,10 +135,185 @@
     <string name="hardware_keys_double_tap_title">Double tap action</string>
     <string name="hardware_keys_disable_title">Disable keys</string>
 
-    <!-- ANBI -->
-    <string name="anbi_title">Accidental touch</string>
-    <string name="anbi_summary">Prevent interaction with navigation buttons while the screen is being touched</string>
+    <!--Lockscreen tuner-->
+    <string name="lockscreen_tuner_title">Lockscreen shortcuts</string>
+    
+    <string name="tuner_doze_always_on">Always ON</string>
 
+    <!-- Lockscreen battery info indicator  -->
+    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
+    <string name="lockscreen_battery_info_summary">Display negociated charger max current and voltage and battery temperature on lockscreen while charging</string>
+
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Navbar buttons</string>
+
+    <!-- Navigation bar theme -->
+    <string name="navbar_theme_title">Theme</string>
+    <string name="navbar_theme_default">Default</string>
+    <string name="navbar_theme_pixel" translatable="false">Pixel</string>
+    <string name="navbar_theme_pixel_hola" translatable="false">Pixel Hola</string>
+    <string name="navbar_theme_samsung" translatable="false">Samsung</string>
+    <string name="navbar_theme_xperia" translatable="false">XPERIA</string>
+    <string name="navbar_theme_plusone" translatable="false">Plus One</string>
+
+    <!-- Notification count -->
+    <string name="status_bar_notif_count_title">Show notification count</string>
+    <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
+
+    <!-- Pocket judge -->
+    <string name="pocket_judge_title">Pocket detection</string>
+    <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
+
+    <!-- Power Menu -->
+    <string name="powermenu_title">Power Menu Settings</string>
+    <string name="powermenu_airplane_title">Airplane mode</string>
+    <string name="powermenu_screenshot_title">Screenshot</string>
+    <string name="powermenu_advanced_reboot_title">Advanced reboot</string>
+    <string name="powermenu_reboot_title">Reboot</string>
+    <string name="powermenu_screenshot">Screenshot</string>
+    <string name="powermenu_power">Power</string>
+    <string name="powermenu_restart">Restart</string>
+    <string name="powermenu_restart_recovery">Advanced restart</string>
+    <string name="powermenu_airplane">Airplane</string>
+    <string name="powermenu_settings">Settings</string>
+    <string name="powermenu_lockdown">Lock Down</string>
+    <string name="powermenu_soundpanel">Sound Panel</string>
+    <string name="powermenu_users">Users</string>
+    <string name="powermenu_logout">Logout</string>
+
+    <!-- Quick unlock -->
+    <string name="unlock_quick_unlock_control_title">Quick unlock</string>
+    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
+
+    <!-- Recents panel settings -->
+    <string name="show_clear_all_recents_button_title">Clear all button</string>
+    <string name="show_clear_all_recents_button_summary">Show clear all button</string>
+    <string name="recents_clear_all_location_title">Clear all location</string>
+    <string name="recents_clear_all_location_top_right">Top right</string>
+    <string name="recents_clear_all_location_top_left">Top left</string>
+    <string name="recents_clear_all_location_top_center">Top center</string>
+    <string name="recents_clear_all_location_bottom_right">Bottom right</string>
+    <string name="recents_clear_all_location_bottom_left">Bottom left</string>
+    <string name="recents_clear_all_location_bottom_center">Bottom center</string>
+
+    <!--Reset feature -->
+    <string name="reset_all_settings">RESET ALL</string>
+    <string name="reset_selected_settings">RESET SELECTED</string>
+    <string name="reset_settings_title">Feature preferences</string>
+    <string name="reset_settings_summary">Reset XPerience feature preferences</string>
+    <string name="keywords_settings_reset">reset</string>
+
+    <!-- Settings Titles-->
+    <string name="xperience_settings_title">XPerience™ Settings</string>
+    <string name="statusbar_title">Status Bar </string>
+    <string name="display_title">Display Settings </string>
+    <string name="recents_title">Recents Settings</string>
+    <string name="misc_title">Miscellaneous Settings</string>
+    <string name="navbar_title">Nabvar Settings</string>
+    <string name="lockscreen_title">LockScreen Settings</string>
+    <string name="buttons_title">Buttons Settings</string>
+    <string name="notifications_title">Notification Settings</string>
+    <string name="information_category">Information category</string>
+
+    <!-- Show navbar -->
+    <string name="navigation_bar_enabled_title">Enable</string>
+    <string name="navbar_invert_layout_title">Invert layout</string>
+
+   <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Network traffic</string>
+    <string name="network_traffic_state_summary">Show net activity in statusbar</string>
+    <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
+    <string name="network_traffic_hidearrow">Hide arrows</string>
+    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
+
+    <!-- Statusbar Tuner -->
+    <string name="statusbar_items_title">Statusbar items</string>
+
+    <!-- System default animation deprecate on Q-->
+    <string name="system_default_animation_title">Android P animation style</string>
+    <string name="system_default_animation_summary">Enable Android P \"Default\" animations</string>
+
+    <!-- Show 4G instead of LTE -->
+    <string name="show_4g_title">Show 4G</string>
+    <string name="show_4g_summary">Show 4G instead of LTE in signal icons</string>
+
+    <!-- Statusbar logo -->
+    <string name="status_bar_logo_title">XPerience Shield</string>
+    <string name="status_bar_logo_dialog_title">XPerience shield logo position</string>
+    <string name="status_bar_logo_disabled">Disabled</string>
+    <string name="status_bar_logo_left">Left</string>
+    <string name="status_bar_logo_right">Right</string>
+
+    <!-- Statusbar ticker -->
+    <string name="ticker_mode_title">Statusbar notification ticker</string>
+    <string name="ticker_disabled">Disabled</string>
+    <string name="ticker_enabled">Notification ticker</string>
+    <string name="ticker_media_enabled">Notification and music ticker</string>
+
+    <!-- Status bar clock options -->
+    <string name="status_bar_clock">Clock and Date</string>
+    <string name="status_bar_clock_summary">Configure statusbar clock and date appearance</string>
+    <string name="clock_title_enable">Alignment</string>
+    <string name="clock_enabled">Enabled</string>
+    <string name="clock_disabled">Disabled</string>
+    <string name="status_bar_clock_style_reset">Reset color</string>
+    <string name="status_bar_show_clock_title">Show clock and date</string>
+    <string name="status_bar_clock_seconds_title">Show seconds</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="enable_clock_weekday">Day of the week</string>
+    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
+    <string name="right_clock">Right clock</string>
+    <string name="left_clock">Left clock</string>
+    <string name="dont_show">Don\'t show</string>
+    <string name="clock_date_display">Date</string>
+    <string name="clock_date_display_summary">Display custom date before the clock</string>
+    <string name="clock_date_style">Date style</string>
+    <string name="clock_date_format">Date format</string>
+    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Enter string</string>
+    <string name="am_pm_clock_normal">Normal font size</string>
+    <string name="am_pm_clock_small">Small font size</string>
+    <string name="am_pm_clock_none">Don\'t show</string>
+    <string name="clock_date_display_none">Don\'t show</string>
+    <string name="clock_date_display_small">Small font size</string>
+    <string name="clock_date_display_normal">Normal font size</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Lowercase</string>
+    <string name="clock_date_style_uppercase">Uppercase</string>
+    <string name="clock_date_format_custom">Custom java format</string>
+    <string name="clock_date_right">Right of time</string>
+    <string name="clock_date_left">Left of time</string>
+    <string name="clock_date_position">Date position</string>
+
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Three Finger Gesture</string>
+    <string name="three_finger_gesture_summary">Swipe 3 fingers to take a screenshot</string>
+
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">Show CPU info</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">Screen overlay showing current CPU info</string>
+
+    <!-- Volume category -->
+    <string name="volume_category">Volume Rocker</string>
+
+    <!-- Volume rocker music control -->
+    <string name="volume_button_music_control_title">Playback control</string>
+    <string name="volume_button_music_control_summary">When the screen is off, long-pressing the volume keys will skip music tracks</string>
+    <!-- Volume rocker wake -->
+    <string name="volume_rocker_wake_title">Volume wake</string>
+    <string name="volume_rocker_wake_summary">Wake your device up by pressing the volume keys</string>
+
+     <!--XPerience Active Display -->
+    <string name="ActiveDisplay_title">XPerience™ Active Display</string>
+    <string name="ActiveDisplay_summary">Active Display is a new way of handling notifications in Android.</string>
+
+    <!--XPerience custom settings -->
+    <string name="xperience_settings_title">XPerience™ Settings</string>
+    <string name="xperience_settings_summary">Customize ROM features</string> 
+
+   
     <!-- navbar-->
     <string name="navbar_visibility">Allow navigation bar</string>
 
@@ -503,5 +518,32 @@
     <string name="power_menu_animation_translucent_top">Translucent (top)</string>
     <string name="power_menu_animation_translucent_bottom">Translucent (bottom)</string>
     <string name="power_menu_animation_rotate">Rotate</string>
+
+    <!-- Hardware info -->
+    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
+    <string name="platform_revision">Platform</string>
+    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
+    <string name="total_ram">Total RAM</string>
+
+    <!-- SELinux status -->
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_status_disabled">Disabled</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
+
+    <!-- Adaptive Playback -->
+    <string name="adaptive_playback_screen_title">Adaptive playback</string>
+    <string name="adaptive_playback_timeout_title">Use a timeout of</string>
+    <string name="adaptive_playback_timeout_none_summary">Off</string>
+    <string name="adaptive_playback_timeout_30_secs">30 seconds</string>
+    <string name="adaptive_playback_timeout_30_secs_summary">On (30 seconds)</string>
+    <string name="adaptive_playback_timeout_1_min">1 minute</string>
+    <string name="adaptive_playback_timeout_1_min_summary">On (1 minute)</string>
+    <string name="adaptive_playback_timeout_2_min">2 minutes</string>
+    <string name="adaptive_playback_timeout_2_min_summary">On (2 minutes)</string>
+    <string name="adaptive_playback_timeout_5_min">5 minutes</string>
+    <string name="adaptive_playback_timeout_5_min_summary">On (5 minutes)</string>
+    <string name="adaptive_playback_timeout_10_min">10 minutes</string>
+    <string name="adaptive_playback_timeout_10_min_summary">On (10 minutes)</string>
 
 </resources>

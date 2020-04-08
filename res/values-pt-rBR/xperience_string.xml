@@ -232,7 +232,6 @@
     <!--XPerience Active Display -->
     <string name="ActiveDisplay_summary">O Active Display é uma nova forma de gerenciar notificações no Android.</string>
     <!--XPerience custom settings -->
-    <string name="xperience_settings_title">Configurações XPerience™</string>
     <!-- navbar-->
     <string name="navbar_visibility">Ativar barra de navegação</string>
     <!--Power menu-->

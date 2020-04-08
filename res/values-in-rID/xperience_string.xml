@@ -228,7 +228,6 @@
     <!--XPerience Active Display -->
     <string name="ActiveDisplay_summary">Tampilan Aktif adalah cara baru untuk penanganan pemberitahuan di Android.</string>
     <!--XPerience custom settings -->
-    <string name="xperience_settings_title">Pengaturan XPerience™</string>
     <!-- navbar-->
     <string name="navbar_visibility">Izinkan bilah navigasi</string>
     <!--Power menu-->

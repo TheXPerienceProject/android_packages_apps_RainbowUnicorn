@@ -259,7 +259,6 @@
     <string name="ActiveDisplay_title">Pantalla activa XPerience™</string>
     <string name="ActiveDisplay_summary">Pantalla activa es una nueva forma de manejo de notificaciones en Android.</string>
     <!--XPerience custom settings -->
-    <string name="xperience_settings_title">Configuración de XPerience™</string>
     <string name="xperience_settings_summary">Personalízala con funcionalidades</string>
     <!-- navbar-->
     <string name="navbar_visibility">Permitir barra de navegación</string>

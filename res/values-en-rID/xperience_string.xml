@@ -14,44 +14,80 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Settings Titles-->
-    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
-    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
-    <!-- Recents panel settings -->
-    <!-- Statusbar net monitor -->
-    <!-- Navbar tuner -->
-    <!-- Statusbar Tuner -->
-    <!--Lockscreen tuner-->
-    <!-- Show navbar -->
-    <!-- Lockscreen battery info indicator  -->
-    <!-- Double Tap Lockscreen to Sleep -->
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <!-- ANBI -->
     <!-- Battery Styles -->
     <!-- Status bar battery style-->
     <!-- Battery mode -->
-    <!--XPerience Active Display -->
-    <!-- Ambient music -->
-    <!-- Pocket judge -->
-    <!-- Volume category -->
-    <!-- Volume rocker music control -->
-    <!-- Volume rocker wake -->
-    <!-- Navigation bar theme -->
-    <!-- System default animation -->
-    <!-- Show 4G instead of LTE -->
-    <!-- Statusbar logo -->
     <!-- Carrier Label -->
-    <!-- Statusbar ticker -->
-    <!-- Three-fingers-swipe to screenshot -->
-    <!-- Status bar clock options -->
-    <!-- Notification count -->
+    <!-- Double Tap Lockscreen to Sleep -->
+    <!-- Face unlock deprecated on Q -->
     <!-- Free form -->
-    <!-- Power Menu -->
+    <!-- Hardware buttons -->
+    <string name="hardware_keys_volume_keys_title">Tombol volume</string>
     <!-- Hardware keys -->
     <!-- Buttons backlight timeout -->
     <!-- Enable keys backlight-->
     <!-- Enable keys backlight-->
     <!-- Enable keys backlight-->
     <!-- HW Keys customization -->
-    <!-- ANBI -->
+    <!--Lockscreen tuner-->
+    <string name="lockscreen_tuner_title">Pintasan layar kunci</string>
+    <string name="tuner_doze_always_on">Selalu ON</string>
+    <!-- Lockscreen battery info indicator  -->
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Tombol bilah navigasi</string>
+    <!-- Navigation bar theme -->
+    <!-- Notification count -->
+    <!-- Pocket judge -->
+    <!-- Power Menu -->
+    <!-- Quick unlock -->
+    <!-- Recents panel settings -->
+    <string name="show_clear_all_recents_button_title">Tombol bersihkan semua</string>
+    <string name="show_clear_all_recents_button_summary">Tampilkan tombol bersihkan semua</string>
+    <string name="recents_clear_all_location_title">Lokasi tombol bersihkan semua</string>
+    <string name="recents_clear_all_location_top_right">Kanan Atas</string>
+    <string name="recents_clear_all_location_top_left">Kiri atas</string>
+    <string name="recents_clear_all_location_top_center">Tengah atas</string>
+    <string name="recents_clear_all_location_bottom_right">Kanan bawah</string>
+    <string name="recents_clear_all_location_bottom_left">Kiri bawah</string>
+    <string name="recents_clear_all_location_bottom_center">Tengah bawah</string>
+    <!--Reset feature -->
+    <!-- Settings Titles-->
+    <string name="xperience_settings_title">Pengaturan XPerience™</string>
+    <string name="statusbar_title">Statusbar </string>
+    <string name="display_title">Pengaturan Tampilan </string>
+    <string name="recents_title">Pengaturan Recents</string>
+    <string name="misc_title">Pengaturan lain-lain</string>
+    <string name="navbar_title">Pengaturan bilah navigasi</string>
+    <string name="lockscreen_title">Pengaturan Layar Kunci</string>
+    <string name="buttons_title">Pengaturan Tombol</string>
+    <!-- Show navbar -->
+    <string name="navigation_bar_enabled_title">Aktifkan</string>
+    <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Lalu lintas jaringan</string>
+    <string name="network_traffic_state_summary">Tampilkan aktivitas jaringan di statusbar</string>
+    <string name="network_traffic_autohide_threshold_title">Ambang penyembunyian otomatis aktivitas jaringan (KB/s)</string>
+    <!-- Statusbar Tuner -->
+    <string name="statusbar_items_title">Item statusbar</string>
+    <!-- System default animation deprecate on Q-->
+    <!-- Show 4G instead of LTE -->
+    <!-- Statusbar logo -->
+    <!-- Statusbar ticker -->
+    <!-- Status bar clock options -->
+    <!-- Three-fingers-swipe to screenshot -->
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">Tampilkan info CPU</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">Overlay layar menunjukkan info CPU terkini</string>
+    <!-- Volume category -->
+    <!-- Volume rocker music control -->
+    <!-- Volume rocker wake -->
+    <!--XPerience Active Display -->
+    <!--XPerience custom settings -->
+    <string name="xperience_settings_title">Pengaturan XPerience™</string>
     <!-- navbar-->
     <!--Power menu-->
     <!-- Hide Lockscreen clock, date, & alarm -->
@@ -77,4 +113,11 @@
     <!-- Ambient visualizer -->
     <!-- QS header image -->
     <!-- Old mobile type icons -->
+    <!-- QS SystemInfo -->
+    <!-- Power menu Animations  -->
+    <!-- Hardware info -->
+    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
+    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
+    <!-- SELinux status -->
+    <!-- Adaptive Playback -->
 </resources>

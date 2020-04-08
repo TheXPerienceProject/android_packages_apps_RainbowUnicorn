@@ -14,51 +14,67 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Settings Titles-->
-    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
-    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
-    <!-- Recents panel settings -->
-    <!-- Statusbar net monitor -->
-    <!-- Navbar tuner -->
-    <!-- Statusbar Tuner -->
-    <!--Lockscreen tuner-->
-    <!-- Show navbar -->
-    <!-- Lockscreen battery info indicator  -->
-    <!-- Double Tap Lockscreen to Sleep -->
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <!-- ANBI -->
     <!-- Battery Styles -->
     <!-- Status bar battery style-->
+    <string name="status_bar_battery_style_title">Styl wskaźnika baterii</string>
+    <string name="status_bar_battery_style_port">Pionowo</string>
+    <string name="status_bar_battery_style_circle">Okrąg</string>
+    <string name="status_bar_battery_style_text">Tekst</string>
+    <string name="status_bar_battery_style_hidden">Ukryte</string>
     <!-- Battery mode -->
-    <!--XPerience Active Display -->
-    <!-- Ambient music -->
-    <!-- Pocket judge -->
-    <!-- Volume category -->
-    <!-- Volume rocker music control -->
-    <!-- Volume rocker wake -->
-    <!-- Navigation bar theme -->
-    <!-- System default animation -->
-    <!-- Show 4G instead of LTE -->
-    <!-- Statusbar logo -->
     <!-- Carrier Label -->
-    <!-- Statusbar ticker -->
-    <!-- Three-fingers-swipe to screenshot -->
-    <!-- Status bar clock options -->
-    <!-- Notification count -->
+    <!-- Double Tap Lockscreen to Sleep -->
+    <!-- Face unlock deprecated on Q -->
     <!-- Free form -->
-    <!-- Power Menu -->
+    <!-- Hardware buttons -->
     <!-- Hardware keys -->
     <!-- Buttons backlight timeout -->
     <!-- Enable keys backlight-->
     <!-- Enable keys backlight-->
     <!-- Enable keys backlight-->
     <!-- HW Keys customization -->
-    <!-- ANBI -->
+    <!--Lockscreen tuner-->
+    <!-- Lockscreen battery info indicator  -->
+    <!-- Navbar tuner -->
+    <!-- Navigation bar theme -->
+    <!-- Notification count -->
+    <!-- Pocket judge -->
+    <!-- Power Menu -->
+    <!-- Quick unlock -->
+    <!-- Recents panel settings -->
+    <!--Reset feature -->
+    <!-- Settings Titles-->
+    <!-- Show navbar -->
+    <!-- Statusbar net monitor -->
+    <!-- Statusbar Tuner -->
+    <!-- System default animation deprecate on Q-->
+    <!-- Show 4G instead of LTE -->
+    <!-- Statusbar logo -->
+    <!-- Statusbar ticker -->
+    <!-- Status bar clock options -->
+    <!-- Three-fingers-swipe to screenshot -->
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <!-- Volume category -->
+    <!-- Volume rocker music control -->
+    <!-- Volume rocker wake -->
+    <!--XPerience Active Display -->
+    <!--XPerience custom settings -->
     <!-- navbar-->
     <!--Power menu-->
     <!-- Hide Lockscreen clock, date, & alarm -->
     <!-- Accent picker -->
     <!-- SystemUI theme -->
     <!-- Fingerprint unlock keystore -->
+    <string name="fp_unlock_keystore_title">Odblokowywanie odciskiem palca</string>
+    <string name="fp_unlock_keystore_summary">Odblokuj urządzenie za pomocą odcisku palca po ponownym uruchomieniu, bez podawania kodu PIN/hasła/wzoru\nUwaga: na własne ryzyko!</string>
     <!-- Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Procent baterii</string>
+    <string name="status_bar_battery_percentage_default">Ukryte</string>
     <!-- Smart Pixels -->
     <!-- Quick Settings -->
     <!--Notify cat -->
@@ -77,4 +93,11 @@
     <!-- Ambient visualizer -->
     <!-- QS header image -->
     <!-- Old mobile type icons -->
+    <!-- QS SystemInfo -->
+    <!-- Power menu Animations  -->
+    <!-- Hardware info -->
+    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
+    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
+    <!-- SELinux status -->
+    <!-- Adaptive Playback -->
 </resources>

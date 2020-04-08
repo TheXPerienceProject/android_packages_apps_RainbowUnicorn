@@ -14,54 +14,15 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Settings Titles-->
-    <string name="xperience_settings_title">Configuración de XPerience™</string>
-    <string name="statusbar_title">Barra de estado </string>
-    <string name="display_title">Ajustes de pantalla </string>
-    <string name="recents_title">Ajustes de recientes</string>
-    <string name="misc_title">Ajustes varios</string>
-    <string name="navbar_title">Ajustes de barra de navegación</string>
-    <string name="lockscreen_title">Ajustes de pantalla de bloqueo</string>
-    <string name="buttons_title">Configuración de botones</string>
-    <string name="notifications_title">Ajuste de notificaciones</string>
-    <string name="information_category">Información</string>
-    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
-    <string name="show_cpu_info">Mostrar información de la CPU</string>
-    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
-    <string name="show_cpu_info_summary">Muestra la información actual del procesador en la pantalla</string>
-    <!-- Recents panel settings -->
-    <string name="show_clear_all_recents_button_title">Botón de borrar todo</string>
-    <string name="show_clear_all_recents_button_summary">Mostrar botón de limpieza de aplicaciones recientes</string>
-    <string name="recents_clear_all_location_title">Posicion de boton de borrar todo</string>
-    <string name="recents_clear_all_location_top_right">Superior derecho</string>
-    <string name="recents_clear_all_location_top_left">Superior izquierdo</string>
-    <string name="recents_clear_all_location_top_center">Superior centrado</string>
-    <string name="recents_clear_all_location_bottom_right">Inferior derecha</string>
-    <string name="recents_clear_all_location_bottom_left">Inferior izquierda</string>
-    <string name="recents_clear_all_location_bottom_center">Centro inferior</string>
-    <!-- Statusbar net monitor -->
-    <string name="network_traffic_state_title">Tráfico de red</string>
-    <string name="network_traffic_state_summary">Muestra la actividad de red en la barra de estado</string>
-    <string name="network_traffic_autohide_threshold_title">Umbral de ocultación automática de la actividad de red (KB/s)</string>
-    <string name="network_traffic_hidearrow">Ocultar flechas</string>
-    <string name="network_traffic_hidearrow_summary">Ocultar las flechas del indicador de tráfico de red</string>
-    <!-- Navbar tuner -->
-    <string name="navbar_tuner_title">Botones de la barra de navegación</string>
-    <!-- Statusbar Tuner -->
-    <string name="statusbar_items_title">Elementos de la barra de estado</string>
-    <!--Lockscreen tuner-->
-    <string name="lockscreen_tuner_title">Ajustes rápidos de pantalla de bloqueo</string>
-    <string name="tuner_doze_always_on">Siempre encendido</string>
-    <!-- Show navbar -->
-    <string name="navigation_bar_enabled_title">Activar</string>
-    <string name="navbar_invert_layout_title">Invertir barra de navegación</string>
-    <string name="hardware_keys_volume_keys_title">Control de volumen</string>
-    <!-- Lockscreen battery info indicator  -->
-    <string name="lockscreen_battery_info_title">Información de carga en pantalla de bloqueo</string>
-    <string name="lockscreen_battery_info_summary">Mostrar la corriente máxima del cargador, voltaje y temperatura de la batería en la pantalla de bloqueo durante la carga</string>
-    <!-- Double Tap Lockscreen to Sleep -->
-    <string name="double_tap_to_sleep_lockscreen_title">Pantalla de bloqueo</string>
-    <string name="double_tap_to_sleep_lockscreen_summary">Toca dos veces en el área de acceso directo superior o inferior tercera de la pantalla de bloqueo para poner el dispositivo a dormir</string>
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <string name="xpe_firmware_version">Versión de XPerience™</string>
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <string name="xpe_build_code">Código XPerience™</string>
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <string name="build_channel">Canal</string>
+    <!-- ANBI -->
+    <string name="anbi_title">Toque accidental</string>
+    <string name="anbi_summary">Previene la interacción con los botones de navegación mientras se está tocando la pantalla</string>
     <!-- Battery Styles -->
     <string name="battery_style_title">Estilo de icono de batería</string>
     <string name="battery_style_percent_title">Porcentaje de batería</string>
@@ -90,44 +51,6 @@
     <string name="battery_percentage_next">Habilitado</string>
     <string name="battery_percentage_inside">Habilitado (icono interior)</string>
     <string name="battery_percentage_estimate">Habilitado (estimado)</string>
-    <!--XPerience Active Display -->
-    <string name="ActiveDisplay_title">Pantalla activa XPerience™</string>
-    <string name="ActiveDisplay_summary">Pantalla activa es una nueva forma de manejo de notificaciones en Android.</string>
-    <!-- Ambient music -->
-    <string name="force_ambient_for_media_pref_title">Ahora suena</string>
-    <string name="force_ambient_for_media_pref_summary">Mostrar información actual de la pista de música</string>
-    <string name="ambient_ticker_footer">Esta función permite mostrar la información de la pista de música actual en la pantalla de bloqueo con o sin la pantalla Ambiente habilitada.\n\nPuede seleccionar entre dos diseños, normal y mínimo. Si bien esta característica aprovecha la visualización ambiental, no depende de ella. Se puede activar sin tener activada la visualización ambiental mediante las opciones (forzadas).\n\nLa vista normal incluye el reloj de pantalla bloqueada, la fecha y la información de música. \n\nLa vista mínima incluye solo la información de música en el centro de la pantalla.</string>
-    <string name="force_ambient_for_media_title">Seleccionar diseño</string>
-    <string name="force_ambient_for_media_off">Desactivado</string>
-    <string name="force_ambient_for_media_on">Normal</string>
-    <string name="force_ambient_for_media_on_forced">Normal (forzado)</string>
-    <string name="force_ambient_for_media_on_forced_clean">Minimalista (forzado)</string>
-    <!-- Pocket judge -->
-    <string name="pocket_judge_title">Detección de bolsillo</string>
-    <string name="pocket_judge_summary">Bloquea la pantalla y los botones cuando el dispositivo esté en el bolsillo</string>
-    <!-- Volume category -->
-    <string name="volume_category">Control de volumen</string>
-    <!-- Volume rocker music control -->
-    <string name="volume_button_music_control_title">Control de reproducción</string>
-    <string name="volume_button_music_control_summary">Cuando la pantalla esté apagada, una pulsación larga de los controles de volumen, avanzará o retrocederá las canciones</string>
-    <!-- Volume rocker wake -->
-    <string name="volume_rocker_wake_title">Despertar con botones de volumen</string>
-    <string name="volume_rocker_wake_summary">Presionar cualquier botón de volumen despertará su dispositivo</string>
-    <!-- Navigation bar theme -->
-    <string name="navbar_theme_title">Aspecto</string>
-    <string name="navbar_theme_default">Predeterminado</string>
-    <!-- System default animation -->
-    <string name="system_default_animation_title">Animaciones al estilo de Android P</string>
-    <string name="system_default_animation_summary">Activar animaciones \"por defecto\" de Android P</string>
-    <!-- Show 4G instead of LTE -->
-    <string name="show_4g_title">Mostrar 4G</string>
-    <string name="show_4g_summary">Mostrar 4G en lugar de LTE en los iconos de señal</string>
-    <!-- Statusbar logo -->
-    <string name="status_bar_logo_title">Escudo de XPerience</string>
-    <string name="status_bar_logo_dialog_title">Posición del escudo de XPerience</string>
-    <string name="status_bar_logo_disabled">Desactivado</string>
-    <string name="status_bar_logo_left">Izquierda</string>
-    <string name="status_bar_logo_right">Derecha</string>
     <!-- Carrier Label -->
     <string name="carrier_category">Etiqueta de Operador</string>
     <string name="carrier_options">Seleccione la ubicación de visualización</string>
@@ -139,73 +62,17 @@
     <string name="show_carrier_keyguard">Sólo en la pantalla de bloqueo</string>
     <string name="show_carrier_statusbar">Sólo en la barra de estado</string>
     <string name="show_carrier_enabled">Pantalla de bloqueo y barra de estado</string>
-    <!-- Statusbar ticker -->
-    <string name="ticker_mode_title">Notificaciones de texto en la barra de estado</string>
-    <string name="ticker_disabled">Desactivado</string>
-    <string name="ticker_enabled">Texto de notificación en la barra de estado</string>
-    <string name="ticker_media_enabled">Texto de notificaciones y música en barra de estado</string>
-    <!-- Three-fingers-swipe to screenshot -->
-    <string name="three_finger_gesture">Gesto de tres dedos</string>
-    <string name="three_finger_gesture_summary">Desliza tres dedos por la pantalla para hacer una captura</string>
-    <!-- Status bar clock options -->
-    <string name="status_bar_clock">Fecha y Hora</string>
-    <string name="status_bar_clock_summary">Configurar el reloj de la barra de estado y la apariencia de la fecha</string>
-    <string name="clock_title_enable">Posición</string>
-    <string name="clock_enabled">Activo</string>
-    <string name="clock_disabled">Desactivado</string>
-    <string name="status_bar_clock_style_reset">Restablecer color</string>
-    <string name="status_bar_show_clock_title">Mostrar el reloj y la fecha</string>
-    <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
-    <string name="status_bar_am_pm_title">Estilo AM/PM</string>
-    <string name="status_bar_am_pm_info">El reloj de 24 horas está habilitado</string>
-    <string name="enable_clock_weekday">Día de la semana</string>
-    <string name="enable_clock_weekday_summary">Día de semana abreviado antes del reloj</string>
-    <string name="right_clock">Reloj a la derecha</string>
-    <string name="left_clock">Reloj a la izquierda</string>
-    <string name="dont_show">No mostrar</string>
-    <string name="clock_date_display">Fecha</string>
-    <string name="clock_date_display_summary">Mostrar fecha personalizada antes del reloj</string>
-    <string name="clock_date_style">Estilo de la fecha</string>
-    <string name="clock_date_format">Formato de fecha</string>
-    <string name="clock_date_string_edittext_title">Debe estar en un formato de fecha, por ejemplo: MM/dd/yy</string>
-    <string name="clock_date_string_edittext_summary">Introduzca el texto</string>
-    <string name="am_pm_clock_normal">Tamaño de fuente normal</string>
-    <string name="am_pm_clock_small">Tamaño de fuente pequeña</string>
-    <string name="am_pm_clock_none">No mostrar</string>
-    <string name="clock_date_display_none">No mostrar</string>
-    <string name="clock_date_display_small">Tamaño de fuente pequeña</string>
-    <string name="clock_date_display_normal">Tamaño de fuente normal</string>
-    <string name="clock_date_style_normal">Normal</string>
-    <string name="clock_date_style_lowercase">Minúscula</string>
-    <string name="clock_date_style_uppercase">Mayúscula</string>
-    <string name="clock_date_format_custom">Formato java personalizado</string>
-    <string name="clock_date_right">A la derecha de la hora</string>
-    <string name="clock_date_left">A la izquierda de la hora</string>
-    <string name="clock_date_position">Posición de la fecha</string>
-    <!-- Notification count -->
-    <string name="status_bar_notif_count_title">Mostrar contador de notificaciones</string>
-    <string name="status_bar_notif_count_summary">Mostrar el número de notificaciones pendientes</string>
+    <!-- Double Tap Lockscreen to Sleep -->
+    <string name="double_tap_to_sleep_lockscreen_title">Pantalla de bloqueo</string>
+    <string name="double_tap_to_sleep_lockscreen_summary">Toca dos veces en el área de acceso directo superior o inferior tercera de la pantalla de bloqueo para poner el dispositivo a dormir</string>
+    <!-- Face unlock deprecated on Q -->
+    <string name="face_auto_unlock_title">Desbloqueo facial automático</string>
+    <string name="face_auto_unlock_summary">Quitar la pantalla de bloqueo luego del desbloqueo facial</string>
     <!-- Free form -->
     <string name="free_from">Múltiples ventanas</string>
     <string name="free_form_summary">Este modo permite a las aplicaciones Android se presenten como ventanas flotantes que pueden moverse y cambiar de tamaño a voluntad de el usuario.</string>
-    <!-- Power Menu -->
-    <string name="powermenu_title">Opciones de menú de encendido</string>
-    <string name="powermenu_airplane_title">Modo avión</string>
-    <string name="powermenu_screenshot_title">Captura de Pantalla</string>
-    <string name="powermenu_advanced_reboot_title">Reinicio avanzado</string>
-    <string name="powermenu_reboot_title">Reiniciar</string>
-    <string name="powermenu_screenshot">Captura de Pantalla</string>
-    <string name="powermenu_power">Apagar</string>
-    <string name="powermenu_restart">Reiniciar</string>
-    <string name="powermenu_restart_recovery">Reinicio avanzado</string>
-    <string name="powermenu_airplane">Modo avión</string>
-    <string name="powermenu_settings">Ajustes</string>
-    <string name="powermenu_lockdown">Bloquear</string>
-    <string name="powermenu_soundpanel">Panel de sonido</string>
-    <string name="powermenu_users">Usuarios</string>
-    <string name="powermenu_logout">Cerrar sesión</string>
-    <string name="face_auto_unlock_title">Desbloqueo facial automático</string>
-    <string name="face_auto_unlock_summary">Quitar la pantalla de bloqueo luego del desbloqueo facial</string>
+    <!-- Hardware buttons -->
+    <string name="hardware_keys_volume_keys_title">Control de volumen</string>
     <!-- Hardware keys -->
     <string name="hardware_keys_category">Botones físicos</string>
     <!-- Buttons backlight timeout -->
@@ -247,9 +114,153 @@
     <string name="hardware_keys_long_press_title">Acción de pulsación larga</string>
     <string name="hardware_keys_double_tap_title">Acción de doble toque</string>
     <string name="hardware_keys_disable_title">Deshabilitar las teclas</string>
-    <!-- ANBI -->
-    <string name="anbi_title">Toque accidental</string>
-    <string name="anbi_summary">Previene la interacción con los botones de navegación mientras se está tocando la pantalla</string>
+    <!--Lockscreen tuner-->
+    <string name="lockscreen_tuner_title">Ajustes rápidos de pantalla de bloqueo</string>
+    <string name="tuner_doze_always_on">Siempre encendido</string>
+    <!-- Lockscreen battery info indicator  -->
+    <string name="lockscreen_battery_info_title">Información de carga en pantalla de bloqueo</string>
+    <string name="lockscreen_battery_info_summary">Mostrar la corriente máxima del cargador, voltaje y temperatura de la batería en la pantalla de bloqueo durante la carga</string>
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Botones de la barra de navegación</string>
+    <!-- Navigation bar theme -->
+    <string name="navbar_theme_title">Aspecto</string>
+    <string name="navbar_theme_default">Predeterminado</string>
+    <!-- Notification count -->
+    <string name="status_bar_notif_count_title">Mostrar contador de notificaciones</string>
+    <string name="status_bar_notif_count_summary">Mostrar el número de notificaciones pendientes</string>
+    <!-- Pocket judge -->
+    <string name="pocket_judge_title">Detección de bolsillo</string>
+    <string name="pocket_judge_summary">Bloquea la pantalla y los botones cuando el dispositivo esté en el bolsillo</string>
+    <!-- Power Menu -->
+    <string name="powermenu_title">Opciones de menú de encendido</string>
+    <string name="powermenu_airplane_title">Modo avión</string>
+    <string name="powermenu_screenshot_title">Captura de Pantalla</string>
+    <string name="powermenu_advanced_reboot_title">Reinicio avanzado</string>
+    <string name="powermenu_reboot_title">Reiniciar</string>
+    <string name="powermenu_screenshot">Captura de Pantalla</string>
+    <string name="powermenu_power">Apagar</string>
+    <string name="powermenu_restart">Reiniciar</string>
+    <string name="powermenu_restart_recovery">Reinicio avanzado</string>
+    <string name="powermenu_airplane">Modo avión</string>
+    <string name="powermenu_settings">Ajustes</string>
+    <string name="powermenu_lockdown">Bloquear</string>
+    <string name="powermenu_soundpanel">Panel de sonido</string>
+    <string name="powermenu_users">Usuarios</string>
+    <string name="powermenu_logout">Cerrar sesión</string>
+    <!-- Quick unlock -->
+    <string name="unlock_quick_unlock_control_title">Desbloqueo rápido</string>
+    <string name="unlock_quick_unlock_control_summary">Desbloquear automáticamente cuando se introduce el PIN o contraseña</string>
+    <!-- Recents panel settings -->
+    <string name="show_clear_all_recents_button_title">Botón de borrar todo</string>
+    <string name="show_clear_all_recents_button_summary">Mostrar botón de limpieza de aplicaciones recientes</string>
+    <string name="recents_clear_all_location_title">Posicion de boton de borrar todo</string>
+    <string name="recents_clear_all_location_top_right">Superior derecho</string>
+    <string name="recents_clear_all_location_top_left">Superior izquierdo</string>
+    <string name="recents_clear_all_location_top_center">Superior centrado</string>
+    <string name="recents_clear_all_location_bottom_right">Inferior derecha</string>
+    <string name="recents_clear_all_location_bottom_left">Inferior izquierda</string>
+    <string name="recents_clear_all_location_bottom_center">Centro inferior</string>
+    <!--Reset feature -->
+    <string name="reset_all_settings">RESETEAR TODOS</string>
+    <string name="reset_selected_settings">RESETEAR SELECCIONADOS</string>
+    <string name="reset_settings_title">Preferencias de características</string>
+    <string name="reset_settings_summary">Restablecer preferencias de características de XPerience</string>
+    <string name="keywords_settings_reset">restablecer</string>
+    <!-- Settings Titles-->
+    <string name="xperience_settings_title">Configuración de XPerience™</string>
+    <string name="statusbar_title">Barra de estado </string>
+    <string name="display_title">Ajustes de pantalla </string>
+    <string name="recents_title">Ajustes de recientes</string>
+    <string name="misc_title">Ajustes varios</string>
+    <string name="navbar_title">Ajustes de barra de navegación</string>
+    <string name="lockscreen_title">Ajustes de pantalla de bloqueo</string>
+    <string name="buttons_title">Configuración de botones</string>
+    <string name="notifications_title">Ajuste de notificaciones</string>
+    <string name="information_category">Información</string>
+    <!-- Show navbar -->
+    <string name="navigation_bar_enabled_title">Activar</string>
+    <string name="navbar_invert_layout_title">Invertir barra de navegación</string>
+    <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Tráfico de red</string>
+    <string name="network_traffic_state_summary">Muestra la actividad de red en la barra de estado</string>
+    <string name="network_traffic_autohide_threshold_title">Umbral de ocultación automática de la actividad de red (KB/s)</string>
+    <string name="network_traffic_hidearrow">Ocultar flechas</string>
+    <string name="network_traffic_hidearrow_summary">Ocultar las flechas del indicador de tráfico de red</string>
+    <!-- Statusbar Tuner -->
+    <string name="statusbar_items_title">Elementos de la barra de estado</string>
+    <!-- System default animation deprecate on Q-->
+    <string name="system_default_animation_title">Animaciones al estilo de Android P</string>
+    <string name="system_default_animation_summary">Activar animaciones \"por defecto\" de Android P</string>
+    <!-- Show 4G instead of LTE -->
+    <string name="show_4g_title">Mostrar 4G</string>
+    <string name="show_4g_summary">Mostrar 4G en lugar de LTE en los iconos de señal</string>
+    <!-- Statusbar logo -->
+    <string name="status_bar_logo_title">Escudo de XPerience</string>
+    <string name="status_bar_logo_dialog_title">Posición del escudo de XPerience</string>
+    <string name="status_bar_logo_disabled">Desactivado</string>
+    <string name="status_bar_logo_left">Izquierda</string>
+    <string name="status_bar_logo_right">Derecha</string>
+    <!-- Statusbar ticker -->
+    <string name="ticker_mode_title">Notificaciones de texto en la barra de estado</string>
+    <string name="ticker_disabled">Desactivado</string>
+    <string name="ticker_enabled">Texto de notificación en la barra de estado</string>
+    <string name="ticker_media_enabled">Texto de notificaciones y música en barra de estado</string>
+    <!-- Status bar clock options -->
+    <string name="status_bar_clock">Fecha y Hora</string>
+    <string name="status_bar_clock_summary">Configurar el reloj de la barra de estado y la apariencia de la fecha</string>
+    <string name="clock_title_enable">Posición</string>
+    <string name="clock_enabled">Activo</string>
+    <string name="clock_disabled">Desactivado</string>
+    <string name="status_bar_clock_style_reset">Restablecer color</string>
+    <string name="status_bar_show_clock_title">Mostrar el reloj y la fecha</string>
+    <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
+    <string name="status_bar_am_pm_title">Estilo AM/PM</string>
+    <string name="status_bar_am_pm_info">El reloj de 24 horas está habilitado</string>
+    <string name="enable_clock_weekday">Día de la semana</string>
+    <string name="enable_clock_weekday_summary">Día de semana abreviado antes del reloj</string>
+    <string name="right_clock">Reloj a la derecha</string>
+    <string name="left_clock">Reloj a la izquierda</string>
+    <string name="dont_show">No mostrar</string>
+    <string name="clock_date_display">Fecha</string>
+    <string name="clock_date_display_summary">Mostrar fecha personalizada antes del reloj</string>
+    <string name="clock_date_style">Estilo de la fecha</string>
+    <string name="clock_date_format">Formato de fecha</string>
+    <string name="clock_date_string_edittext_title">Debe estar en un formato de fecha, por ejemplo: MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Introduzca el texto</string>
+    <string name="am_pm_clock_normal">Tamaño de fuente normal</string>
+    <string name="am_pm_clock_small">Tamaño de fuente pequeña</string>
+    <string name="am_pm_clock_none">No mostrar</string>
+    <string name="clock_date_display_none">No mostrar</string>
+    <string name="clock_date_display_small">Tamaño de fuente pequeña</string>
+    <string name="clock_date_display_normal">Tamaño de fuente normal</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Minúscula</string>
+    <string name="clock_date_style_uppercase">Mayúscula</string>
+    <string name="clock_date_format_custom">Formato java personalizado</string>
+    <string name="clock_date_right">A la derecha de la hora</string>
+    <string name="clock_date_left">A la izquierda de la hora</string>
+    <string name="clock_date_position">Posición de la fecha</string>
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Gesto de tres dedos</string>
+    <string name="three_finger_gesture_summary">Desliza tres dedos por la pantalla para hacer una captura</string>
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">Mostrar información de la CPU</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">Muestra la información actual del procesador en la pantalla</string>
+    <!-- Volume category -->
+    <string name="volume_category">Control de volumen</string>
+    <!-- Volume rocker music control -->
+    <string name="volume_button_music_control_title">Control de reproducción</string>
+    <string name="volume_button_music_control_summary">Cuando la pantalla esté apagada, una pulsación larga de los controles de volumen, avanzará o retrocederá las canciones</string>
+    <!-- Volume rocker wake -->
+    <string name="volume_rocker_wake_title">Despertar con botones de volumen</string>
+    <string name="volume_rocker_wake_summary">Presionar cualquier botón de volumen despertará su dispositivo</string>
+    <!--XPerience Active Display -->
+    <string name="ActiveDisplay_title">Pantalla activa XPerience™</string>
+    <string name="ActiveDisplay_summary">Pantalla activa es una nueva forma de manejo de notificaciones en Android.</string>
+    <!--XPerience custom settings -->
+    <string name="xperience_settings_title">Configuración de XPerience™</string>
+    <string name="xperience_settings_summary">Personalízala con funcionalidades</string>
     <!-- navbar-->
     <string name="navbar_visibility">Permitir barra de navegación</string>
     <!--Power menu-->
@@ -403,7 +414,38 @@
     <!-- Old mobile type icons -->
     <string name="use_old_mobiletype_title">Icono pequeño de tipo de red móvil</string>
     <string name="use_old_mobiletype_summary">Muestra el icono del tipo de señal en la parte superior del indicador de señal</string>
-
+    <!-- QS SystemInfo -->
+    <string name="qs_system_info_title">Información del sistema</string>
+    <string name="qs_system_info_off">Desactivado</string>
+    <string name="qs_system_info_cpu_temp">Temperatura de la CPU</string>
+    <string name="qs_system_info_battery_temp">Temperatura de la batería</string>
+    <string name="qs_system_info_gpu_clock">Frecuencia de la GPU</string>
+    <string name="qs_system_info_gpu_busy">Uso de la GPU</string>
+    <!-- Power menu Animations  -->
+    <string name="power_menu_animation_title">Animación de menú de apagado</string>
+    <string name="power_menu_animation_summary">Cambiar la animación de entrada/salida del menú de apagado</string>
+    <string name="power_menu_animation_dialog_title">Seleccionar animación del menú de apagado</string>
+    <string name="power_menu_animation_aosp">AOSP (predeterminada)</string>
+    <string name="power_menu_animation_bottom">Fondo</string>
+    <string name="power_menu_animation_top">Superior</string>
+    <string name="power_menu_animation_xylon">Fly</string>
+    <string name="power_menu_animation_slide">Deslizar</string>
+    <string name="power_menu_animation_turn">Turn</string>
+    <string name="power_menu_animation_fly">Resplandor</string>
+    <string name="power_menu_animation_card">3D</string>
+    <string name="power_menu_animation_translucent_top">Traslúcida (desde la parte superior)</string>
+    <string name="power_menu_animation_translucent_bottom">Translúcido (desde la parte inferior)</string>
+    <string name="power_menu_animation_rotate">Rotar</string>
+    <!-- Hardware info -->
+    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
+    <string name="platform_revision">Plataforma</string>
+    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
+    <string name="total_ram">RAM total</string>
+    <!-- SELinux status -->
+    <string name="selinux_status">Estado de SELinux</string>
+    <string name="selinux_status_disabled">Inhabilitado</string>
+    <string name="selinux_status_permissive">Permisivo</string>
+    <string name="selinux_status_enforcing">Obligatorio</string>
     <!-- Adaptive Playback -->
     <string name="adaptive_playback_screen_title">Reproducción adaptativa</string>
     <string name="adaptive_playback_timeout_title">Usar un tiempo de espera de</string>

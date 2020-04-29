@@ -41,6 +41,10 @@ public class SystemSettingListPreference extends ListPreference {
         setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
     }
 
+    public int getIntValue(int defValue) {
+        return getValue() == null ? defValue : Integer.valueOf(getValue());
+    }
+
     @Override
     public void setValue(String value) {
         super.setValue(value);

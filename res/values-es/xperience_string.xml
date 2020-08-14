@@ -304,13 +304,4 @@
     <string name="adaptive_playback_timeout_5_min_summary">Activado (5 minutos)</string>
     <string name="adaptive_playback_timeout_10_min">10 minutos</string>
     <string name="adaptive_playback_timeout_10_min_summary">Activado (10 minutos)</string>
-
-    <!-- Lockscreen clock style -->
-    <string name="lockscreen_clock_title">Reloj en pantalla de bloqueo</string>
-    <string name="lockscreen_clock_summary">Estilo del reloj en la pantalla de bloqueo y en la pantalla ambiente</string>
-    <string name="lockscreen_clock_dialog_title">Elige el estilo del reloj</string>
-    <string name="lockscreen_clock_hide">Oculto</string>
-    <string name="lockscreen_clock_default">Por defecto</string>
-    <string name="lockscreen_clock_default_bold">Por defecto (negrita)</string>
-    <string name="lockscreen_clock_sammy_bold">Sammy (negrita)</string>
 </resources>

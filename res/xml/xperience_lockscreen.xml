@@ -75,14 +75,4 @@
         android:summary="@string/ambient_visualizer_summary"
         android:defaultValue="false" />
 
-
-    <mx.xperience.rainbowunicorn.preferences.SecureSettingListPreference
-        android:key="lockscreen_clock_selection"
-        android:title="@string/lockscreen_clock_title"
-        android:summary="@string/lockscreen_clock_summary"
-        android:dialogTitle="@string/lockscreen_clock_dialog_title"
-        android:entries="@array/lockscreen_clock_titles"
-        android:entryValues="@array/lockscreen_clock_values"
-        android:defaultValue="2" />
-
 </PreferenceScreen>

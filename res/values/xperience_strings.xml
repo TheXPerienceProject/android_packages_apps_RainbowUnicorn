@@ -149,4 +149,9 @@
     <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
     <string name="gameprops_title">Unlock higher FPS in games</string>
     <string name="gameprops_summary">Spoof your device as different model for specific games to unlock higher FPS</string>
+
+    <!-- Lock screen -->
+    <string name="lock_screen_interface_category">Interface</string>
+    <string name="lock_screen_charging_stats_title">Charging stats</string>
+    <string name="lock_screen_charging_stats_summary">Display current, voltage, wattage, and temperature stats while charging</string>
 </resources>

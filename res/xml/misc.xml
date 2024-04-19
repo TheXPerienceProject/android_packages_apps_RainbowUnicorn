@@ -50,4 +50,16 @@
             android:summary="@string/spoofing_summary"
             android:fragment="mx.xperience.unicorn.fragments.Spoofing" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lock_screen_interface_category"
+        android:title="@string/lock_screen_interface_category">
+
+        <!-- Charging stats -->
+        <mx.xperience.framework.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_battery_info"
+            android:title="@string/lock_screen_charging_stats_title"
+            android:summary="@string/lock_screen_charging_stats_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 </PreferenceScreen>

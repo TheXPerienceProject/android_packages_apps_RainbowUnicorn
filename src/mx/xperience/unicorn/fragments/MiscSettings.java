@@ -37,6 +37,7 @@ import mx.xperience.framework.preference.CustomSeekBarPreference;
 import mx.xperience.framework.preference.SystemSettingMasterSwitchPreference;
 import mx.xperience.framework.preference.SystemSettingListPreference;
 import mx.xperience.framework.preference.SecureSettingSwitchPreference;
+import mx.xperience.unicorn.utils.DeviceUtils;
 import com.android.internal.util.xperience.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
@@ -54,6 +55,11 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
     private PreferenceCategory mAnimationsCategory;
     private Preference mUdfpsAnimation;*/
+
+    private static final String KEY_MISCELLANEOUS_CATEGORY = "quick_settings_miscellaneous_category";
+    private static final String KEY_QS_BLUETOOTH_SHOW_DIALOG = "qs_bt_show_dialog";
+
+    private PreferenceCategory mMiscellaneousCategory;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -91,6 +97,12 @@ public class MiscSettings extends SettingsPreferenceFragment implements
             PreferenceScreen preferenceScreen = getPreferenceScreen();
             preferenceScreen.removePreference(mAnimationsCategory);
         }*/
+
+        mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
+
+        if (!DeviceUtils.deviceSupportsBluetooth(context)) {
+            prefScreen.removePreference(mMiscellaneousCategory);
+        }
     }
 
     @Override
@@ -113,7 +125,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
 
-              /*  @Override
+              @Override
                 public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
                         boolean enabled) {
                     ArrayList<SearchIndexableResource> result =
@@ -130,7 +142,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
                 final Resources resources = context.getResources();
 
-                FingerprintManager fingerprintManager = (FingerprintManager)
+                /*FingerprintManager fingerprintManager = (FingerprintManager)
                         context.getSystemService(Context.FINGERPRINT_SERVICE);
 
                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
@@ -139,8 +151,11 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                     if (!VoltageUtils.isPackageInstalled(context, "mx.xperience.udfps.animations")) {
                         keys.add(KEY_UDFPS_ANIMATION);
                     }
+                }*/
+                if (!DeviceUtils.deviceSupportsBluetooth(context)) {
+                    keys.add(KEY_QS_BLUETOOTH_SHOW_DIALOG);
                 }
                 return keys;
-            }*/
+            }
     };
 }

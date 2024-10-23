@@ -34,8 +34,8 @@ import com.android.internal.logging.nano.MetricsProto;
 
 import mx.xperience.framework.preference.CustomSeekBarPreference;
 
-public class NetworkTrafficSettings extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceChangeListener  {
+public class NetworkTrafficSettings extends SettingsPreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "NetworkTrafficSettings";
 

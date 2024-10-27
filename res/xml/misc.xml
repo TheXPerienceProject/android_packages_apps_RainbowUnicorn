@@ -15,9 +15,4 @@ limitations under the License.
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <Preference
-        android:key="spoofing"
-        android:title="@string/spoofing_title"
-        android:fragment="mx.xperience.unicorn.fragments.Spoofing" />
-
 </PreferenceScreen>

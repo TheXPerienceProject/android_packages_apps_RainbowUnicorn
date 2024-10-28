@@ -30,4 +30,9 @@
         android:summary="@string/show_fourg_icon_summary"
         android:defaultValue="true"/>
 
+    <Preference
+        android:fragment="mx.xperience.unicorn.fragments.BatterySettings"
+        android:key="battery_settings"
+        android:title="@string/battery_settings_title"
+        android:summary="@string/battery_settings_summary" />
 </PreferenceScreen>

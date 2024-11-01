@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 VoltageOS
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App Title -->
+    <!-- Categories -->
+    <!-- General strings -->
+    <string name="default_string">Bawaan</string>
+    <string name="disabled">Disabled</string>
+    <!-- Units -->
+    <!-- Custom seekbar -->
+    <string name="custom_seekbar_default_value">Bawaan</string>
+    <!-- Statusbar Items -->
+    <string name="statusbar_items_category">Item bilah status</string>
+    <!-- Status bar - icons -->
+    <!-- 4G icon -->
+    <string name="show_fourg_icon_title">Ikon 4G</string>
+    <string name="show_fourg_icon_summary">Tampilkan ikon 4G dalam ikon sinyal, bukan LTE</string>
+    <!-- Status bar - Battery -->
+    <string name="battery_style_port">Tegak</string>
+    <string name="battery_style_circle">Lingkaran</string>
+    <string name="battery_style_landscape">Mendatar</string>
+    <string name="battery_style_text">Teks</string>
+    <!-- Screen Off animation -->
+    <string name="screen_off_animation_default">Bawaan</string>
+    <!-- Status bar max notification -->
+    <!-- Notification count -->
+    <string name="statusbar_notif_count_title">Tampilkan hitungan pemberitahuan</string>
+    <string name="statusbar_notif_count_summary">Menampilkan jumlah dari pemberitahuan yang tertunda</string>
+    <!-- Statusbar colored icons -->
+</resources>

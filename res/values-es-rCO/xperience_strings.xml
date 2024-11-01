@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 VoltageOS
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App Title -->
+    <!-- Categories -->
+    <string name="misc_title">varios</string>
+    <string name="misc_summary">falsificación, controles de volumen</string>
+    <string name="statusbar_title">Barra de estado</string>
+    <string name="statusbar_summary">Reloj, operador, iconos de estado</string>
+    <!-- General strings -->
+    <string name="ok">Aceptar</string>
+    <string name="reset">Restablecer</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+    <string name="default_string">Predeterminado</string>
+    <string name="disabled">Desactivado</string>
+    <!-- Units -->
+    <string name="unit_seconds">segundos</string>
+    <string name="unit_milliseconds">milisegundos</string>
+    <string name="unit_pixels">dp</string>
+    <!-- Custom seekbar -->
+    <string name="custom_seekbar_value">Valor: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">Predeterminado</string>
+    <string name="custom_seekbar_default_value_to_set">Valor por defecto: <xliff:g id="v">%s</xliff:g>\nMantener presionado para establecer</string>
+    <string name="custom_seekbar_default_value_is_set">Valor predeterminado establecido</string>
+    <!-- Statusbar Items -->
+    <string name="sb_icons">Íconos de la barra de estado</string>
+    <string name="statusbar_items_category">Elementos de la barra de estado</string>
+    <!-- Status bar - icons -->
+    <string name="status_bar_icons_title">Iconos y elementos de la barra de estado</string>
+    <!-- 4G icon -->
+    <string name="show_fourg_icon_title">Icono 4G</string>
+    <string name="show_fourg_icon_summary">Mostrar icono de 4G en lugar de LTE</string>
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_title">Indicador de batería</string>
+    <string name="battery_settings_title">Indicador de batería</string>
+    <string name="battery_settings_summary">Controla el comportamiento y el estilo del icono de la batería en la barra de estado</string>
+    <string name="battery_style_title">Estilos del icono de batería</string>
+    <string name="battery_style_port">Vertical</string>
+    <string name="battery_style_circle">Circular</string>
+    <string name="battery_style_landscape">Horizontal</string>
+    <string name="battery_style_landscape_reversed">Apaisado (invertido)</string>
+    <string name="battery_style_text">Texto</string>
+    <string name="battery_percent_title">Mostrar porcentaje</string>
+    <string name="battery_percent_summary">Mostrar siempre el porcentaje de batería con el icono</string>
+    <string name="battery_percent_inside_title">Mostrar porcentaje dentro</string>
+    <string name="battery_percent_inside_summary">Mostrar porcentaje dentro del icono</string>
+    <string name="show_battery_percent_charging_title">Mostrar porcentaje al cargar</string>
+    <string name="show_battery_percent_charging_summary">Forzar mostrar el porcentaje al lado del icono al cargar</string>
+    <!-- Screen Off animation -->
+    <string name="screen_off_animation_title">Animación al apagar pantalla</string>
+    <string name="screen_off_animation_default">Predeterminado</string>
+    <string name="screen_off_animation_scale">Escalado</string>
+    <!-- Status bar max notification -->
+    <!-- Notification count -->
+    <string name="statusbar_notif_count_title">Mostrar contador de notificaciones</string>
+    <string name="statusbar_notif_count_summary">Mostrar el número de notificaciones pendientes</string>
+    <!-- Statusbar colored icons -->
+    <string name="statusbar_colored_icons_title">Iconos coloreados</string>
+    <string name="statusbar_colored_icons_summary">Utilizar iconos de aplicación adecuados para los iconos de notificación en la barra de estado</string>
+</resources>

@@ -15,8 +15,8 @@
     <string name="title" translatable="false">Rainbow Unicorn</string>
 
     <!-- Categories -->
-    <string name="misc_title">misc</string>
-    <string name="misc_summary">spoof, volume controls</string>
+    <string name="misc_title">miscellaneous</string>
+    <string name="misc_summary">spoof, animations</string>
     <string name="statusbar_title">Status bar</string>
     <string name="statusbar_summary">Clock, carrier, status icons</string>
 
@@ -31,7 +31,7 @@
     <!-- Units -->
     <string name="unit_seconds">seconds</string>
     <string name="unit_milliseconds">milliseconds</string>
-    <string name="unit_pixels">dp</string>
+    <string name="unit_pixels" translatable="false">dp</string>
 
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>

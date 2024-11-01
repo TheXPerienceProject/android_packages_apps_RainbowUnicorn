@@ -35,4 +35,16 @@
         android:key="battery_settings"
         android:title="@string/battery_settings_title"
         android:summary="@string/battery_settings_summary" />
+
+    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+        android:key="statusbar_colored_icons"
+        android:title="@string/statusbar_colored_icons_title"
+        android:summary="@string/statusbar_colored_icons_summary"
+        android:defaultValue="true" />
+
+    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+        android:key="statusbar_notif_count"
+        android:title="@string/statusbar_notif_count_title"
+        android:summary="@string/statusbar_notif_count_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>

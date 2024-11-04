@@ -16,16 +16,60 @@
     <string-array name="status_bar_battery_style_entries" translatable="false">
         <item>@string/battery_style_port</item>
         <item>@string/battery_style_circle</item>
+        <item>@string/battery_style_pa_circle</item>
         <item>@string/battery_style_landscape</item>
         <item>@string/battery_style_landscape_reversed</item>
-        <item>@string/battery_style_text</item>
+        <item>@string/battery_style_icon_iOS15</item>
+        <item>@string/battery_style_icon_iOS16</item>
+        <item>@string/battery_style_icon_land_m</item>
+        <item>@string/battery_style_icon_landscape_buddy</item>
+        <item>@string/battery_style_icon_landscape_line</item>
+        <item>@string/battery_style_icon_landscape_musku</item>
+        <item>@string/battery_style_icon_landscape_pill</item>
+        <item>@string/battery_style_icon_landscape_signal</item>
+        <item>@string/battery_style_icon_rlandscape_style_a</item>
+        <item>@string/battery_style_icon_landscape_style_a</item>
+        <item>@string/battery_style_icon_rlandscape_style_b</item>
+        <item>@string/battery_style_icon_landscape_style_b</item>
+        <item>@string/battery_style_icon_landscape_origami</item>
+        <item>@string/battery_style_icon_landscape_miui_pill</item>
+        <item>@string/battery_style_icon_land_a</item>
+        <item>@string/battery_style_icon_land_b</item>
+        <item>@string/battery_style_icon_land_c</item>
+        <item>@string/battery_style_icon_land_d</item>
+        <item>@string/battery_style_icon_land_j</item>
+        <item>@string/battery_style_icon_land_n</item>
+        <item>@string/battery_style_icon_land_o</item>
+        <!--<item>@string/battery_style_text</item>-->
     </string-array>
     <string-array name="status_bar_battery_style_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>3</item>
-        <item>4</item>
-        <item>2</item>
+        <item>0</item> <!--Normal-->
+        <item>1</item> <!--circle-->
+        <item>5</item> <!--PACircle-->
+        <item>3</item> <!--BATTERY_STYLE_LANDSCAPE-->
+        <item>4</item> <!--BATTERY_STYLE_RLANDSCAPE-->
+        <item>6</item><!--BATTERY_STYLE_LANDSCAPE_IOS15-->
+        <item>7</item><!--BATTERY_STYLE_LANDSCAPE_IOS16-->
+        <item>24</item><!--BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE-->
+        <item>8</item><!--BATTERY_STYLE_LANDSCAPE_BUDDY-->
+        <item>9</item><!--BATTERY_STYLE_LANDSCAPE_LINE-->
+        <item>10</item><!--BATTERY_STYLE_LANDSCAPE_MUSKU-->
+        <item>11</item><!--BATTERY_STYLE_LANDSCAPE_PILL-->
+        <item>12</item><!--BATTERY_STYLE_LANDSCAPE_SIGNAL-->
+        <item>13</item><!--BATTERY_STYLE_RLANDSCAPE_STYLE_A-->
+        <item>14</item><!--BATTERY_STYLE_LANDSCAPE_STYLE_A-->
+        <item>15</item><!--BATTERY_STYLE_RLANDSCAPE_STYLE_B-->
+        <item>16</item><!--BATTERY_STYLE_LANDSCAPE_STYLE_B-->
+        <item>17</item><!--BATTERY_STYLE_LANDSCAPE_ORIGAMI-->
+        <item>18</item><!--BATTERY_STYLE_LANDSCAPE_MIUI_PILL-->
+        <item>19</item><!--BATTERY_STYLE_LANDSCAPE_SIMPLY-->
+        <item>20</item><!--BATTERY_STYLE_LANDSCAPE_NENINE-->
+        <item>21</item><!--BATTERY_STYLE_LANDSCAPE_COLOROS-->
+        <item>22</item><!--BATTERY_STYLE_LANDSCAPE_LOVE-->
+        <item>23</item><!--BATTERY_STYLE_LANDSCAPE_STRIP-->
+        <item>25</item><!--BATTERY_STYLE_LANDSCAPE_RULER-->
+        <item>26</item><!--BATTERY_STYLE_LANDSCAPE_WINDOWS-->
+        <!--<item>2</item>--> <!--TEXT-->
     </string-array>
 
     <!-- Screen off animation -->

@@ -57,8 +57,30 @@
     <string name="battery_style_title">Battery Style</string>
     <string name="battery_style_port">Portrait</string>
     <string name="battery_style_circle">Circle</string>
+    <string name="battery_style_pa_circle">PA Circle</string>
     <string name="battery_style_landscape">Landscape</string>
     <string name="battery_style_landscape_reversed">Landscape (reversed)</string>
+    <string name="battery_style_icon_iOS15" translatable="false">iOS 15</string>
+    <string name="battery_style_icon_iOS16" translatable="false">iOS 16</string>
+    <string name="battery_style_icon_landscape_origami">Origami</string>
+    <string name="battery_style_icon_landscape_miui_pill">MIUI Pill</string>
+    <string name="battery_style_icon_rlandscape_style_a">Landscape R Style A</string>
+    <string name="battery_style_icon_landscape_style_a">Landscape L Style A</string>
+    <string name="battery_style_icon_rlandscape_style_b">Landscape R Style B</string>
+    <string name="battery_style_icon_landscape_style_b">Landscape L Style B</string>
+    <string name="battery_style_icon_landscape_pill">Portrait Mx</string>
+    <string name="battery_style_icon_landscape_line">Landscape Lorn</string>
+    <string name="battery_style_icon_landscape_musku">Portrait IOS</string>
+    <string name="battery_style_icon_landscape_signal">Landscape Airoo</string>
+    <string name="battery_style_icon_landscape_buddy">Landscape Capsule</string>
+    <string name="battery_style_icon_land_a">Landscape Simply</string>
+    <string name="battery_style_icon_land_b">Landscape NeNine</string>
+    <string name="battery_style_icon_land_c">Landscape ColorOS</string>
+    <string name="battery_style_icon_land_d">Landscape Love</string>
+    <string name="battery_style_icon_land_j">Landscape Strip Path</string>
+    <string name="battery_style_icon_land_m">Landscape iOS Outline</string>
+    <string name="battery_style_icon_land_n">Landscape Ruler</string>
+    <string name="battery_style_icon_land_o">Landscape Windows</string>
     <string name="battery_style_text">Text</string>
     <string name="battery_percent_title">Show percent</string>
     <string name="battery_percent_summary">Always show the battery percent with the icon</string>

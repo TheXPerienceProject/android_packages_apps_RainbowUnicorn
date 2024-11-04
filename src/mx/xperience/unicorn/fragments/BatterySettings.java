@@ -88,7 +88,7 @@ public class BatterySettings extends DashboardFragment implements
         mBatteryStyle.setValue(Integer.toString(value));
         mBatteryStyle.setSummary(mBatteryStyle.getEntry());
         mBatteryStyle.setOnPreferenceChangeListener(this);
-        updatePercentEnablement(value != 2);
+        updatePercentEnablement(value != 2 || value != 7 || value != 24);
         mBatteryPercentCharging = findPreference(SHOW_BATTERY_PERCENT_CHARGING);
         updatePercentChargingEnablement(value, percentEnabled, percentInside);
     }
@@ -107,7 +107,7 @@ public class BatterySettings extends DashboardFragment implements
             mBatteryStyle.setSummary(mBatteryStyle.getEntries()[index]);
             Settings.System.putIntForUser(resolver,
                     BATTERY_STYLE, value, UserHandle.USER_CURRENT);
-            updatePercentEnablement(value != 2);
+            updatePercentEnablement(value != 2 || value != 7 || value != 24);
             updatePercentChargingEnablement(value, null, null);
             return true;
         } else if (preference == mBatteryPercent) {
@@ -129,6 +129,10 @@ public class BatterySettings extends DashboardFragment implements
     }
 
     private void updatePercentEnablement(boolean enabled) {
+    // Disable percentage setting only if style is 2, 7 or 24
+    enabled = enabled && (Integer.valueOf(mBatteryStyle.getValue()) != 2 &&
+                         Integer.valueOf(mBatteryStyle.getValue()) != 7 &&
+                         Integer.valueOf(mBatteryStyle.getValue()) != 24);
         mBatteryPercent.setEnabled(enabled);
         mBatteryPercentInside.setEnabled(enabled && mBatteryPercent.isChecked());
     }
@@ -137,7 +141,9 @@ public class BatterySettings extends DashboardFragment implements
         if (style == null) style = Integer.valueOf(mBatteryStyle.getValue());
         if (percent == null) percent = mBatteryPercent.isChecked();
         if (inside == null) inside = mBatteryPercentInside.isChecked();
-        mBatteryPercentCharging.setEnabled(style != 2 && (!percent || inside));
+        boolean enableCharging = style != 2 && style != 7 && style != 24;
+        mBatteryPercentCharging.setEnabled(enableCharging && (!percent || inside));
+        //mBatteryPercentCharging.setEnabled(style != 2 );
     }
 
     @Override

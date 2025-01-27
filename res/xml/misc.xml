@@ -39,6 +39,18 @@
             android:fragment="com.android.settings.xperience.themes.UdfpsAnimations" />
         </PreferenceCategory>-->
 
+    <!-- Freeform launch mode -->
+
+
+    <mx.xperience.framework.preference.SystemSettingListPreference
+        android:key="freeform_launch_mode"
+        android:title="@string/freeform_launch_mode_title"
+        android:dialogTitle="@string/freeform_launch_mode_title"
+        android:entries="@array/freeform_launch_mode_entries"
+        android:entryValues="@array/freeform_launch_mode_values"
+        android:defaultValue="0"
+        android:summary="%s" />
+
     <PreferenceCategory
         android:key="miscellaneous_spoofing_category"
         android:title="@string/miscellaneous_spoofing_category">

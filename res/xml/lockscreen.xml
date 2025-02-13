@@ -18,9 +18,35 @@ limitations under the License.
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <PreferenceCategory
+        android:key="powermenu"
+        android:title="@string/lockscreen_enable_power_menu_cat">
+
     <mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="lockscreen_enable_power_menu"
         android:title="@string/lockscreen_enable_power_menu_title"
         android:summary="@string/lockscreen_enable_power_menu_summary"
         android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="ambient_display_category"
+        android:title="@string/ambient_display_category_title">
+
+        <mx.xperience.framework.preference.SystemSettingListPreference
+            android:key="ambient_show_settings"
+            android:title="@string/ambient_bottom_title"
+            android:entries="@array/ambient_bottom_entries"
+            android:entryValues="@array/ambient_bottom_values"
+            android:summary="%s"
+            android:defaultValue="1" />
+
+        <mx.xperience.framework.preference.SystemSettingSwitchPreference
+            android:key="ambient_show_settings_icons"
+            android:title="@string/display_icon_title"
+            android:summary="@string/display_icon_summary"
+            android:defaultValue="false" />
+
+        </PreferenceCategory>
 </PreferenceScreen>

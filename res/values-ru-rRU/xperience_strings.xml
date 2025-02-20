@@ -13,6 +13,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
     <!-- Categories -->
+    <!-- Depth Wallpaper -->
     <!-- General strings -->
     <!-- Units -->
     <!-- Custom seekbar -->
@@ -20,8 +21,11 @@
     <!-- Status bar - icons -->
     <!-- 4G icon -->
     <!-- Status bar - Battery -->
+    <string name="battery_style_pa_circle">Круг PA</string>
     <!-- Screen Off animation -->
     <!-- Status bar max notification -->
     <!-- Notification count -->
     <!-- Statusbar colored icons -->
+    <!-- Game Space -->
+    <!-- Per-app volume -->
 </resources>

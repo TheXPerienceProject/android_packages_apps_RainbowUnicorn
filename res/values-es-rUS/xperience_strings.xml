@@ -14,9 +14,15 @@
     <!-- App Title -->
     <!-- Categories -->
     <string name="misc_title">varios</string>
-    <string name="misc_summary">falsificación, controles de volumen</string>
+    <string name="misc_summary">falsificación, animaciones</string>
     <string name="statusbar_title">Barra de estado</string>
     <string name="statusbar_summary">Reloj, operador, iconos de estado</string>
+    <!-- Depth Wallpaper -->
+    <string name="dw_file_header_select_title">Elegir Sujeto para Fondo de Pantalla con Profundidad</string>
+    <string name="dw_file_header_select_summary">Seleccione la imagen referencia para el fondo de pantalla con profundidad del almacenamiento.</string>
+    <string name="dw_wallpaper_enabled_title">Fondo de pantalla con profundidad</string>
+    <string name="dw_wallpaper_enabled_summary">Habilita el fondo de pantalla con profundidad inspirado en iOS. Requiere una imagen de referencia.</string>
+    <string name="dw_wallpaper_opacity_title">Opacidad del fondo de pantalla con profundidad</string>
     <!-- General strings -->
     <string name="ok">Aceptar</string>
     <string name="reset">Restablecer</string>
@@ -27,7 +33,6 @@
     <!-- Units -->
     <string name="unit_seconds">segundos</string>
     <string name="unit_milliseconds">milisegundos</string>
-    <string name="unit_pixels">dp</string>
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">Valor: <xliff:g id="v">%s</xliff:g></string>
     <string name="custom_seekbar_default_value">Predeterminado</string>
@@ -48,8 +53,28 @@
     <string name="battery_style_title">Estilos del icono de batería</string>
     <string name="battery_style_port">Vertical</string>
     <string name="battery_style_circle">Circular</string>
+    <string name="battery_style_pa_circle">Círculo ParanoidAndroid</string>
     <string name="battery_style_landscape">Horizontal</string>
     <string name="battery_style_landscape_reversed">Apaisado (invertido)</string>
+    <string name="battery_style_icon_landscape_origami">Origami</string>
+    <string name="battery_style_icon_landscape_miui_pill">Píldora MIUI</string>
+    <string name="battery_style_icon_rlandscape_style_a">Ícono horizontal estilo A (Derecha)</string>
+    <string name="battery_style_icon_landscape_style_a">Ícono horizontal estilo A (Izquierda)</string>
+    <string name="battery_style_icon_rlandscape_style_b">Ícono horizontal estilo B (Derecha)</string>
+    <string name="battery_style_icon_landscape_style_b">Ícono horizontal estilo B (Izquierda)</string>
+    <string name="battery_style_icon_landscape_pill">Vertical Mx</string>
+    <string name="battery_style_icon_landscape_line">Lorn</string>
+    <string name="battery_style_icon_landscape_musku">Vertical iOS</string>
+    <string name="battery_style_icon_landscape_signal">Horizontal Airoo</string>
+    <string name="battery_style_icon_landscape_buddy">Cápsula horizontal</string>
+    <string name="battery_style_icon_land_a">Simple</string>
+    <string name="battery_style_icon_land_b">NeNine</string>
+    <string name="battery_style_icon_land_c">ColorOS</string>
+    <string name="battery_style_icon_land_d">Love</string>
+    <string name="battery_style_icon_land_j">Strip</string>
+    <string name="battery_style_icon_land_m">IOS Outline</string>
+    <string name="battery_style_icon_land_n">Regla</string>
+    <string name="battery_style_icon_land_o">Windows</string>
     <string name="battery_style_text">Texto</string>
     <string name="battery_percent_title">Mostrar porcentaje</string>
     <string name="battery_percent_summary">Mostrar siempre el porcentaje de batería con el icono</string>
@@ -68,4 +93,11 @@
     <!-- Statusbar colored icons -->
     <string name="statusbar_colored_icons_title">Iconos coloreados</string>
     <string name="statusbar_colored_icons_summary">Utilizar iconos de aplicación adecuados para los iconos de notificación en la barra de estado</string>
+    <!-- Game Space -->
+    <string name="game_space_title">Espacio de juegos</string>
+    <string name="game_space_summary">Mejora tu experiencia de juego</string>
+    <!-- Per-app volume -->
+    <string name="app_volume">Volumen por aplicación</string>
+    <string name="app_volume_title">Control de volumen por aplicación</string>
+    <string name="app_volume_summary">Mostrar el botón de volumen por aplicación en el diálogo de volumen</string>
 </resources>

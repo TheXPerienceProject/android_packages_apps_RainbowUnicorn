@@ -13,6 +13,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
     <!-- Categories -->
+    <!-- Depth Wallpaper -->
     <!-- General strings -->
     <string name="default_string">Bawaan</string>
     <string name="disabled">Disabled</string>
@@ -37,4 +38,6 @@
     <string name="statusbar_notif_count_title">Tampilkan hitungan pemberitahuan</string>
     <string name="statusbar_notif_count_summary">Menampilkan jumlah dari pemberitahuan yang tertunda</string>
     <!-- Statusbar colored icons -->
+    <!-- Game Space -->
+    <!-- Per-app volume -->
 </resources>

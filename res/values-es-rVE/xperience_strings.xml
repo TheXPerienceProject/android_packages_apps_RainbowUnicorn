@@ -17,12 +17,6 @@
     <string name="misc_summary">falsificación, animaciones</string>
     <string name="statusbar_title">Barra de estado</string>
     <string name="statusbar_summary">Reloj, operador, iconos de estado</string>
-    <!-- Depth Wallpaper -->
-    <string name="dw_file_header_select_title">Elegir Sujeto para Fondo de Pantalla con Profundidad</string>
-    <string name="dw_file_header_select_summary">Seleccione la imagen referencia para el fondo de pantalla con profundidad del almacenamiento.</string>
-    <string name="dw_wallpaper_enabled_title">Fondo de pantalla con profundidad</string>
-    <string name="dw_wallpaper_enabled_summary">Habilita el fondo de pantalla con profundidad inspirado en iOS. Requiere una imagen de referencia.</string>
-    <string name="dw_wallpaper_opacity_title">Opacidad del fondo de pantalla con profundidad</string>
     <!-- General strings -->
     <string name="ok">Aceptar</string>
     <string name="reset">Restablecer</string>
@@ -100,4 +94,11 @@
     <string name="app_volume">Volumen por aplicación</string>
     <string name="app_volume_title">Control de volumen por aplicación</string>
     <string name="app_volume_summary">Mostrar el botón de volumen por aplicación en el diálogo de volumen</string>
+    <!-- Themes -->
+    <string name="themes_icons_category">Íconos</string>
+    <string name="themes_animations_category">Animaciones</string>
+    <string name="themes_udfps_animation_title">Usar animación UDFPS</string>
+    <string name="themes_udfps_animation_summary">Establecer estilo de animación UDFPS</string>
+    <string name="themes_udfps_icon_title">Icono de UDFPS</string>
+    <string name="themes_udfps_icon_summary">Establece el estilo del icono de UDFPS</string>
 </resources>

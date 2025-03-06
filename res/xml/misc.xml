@@ -27,17 +27,17 @@
         android:entryValues="@array/screen_off_animation_values"
         android:defaultValue="1" />
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="themes_icons_category"
         android:title="@string/themes_icons_category">
 
-        <!-- Udfps icon -->
+         Udfps icon
         <Preference
             android:key="udfps_icon"
             android:title="@string/themes_udfps_icon_title"
             android:summary="@string/themes_udfps_icon_summary"
             android:fragment="com.android.settings.xperience.themes.UdfpsIcons" />
-    </PreferenceCategory>
+        </PreferenceCategory>-->
 
     <PreferenceCategory
         android:key="themes_animations_category"

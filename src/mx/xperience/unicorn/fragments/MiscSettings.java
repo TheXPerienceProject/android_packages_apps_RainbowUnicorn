@@ -49,12 +49,9 @@ import java.util.List;
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String KEY_UDFPS_ICON = "udfps_icon";
     private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
     private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
 
-    private PreferenceCategory mIconsCategory;
-    private Preference mUdfpsIcon;
     private PreferenceCategory mAnimationsCategory;
     private Preference mUdfpsAnimation;
 
@@ -75,7 +72,6 @@ public class MiscSettings extends SettingsPreferenceFragment implements
             e.printStackTrace();
         }
 
-        mUdfpsIcon = (Preference) findPreference(KEY_UDFPS_ICON);
         mAnimationsCategory = (PreferenceCategory) findPreference(KEY_ANIMATIONS_CATEGORY);
         mUdfpsAnimation = (Preference) findPreference(KEY_UDFPS_ANIMATION);
 
@@ -83,12 +79,8 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                 getActivity().getSystemService(ctx.FINGERPRINT_SERVICE);
 
         if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
-            mIconsCategory.removePreference(mUdfpsIcon);
             mAnimationsCategory.removePreference(mUdfpsAnimation);
         } else {
-            if (!VoltageUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations")) {
-                mIconsCategory.removePreference(mUdfpsIcon);
-            }
             if (!VoltageUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations")) {
                 mAnimationsCategory.removePreference(mUdfpsAnimation);
             }
@@ -136,12 +128,8 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                         context.getSystemService(Context.FINGERPRINT_SERVICE);
 
                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
-                    keys.add(KEY_UDFPS_ICON);
                     keys.add(KEY_UDFPS_ANIMATION);
                 } else {
-                    if (!VoltageUtils.isPackageInstalled(context, "mx.xperience.udfps.animations")) {
-                        keys.add(KEY_UDFPS_ICON);
-                    }
                     if (!VoltageUtils.isPackageInstalled(context, "mx.xperience.udfps.animations")) {
                         keys.add(KEY_UDFPS_ANIMATION);
                     }

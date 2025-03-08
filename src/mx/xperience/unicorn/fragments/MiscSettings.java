@@ -85,6 +85,12 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                 mAnimationsCategory.removePreference(mUdfpsAnimation);
             }
         }
+
+        // Check if the category is now empty
+        if (mAnimationsCategory.getPreferenceCount() == 0) {
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            preferenceScreen.removePreference(mAnimationsCategory);
+        }
     }
 
     @Override

@@ -20,6 +20,10 @@
     <!-- Status bar - icons -->
     <!-- 4G icon -->
     <!-- Status bar - Battery -->
+    <string name="battery_style_port">Verticale</string>
+    <string name="battery_style_circle">Cerchio</string>
+    <string name="battery_style_landscape">Orizzontale</string>
+    <string name="battery_style_text">Testo</string>
     <!-- Screen Off animation -->
     <!-- Status bar max notification -->
     <!-- Notification count -->

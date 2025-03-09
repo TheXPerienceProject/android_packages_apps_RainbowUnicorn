@@ -13,18 +13,92 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
     <!-- Categories -->
+    <string name="misc_title">egyebek</string>
+    <string name="misc_summary">álcázás, animációk</string>
+    <string name="statusbar_title">Állapotsor</string>
+    <string name="statusbar_summary">Óra, szolgáltató, állapotikonok</string>
     <!-- General strings -->
+    <string name="ok">Rendben</string>
+    <string name="reset">Visszaállítás</string>
+    <string name="cancel">Mégse</string>
+    <string name="save">Mentés</string>
+    <string name="default_string">Alapértelmezett</string>
+    <string name="disabled">Kikapcsolva</string>
     <!-- Units -->
+    <string name="unit_seconds">másodperc</string>
+    <string name="unit_milliseconds">ezredmásodperc</string>
     <!-- Custom seekbar -->
+    <string name="custom_seekbar_value"><xliff:g id="v">%s</xliff:g> értékű</string>
+    <string name="custom_seekbar_default_value">Alapértelmezett</string>
+    <string name="custom_seekbar_default_value_to_set">Alapértelmezetten <xliff:g id="v">%s</xliff:g> értékű\nÉrintse meg a beállításhoz</string>
+    <string name="custom_seekbar_default_value_is_set">Az alapértelmezett érték beállítva</string>
     <!-- Statusbar Items -->
+    <string name="sb_icons">Állapotsor-ikonok</string>
+    <string name="statusbar_items_category">Állapotsori elemek</string>
     <!-- Status bar - icons -->
+    <string name="status_bar_icons_title">Állapotsori ikonok</string>
     <!-- 4G icon -->
+    <string name="show_fourg_icon_title">4G-ikon</string>
+    <string name="show_fourg_icon_summary">LTE helyett 4G ikon jelenik meg a térerő ikon mellett</string>
     <!-- Status bar - Battery -->
+    <string name="status_bar_battery_title">Akkumulátorkijelző</string>
+    <string name="battery_settings_title">Akkumulátorkijelző</string>
+    <string name="battery_settings_summary">Az állapotsori akkuikon viselkedésének és stílusának szabályozása</string>
+    <string name="battery_style_title">Akkumulátorstílus</string>
+    <string name="battery_style_port">Álló (Portré)</string>
+    <string name="battery_style_circle">Kör</string>
+    <string name="battery_style_pa_circle">PA-kör</string>
+    <string name="battery_style_landscape">Fekvő (Tájkép)</string>
+    <string name="battery_style_landscape_reversed">Fekvő (fordított)</string>
+    <string name="battery_style_icon_landscape_origami">Origami</string>
+    <string name="battery_style_icon_landscape_miui_pill">MIUI-kapszula</string>
+    <string name="battery_style_icon_rlandscape_style_a">Fekvő (jobb) A-stílus</string>
+    <string name="battery_style_icon_landscape_style_a">Fekvő (bal) A-stílus</string>
+    <string name="battery_style_icon_rlandscape_style_b">Fekvő (jobb) B-stílus</string>
+    <string name="battery_style_icon_landscape_style_b">Fekvő (bal) B-stílus</string>
+    <string name="battery_style_icon_landscape_pill">Álló (Portré) MX</string>
+    <string name="battery_style_icon_landscape_line">Lorn (fekvő)</string>
+    <string name="battery_style_icon_landscape_musku">Álló (Portré) iOS</string>
+    <string name="battery_style_icon_landscape_signal">Airoo (fekvő)</string>
+    <string name="battery_style_icon_landscape_buddy">Kapszula (fekvő)</string>
+    <string name="battery_style_icon_land_a">Szimpla (fekvő)</string>
+    <string name="battery_style_icon_land_b">NeNine (fekvő)</string>
+    <string name="battery_style_icon_land_c">ColorOS (fekvő)</string>
+    <string name="battery_style_icon_land_d">Szerelem (fekvő)</string>
+    <string name="battery_style_icon_land_j">Szerpentin (fekvő)</string>
+    <string name="battery_style_icon_land_m">iOS Körvonal (fekvő)</string>
+    <string name="battery_style_icon_land_n">Vonalzó (fekvő)</string>
+    <string name="battery_style_icon_land_o">Windows (fekvő)</string>
+    <string name="battery_style_text">Szöveg</string>
+    <string name="battery_percent_title">Százalék-kijelzés</string>
+    <string name="battery_percent_summary">Mindig ikonnal jelenítse meg az akkuzázalékot</string>
+    <string name="battery_percent_inside_title">Ikonon belül</string>
+    <string name="battery_percent_inside_summary">Százalék megjelenítése az ikonon belül</string>
+    <string name="show_battery_percent_charging_title">Csak töltéskor</string>
+    <string name="show_battery_percent_charging_summary">Töltés közben mindenképp megjeleníti a százalék-értéket az ikon mellett</string>
     <!-- Screen Off animation -->
+    <string name="screen_off_animation_title">Képernyő-kikapcsolási animáció</string>
+    <string name="screen_off_animation_default">Alapértelmezett</string>
+    <string name="screen_off_animation_scale">Skála</string>
     <!-- Status bar max notification -->
     <!-- Notification count -->
+    <string name="statusbar_notif_count_title">Értesítésszám-kijelzés</string>
+    <string name="statusbar_notif_count_summary">Megjeleníti a függőben lévő értesítések számát</string>
     <!-- Statusbar colored icons -->
+    <string name="statusbar_colored_icons_title">Színes ikonok</string>
+    <string name="statusbar_colored_icons_summary">Alkalmazásonként változó ikonok használata az értesítési sávban</string>
     <!-- Game Space -->
+    <string name="game_space_title">Játéktér</string>
+    <string name="game_space_summary">Fokozza az Ön játékélményét</string>
     <!-- Per-app volume -->
+    <string name="app_volume">Alkalmazásonkénti hangerő</string>
+    <string name="app_volume_title">Hangerőszabályozás alkalmazásonként</string>
+    <string name="app_volume_summary">Alkalmazásonként különálló hangerőgomb megjelenítése a panelen</string>
     <!-- Themes -->
+    <string name="themes_icons_category">Ikonok</string>
+    <string name="themes_animations_category">Animációk</string>
+    <string name="themes_udfps_animation_title">Az ujjlenyomat-olvasó animációja</string>
+    <string name="themes_udfps_animation_summary">Itt állíthatja be a képernyőbe épített ujjlenyomatszenzor animációstílusát</string>
+    <string name="themes_udfps_icon_title">Ujjlenyomat-ikon</string>
+    <string name="themes_udfps_icon_summary">Itt állíthatja be a képernyőbe épített ujjlenyomatszenzor ikonstílusát</string>
 </resources>

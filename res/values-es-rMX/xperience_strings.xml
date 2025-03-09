@@ -14,7 +14,7 @@
     <!-- App Title -->
     <!-- Categories -->
     <string name="misc_title">varios</string>
-    <string name="misc_summary">falsificación, animaciones</string>
+    <string name="misc_summary">falsificación, controles de volumen</string>
     <string name="statusbar_title">Barra de estado</string>
     <string name="statusbar_summary">Reloj, operador, iconos de estado</string>
     <!-- General strings -->

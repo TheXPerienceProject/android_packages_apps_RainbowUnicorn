@@ -29,6 +29,13 @@
         android:title="@string/dynamic_island"
         android:summary="@string/dynamic_island_summary" />
 
+    <!-- ongoing progress -->
+    <Preference
+        android:key="ongoing_progress_settings"
+        android:title="@string/ongoing_progress_settings_title"
+        android:summary="@string/ongoing_progress_settings_summary"
+        android:fragment="mx.xperience.unicorn.fragments.OngoingProgressBar" />
+
     <Preference
         android:key="network_traffic_settings"
         android:title="@string/network_traffic_settings_title"

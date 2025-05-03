@@ -120,4 +120,8 @@
     <string name="themes_udfps_animation_summary">Set UDFPS animation style</string>
     <string name="themes_udfps_icon_title">UDFPS icon</string>
     <string name="themes_udfps_icon_summary">Set UDFPS icon style</string>
+
+    <!-- Access QS on lockscreen -->
+    <string name="show_qs_on_secure_keyguard_title">Quick settings</string>
+    <string name="show_qs_on_secure_keyguard_summary">Allow toggling quick settings on secure lockscreen</string>
 </resources>

@@ -1101,4 +1101,7 @@
     <string name="dynamic_island_calls_title">Ongoing calls</string>
     <string name="dynamic_island_calls_summary">Show your ongoing call status with duration and quick controls</string>
 
+    <!-- IME button space -->
+    <string name="show_ime_space_title">Show IME button space</string>
+    <string name="show_ime_space_summary">Enable the input method quick switch feature to switch input methods or hide the on-screen keyboard from the feature bar at the bottom of the screen when typing</string>
 </resources>

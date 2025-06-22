@@ -101,4 +101,5 @@
     <string name="themes_udfps_animation_summary">Itt állíthatja be a képernyőbe épített ujjlenyomatszenzor animációstílusát</string>
     <string name="themes_udfps_icon_title">Ujjlenyomat-ikon</string>
     <string name="themes_udfps_icon_summary">Itt állíthatja be a képernyőbe épített ujjlenyomatszenzor ikonstílusát</string>
+    <!-- Access QS on lockscreen -->
 </resources>

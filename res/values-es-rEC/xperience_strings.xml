@@ -101,4 +101,5 @@
     <string name="themes_udfps_animation_summary">Establecer estilo de animación UDFPS</string>
     <string name="themes_udfps_icon_title">Icono de UDFPS</string>
     <string name="themes_udfps_icon_summary">Establece el estilo del icono de UDFPS</string>
+    <!-- Access QS on lockscreen -->
 </resources>

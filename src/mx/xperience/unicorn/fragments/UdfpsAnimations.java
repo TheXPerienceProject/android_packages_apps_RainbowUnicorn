@@ -52,7 +52,7 @@ import java.util.Arrays;
 
 public class UdfpsAnimations extends SettingsPreferenceFragment {
 
-    private RecyclerView mRecyclerView;
+    /*private RecyclerView mRecyclerView;
     private String mPkg = "mx.xperience.udfps.animations";
     private AnimationDrawable animation;
 
@@ -62,7 +62,7 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
     private String[] mAnimPreviews;
     private String[] mTitles;
 
-    private UdfpsAnimAdapter mUdfpsAnimAdapter;
+    private UdfpsAnimAdapter mUdfpsAnimAdapter;*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
     }
 
     private void loadResources() {
-        try {
+      /*  try {
             PackageManager pm = getActivity().getPackageManager();
             udfpsRes = pm.getResourcesForApplication(mPkg);
         } catch (PackageManager.NameNotFoundException e) {
@@ -85,7 +85,7 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
         mAnimPreviews = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_previews",
                 "array", mPkg));
         mTitles = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_titles",
-                "array", mPkg));
+                "array", mPkg));*/
     }
 
     @Override
@@ -94,11 +94,11 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
         View view = inflater.inflate(
                 R.layout.item_view, container, false);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+      /*  mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         mUdfpsAnimAdapter = new UdfpsAnimAdapter(getActivity());
-        mRecyclerView.setAdapter(mUdfpsAnimAdapter);
+        mRecyclerView.setAdapter(mUdfpsAnimAdapter);*/
 
         return view;
     }
@@ -108,7 +108,7 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
         return MetricsEvent.RAINBOW_UNICORN;
     }
 
-    public class UdfpsAnimAdapter extends RecyclerView.Adapter<UdfpsAnimAdapter.UdfpsAnimViewHolder> {
+   /* public class UdfpsAnimAdapter extends RecyclerView.Adapter<UdfpsAnimAdapter.UdfpsAnimViewHolder> {
         Context context;
         String mSelectedAnim;
         String mAppliedAnim;
@@ -197,5 +197,5 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }

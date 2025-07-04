@@ -108,31 +108,9 @@ public class DeviceUtils {
         return false;
     }
 
-    private static final String[] currentlySupportedPixels = {
-            "rango",
-            "mustang",
-            "blazer",
-            "frankel",
-            "komodo",
-            "caiman",
-            "tokay",
-            "comet",
-            "akita",
-            "husky",
-            "shiba",
-            "felix",
-            "tangorpro",
-            "lynx",
-            "cheetah",
-            "panther",
-            "bluejay",
-            "oriole",
-            "raven",
-            "barbet"
-    };
     public static boolean isCurrentlySupportedPixel() {
-        String deviceCodename = SystemProperties.get(DEVICE);
-        return Arrays.asList(currentlySupportedPixels).contains(deviceCodename);
+        boolean isPixelDevice = SystemProperties.get("ro.product.model").matches("Pixel [3-9][a-zA-Z ]*");
+        return isPixelDevice;
     }
 
      /**

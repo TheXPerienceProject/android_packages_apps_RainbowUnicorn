@@ -84,7 +84,7 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
     }
 
     private void loadResources() {
-        try {
+    /*    try {
             PackageManager pm = getActivity().getPackageManager();
             udfpsRes = pm.getResourcesForApplication(mPkg);
         } catch (PackageManager.NameNotFoundException e) {
@@ -92,7 +92,7 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
         }
 
         mIcons = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_icons",
-                "array", mPkg));
+                "array", mPkg));*/
     }
 
     @Override
@@ -101,11 +101,11 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
         View view = inflater.inflate(
                 R.layout.item_view, container, false);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        /*mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         UdfpsIconAdapter mUdfpsIconAdapter = new UdfpsIconAdapter(getActivity());
-        mRecyclerView.setAdapter(mUdfpsIconAdapter);
+        mRecyclerView.setAdapter(mUdfpsIconAdapter);*/
 
         return view;
     }
@@ -120,7 +120,7 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
         super.onResume();
     }
 
-    public class UdfpsIconAdapter extends RecyclerView.Adapter<UdfpsIconAdapter.UdfpsIconViewHolder> {
+   /* public class UdfpsIconAdapter extends RecyclerView.Adapter<UdfpsIconAdapter.UdfpsIconViewHolder> {
         Context context;
         String mSelectedIcon;
         String mAppliedIcon;
@@ -208,5 +208,5 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }

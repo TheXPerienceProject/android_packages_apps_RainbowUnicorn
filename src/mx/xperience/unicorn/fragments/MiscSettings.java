@@ -37,7 +37,7 @@ import mx.xperience.framework.preference.CustomSeekBarPreference;
 import mx.xperience.framework.preference.SystemSettingMasterSwitchPreference;
 import mx.xperience.framework.preference.SystemSettingListPreference;
 import mx.xperience.framework.preference.SecureSettingSwitchPreference;
-import com.android.internal.util.voltage.VoltageUtils;
+import com.android.internal.util.xperience.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
@@ -48,12 +48,12 @@ import java.util.List;
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
-
+/*
     private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
     private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
 
     private PreferenceCategory mAnimationsCategory;
-    private Preference mUdfpsAnimation;
+    private Preference mUdfpsAnimation;*/
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -62,7 +62,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.misc);
 
-		Resources res = null;
+		/*Resources res = null;
         Context ctx = getContext();
         float density = Resources.getSystem().getDisplayMetrics().density;
 
@@ -90,7 +90,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         if (mAnimationsCategory.getPreferenceCount() == 0) {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
             preferenceScreen.removePreference(mAnimationsCategory);
-        }
+        }*/
     }
 
     @Override
@@ -113,7 +113,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
 
-                @Override
+              /*  @Override
                 public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
                         boolean enabled) {
                     ArrayList<SearchIndexableResource> result =
@@ -141,6 +141,6 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                     }
                 }
                 return keys;
-            }
+            }*/
     };
 }

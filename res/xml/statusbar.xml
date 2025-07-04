@@ -24,7 +24,7 @@
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
 
-    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+   <!-- <mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="show_fourg_icon"
         android:title="@string/show_fourg_icon_title"
         android:summary="@string/show_fourg_icon_summary"
@@ -46,5 +46,5 @@
         android:key="statusbar_notif_count"
         android:title="@string/statusbar_notif_count_title"
         android:summary="@string/statusbar_notif_count_summary"
-        android:defaultValue="false" />
+        android:defaultValue="false" />-->
 </PreferenceScreen>

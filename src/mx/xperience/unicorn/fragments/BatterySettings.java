@@ -47,7 +47,7 @@ import java.util.List;
 @SearchIndexable
 public class BatterySettings extends DashboardFragment implements
         OnPreferenceChangeListener {
-    private static final String TAG = "BatterySettings";
+    /*private static final String TAG = "BatterySettings";
     private static final String BATTERY_STYLE = "status_bar_battery_style";
     private static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String SHOW_BATTERY_PERCENT_CHARGING = "status_bar_show_battery_percent_charging";
@@ -56,7 +56,7 @@ public class BatterySettings extends DashboardFragment implements
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingSwitchPreference mBatteryPercent;
     private SystemSettingSwitchPreference mBatteryPercentCharging;
-    private SystemSettingSwitchPreference mBatteryPercentInside;
+    private SystemSettingSwitchPreference mBatteryPercentInside;*/
 
     @Override
     protected int getPreferenceScreenResId() {
@@ -66,7 +66,7 @@ public class BatterySettings extends DashboardFragment implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        PreferenceScreen prefSet = getPreferenceScreen();
+     /*   PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
 
         mBatteryPercent = findPreference(SHOW_BATTERY_PERCENT);
@@ -90,7 +90,7 @@ public class BatterySettings extends DashboardFragment implements
         mBatteryStyle.setOnPreferenceChangeListener(this);
         updatePercentEnablement(value != 2 || value != 7 || value != 24);
         mBatteryPercentCharging = findPreference(SHOW_BATTERY_PERCENT_CHARGING);
-        updatePercentChargingEnablement(value, percentEnabled, percentInside);
+        updatePercentChargingEnablement(value, percentEnabled, percentInside);*/
     }
 
     @Override
@@ -101,7 +101,7 @@ public class BatterySettings extends DashboardFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mBatteryStyle) {
+        /*if (preference == mBatteryStyle) {
             int value = Integer.valueOf((String) objValue);
             int index = mBatteryStyle.findIndexOfValue((String) objValue);
             mBatteryStyle.setSummary(mBatteryStyle.getEntries()[index]);
@@ -124,25 +124,25 @@ public class BatterySettings extends DashboardFragment implements
             // we already know style isn't text and percent is enabled
             mBatteryPercentCharging.setEnabled(enabled);
             return true;
-        }
+        }*/
         return false;
     }
 
     private void updatePercentEnablement(boolean enabled) {
     // Disable percentage setting only if style is 2, 7 or 24
-    enabled = enabled && (Integer.valueOf(mBatteryStyle.getValue()) != 2 &&
+  /*  enabled = enabled && (Integer.valueOf(mBatteryStyle.getValue()) != 2 &&
                          Integer.valueOf(mBatteryStyle.getValue()) != 7 &&
                          Integer.valueOf(mBatteryStyle.getValue()) != 24);
         mBatteryPercent.setEnabled(enabled);
-        mBatteryPercentInside.setEnabled(enabled && mBatteryPercent.isChecked());
+        mBatteryPercentInside.setEnabled(enabled && mBatteryPercent.isChecked());*/
     }
 
     private void updatePercentChargingEnablement(Integer style, Boolean percent, Boolean inside) {
-        if (style == null) style = Integer.valueOf(mBatteryStyle.getValue());
+        /*if (style == null) style = Integer.valueOf(mBatteryStyle.getValue());
         if (percent == null) percent = mBatteryPercent.isChecked();
         if (inside == null) inside = mBatteryPercentInside.isChecked();
         boolean enableCharging = style != 2 && style != 7 && style != 24;
-        mBatteryPercentCharging.setEnabled(enableCharging && (!percent || inside));
+        mBatteryPercentCharging.setEnabled(enableCharging && (!percent || inside));*/
         //mBatteryPercentCharging.setEnabled(style != 2 );
     }
 

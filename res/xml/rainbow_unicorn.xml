@@ -24,12 +24,12 @@ limitations under the License.
         </PreferenceCategory>
 
         <!-- Misc -->
-        <Preference
+        <!--<Preference
             android:key="security_category"
             android:title="@string/security_category_title"
             android:fragment="mx.xperience.unicorn.fragments.SecuritySettings"
             settings:layout="@layout/dashboard_preference_bottom"
-            android:icon="@drawable/ic_misc_settings"/>
+            android:icon="@drawable/ic_misc_settings"/>-->
 
         <!-- Status Bar -->
         <Preference

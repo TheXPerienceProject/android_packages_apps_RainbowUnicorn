@@ -47,8 +47,8 @@ import java.util.List;
 @SearchIndexable
 public class BatterySettings extends DashboardFragment implements
         OnPreferenceChangeListener {
-    /*private static final String TAG = "BatterySettings";
-    private static final String BATTERY_STYLE = "status_bar_battery_style";
+    private static final String TAG = "BatterySettings";
+    /*private static final String BATTERY_STYLE = "status_bar_battery_style";
     private static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String SHOW_BATTERY_PERCENT_CHARGING = "status_bar_show_battery_percent_charging";
     private static final String SHOW_BATTERY_PERCENT_INSIDE = "status_bar_show_battery_percent_inside";

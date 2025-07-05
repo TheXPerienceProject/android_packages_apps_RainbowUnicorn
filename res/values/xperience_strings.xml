@@ -154,4 +154,8 @@
     <string name="lock_screen_interface_category">Interface</string>
     <string name="lock_screen_charging_stats_title">Charging stats</string>
     <string name="lock_screen_charging_stats_summary">Display current, voltage, wattage, and temperature stats while charging</string>
+
+    <!-- Double tap to sleep on status bar or lockscreen -->
+    <string name="status_bar_double_tap_to_sleep_title">Tap to sleep</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the status bar or lockscreen to turn off the display</string>
 </resources>

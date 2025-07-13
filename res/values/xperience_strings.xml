@@ -99,6 +99,12 @@
     <!-- Notification count -->
     <string name="statusbar_notif_count_title">Show notification count</string>
     <string name="statusbar_notif_count_summary">Display the number of pending notifications</string>
+    <string name="status_bar_quick_pull_down_title">Quick pull down</string>
+    <string name="status_bar_quick_pull_down_summary">%1$s of the status bar pulls down quick settings</string>
+    <string name="status_bar_quick_pull_down_off">Off</string>
+    <string name="status_bar_quick_pull_down_right">Right side</string>
+    <string name="status_bar_quick_pull_down_left">Left side</string>
+    <string name="status_bar_quick_pull_down_both">Both sides</string>
 
     <!-- Statusbar colored icons -->
     <string name="statusbar_colored_icons_title">Colored icons</string>

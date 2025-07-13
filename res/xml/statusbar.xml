@@ -47,4 +47,12 @@
         android:title="@string/statusbar_notif_count_title"
         android:summary="@string/statusbar_notif_count_summary"
         android:defaultValue="false" />-->
+
+        <!-- Quick pull down -->
+    <mx.xperience.framework.preference.SystemSettingListPreference
+        android:key="qs_quick_pulldown"
+        android:title="@string/status_bar_quick_pull_down_title"
+        android:entries="@array/status_bar_quick_pull_down_entries"
+        android:entryValues="@array/status_bar_quick_pull_down_values"
+        android:defaultValue="0" />
 </PreferenceScreen>

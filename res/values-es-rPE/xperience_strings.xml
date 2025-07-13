@@ -84,6 +84,12 @@
     <!-- Notification count -->
     <string name="statusbar_notif_count_title">Mostrar contador de notificaciones</string>
     <string name="statusbar_notif_count_summary">Mostrar el número de notificaciones pendientes</string>
+    <string name="status_bar_quick_pull_down_title">Despliegue rápido</string>
+    <string name="status_bar_quick_pull_down_summary">%1$s de la barra de estado baja los ajustes rápidos</string>
+    <string name="status_bar_quick_pull_down_off">Desactivado</string>
+    <string name="status_bar_quick_pull_down_right">Lado derecho</string>
+    <string name="status_bar_quick_pull_down_left">Lado izquierdo</string>
+    <string name="status_bar_quick_pull_down_both">Ambos lados</string>
     <!-- Statusbar colored icons -->
     <string name="statusbar_colored_icons_title">Iconos coloreados</string>
     <string name="statusbar_colored_icons_summary">Utilizar iconos de aplicación adecuados para los iconos de notificación en la barra de estado</string>
@@ -102,4 +108,40 @@
     <string name="themes_udfps_icon_title">Icono de UDFPS</string>
     <string name="themes_udfps_icon_summary">Establece el estilo del icono de UDFPS</string>
     <!-- Access QS on lockscreen -->
+    <string name="show_qs_on_secure_keyguard_title">Ajustes rápidos</string>
+    <string name="show_qs_on_secure_keyguard_summary">Permitir cambiar la configuración rápida en la pantalla de bloqueo</string>
+    <!-- Miscellaneous -->
+    <string name="miscellaneous_spoofing_category">Spoofing</string>
+    <!-- Miscellaneous/Spoofing -->
+    <string name="spoofing_title">Falsificación de componentes</string>
+    <string name="spoofing_summary">Elude las restricciones de la aplicación mediante suplantación de componentes</string>
+    <string name="spoofing_system_wide_category">Todo el sistema</string>
+    <string name="spoofing_pixel_props_title">Props de píxel</string>
+    <string name="spoofing_pixel_props_summary">Falsifica un grupo selecto de apps de Google para que crean estar en el último dispositivo Pixel</string>
+    <string name="tensor_spoof_title">Simular funciones de Tensor</string>
+    <string name="tensor_spoof_summary">Desbloquear características de tensor/píxel</string>
+    <string name="spoofing_storage_encryption_title">Cifrado de almacenamiento</string>
+    <string name="spoofing_storage_encryption_summary">Simula que el almacenamiento del dispositivo está cifrado</string>
+    <string name="spoofing_app_specific_category">Aplicación específica</string>
+    <string name="spoofing_qsb_title">Aplicaciones de Google</string>
+    <string name="spoofing_qsb_summary">Simula que la app de Google se ejecuta en el último Pixel para habilitar funciones exclusivas</string>
+    <string name="spoofing_vending_title">Play Store</string>
+    <string name="spoofing_vending_summary">Simula que la Play Store se ejecuta en el último Pixel</string>
+    <string name="spoofing_photos_title">Fotos de Google</string>
+    <string name="spoofing_photos_summary">Suplanta el dispositivo como Pixel XL en la aplicación Google Fotos para desbloquear el respaldo de imágenes ilimitado</string>
+    <string name="spoofing_snap_title">SnapChat</string>
+    <string name="spoofing_snap_summary">Suplanta el dispositivo como Pixel XL en la aplicación Snapchat para solucionar posibles problemas con el chat</string>
+    <string name="gameprops_title">Desbloquea una tasa de fotogramas más alta en los juegos</string>
+    <string name="gameprops_summary">Falsifica tu dispositivo como otro modelo para ciertos juegos y desbloquea mayor tasa de FPS</string>
+    <!-- Lock screen -->
+    <string name="lock_screen_interface_category">Interfaz</string>
+    <string name="lock_screen_charging_stats_title">Estadísticas de carga</string>
+    <string name="lock_screen_charging_stats_summary">Mostrar la corriente máxima del cargador, voltaje y temperatura de la batería en la pantalla de bloqueo durante la carga</string>
+    <!-- Double tap to sleep on status bar or lockscreen -->
+    <string name="status_bar_double_tap_to_sleep_title">Toque para dormir</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Doble toque en la barra de estado o pantalla de bloqueo para apagar la pantalla</string>
+    <!-- more misc-->
+    <string name="quick_settings_miscellaneous_category">QS varios</string>
+    <string name="quick_settings_bluetooth_show_dialog_title">Diálogo de acceso a Bluetooth</string>
+    <string name="quick_settings_bluetooth_show_dialog_summary">Mostrar opciones de Bluetooth o activar/desactivar Bluetooth al pulsar el acceso rápido de Bluetooth</string>
 </resources>

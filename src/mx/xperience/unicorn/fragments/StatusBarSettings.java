@@ -83,7 +83,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mQuickPulldown) {
-            int value = Integer.parseInt((String) newValue);
+            int value = Integer.parseInt((String) objValue);
             updateQuickPulldownSummary(value);
             return true;
         }

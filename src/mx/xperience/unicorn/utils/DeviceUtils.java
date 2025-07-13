@@ -22,6 +22,7 @@ import static android.view.WindowManagerPolicyConstants.NAV_BAR_MODE_GESTURAL;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -111,6 +112,12 @@ public class DeviceUtils {
     public static boolean isCurrentlySupportedPixel() {
         boolean isPixelDevice = SystemProperties.get("ro.product.model").matches("Pixel [3-9][a-zA-Z ]*");
         return isPixelDevice;
+    }
+
+    public static boolean deviceSupportsBluetooth(Context ctx) {
+        BluetoothManager bluetoothManager = (BluetoothManager)
+                ctx.getSystemService(Context.BLUETOOTH_SERVICE);
+        return (bluetoothManager.getAdapter() != null);
     }
 
      /**

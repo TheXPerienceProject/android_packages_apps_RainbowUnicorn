@@ -22,7 +22,7 @@
         android:key="systemui_tuner_statusbar"
         android:title="@string/statusbar_items_category" >
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
-        </Preference>
+    </Preference>
 
    <!-- <mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="show_fourg_icon"

@@ -67,9 +67,11 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
 
         addPreferencesFromResource(R.xml.misc);
+        Context ctx = getContext();
+        PreferenceScreen preferenceScreen = getPreferenceScreen();
 
 		/*Resources res = null;
-        Context ctx = getContext();
+
         float density = Resources.getSystem().getDisplayMetrics().density;
 
         try {
@@ -94,14 +96,14 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
         // Check if the category is now empty
         if (mAnimationsCategory.getPreferenceCount() == 0) {
-            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            
             preferenceScreen.removePreference(mAnimationsCategory);
         }*/
 
         mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
 
-        if (!DeviceUtils.deviceSupportsBluetooth(context)) {
-            prefScreen.removePreference(mMiscellaneousCategory);
+        if (!DeviceUtils.deviceSupportsBluetooth(ctx)) {
+            preferenceScreen.removePreference(mMiscellaneousCategory);
         }
     }
 

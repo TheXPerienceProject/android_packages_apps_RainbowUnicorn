@@ -24,9 +24,15 @@
     <!-- Screen Off animation -->
     <!-- Status bar max notification -->
     <!-- Notification count -->
+    <string name="status_bar_quick_pull_down_off">Выключено</string>
     <!-- Statusbar colored icons -->
     <!-- Game Space -->
     <!-- Per-app volume -->
     <!-- Themes -->
     <!-- Access QS on lockscreen -->
+    <!-- Miscellaneous -->
+    <!-- Miscellaneous/Spoofing -->
+    <!-- Lock screen -->
+    <!-- Double tap to sleep on status bar or lockscreen -->
+    <!-- more misc-->
 </resources>

@@ -84,6 +84,7 @@
     <!-- Notification count -->
     <string name="statusbar_notif_count_title">Értesítésszám-kijelzés</string>
     <string name="statusbar_notif_count_summary">Megjeleníti a függőben lévő értesítések számát</string>
+    <string name="status_bar_quick_pull_down_off">Ki</string>
     <!-- Statusbar colored icons -->
     <string name="statusbar_colored_icons_title">Színes ikonok</string>
     <string name="statusbar_colored_icons_summary">Alkalmazásonként változó ikonok használata az értesítési sávban</string>
@@ -102,4 +103,9 @@
     <string name="themes_udfps_icon_title">Ujjlenyomat-ikon</string>
     <string name="themes_udfps_icon_summary">Itt állíthatja be a képernyőbe épített ujjlenyomatszenzor ikonstílusát</string>
     <!-- Access QS on lockscreen -->
+    <!-- Miscellaneous -->
+    <!-- Miscellaneous/Spoofing -->
+    <!-- Lock screen -->
+    <!-- Double tap to sleep on status bar or lockscreen -->
+    <!-- more misc-->
 </resources>

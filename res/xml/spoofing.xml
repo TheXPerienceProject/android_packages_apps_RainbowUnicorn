@@ -59,11 +59,11 @@
             android:defaultValue="false" />
 
         <!-- Encryption -->
-        <mx.xperience.framework.preference.GlobalSettingSwitchPreference
+       <!--<mx.xperience.framework.preference.GlobalSettingSwitchPreference
             android:key="spoofing_storage_encryption"
             android:title="@string/spoofing_storage_encryption_title"
             android:summary="@string/spoofing_storage_encryption_summary"
-            android:defaultValue="false" />
+            android:defaultValue="false" />-->
         </PreferenceCategory>
 
         <PreferenceCategory

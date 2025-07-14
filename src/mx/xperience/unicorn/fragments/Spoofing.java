@@ -161,7 +161,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
         mPifJsonFilePreference.setOnPreferenceClickListener(preference -> {
             openFileSelector(10001);
             return true;
-        });0
+        });
 
         mUpdateJsonButton.setOnPreferenceClickListener(preference -> {
             updatePropertiesFromUrl("https://klozz.dev/attest/pif.json");

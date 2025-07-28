@@ -52,8 +52,9 @@
 
     <com.android.settingslib.widget.FooterPreference
         android:key="progress_footer"
-        android:title="@string/progress_footer_text"
+        android:summary="@string/progress_footer_text"
         android:selectable="false"
+        android:singleLine="false"
         settings:searchable="false" />
 
  </PreferenceScreen>

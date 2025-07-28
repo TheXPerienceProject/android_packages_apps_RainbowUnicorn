@@ -215,4 +215,8 @@
      The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance."
      </string>
 
+     <!-- Bluetooth -->
+    <string name="status_bar_bluetooth_battery_title">Bluetooth battery status</string>
+    <string name="status_bar_bluetooth_battery_summary">Display battery status for the connected Bluetooth device, if available</string>
+
 </resources>

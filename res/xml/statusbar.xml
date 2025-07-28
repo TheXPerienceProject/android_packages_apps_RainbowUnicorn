@@ -24,6 +24,13 @@
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
     </Preference>
 
+    <!-- Bluetooth battery status -->
+    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+        android:key="bluetooth_show_battery"
+        android:title="@string/status_bar_bluetooth_battery_title"
+        android:summary="@string/status_bar_bluetooth_battery_summary"
+        android:defaultValue="true" />
+
    <!-- <mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="show_fourg_icon"
         android:title="@string/show_fourg_icon_title"

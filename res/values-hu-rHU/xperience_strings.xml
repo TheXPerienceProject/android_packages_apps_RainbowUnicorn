@@ -110,4 +110,10 @@
     <!-- Double tap to sleep on status bar or lockscreen -->
     <!-- more misc-->
     <!-- Ongoing action chip -->
+    <!-- Bluetooth -->
+    <!-- Freeform launch mode -->
+    <!-- Network traffic -->
+    <string name="network_traffic_location_disable">Kikapcsolva</string>
+    <string name="network_traffic_hidearrow">Nyilak elrejtése</string>
+    <string name="network_traffic_hidearrow_summary">Elrejti a Hálózati forgalmat jelző nyilakat</string>
 </resources>

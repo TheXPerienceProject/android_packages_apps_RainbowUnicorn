@@ -37,4 +37,9 @@
     <!-- Double tap to sleep on status bar or lockscreen -->
     <!-- more misc-->
     <!-- Ongoing action chip -->
+    <!-- Bluetooth -->
+    <!-- Freeform launch mode -->
+    <!-- Network traffic -->
+    <string name="network_traffic_hidearrow">Скрыть стрелки</string>
+    <string name="network_traffic_hidearrow_summary">Скрыть стрелки индикатора сетевого трафика</string>
 </resources>

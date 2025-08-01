@@ -76,4 +76,15 @@
         android:entries="@array/status_bar_quick_pull_down_entries"
         android:entryValues="@array/status_bar_quick_pull_down_values"
         android:defaultValue="0" />
+
+    <PreferenceCategory
+        android:title="UI Refactor">
+
+        <SwitchPreferenceCompat
+            android:key="new_status_bar_icons"
+            android:title="Use new status bar icons"
+            android:summary="Enables modernized icons. Disables most of statusbar customization."
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

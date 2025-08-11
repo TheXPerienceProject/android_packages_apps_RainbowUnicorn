@@ -17,7 +17,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-	
+
+    <PreferenceCategory
+        android:title="UI Refactor">
+
+        <SwitchPreferenceCompat
+            android:key="new_status_bar_icons"
+            android:title="Use new status bar icons"
+            android:summary="Enables modernized icons. Disables most of statusbar customization."
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
     <Preference
         android:key="systemui_tuner_statusbar"
         android:title="@string/statusbar_items_category" >
@@ -31,7 +42,6 @@
         android:summary="@string/status_bar_bluetooth_battery_summary"
         android:defaultValue="true" />
 
-
     <Preference
         android:key="network_traffic_settings"
         android:title="@string/network_traffic_settings_title"
@@ -42,7 +52,7 @@
         android:key="show_fourg_icon"
         android:title="@string/show_fourg_icon_title"
         android:summary="@string/show_fourg_icon_summary"
-        android:defaultValue="true"/>
+        android:defaultValue="true"/>-->
 
     <Preference
         android:fragment="mx.xperience.unicorn.fragments.BatterySettings"
@@ -50,6 +60,7 @@
         android:title="@string/battery_settings_title"
         android:summary="@string/battery_settings_summary" />
 
+<!---
     <mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="statusbar_colored_icons"
         android:title="@string/statusbar_colored_icons_title"
@@ -77,14 +88,4 @@
         android:entryValues="@array/status_bar_quick_pull_down_values"
         android:defaultValue="0" />
 
-    <PreferenceCategory
-        android:title="UI Refactor">
-
-        <SwitchPreferenceCompat
-            android:key="new_status_bar_icons"
-            android:title="Use new status bar icons"
-            android:summary="Enables modernized icons. Disables most of statusbar customization."
-            android:defaultValue="true" />
-
-    </PreferenceCategory>
 </PreferenceScreen>

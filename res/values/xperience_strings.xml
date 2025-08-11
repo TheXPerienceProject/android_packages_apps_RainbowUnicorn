@@ -51,7 +51,8 @@
     <string name="show_fourg_icon_summary">Display 4G icon in signal icon instead LTE</string>
 
     <!-- Battery customizations -->
-    <string name="battery_settings_title">Battery Settings</string>   
+    <string name="battery_settings_title">Battery Settings</string>
+    <string name="battery_settings_summary">Control behavior and style of the battery icon in the status bar</string>
     <string name="battery_options">Battery</string>
     <string name="battery_style_title">Battery Style</string>
     <string name="battery_style_port">Portrait</string>
@@ -65,6 +66,11 @@
     <string name="battery_percent_inside_summary">Show percent inside the icon</string>
     <string name="show_battery_percent_charging_title">Show percent when charging</string>
     <string name="show_battery_percent_charging_summary">Enforce showing the percent next to the icon when charging</string>
+
+    <!-- Battery saver -->
+    <string name="battery_saver_refresh_rate_title">Reduce refresh rate</string>
+    <string name="battery_saver_refresh_rate_summary">Use 60 Hz screen refresh rate to save power when Battery Saver is on</string>
+    <string name="battery_saver_refresh_rate_disabled_summary">Extreme refresh rate is on</string>
 
     <!-- Screen Off animation -->
     <string name="screen_off_animation_title">Screen off animation</string>

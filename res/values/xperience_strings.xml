@@ -15,7 +15,7 @@
     <string name="title" translatable="false">Rainbow Unicorn</string>
 
     <!-- Categories -->
-    <string name="misc_title">miscellaneous</string>
+    <string name="misc_title">Miscellaneous</string>
     <string name="misc_summary">spoof, animations</string>
     <string name="statusbar_title">Status bar</string>
     <string name="statusbar_summary">Clock, carrier, status icons</string>

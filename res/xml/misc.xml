@@ -18,7 +18,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-<!--
+
     <mx.xperience.framework.preference.SystemSettingListPreference
         android:key="screen_off_animation"
         android:title="@string/screen_off_animation_title"
@@ -27,6 +27,7 @@
         android:entryValues="@array/screen_off_animation_values"
         android:defaultValue="1" />
 
+<!--
     <PreferenceCategory
         android:key="themes_animations_category"
         android:title="@string/themes_animations_category">
@@ -50,18 +51,6 @@
         android:entryValues="@array/freeform_launch_mode_values"
         android:defaultValue="0"
         android:summary="%s" />
-
-    <PreferenceCategory
-        android:key="miscellaneous_spoofing_category"
-        android:title="@string/miscellaneous_spoofing_category">
-
-        <!-- Component spoofing -->
-        <Preference
-            android:key="spoofing"
-            android:title="@string/spoofing_title"
-            android:summary="@string/spoofing_summary"
-            android:fragment="mx.xperience.unicorn.fragments.Spoofing" />
-    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="lock_screen_interface_category"

@@ -44,13 +44,14 @@ limitations under the License.
             android:key="misc_category"
             android:title="@string/misc_title"
             android:fragment="mx.xperience.unicorn.fragments.MiscSettings"
-            settings:layout="@layout/dashboard_preference_bottom"
+            settings:layout="@layout/dashboard_preference_middle"
             android:icon="@drawable/ic_misc_settings"/>
 
         <Preference
             android:key="spoofing"
             android:title="@string/spoofing_title"
             android:summary="@string/spoofing_summary"
+            settings:layout="@layout/dashboard_preference_bottom"
             android:fragment="mx.xperience.unicorn.fragments.Spoofing" />
 
 

@@ -17,29 +17,26 @@ package mx.xperience.unicorn.fragments;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
-import android.provider.DeviceConfig;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.format.DateFormat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+
+import android.provider.Settings;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
 
-import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
 
 import mx.xperience.framework.preference.SystemSettingListPreference;
@@ -48,10 +45,13 @@ import mx.xperience.framework.preference.SystemSettingSwitchPreference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @SearchIndexable
-public class BatterySettings extends DashboardFragment implements
-        OnPreferenceChangeListener {
-    private static final String TAG = "BatterySettings";
+public class BatterySettings extends SettingsPreferenceFragment
+            implements Preference.OnPreferenceChangeListener  {
 
     private static final String BATTERY_STYLE = "status_bar_battery_style";
     private static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
@@ -161,11 +161,6 @@ public class BatterySettings extends DashboardFragment implements
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.RAINBOW_UNICORN;
-    }
-
-    @Override
-    protected String getLogTag() {
-        return TAG;
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

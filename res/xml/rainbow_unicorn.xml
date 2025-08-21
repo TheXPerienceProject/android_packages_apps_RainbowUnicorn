@@ -50,9 +50,9 @@ limitations under the License.
         <Preference
             android:key="spoofing"
             android:title="@string/spoofing_title"
-            android:summary="@string/spoofing_summary"
             settings:layout="@layout/dashboard_preference_bottom"
-            android:fragment="mx.xperience.unicorn.fragments.Spoofing" />
+            android:fragment="mx.xperience.unicorn.fragments.Spoofing"
+            android:icon="@drawable/ic_key" />
 
 
 </PreferenceScreen>

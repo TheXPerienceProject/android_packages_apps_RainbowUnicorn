@@ -10,7 +10,7 @@
 
     <PreferenceCategory
         android:key="spoofing_system_wide_category"
-        android:title="@string/spoofing_system_wide_category">
+        android:title="@string/spoofing_keybox">
 
         <!-- Keybox Data -->
         <mx.xperience.unicorn.preferences.KeyboxDataPreference
@@ -18,7 +18,12 @@
             android:title="@string/keybox_data_title"
             android:summary="@string/keybox_data_summary"
             android:defaultValue=""/>
+    </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="spoofing_pif_menu"
+        android:title="@string/spoofing_pif" >
+    
         <!-- GMS spoof -->
         <mx.xperience.framework.preference.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.gms"
@@ -44,6 +49,12 @@
             android:summary="@string/pif_spoofing_summary"
             android:dependency="persist.sys.pixelprops.gms" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="spoofing_pif_menu"
+        android:title="@string/spoofing_pif_props" >
+
         <!-- Pixel props -->
         <mx.xperience.framework.preference.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops"
@@ -52,37 +63,39 @@
             android:defaultValue="true" />
 
         <!-- Tensor features -->
-        <mx.xperience.framework.preference.SystemPropertySwitchPreference
+        <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
             android:key="persist.sys.features.tensor"
             android:title="@string/tensor_spoof_title"
             android:summary="@string/tensor_spoof_summary"
-            android:defaultValue="false" />
+            android:defaultValue="false" />-->
+    </PreferenceCategory>
+
 
         <!-- Encryption -->
        <!--<mx.xperience.framework.preference.GlobalSettingSwitchPreference
             android:key="spoofing_storage_encryption"
             android:title="@string/spoofing_storage_encryption_title"
             android:summary="@string/spoofing_storage_encryption_summary"
-            android:defaultValue="false" />-->
-        </PreferenceCategory>
+            android:defaultValue="false" />
+        </PreferenceCategory>-->
 
-        <PreferenceCategory
+    <PreferenceCategory
             android:key="spoofing_app_specific_category"
             android:title="@string/spoofing_app_specific_category">
 
             <!-- Google App -->
-            <mx.xperience.framework.preference.SystemPropertySwitchPreference
+            <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
                 android:key="persist.sys.pixelprops.qsb"
                 android:title="@string/spoofing_qsb_title"
                 android:summary="@string/spoofing_qsb_summary"
-                android:defaultValue="false" />
+                android:defaultValue="false" />-->
 
             <!-- Play Store -->
-            <mx.xperience.framework.preference.SystemPropertySwitchPreference
+            <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
                 android:key="persist.sys.pixelprops.vending"
                 android:title="@string/spoofing_vending_title"
                 android:summary="@string/spoofing_vending_summary"
-                android:defaultValue="false" />
+                android:defaultValue="false" />-->
 
             <!-- Google Photos -->
             <mx.xperience.framework.preference.SystemPropertySwitchPreference
@@ -99,10 +112,10 @@
                 android:defaultValue="true" />
 
             <!-- Snapchat -->
-            <mx.xperience.framework.preference.SystemPropertySwitchPreference
+            <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
                 android:key="persist.sys.pixelprops.snap"
                 android:title="@string/spoofing_snap_title"
                 android:summary="@string/spoofing_snap_summary"
-                android:defaultValue="false" />
-            </PreferenceCategory>
-        </PreferenceScreen>
+                android:defaultValue="false" />-->
+    </PreferenceCategory>
+</PreferenceScreen>

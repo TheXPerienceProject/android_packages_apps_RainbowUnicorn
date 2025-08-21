@@ -52,7 +52,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="spoofing_pif_props_menu" <!-- CHANGED KEY NAME -->
+        android:key="spoofing_pif_props_menu"
         android:title="@string/spoofing_pif_props" >
 
         <!-- Pixel props -->

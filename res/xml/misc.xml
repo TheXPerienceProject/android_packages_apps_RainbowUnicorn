@@ -19,6 +19,10 @@
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <PreferenceCategory
+        android:key="lock_screen_interface_category"
+        android:title="@string/lock_screen_interface_category">
+
     <mx.xperience.framework.preference.SystemSettingListPreference
         android:key="screen_off_animation"
         android:title="@string/screen_off_animation_title"
@@ -43,18 +47,14 @@
     <!-- Freeform launch mode -->
 
 
-    <mx.xperience.framework.preference.SystemSettingListPreference
-        android:key="freeform_launch_mode"
-        android:title="@string/freeform_launch_mode_title"
-        android:dialogTitle="@string/freeform_launch_mode_title"
-        android:entries="@array/freeform_launch_mode_entries"
-        android:entryValues="@array/freeform_launch_mode_values"
-        android:defaultValue="0"
-        android:summary="%s" />
-
-    <PreferenceCategory
-        android:key="lock_screen_interface_category"
-        android:title="@string/lock_screen_interface_category">
+        <mx.xperience.framework.preference.SystemSettingListPreference
+            android:key="freeform_launch_mode"
+            android:title="@string/freeform_launch_mode_title"
+            android:dialogTitle="@string/freeform_launch_mode_title"
+            android:entries="@array/freeform_launch_mode_entries"
+            android:entryValues="@array/freeform_launch_mode_values"
+            android:defaultValue="0"
+            android:summary="%s" />
 
         <!-- Charging stats -->
         <mx.xperience.framework.preference.SystemSettingSwitchPreference

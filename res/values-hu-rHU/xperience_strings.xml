@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2021 VoltageOS
+<!-- Copyright (C) 2025 The XPerience Project
+
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
+
           http://www.apache.org/licenses/LICENSE-2.0
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,7 +16,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
     <!-- Categories -->
-    <string name="misc_title">egyebek</string>
     <string name="misc_summary">álcázás, animációk</string>
     <string name="statusbar_title">Állapotsor</string>
     <string name="statusbar_summary">Óra, szolgáltató, állapotikonok</string>
@@ -40,35 +42,13 @@
     <!-- 4G icon -->
     <string name="show_fourg_icon_title">4G-ikon</string>
     <string name="show_fourg_icon_summary">LTE helyett 4G ikon jelenik meg a térerő ikon mellett</string>
-    <!-- Status bar - Battery -->
-    <string name="status_bar_battery_title">Akkumulátorkijelző</string>
-    <string name="battery_settings_title">Akkumulátorkijelző</string>
+    <!-- Battery customizations -->
     <string name="battery_settings_summary">Az állapotsori akkuikon viselkedésének és stílusának szabályozása</string>
     <string name="battery_style_title">Akkumulátorstílus</string>
     <string name="battery_style_port">Álló (Portré)</string>
     <string name="battery_style_circle">Kör</string>
-    <string name="battery_style_pa_circle">PA-kör</string>
     <string name="battery_style_landscape">Fekvő (Tájkép)</string>
     <string name="battery_style_landscape_reversed">Fekvő (fordított)</string>
-    <string name="battery_style_icon_landscape_origami">Origami</string>
-    <string name="battery_style_icon_landscape_miui_pill">MIUI-kapszula</string>
-    <string name="battery_style_icon_rlandscape_style_a">Fekvő (jobb) A-stílus</string>
-    <string name="battery_style_icon_landscape_style_a">Fekvő (bal) A-stílus</string>
-    <string name="battery_style_icon_rlandscape_style_b">Fekvő (jobb) B-stílus</string>
-    <string name="battery_style_icon_landscape_style_b">Fekvő (bal) B-stílus</string>
-    <string name="battery_style_icon_landscape_pill">Álló (Portré) MX</string>
-    <string name="battery_style_icon_landscape_line">Lorn (fekvő)</string>
-    <string name="battery_style_icon_landscape_musku">Álló (Portré) iOS</string>
-    <string name="battery_style_icon_landscape_signal">Airoo (fekvő)</string>
-    <string name="battery_style_icon_landscape_buddy">Kapszula (fekvő)</string>
-    <string name="battery_style_icon_land_a">Szimpla (fekvő)</string>
-    <string name="battery_style_icon_land_b">NeNine (fekvő)</string>
-    <string name="battery_style_icon_land_c">ColorOS (fekvő)</string>
-    <string name="battery_style_icon_land_d">Szerelem (fekvő)</string>
-    <string name="battery_style_icon_land_j">Szerpentin (fekvő)</string>
-    <string name="battery_style_icon_land_m">iOS Körvonal (fekvő)</string>
-    <string name="battery_style_icon_land_n">Vonalzó (fekvő)</string>
-    <string name="battery_style_icon_land_o">Windows (fekvő)</string>
     <string name="battery_style_text">Szöveg</string>
     <string name="battery_percent_title">Százalék-kijelzés</string>
     <string name="battery_percent_summary">Mindig ikonnal jelenítse meg az akkuzázalékot</string>
@@ -76,6 +56,7 @@
     <string name="battery_percent_inside_summary">Százalék megjelenítése az ikonon belül</string>
     <string name="show_battery_percent_charging_title">Csak töltéskor</string>
     <string name="show_battery_percent_charging_summary">Töltés közben mindenképp megjeleníti a százalék-értéket az ikon mellett</string>
+    <!-- Battery saver -->
     <!-- Screen Off animation -->
     <string name="screen_off_animation_title">Képernyő-kikapcsolási animáció</string>
     <string name="screen_off_animation_default">Alapértelmezett</string>
@@ -84,7 +65,12 @@
     <!-- Notification count -->
     <string name="statusbar_notif_count_title">Értesítésszám-kijelzés</string>
     <string name="statusbar_notif_count_summary">Megjeleníti a függőben lévő értesítések számát</string>
+    <string name="status_bar_quick_pull_down_title">Gyors legördítés</string>
+    <string name="status_bar_quick_pull_down_summary">Az Állapotsor %1$s húzhatja le a Gyorsbeállításokat</string>
     <string name="status_bar_quick_pull_down_off">Ki</string>
+    <string name="status_bar_quick_pull_down_right">Jobb oldalán</string>
+    <string name="status_bar_quick_pull_down_left">Bal oldalán</string>
+    <string name="status_bar_quick_pull_down_both">Mindkét oldalán</string>
     <!-- Statusbar colored icons -->
     <string name="statusbar_colored_icons_title">Színes ikonok</string>
     <string name="statusbar_colored_icons_summary">Alkalmazásonként változó ikonok használata az értesítési sávban</string>
@@ -103,11 +89,51 @@
     <string name="themes_udfps_icon_title">Ujjlenyomat-ikon</string>
     <string name="themes_udfps_icon_summary">Itt állíthatja be a képernyőbe épített ujjlenyomatszenzor ikonstílusát</string>
     <!-- Access QS on lockscreen -->
+    <string name="show_qs_on_secure_keyguard_title">Gyorsbeállítások</string>
+    <string name="show_qs_on_secure_keyguard_summary">Megengedi a gyorsbeállítások lehúzását a biztonsági záróképernyőn</string>
     <!-- Miscellaneous -->
+    <string name="miscellaneous_spoofing_category">Hamisítás, álcázás</string>
     <!-- Miscellaneous/Spoofing -->
+    <string name="gms_spoof_title">Play Integritásjavítás</string>
+    <string name="gms_spoof_summary">Készülékálcázás, hogy megfeleljen a Google Áruház tanusítványi feltételeinek</string>
+    <string name="spoofing_title">Részegységek hamisítása</string>
+    <string name="spoofing_summary">Megkerülheti az alkalmazáskorlátozásokat részegységek hamisításával</string>
+    <string name="spoofing_system_wide_category">Rendszer-szintű</string>
+    <string name="spoofing_pixel_props_title">Pixel-kellékek</string>
+    <string name="spoofing_pixel_props_summary">A kijelölt Google alkalmazásokhoz a legújabb Pixel-telefonnak álcázza az Ön készülékét</string>
+    <string name="tensor_spoof_title">Hamis Tensor CPU funkciók</string>
+    <string name="tensor_spoof_summary">A Tensor / Pixel jellemzők feloldása</string>
+    <string name="spoofing_storage_encryption_title">Tárhelytitkosítás</string>
+    <string name="spoofing_storage_encryption_summary">A tárhely állapotának hamisítása \' Titkosított \'-ra</string>
+    <string name="spoofing_app_specific_category">Alkalmazás-specifikus</string>
+    <string name="spoofing_qsb_title">Google-alkalmazás</string>
+    <string name="spoofing_qsb_summary">Álcázás a legújabb Pixel-készülékre, hogy különleges funkciók elérhetővé váljanak</string>
+    <string name="spoofing_vending_title">Play Áruház</string>
+    <string name="spoofing_vending_summary">A legutolsó Pixel készüléknek álcázza az Ön készülékét</string>
+    <string name="spoofing_photos_title">Google Fényképek</string>
+    <string name="spoofing_photos_summary">Pixel XL-re álcázás a Google Fényképek alkalmazáshoz</string>
+    <string name="spoofing_snap_title">Snapchat</string>
+    <string name="spoofing_snap_summary">A Snapchat-ben Pixel XL-nek álcázza az Ön készülékét a lehetséges csevegési problémák elkerüléséért</string>
+    <string name="gameprops_title">Magasabb FPS feloldása a játékokban</string>
+    <string name="gameprops_summary">Más modellnek álcázza az Ön készülékét, hogy játék közben elérhetők legyenek magasabb FPS-értékek</string>
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
+    <string name="toast_spoofing_success">A pif.json letöltése sikeres. Az Áruházi Integritáshoz álcázás a következőre: %1$s</string>
+    <string name="toast_spoofing_failure">Nem sikerült álcázni a tulajdonságokat.</string>
+    <string name="update_pif_json_title">Az Áruházi integritásjavítás frissítése</string>
+    <string name="update_pif_json_summary">Frissítse a PIF-álcázóeszközt, internetkapcsolat szükséges.</string>
+    <string name="show_pif_properties_title">Az Áruházi integritásjavítás értékei</string>
+    <string name="show_pif_properties_summary">Az összes jelenleg beállított PIF-tulajdonság megjelenítése</string>
+    <string name="error_loading_properties">Hiba a tulajdonságok betöltése közben</string>
+    <string name="pif_spoofing_title">Válasszon PIF.JSON-fájlt</string>
+    <string name="pif_spoofing_summary">Válassza ki az Áruházi Integritás átveréséhez használni kívánt PIF.JSON-fájlt</string>
+    <string name="keybox_data_title">Válasszon keybox XML-fájt az álcázáshoz</string>
+    <string name="keybox_data_summary">Válassza ki a keybox XML-fájlt, amelyet a rendszer összes alkalmazásában a kulcshitelesítés hamisításához használnak. Kattintson a törlés gombra a rendszer által használt keybox-adatértékek visszaállításához.</string>
     <!-- Lock screen -->
+    <string name="lock_screen_interface_category">Kezelőfelület</string>
+    <string name="lock_screen_charging_stats_title">Töltési statisztikák</string>
+    <string name="lock_screen_charging_stats_summary">Töltés közben megjeleníti a maximális aktuális töltőfeszültséget, teljesítményt és az akkumulátor hőmérsékletét a zárképernyőn</string>
     <!-- Double tap to sleep on status bar or lockscreen -->
+    <string name="status_bar_double_tap_to_sleep_title">Alvómód érintéssel</string>
     <!-- more misc-->
     <!-- Ongoing action chip -->
     <!-- Bluetooth -->

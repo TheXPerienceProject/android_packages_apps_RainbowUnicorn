@@ -186,18 +186,18 @@
      <string name="show_media_progress_title">Show media progress</string>
      <string name="show_media_progress_summary">"Display media playback progress in the status bar</string>
      <string name="progress_footer_text">
-     The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.\n\n
-     - 🎵 Media Progress:\n
-     • Displays playback progress for music and video when media is playing.\n
-     • Single tap opens playback controls (Previous, Next track).\n
-     • Double tap toggles play/pause.\n
-     • Swipe left skips to the previous track.\n
-     • Swipe right skips to the next track.\n
-     • Long press opens the media app.\n\n
-     - 📥 Download/Upload Progress:\n
-     • Shows progress for ongoing downloads and uploads.\n
-     • Automatically hides when no active transfers are detected.\n
-     • Single tap opens the app responsible for the download.\n\n
+     The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
+     - 🎵 Media Progress:
+     • Displays playback progress for music and video when media is playing.
+     • Single tap opens playback controls (Previous, Next track).
+     • Double tap toggles play/pause.
+     • Swipe left skips to the previous track.
+     • Swipe right skips to the next track.
+     • Long press opens the media app.
+     - 📥 Download/Upload Progress:
+     • Shows progress for ongoing downloads and uploads.
+     • Automatically hides when no active transfers are detected.
+     • Single tap opens the app responsible for the download.
      The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.
      </string>
 
@@ -206,7 +206,7 @@
     <string name="status_bar_bluetooth_battery_summary">Display battery status for the connected Bluetooth device, if available</string>
 
     <!-- Freeform launch mode -->
-    <string name="freeform_launch_mode_title">Freeform launch mode</string>
+    <string name="freeform_launch_mode_title">Floating window</string>
     <string name="freeform_launch_mode_1">Native AOSP</string>
     <string name="freeform_launch_mode_2">LMOFreeForm</string>
 

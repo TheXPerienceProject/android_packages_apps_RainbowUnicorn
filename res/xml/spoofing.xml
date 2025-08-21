@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Copyright (C) 2019-2024 Evolution X
+    Copyright (C) 2011-2025 The XPerience Project
     SPDX-License-Identifier: Apache-2.0
 -->
 <PreferenceScreen
@@ -52,7 +52,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="spoofing_pif_menu"
+        android:key="spoofing_pif_props_menu" <!-- CHANGED KEY NAME -->
         android:title="@string/spoofing_pif_props" >
 
         <!-- Pixel props -->
@@ -63,6 +63,7 @@
             android:defaultValue="true" />
 
         <!-- Tensor features -->
+        <!-- Uncomment if needed -->
         <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
             android:key="persist.sys.features.tensor"
             android:title="@string/tensor_spoof_title"
@@ -70,52 +71,54 @@
             android:defaultValue="false" />-->
     </PreferenceCategory>
 
-
-        <!-- Encryption -->
-       <!--<mx.xperience.framework.preference.GlobalSettingSwitchPreference
+    <!-- Encryption - Uncomment if needed -->
+    <!--<PreferenceCategory
+        android:key="spoofing_encryption_category"
+        android:title="@string/spoofing_encryption_category">
+        <mx.xperience.framework.preference.GlobalSettingSwitchPreference
             android:key="spoofing_storage_encryption"
             android:title="@string/spoofing_storage_encryption_title"
             android:summary="@string/spoofing_storage_encryption_summary"
             android:defaultValue="false" />
-        </PreferenceCategory>-->
+    </PreferenceCategory>-->
 
     <PreferenceCategory
-            android:key="spoofing_app_specific_category"
-            android:title="@string/spoofing_app_specific_category">
+        android:key="spoofing_app_specific_category"
+        android:title="@string/spoofing_app_specific_category">
 
-            <!-- Google App -->
-            <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
-                android:key="persist.sys.pixelprops.qsb"
-                android:title="@string/spoofing_qsb_title"
-                android:summary="@string/spoofing_qsb_summary"
-                android:defaultValue="false" />-->
+        <!-- Google App - Uncomment if needed -->
+        <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.qsb"
+            android:title="@string/spoofing_qsb_title"
+            android:summary="@string/spoofing_qsb_summary"
+            android:defaultValue="false" />-->
 
-            <!-- Play Store -->
-            <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
-                android:key="persist.sys.pixelprops.vending"
-                android:title="@string/spoofing_vending_title"
-                android:summary="@string/spoofing_vending_summary"
-                android:defaultValue="false" />-->
+        <!-- Play Store - Uncomment if needed -->
+        <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.vending"
+            android:title="@string/spoofing_vending_title"
+            android:summary="@string/spoofing_vending_summary"
+            android:defaultValue="false" />-->
 
-            <!-- Google Photos -->
-            <mx.xperience.framework.preference.SystemPropertySwitchPreference
-                android:key="persist.sys.pixelprops.gphotos"
-                android:title="@string/spoofing_photos_title"
-                android:summary="@string/spoofing_photos_summary"
-                android:defaultValue="true" />
+        <!-- Google Photos -->
+        <mx.xperience.framework.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gphotos"
+            android:title="@string/spoofing_photos_title"
+            android:summary="@string/spoofing_photos_summary"
+            android:defaultValue="true" />
 
-            <!-- Games FPS -->
-            <mx.xperience.framework.preference.SystemPropertySwitchPreference
-                android:key="persist.sys.pixelprops.games"
-                android:title="@string/gameprops_title"
-                android:summary="@string/gameprops_summary"
-                android:defaultValue="true" />
+        <!-- Games FPS -->
+        <mx.xperience.framework.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.games"
+            android:title="@string/gameprops_title"
+            android:summary="@string/gameprops_summary"
+            android:defaultValue="true" />
 
-            <!-- Snapchat -->
-            <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
-                android:key="persist.sys.pixelprops.snap"
-                android:title="@string/spoofing_snap_title"
-                android:summary="@string/spoofing_snap_summary"
-                android:defaultValue="false" />-->
+        <!-- Snapchat - Uncomment if needed -->
+        <!--<mx.xperience.framework.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.snap"
+            android:title="@string/spoofing_snap_title"
+            android:summary="@string/spoofing_snap_summary"
+            android:defaultValue="false" />-->
     </PreferenceCategory>
 </PreferenceScreen>

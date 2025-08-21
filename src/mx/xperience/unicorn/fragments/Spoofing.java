@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2019-2024 The Evolution X Project
+ * Copyright (C) 2011-2025 The XPerience Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -77,10 +78,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
     private static final String SYS_GOOGLE_SPOOF = "persist.sys.pixelprops";
     private static final String SYS_GAMEPROP_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_GPHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
-    private static final String SYS_QSB_SPOOF = "persist.sys.pixelprops.qsb";
-    private static final String SYS_SNAP_SPOOF = "persist.sys.pixelprops.snap";
-    private static final String SYS_VENDING_SPOOF = "persist.sys.pixelprops.vending";
-    private static final String SYS_ENABLE_TENSOR_FEATURES = "persist.sys.features.tensor";
     private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
 
     private ActivityResultLauncher<Intent> mKeyboxFilePickerLauncher;
@@ -92,10 +89,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
     private SystemPropertySwitchPreference mGoogleSpoof;
     private SystemPropertySwitchPreference mGamePropsSpoof;
     private SystemPropertySwitchPreference mGphotosSpoof;
-    private SystemPropertySwitchPreference mQsbSpoof;
-    private SystemPropertySwitchPreference mSnapSpoof;
-    private SystemPropertySwitchPreference mVendingSpoof;
-    private SystemPropertySwitchPreference mTensorFeaturesToggle;
 
     private Handler mHandler;
 
@@ -116,35 +109,33 @@ public class Spoofing extends SettingsPreferenceFragment implements
         mGmsSpoof = (SystemPropertySwitchPreference) findPreference(SYS_GMS_SPOOF);
         mGoogleSpoof = (SystemPropertySwitchPreference) findPreference(SYS_GOOGLE_SPOOF);
         mPifJsonFilePreference = findPreference(KEY_PIF_JSON_FILE_PREFERENCE);
-        mQsbSpoof = (SystemPropertySwitchPreference) findPreference(SYS_QSB_SPOOF);
-        mSnapSpoof = (SystemPropertySwitchPreference) findPreference(SYS_SNAP_SPOOF);
-        mVendingSpoof = (SystemPropertySwitchPreference) findPreference(SYS_VENDING_SPOOF);
         mUpdateJsonButton = findPreference(KEY_UPDATE_JSON_BUTTON);
-        mTensorFeaturesToggle = (SystemPropertySwitchPreference) findPreference(SYS_ENABLE_TENSOR_FEATURES);
 
         String model = SystemProperties.get("ro.product.model");
         boolean isTensorDevice = model.matches("Pixel [6-9][a-zA-Z ]*");
         boolean isPixelGmsEnabled = SystemProperties.getBoolean(SYS_GMS_SPOOF, true); // Default to Pixel GMS
 
         if (DeviceUtils.isCurrentlySupportedPixel()) {
-            mGoogleSpoof.setDefaultValue(false);
-            if (isMainlineTensorModel(model)) {
-                mSystemWideCategory.removePreference(mGoogleSpoof);
+            if (mGoogleSpoof != null) {
+                mGoogleSpoof.setDefaultValue(false);
+                if (isMainlineTensorModel(model)) {
+                    mSystemWideCategory.removePreference(mGoogleSpoof);
+                }
             }
         }
 
-        if (isTensorDevice) {
-            mSystemWideCategory.removePreference(mTensorFeaturesToggle);
+        if (mGmsSpoof != null) {
+            mGmsSpoof.setOnPreferenceChangeListener(this);
         }
-
-        mGmsSpoof.setOnPreferenceChangeListener(this);
-        mGoogleSpoof.setOnPreferenceChangeListener(this);
-        mGphotosSpoof.setOnPreferenceChangeListener(this);
-        mGamePropsSpoof.setOnPreferenceChangeListener(this);
-        mQsbSpoof.setOnPreferenceChangeListener(this);
-        mSnapSpoof.setOnPreferenceChangeListener(this);
-        mVendingSpoof.setOnPreferenceChangeListener(this);
-        mTensorFeaturesToggle.setOnPreferenceChangeListener(this);
+        if (mGoogleSpoof != null) {
+            mGoogleSpoof.setOnPreferenceChangeListener(this);
+        }
+        if (mGphotosSpoof != null) {
+            mGphotosSpoof.setOnPreferenceChangeListener(this);
+        }
+        if (mGamePropsSpoof != null) {
+            mGamePropsSpoof.setOnPreferenceChangeListener(this);
+        }
 
         mKeyboxFilePickerLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -158,15 +149,19 @@ public class Spoofing extends SettingsPreferenceFragment implements
             }
         });
 
-        mPifJsonFilePreference.setOnPreferenceClickListener(preference -> {
-            openFileSelector(10001);
-            return true;
-        });
+        if (mPifJsonFilePreference != null) {
+            mPifJsonFilePreference.setOnPreferenceClickListener(preference -> {
+                openFileSelector(10001);
+                return true;
+            });
+        }
 
-        mUpdateJsonButton.setOnPreferenceClickListener(preference -> {
-            updatePropertiesFromUrl("https://klozz.dev/attest/pif.json");
-            return true;
-        });
+        if (mUpdateJsonButton != null) {
+            mUpdateJsonButton.setOnPreferenceClickListener(preference -> {
+                updatePropertiesFromUrl("https://klozz.dev/attest/pif.json");
+                return true;
+            });
+        }
 
         Preference showPropertiesPref = findPreference("show_pif_properties");
         if (showPropertiesPref != null) {
@@ -310,16 +305,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
         if (preference == mGmsSpoof
             || preference == mGoogleSpoof
             || preference == mGphotosSpoof
-            || preference == mGamePropsSpoof
-            || preference == mQsbSpoof
-            || preference == mSnapSpoof
-            || preference == mVendingSpoof) {
-            SystemRestartUtils.showSystemRestartDialog(getContext());
-            return true;
-        }
-        if (preference == mTensorFeaturesToggle) {
-            boolean enabled = (Boolean) newValue;
-            SystemProperties.set(SYS_ENABLE_TENSOR_FEATURES, enabled ? "true" : "false");
+            || preference == mGamePropsSpoof) {
             SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }

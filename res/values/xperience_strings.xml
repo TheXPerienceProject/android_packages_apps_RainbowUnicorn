@@ -238,4 +238,20 @@
     <string name="network_traffic_hidearrow">Hide arrows</string>
     <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
 
+    <string name="colors_title">Colours</string>
+    <string name="fonts_title">Fonts</string>
+    <string name="fonts_summary">XPERIENCE123\nABCDEFGHIJKL\n0123456789</string>
+    <string name="theme_customization_lock_clock_title">Clock face</string>
+    <string name="theme_customization_lock_clock_summary">Modify lockscreen clock appearance</string>
+
+   <!-- Font styles -->
+    <string name="font_styles_title">Font Styles</string>
+    <string name="font_styles_summary">Change system font style</string>
+    <string name="font_preview_text">The quick brown\nfox jumps over the\nlazy dog\n\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijkl\nmnopqrstuvwxyz\n1234567890</string>
+    <string name="apply_button_text">Apply</string>
+    <string name="font_picker_select_font">Select font</string>
+    <!-- Lockscreen Clock Highlight Guide --> 
+    <string name="ls_clock_face_highlight_text">Swipe left or right to preview clock styles</string>
+    <!-- Lockscreen Clock Revamp -->
+    <string name="ls_clock_custom_font_not_supported">Selected clock does not support custom fonts</string>
 </resources>

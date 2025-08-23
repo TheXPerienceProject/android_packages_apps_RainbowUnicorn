@@ -20,6 +20,7 @@
 
     <PreferenceCategory
         android:key="lockscreen_clock_category"
+        android:layout="@layout/preference_category"
         android:title="@string/lockscreen_clock_category_title">
 
         <com.android.settings.preferences.ui.AdaptivePreference
@@ -38,6 +39,22 @@
             android:title="@string/doze_display_title"
             android:summary="@string/doze_display_summary"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.doze.AODSettings" />
+        
+        <mx.xperience.framework.preference.SystemSettingSwitchPreference
+            android:key="keyguard_now_bar_enabled"
+            android:title="@string/keyguard_now_bar_enabled_title"
+            android:summary="@string/keyguard_now_bar_enabled_summary"
+            android:defaultValue="false" />
+            
+	    <mx.xperience.framework.preference.SystemSettingSeekBarPreference
+    	    android:key="nowbar_margin_bottom"
+    	    android:title="@string/now_bar_height_title"
+    	    android:summary="@string/now_bar_height_summary"
+    	    android:defaultValue="18"
+    	    android:min="0"
+    	    android:max="210"
+            android:dependency="keyguard_now_bar_enabled" />
+        
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -46,6 +63,7 @@
 
         <com.android.settings.preferences.ui.AdaptivePreference
             android:title="@string/weather_settings_title"
+            settings:layout="@layout/dashboard_preference_middle"
             android:summary="@string/weather_settings_summary">
             <intent
                 android:action="android.intent.action.MAIN"

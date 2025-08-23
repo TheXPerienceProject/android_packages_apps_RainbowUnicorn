@@ -262,7 +262,6 @@
     <string name="lockscreen_custom_image_title">Lockscreen AOD image</string>
     <string name="lockscreen_custom_image_summary">Set custom lockscreen AOD image</string>
     <string name="lockscreen_custom_image_pick_summary">Select AOD image from gallery</string>
-    <string name="custom_aod_image_not_supported">Clock style not supported</string>
 
     <!-- Depth Wallpaper -->
     <string name="dw_file_header_select_title">Select Depth Wallpaper Subject</string>
@@ -356,4 +355,12 @@
     <string name="custom_aod_image_saved">Custom image saved successfully</string>
     <string name="custom_aod_image_save_failed">Failed to save image</string>
     <string name="custom_aod_image_save_error">Error saving image</string>
+
+    <!-- Now Bar -->
+    <string name="keyguard_now_bar_enabled_title">Now Bar</string>
+    <string name="keyguard_now_bar_enabled_summary">Enable now bar lockscreen widgets</string>
+
+    <!-- Nowbar height -->
+    <string name="now_bar_height_title">Nowbar height</string>
+    <string name="now_bar_height_summary">Adjust the height of the Nowbar</string>
 </resources>

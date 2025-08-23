@@ -30,11 +30,20 @@
             android:defaultValue="false"
             app:position="top" />
 
-        <com.android.settings.preferences.ui.AdaptivePreference
+        <Preference
             android:key="lockscreen_custom_image"
             android:title="@string/lockscreen_custom_image_title"
             android:summary="@string/lockscreen_custom_image_pick_summary"
             android:dependency="custom_aod_image_enabled" />
+
+        <!-- AOD wallpaper -->
+
+
+        <mx.xperience.framework.preference.OverlaySwitchPreference
+            android:key="com.android.aod.wallpaper"
+            android:title="@string/aod_wallpaper_title"
+            android:summary="@string/aod_wallpaper_summary"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 </PreferenceScreen>

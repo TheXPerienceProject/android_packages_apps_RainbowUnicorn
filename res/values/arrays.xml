@@ -119,4 +119,66 @@
         <item>3</item>
     </string-array>
 
+    <!-- Status bar chip styles-->
+    <string-array name="statusbar_clock_chip_entries" translatable="false">
+        <item>@string/disabled</item>
+        <item>@string/solid_accent</item>
+        <item>@string/outline</item>
+        <item>@string/solid_accent_gradient</item>
+        <item>@string/solid_gradient</item>
+        <item>@string/solid_gradient_corner</item>
+        <item>@string/solid_gradient_void</item>
+        <item>@string/solid_gradient_neumorph</item>
+        <item>@string/solid_gradient_stroke</item>
+        <item>@string/solid_accent_transperent</item>
+        <item>@string/solid_gradient_light</item>
+        <item>@string/solid_gradient_shape</item>
+        <item>@string/solid_gradient_void_light</item>
+    </string-array>
+
+    <string-array name="statusbar_clock_chip_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="clock_style_entries">
+        <item>Default</item>
+        <item>OOS</item>
+        <item>Center Clock</item>
+        <item>Color OS</item>
+        <item>Aesthetic</item>
+        <item>MIUI</item>
+        <item>IDE</item>
+        <item>HyperOS</item>
+        <item>Stylish</item>
+        <item>Sidebar</item>
+        <item>Minimal</item>
+        <item>Minimal 2</item>
+    </string-array>
+
+    <string-array name="clock_style_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
 </resources>

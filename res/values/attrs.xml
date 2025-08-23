@@ -36,4 +36,8 @@
         <attr name="multiColor" format="boolean" />
         <attr name="withAlpha" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="WallpaperView">
+        <attr name="blurred" format="boolean" />
+    </declare-styleable>
 </resources>

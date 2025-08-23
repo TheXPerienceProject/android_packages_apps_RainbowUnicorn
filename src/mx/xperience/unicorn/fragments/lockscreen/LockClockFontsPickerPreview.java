@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2023-2024 The risingOS Android Project
  * Copyright (C) 2024-2025 Project Infinity X
+ * Copyright (C) 2011-2025 The XPerience Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,8 +48,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.internal.util.android.SystemRestartUtils;
-import com.android.internal.util.xperience.XperienceUtils;
+import com.android.settings.utils.SystemRestartUtils;
 
 import com.android.internal.util.xperience.ThemeUtils;
 import mx.xperience.unicorn.fragments.ui.fonts.FontArrayAdapter;
@@ -61,6 +61,8 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
 
     private static final String TAG = "LockClockFontsPickerPreview";
     private static final String PREF_FIRST_TIME = "first_time_clock_face_access";
+    private static final String KEY_CURRENT_POSITION = "current_position";
+    private static final String KEY_FONT_POSITION = "font_position";
 
     private ViewPager viewPager;
     private ClockPagerAdapter pagerAdapter;
@@ -73,7 +75,7 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     private int mClockPosition = 0;
 
     private ThemeUtils mThemeUtils;
-    private Handler mHandler = new Handler();
+    private Handler mHandler;
 
     private final static int[] mCenterClocks = {2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16};
 
@@ -103,6 +105,20 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
         fontManager = new FontManager(getActivity(), true);
         getActivity().setTitle(getActivity().getString(R.string.theme_customization_lock_clock_title));
         mThemeUtils = ThemeUtils.getInstance(getActivity());
+        mHandler = new Handler();
+        
+        // Restore saved state
+        if (savedInstanceState != null) {
+            mClockPosition = savedInstanceState.getInt(KEY_CURRENT_POSITION, 0);
+            mCurrentFontPosition = savedInstanceState.getInt(KEY_FONT_POSITION, -1);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_CURRENT_POSITION, mClockPosition);
+        outState.putInt(KEY_FONT_POSITION, mCurrentFontPosition);
     }
 
     @Nullable
@@ -114,69 +130,81 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
         viewPager = rootView.findViewById(R.id.view_pager);
         pagerAdapter = new ClockPagerAdapter();
         viewPager.setAdapter(pagerAdapter);
-        mClockPosition = Settings.Secure.getIntForUser(getContext().getContentResolver(), "clock_style", 0, UserHandle.USER_CURRENT);
+        
+        Context context = getContext();
+        if (context != null) {
+            mClockPosition = Settings.Secure.getIntForUser(context.getContentResolver(), 
+                "clock_style", 0, UserHandle.USER_CURRENT);
+        }
+        
         if (mClockPosition < 0 || mClockPosition >= CLOCK_LAYOUTS.length) {
             mClockPosition = 0;
-            Settings.Secure.putIntForUser(getContext().getContentResolver(), "clock_style", 0, UserHandle.USER_CURRENT);
+            if (context != null) {
+                Settings.Secure.putIntForUser(context.getContentResolver(), 
+                    "clock_style", 0, UserHandle.USER_CURRENT);
+            }
         }
         viewPager.setCurrentItem(mClockPosition);
 
         TextView fontMessage = rootView.findViewById(R.id.font_message);
         List<String> fontPackageNames = fontManager.getAllFontPackages();
         TextView fontSelector = rootView.findViewById(R.id.font_selector);
-        int backgroundColor = ContextCompat.getColor(getContext(), 
-                isNightMode() ? R.color.font_drop_down_bg_dark : R.color.font_drop_down_bg_light);
-        fontSelector.setTextColor(ContextCompat.getColor(getContext(), isNightMode() 
-                ? R.color.font_drop_down_bg_light 
-                : R.color.font_drop_down_bg_dark));
-        fontSelector.setBackgroundTintList(ColorStateList.valueOf(backgroundColor));
+        
+        if (context != null) {
+            int backgroundColor = ContextCompat.getColor(context, 
+                    isNightMode(context) ? R.color.font_drop_down_bg_dark : R.color.font_drop_down_bg_light);
+            fontSelector.setTextColor(ContextCompat.getColor(context, isNightMode(context) 
+                    ? R.color.font_drop_down_bg_light 
+                    : R.color.font_drop_down_bg_dark));
+            fontSelector.setBackgroundTintList(ColorStateList.valueOf(backgroundColor));
 
-        fontSelector.setOnClickListener(v -> {
-            View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.popup_font_selector, null);
-            PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            fontSelector.setOnClickListener(v -> {
+                View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.popup_font_selector, null);
+                PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
 
-            ListView fontListView = popupView.findViewById(R.id.font_list_view);
-            FontArrayAdapter fontAdapter = new FontArrayAdapter(
-                    getActivity(),
-                    android.R.layout.simple_list_item_1,
-                    fontPackageNames,
-                    fontManager,
-                    isNightMode()
-            );
-            fontListView.setAdapter(fontAdapter);
+                ListView fontListView = popupView.findViewById(R.id.font_list_view);
+                FontArrayAdapter fontAdapter = new FontArrayAdapter(
+                        getActivity(),
+                        android.R.layout.simple_list_item_1,
+                        fontPackageNames,
+                        fontManager,
+                        isNightMode(context)
+                );
+                fontListView.setAdapter(fontAdapter);
 
-            fontListView.setOnItemClickListener((parent, view, position, id) -> {
-                mCurrentFontPosition = position;
-                String fontPackage = fontPackageNames.get(mCurrentFontPosition);
-                applyFontToAllPreviews(fontPackage);
-                fontSelector.setText(fontManager.getLabel(getContext(), fontPackage));
-                popupWindow.dismiss();
+                fontListView.setOnItemClickListener((parent, view, position, id) -> {
+                    mCurrentFontPosition = position;
+                    String fontPackage = fontPackageNames.get(mCurrentFontPosition);
+                    applyFontToAllPreviews(fontPackage);
+                    fontSelector.setText(fontManager.getLabel(context, fontPackage));
+                    popupWindow.dismiss();
+                });
+
+                popupView.setBackgroundResource(R.drawable.custom_background);
+                Drawable backgroundDrawable = popupView.getBackground();
+                if (backgroundDrawable != null) {
+                    backgroundDrawable.setColorFilter(backgroundColor, PorterDuff.Mode.SRC_ATOP);
+                }
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setFocusable(true);
+                popupWindow.showAsDropDown(v, 0, 10);
             });
 
-            popupView.setBackgroundResource(R.drawable.custom_background);
-            Drawable backgroundDrawable = popupView.getBackground();
-            if (backgroundDrawable != null) {
-                backgroundDrawable.setColorFilter(backgroundColor, PorterDuff.Mode.SRC_ATOP);
+            if (isStaticClockStyle(mClockPosition)) {
+                fontMessage.setVisibility(View.VISIBLE);
+            } else {
+                fontMessage.setVisibility(View.GONE);
             }
-            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            popupWindow.setOutsideTouchable(true);
-            popupWindow.setFocusable(true);
-            popupWindow.showAsDropDown(v, 0, 10);
-        });
 
-        if (isStaticClockStyle(mClockPosition)) {
-            fontMessage.setVisibility(View.VISIBLE);
-        } else {
-            fontMessage.setVisibility(View.GONE);
-        }
-
-        String currentFontPackage = fontManager.getCurrentFontPackage();
-        mCurrentFontPosition = fontPackageNames.indexOf(currentFontPackage);
-        if (mCurrentFontPosition != -1) {
-            if (!isStaticClockStyle(mClockPosition)) {
-                String fontPackage = fontPackageNames.get(mCurrentFontPosition);
-                fontSelector.setText(fontManager.getLabel(getContext(), fontPackage));
-                applyFontToAllPreviews(fontPackage);
+            String currentFontPackage = fontManager.getCurrentFontPackage();
+            mCurrentFontPosition = fontPackageNames.indexOf(currentFontPackage);
+            if (mCurrentFontPosition != -1) {
+                if (!isStaticClockStyle(mClockPosition)) {
+                    String fontPackage = fontPackageNames.get(mCurrentFontPosition);
+                    fontSelector.setText(fontManager.getLabel(context, fontPackage));
+                    applyFontToAllPreviews(fontPackage);
+                }
             }
         }
 
@@ -221,35 +249,21 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
                 }
             }
         });
+        
+        updateClockName(mClockPosition);
         return rootView;
     }
 
     private void updateClockName(int position) {
-        String[] clockNames = {
-            "Default Clock",
-            "OnePlus Clock",
-            "IOS Clock",
-            "Simple Clock",
-            "MIUI Clock",
-            "IDE Clock",
-            "Moto Clock",
-            "Stylish Clock",
-            "Stylish Clock 2",
-            "Stylish Clock 3",
-            "Stylish Clock 4",
-            "Stylish Clock 5",
-            "Stylish Clock 6",
-            "Stylish Clock 7",
-            "Stylish Clock 8",
-            "Stylish Clock 9",
-            "Stylish Clock 10"
-        };
+        String[] clockNames = getResources().getStringArray(R.array.clock_style_entries);
         if (clockNameTextView != null && position >= 0 && position < clockNames.length) {
             clockNameTextView.setText(clockNames[position]);
         }
     }
 
     private void setupApplyButton(List<String> fontPackageNames) {
+        if (applyFab == null) return;
+        
         applyFab.setOnClickListener(new View.OnClickListener() {
             private long lastClickTime = 0;
 
@@ -261,6 +275,9 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
                 }
                 lastClickTime = currentTime;
 
+                Context context = getContext();
+                if (context == null) return;
+
                 if (mCurrentFontPosition >= 0 && mCurrentFontPosition < fontPackageNames.size()) {
                     String fontPackage = fontPackageNames.get(mCurrentFontPosition);
 
@@ -270,9 +287,9 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
                     }
                 }
 
-                Settings.Secure.putIntForUser(getContext().getContentResolver(),
+                Settings.Secure.putIntForUser(context.getContentResolver(),
                     "clock_style", mClockPosition, UserHandle.USER_CURRENT);
-                Settings.Secure.putIntForUser(getContext().getContentResolver(),
+                Settings.Secure.putIntForUser(context.getContentResolver(),
                     "lock_screen_custom_clock_face", 0, UserHandle.USER_CURRENT);
 
                 applyChangesAndRestart();
@@ -296,13 +313,12 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
                 @Override
                 public void run() {
                     try {
-                        XperienceUtils.restartSystemUi(appContext);
+                        SystemRestartUtils.restartSystemUI(appContext);
                         showSuccessMessage();
-
                     } catch (Exception e) {
                         if (isAdded() && getContext() != null && getActivity() != null && !getActivity().isFinishing()) {
                             try {
-                                XperienceUtils.restartSystemUi(getContext());
+                                SystemRestartUtils.restartSystemUI(getContext());
                                 showSuccessMessage();
                             } catch (Exception ex) {
                                 showFailureMessage();
@@ -323,8 +339,9 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if (getContext() != null) {
-                        Toast.makeText(getContext(),
+                    Context context = getContext();
+                    if (context != null) {
+                        Toast.makeText(context,
                             "Settings applied successfully!",
                             Toast.LENGTH_SHORT).show();
                     }
@@ -346,8 +363,9 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
                         applyFab.setEnabled(true);
                         applyFab.setText("Apply");
                     }
-                    if (getContext() != null) {
-                        Toast.makeText(getContext(),
+                    Context context = getContext();
+                    if (context != null) {
+                        Toast.makeText(context,
                             "Settings saved. Please restart SystemUI manually if changes don't appear.",
                             Toast.LENGTH_LONG).show();
                     }
@@ -356,12 +374,15 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
         }
     }
 
-    private boolean isNightMode() {
-        int nightModeFlags = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+    private boolean isNightMode(Context context) {
+        if (context == null) return false;
+        int nightModeFlags = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         return nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
     }
 
     private void updateClockOverlays(int clockStyle) {
+        if (mThemeUtils == null) return;
+        
         mThemeUtils.setOverlayEnabled(
                 "android.theme.customization.hideclock",
                 clockStyle != 0 ? "com.android.systemui.clocks.hideclock" : "android",
@@ -388,13 +409,13 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     }
 
     private boolean isStaticClockStyle(int clockStyle) {
-        if (clockStyle < 0 || clockStyle >= CLOCK_LAYOUTS.length) {
-            return false;
-        }
-        return false;
+        return clockStyle < 0 || clockStyle >= CLOCK_LAYOUTS.length;
     }
 
     private boolean shouldScaleDown(int position) {
+        if (position < 0 || position >= CLOCK_LAYOUTS.length) {
+            return false;
+        }
         int layoutId = CLOCK_LAYOUTS[position];
         return layoutId == R.layout.keyguard_clock_stylish
                || layoutId == R.layout.keyguard_clock_stylish2
@@ -409,24 +430,31 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     }
 
     private boolean isFirstTime() {
+        Context context = getContext();
+        if (context == null) return false;
         return Settings.System.getIntForUser(
-            getContext().getContentResolver(), PREF_FIRST_TIME, 1, UserHandle.USER_CURRENT) != 0;
+            context.getContentResolver(), PREF_FIRST_TIME, 1, UserHandle.USER_CURRENT) != 0;
     }
 
     private void disableHighlight() {
-        Settings.System.putIntForUser(getContext().getContentResolver(), PREF_FIRST_TIME, 0, UserHandle.USER_CURRENT);
+        Context context = getContext();
+        if (context == null) return;
+        Settings.System.putIntForUser(context.getContentResolver(), PREF_FIRST_TIME, 0, UserHandle.USER_CURRENT);
     }
 
     private class ClockPagerAdapter extends PagerAdapter {
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            LayoutInflater inflater = LayoutInflater.from(getActivity());
+            LayoutInflater inflater = LayoutInflater.from(container.getContext());
             View layout = inflater.inflate(CLOCK_LAYOUTS[position], container, false);
 
             if (!isStaticClockStyle(position) && mCurrentFontPosition >= 0) {
-                String fontPackage = fontManager.getAllFontPackages().get(mCurrentFontPosition);
-                applyFontToPreview(fontPackage, layout, position);
+                List<String> fontPackages = fontManager.getAllFontPackages();
+                if (mCurrentFontPosition < fontPackages.size()) {
+                    String fontPackage = fontPackages.get(mCurrentFontPosition);
+                    applyFontToPreview(fontPackage, layout, position);
+                }
             }
 
             int bottomPadding = (int) TypedValue.applyDimension(
@@ -477,6 +505,8 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     }
 
     private void applyFontToAllPreviews(String font) {
+        if (viewPager == null || getContext() == null) return;
+        
         Typeface typeface = fontManager.getTypeface(getContext(), font);
         int childCount = viewPager.getChildCount();
         if (typeface != null) {
@@ -493,7 +523,7 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     }
 
     private void applyFontToPreview(String font, View layout, int position) {
-        if (isStaticClockStyle(position)) {
+        if (isStaticClockStyle(position) || getContext() == null) {
             return;
         }
         Typeface typeface = fontManager.getTypeface(getContext(), font);
@@ -503,8 +533,10 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     }
 
     private void updateAllTextViews(View view, Typeface typeface) {
-        if (view instanceof TextView || view instanceof TextClock) {
+        if (view instanceof TextView) {
             ((TextView) view).setTypeface(typeface);
+        } else if (view instanceof TextClock) {
+            ((TextClock) view).setTypeface(typeface);
         } else if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
             for (int i = 0; i < viewGroup.getChildCount(); i++) {
@@ -537,7 +569,10 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mHandler = null;
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+            mHandler = null;
+        }
     }
 
     @Override

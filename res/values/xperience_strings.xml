@@ -363,4 +363,8 @@
     <!-- Nowbar height -->
     <string name="now_bar_height_title">Nowbar height</string>
     <string name="now_bar_height_summary">Adjust the height of the Nowbar</string>
+
+    <!-- AOD wallpaper -->
+    <string name="aod_wallpaper_title">AOD wallpaper</string>
+    <string name="aod_wallpaper_summary">Show wallpaper when aod on</string>
 </resources>

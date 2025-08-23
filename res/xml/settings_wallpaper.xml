@@ -24,7 +24,7 @@
         android:key="wallpaper_blur"
         android:title="@string/wallpaper_blur_title">
 
-        <mx.xperience.framework.preference.SystemPropertyListPreference
+        <mx.xperience.framework.preference.SystemSettingListPreference
             android:key="persist.sys.wallpaper.blur_enabled"
             android:title="@string/wallpaper_blur_title"
             android:entries="@array/wallpaper_blur_entries"
@@ -33,7 +33,7 @@
             android:defaultValue="0"
             />
 
-        <mx.xperience.framework.preference.SystemPropertyListPreference
+        <mx.xperience.framework.preference.SystemSettingListPreference
             android:key="persist.sys.wallpaper.blur_type"
             android:title="@string/wallpaper_blur_filter"
             android:entries="@array/wallpaper_blur_filter_entries"
@@ -48,7 +48,7 @@
         android:key="wallpaper_dim"
         android:title="@string/wallpaper_dim_title">
 
-        <mx.xperience.framework.preference.SystemPropertyListPreference
+        <mx.xperience.framework.preference.SystemSettingListPreference
             android:key="persist.sys.wallpaper.dim_enabled"
             android:title="@string/wallpaper_dim_title"
             android:entries="@array/wallpaper_blur_entries"

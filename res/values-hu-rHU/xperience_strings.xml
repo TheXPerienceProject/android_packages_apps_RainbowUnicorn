@@ -142,4 +142,28 @@
     <string name="network_traffic_location_disable">Kikapcsolva</string>
     <string name="network_traffic_hidearrow">Nyilak elrejtése</string>
     <string name="network_traffic_hidearrow_summary">Elrejti a Hálózati forgalmat jelző nyilakat</string>
+    <!-- Font styles -->
+    <!-- Lockscreen Clock Highlight Guide -->
+    <!-- Lockscreen Clock Revamp -->
+    <string name="lockscreen_settings_title">Duplakopp a Képernyőzáron</string>
+    <!-- AOD custom image -->
+    <!-- Depth Wallpaper -->
+    <!-- Lockscreen categories -->
+    <string name="lockscreen_interface_category">Kezelőfelület</string>
+    <!-- Lockscreen widgets  -->
+    <!-- Weather -->
+    <!-- AOD Settings -->
+    <!-- Statusbar Clock background chip -->
+    <!-- Custom Clock Style -->
+    <!-- Doze settings -->
+    <!-- Now Bar -->
+    <!-- Nowbar height -->
+    <!-- AOD wallpaper -->
+    <!-- Peek Display -->
+    <string name="top">Felső</string>
+    <string name="bottom">Alsó</string>
+    <!-- Peek Display Styles -->
+    <!-- Wallpaper Styles -->
+    <!-- Lockscreen Widgets Styles -->
+    <!-- Apply Button -->
 </resources>

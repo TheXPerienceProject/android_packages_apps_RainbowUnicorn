@@ -206,4 +206,156 @@
     <string name="network_traffic_units_megabytes">Megabytes por segundo (MB/s)</string>
     <string name="network_traffic_hidearrow">Ocultar flechas</string>
     <string name="network_traffic_hidearrow_summary">Ocultar las flechas del indicador de tráfico de red</string>
+    <string name="colors_title">Colores</string>
+    <string name="fonts_title">Tipografías</string>
+    <string name="fonts_summary">XPERIENCE123\nABCDEFGHIJKL\n0123456789</string>
+    <string name="theme_customization_lock_clock_title">Cara del reloj</string>
+    <string name="theme_customization_lock_clock_summary">Modificar la apariencia del reloj de la pantalla de bloqueo</string>
+    <!-- Font styles -->
+    <string name="font_styles_title">Estilos de fuentes</string>
+    <string name="font_styles_summary">Cambiar estilo de fuente del sistema</string>
+    <string name="font_preview_text">El rápido zorro marrón\nsalta sobre el\nperro perezoso\n\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijkln\nmnopqrstuvwxyz\n1234567890</string>
+    <string name="apply_button_text">Aplicar</string>
+    <string name="font_picker_select_font">Elegir fuente</string>
+    <!-- Lockscreen Clock Highlight Guide -->
+    <string name="ls_clock_face_highlight_text">Desliza hacia la izquierda o derecha para previsualizar los estilos de reloj</string>
+    <!-- Lockscreen Clock Revamp -->
+    <string name="ls_clock_custom_font_not_supported">El reloj seleccionado no soporta fuentes personalizadas</string>
+    <string name="lockscreen_settings_title">Pantalla de bloqueo</string>
+    <string name="lockscreen_settings_summary">Personalizar interfaz de bloqueo de pantalla</string>
+    <!-- AOD custom image -->
+    <string name="lockscreen_title">Pantalla de bloqueo</string>
+    <string name="lockscreen_custom_image_enabled_title">Activar imagen AOD de Lockscreen</string>
+    <string name="lockscreen_custom_image_title">Imagen AOD en pantalla de bloqueo</string>
+    <string name="lockscreen_custom_image_summary">Establecer imagen AOD en pantalla de bloqueo personalizada</string>
+    <string name="lockscreen_custom_image_pick_summary">Seleccionar imagen AOD de la galería</string>
+    <!-- Depth Wallpaper -->
+    <string name="dw_file_header_select_title">Elegir Sujeto para Fondo de Pantalla con Profundidad</string>
+    <string name="dw_file_header_select_summary">Seleccione la imagen referencia para el fondo de pantalla con profundidad desde el almacenamiento.</string>
+    <string name="dw_wallpaper_enabled_title">Fondo de pantalla con profundidad</string>
+    <string name="dw_wallpaper_enabled_summary">Habilita el fondo de pantalla con profundidad inspirado en iOS. Requiere una imagen de referencia.</string>
+    <string name="dw_wallpaper_opacity_title">Opacidad del fondo de pantalla con profundidad</string>
+    <string name="depth_wallpaper_offset_x_title">Desplazamiento horizontal del Fondo de Pantalla Profundo</string>
+    <string name="depth_wallpaper_offset_y_title">Desplazamiento vertical del fondo de pantalla Profundo</string>
+    <string name="dw_footer_text">        La función de fondo de pantalla con profundidad, inspirada en la segmentación subjetiva del fondo de pantalla de iOS, permite superponer un sujeto sobre el reloj de la pantalla de bloqueo para mostrar un efecto de profundidad en el fondo de pantalla.\n\nPara configurar la función de fondo de pantalla con profundidad:\n1. Establezca un fondo de pantalla con el sujeto o el fondo sobre el que desea que aparezca el sujeto.\n2. Seleccione una imagen del sujeto que desea rastrear; esta imagen se superpondrá sobre el reloj de la pantalla de bloqueo.\n3. Modifique los desplazamientos y la opacidad según sus necesidades.</string>
+    <!-- Lockscreen categories -->
+    <string name="lockscreen_interface_category">Interfaz</string>
+    <!-- Lockscreen widgets  -->
+    <string name="lockscreen_widgets_title">Widgets en la pantalla de bloqueo</string>
+    <string name="lockscreen_widgets_enabled_title">Habilitar widgets de pantalla de bloqueo</string>
+    <string name="lockscreen_widgets_enabled_summary">Añadir widgets a la pantalla de bloqueo</string>
+    <string name="lockscreen_display_widgets_title">Widget de información del dispositivo</string>
+    <string name="lockscreen_display_widgets_summary">Mostrar widget de información del dispositivo en la pantalla de bloqueo</string>
+    <string name="large_widgets_category_title">Widgets grandes</string>
+    <string name="main_custom_widgets1">Widget grande 1</string>
+    <string name="main_custom_widgets2">Widget grande 2</string>
+    <string name="mini_widgets_category_title">Mini widgets</string>
+    <string name="custom_widgets1">Mini widget 1</string>
+    <string name="custom_widgets2">Mini widget 2</string>
+    <string name="custom_widgets3">Mini widget 3</string>
+    <string name="custom_widgets4">Mini widget 4</string>
+    <string name="camera">Cámara</string>
+    <string name="clock_timer">Reloj/Temporizador</string>
+    <string name="calculator">Calculadora</string>
+    <string name="gallery">Galería</string>
+    <string name="media">Reproductor multimedia</string>
+    <string name="torch">Linterna</string>
+    <string name="controls_media_button_play">Reproducir</string>
+    <string name="weather">Clima</string>
+    <string name="wifi">WiFi</string>
+    <string name="data">Datos</string>
+    <string name="ringer">Tono de llamada</string>
+    <string name="bt">Bluetooth</string>
+    <string name="hotspot">Punto de acceso (hotspot)</string>
+    <string name="wallet">Wallet</string>
+    <string name="lockscreen_shortcut_qr">Lector de códigos QR</string>
+    <!-- Weather -->
+    <string name="weather_settings_title">Ajustes del clima</string>
+    <string name="weather_settings_summary">Configurar paquete de iconos y servicio meteorológico</string>
+    <string name="lockscreen_weather_category">Clima</string>
+    <string name="lockscreen_weather_title">Actualización del tiempo</string>
+    <string name="lockscreen_weather_summary">Mostrar actualización del tiempo actual</string>
+    <string name="lockscreen_weather_enabled_info">Requiere habilitar el servicio del clima</string>
+    <string name="lockscreen_weather_location_title">Obtener información de tu ciudad utilizando tu ubicación actual</string>
+    <string name="lockscreen_weather_location_summary">Mostrar ubicación actual del clima</string>
+    <string name="lockscreen_weather_text_title">Condición actual</string>
+    <string name="lockscreen_weather_text_summary">Mostrar resumen de las condiciones climáticas actuales</string>
+    <string name="lockscreen_weather_style_title">Estilo pixel</string>
+    <string name="lockscreen_weather_style_summary">Mostrar el clima como una fila separada</string>
+    <!-- AOD Settings -->
+    <string name="aod_display_category_title">Pantalla siempre activa</string>
+    <string name="aod_pulse_category_title">Pulso/Doze</string>
+    <!-- Statusbar Clock background chip -->
+    <string name="statusbar_clock_chip_title">Chip de fondo</string>
+    <string name="statusbar_clock_chip_summary">Mostrar un fondo detrás del reloj con el color de acento</string>
+    <string name="solid_accent">Acento de color sólido</string>
+    <string name="outline">Outline</string>
+    <string name="solid_accent_gradient">Gradiente de acento de color sólido</string>
+    <string name="solid_gradient">Lado degradado sólido</string>
+    <string name="solid_gradient_corner">Sólido acento degradado nítido</string>
+    <string name="solid_gradient_void">Vacío degradado</string>
+    <string name="solid_gradient_neumorph">Degradado neumorfo</string>
+    <string name="solid_gradient_stroke">Trazo con gradiente pronunciado</string>
+    <string name="solid_accent_transperent">Acento transparente</string>
+    <string name="solid_gradient_light">Gradient light</string>
+    <string name="solid_gradient_shape">Esquina degradada nítida</string>
+    <string name="solid_gradient_void_light">Gradient Void light</string>
+    <!-- Custom Clock Style -->
+    <string name="lockscreen_clock_category_title">Reloj de la pantalla de bloqueo</string>
+    <string name="lockscreen_clock_category_summary">Configurar estilos de reloj de la pantalla de bloqueo</string>
+    <string name="custom_clock_style">Estilo de reloj personalizado</string>
+    <!-- Doze settings -->
+    <string name="doze_display_title">Pantalla ambiente</string>
+    <string name="doze_display_summary">Configurar ajustes para la pantalla ambiente</string>
+    <string name="qs_header_needs_gallery">¡Debes instalar una aplicación de galería!</string>
+    <string name="custom_aod_image_not_supported">El estilo actual del reloj no admite imágenes personalizadas</string>
+    <string name="custom_aod_image_not_set">Toque para seleccionar imagen personalizada</string>
+    <string name="custom_aod_image_saved">Imagen personalizada guardada correctamente</string>
+    <string name="custom_aod_image_save_failed">Error al guardar imagen</string>
+    <string name="custom_aod_image_save_error">Ha ocurrido un error al guardar la imagen</string>
+    <!-- Now Bar -->
+    <string name="keyguard_now_bar_enabled_title">Now Bar</string>
+    <string name="keyguard_now_bar_enabled_summary">Habilitar los widgets de la pantalla de bloqueo «now bar»</string>
+    <!-- Nowbar height -->
+    <string name="now_bar_height_title">Altura de Now bar</string>
+    <string name="now_bar_height_summary">Ajustar la altura de la barra Now</string>
+    <!-- AOD wallpaper -->
+    <string name="aod_wallpaper_title">Fondo de pantalla AOD</string>
+    <string name="aod_wallpaper_summary">Mostrar fondo en pantalla siempre activa</string>
+    <string name="default_clock_name">Reloj por defecto</string>
+    <!-- Peek Display -->
+    <string name="peek_display_notifications_title">Peek display</string>
+    <string name="peek_display_notifications_summary">Activar el estilo mínimo de notificación de pantalla de bloqueo</string>
+    <string name="peek_display_location_title">Ubicación de la pantalla flotante</string>
+    <string name="peek_display_bottom_margin_title">Margen superior de pantalla flotante (inferior)</string>
+    <string name="top">Superior</string>
+    <string name="bottom">Fondo</string>
+    <!-- Peek Display Styles -->
+    <string name="peek_display_minimalist">Minimalista</string>
+    <string name="peek_display_style_title">Estilo de pantalla Peek</string>
+    <!-- Wallpaper Styles -->
+    <string name="wallpaper_settings_title">Estilos de fondos de pantalla</string>
+    <string name="wallpaper_settings_summary">Configurar los estilos y ajustes del fondo de pantalla</string>
+    <string name="wallpaper_blur_title">Desenfoque del fondo de pantalla</string>
+    <string name="wallpaper_blur_summary">Activar o desactivar el efecto de desenfoque del fondo de pantalla</string>
+    <string name="wallpaper_blur_filter">Estilo de desenfoque de fondo de pantalla</string>
+    <string name="wallpaper_dim_title">Wallpaper Dim</string>
+    <string name="wallpaper_dim_level_title">Nivel de atenuación del fondo de pantalla</string>
+    <string name="wallpaper_dim_level_summary">Configurar el nivel de atenuación del fondo de pantalla</string>
+    <string name="glass_blur">Desenfoque cristal</string>
+    <string name="frosted_blur">Desenfoque esmerilado</string>
+    <string name="wallpaper_styles_footer">Para que los estilos de fondo de pantalla funcionen correctamente, los usuarios deben configurar los fondos de pantalla para la pantalla de bloqueo y la pantalla de inicio en momentos diferentes.\nSe puede utilizar el mismo fondo de pantalla, pero no debe aplicarse a la pantalla de bloqueo y a la pantalla de inicio al mismo tiempo.\nEsto es opcional cuando se utiliza la OPCIÓN AMBAS para los estilos de fondo de pantalla difuminado y atenuado. </string>
+    <string name="monet_engine_color_source_both">Ambos (por defecto)</string>
+    <string name="monet_engine_color_source_home">Fondo de pantalla de inicio</string>
+    <string name="monet_engine_color_source_lock">Fondo de pantalla de bloqueo</string>
+    <!-- Lockscreen Widgets Styles -->
+    <string name="lockscreen_widgets_style_title">Estilo de widgets de pantalla de bloqueo</string>
+    <string name="lockscreen_widgets_style1">Material Redondeado</string>
+    <string name="lockscreen_widgets_style2">Material Cuadrado</string>
+    <string name="lockscreen_widgets_style3">Translúcido (cuadrado)</string>
+    <string name="lockscreen_widgets_style4">Translúcido (redondeado)</string>
+    <string name="lockscreen_widgets_transparency_title">Transparencia del widget de estilo translúcido</string>
+    <string name="lockscreen_widgets_transparency_summary">Configurar el nivel de opacidad del widget de estilo translúcido</string>
+    <!-- Apply Button -->
+    <string name="apply_change_button_title">Aplicar</string>
 </resources>

@@ -54,4 +54,25 @@
     <!-- Freeform launch mode -->
     <!-- Network traffic -->
     <string name="network_traffic_location_disable">Nonaktifkan</string>
+    <!-- Font styles -->
+    <!-- Lockscreen Clock Highlight Guide -->
+    <!-- Lockscreen Clock Revamp -->
+    <string name="lockscreen_settings_title">Layar kunci</string>
+    <!-- AOD custom image -->
+    <!-- Depth Wallpaper -->
+    <!-- Lockscreen categories -->
+    <!-- Lockscreen widgets  -->
+    <!-- Weather -->
+    <!-- AOD Settings -->
+    <!-- Statusbar Clock background chip -->
+    <!-- Custom Clock Style -->
+    <!-- Doze settings -->
+    <!-- Now Bar -->
+    <!-- Nowbar height -->
+    <!-- AOD wallpaper -->
+    <!-- Peek Display -->
+    <!-- Peek Display Styles -->
+    <!-- Wallpaper Styles -->
+    <!-- Lockscreen Widgets Styles -->
+    <!-- Apply Button -->
 </resources>

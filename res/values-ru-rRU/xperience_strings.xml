@@ -45,4 +45,26 @@
     <!-- Network traffic -->
     <string name="network_traffic_hidearrow">Скрыть стрелки</string>
     <string name="network_traffic_hidearrow_summary">Скрыть стрелки индикатора сетевого трафика</string>
+    <!-- Font styles -->
+    <!-- Lockscreen Clock Highlight Guide -->
+    <!-- Lockscreen Clock Revamp -->
+    <!-- AOD custom image -->
+    <!-- Depth Wallpaper -->
+    <!-- Lockscreen categories -->
+    <!-- Lockscreen widgets  -->
+    <!-- Weather -->
+    <!-- AOD Settings -->
+    <!-- Statusbar Clock background chip -->
+    <!-- Custom Clock Style -->
+    <!-- Doze settings -->
+    <!-- Now Bar -->
+    <!-- Nowbar height -->
+    <!-- AOD wallpaper -->
+    <!-- Peek Display -->
+    <string name="top">Сверху</string>
+    <string name="bottom">Снизу</string>
+    <!-- Peek Display Styles -->
+    <!-- Wallpaper Styles -->
+    <!-- Lockscreen Widgets Styles -->
+    <!-- Apply Button -->
 </resources>

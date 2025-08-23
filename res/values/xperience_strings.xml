@@ -367,4 +367,6 @@
     <!-- AOD wallpaper -->
     <string name="aod_wallpaper_title">AOD wallpaper</string>
     <string name="aod_wallpaper_summary">Show wallpaper when aod on</string>
+
+    <string name="default_clock_name">Default Clock</string>
 </resources>

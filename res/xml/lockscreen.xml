@@ -18,7 +18,7 @@
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="lockscreen_clock_category"
         settings:layout="@layout/top_level_preference_top_card"
         android:title="@string/lockscreen_clock_category_title">
@@ -27,8 +27,9 @@
             android:key="android.theme.customization.lockscreen_clock_font"
             android:title="@string/theme_customization_lock_clock_title"
             android:summary="@string/theme_customization_lock_clock_summary"
-            android:fragment="mx.xperience.unicorn.fragments.lockscreen.LockClockFontsPickerPreview" />
-    </PreferenceCategory>
+            android:fragment="mx.xperience.unicorn.fragments.lockscreen.LockClockFontsPickerPreview"/>
+
+    </PreferenceCategory>-->
 
     <PreferenceCategory
         android:key="lockscreen_interface_category"
@@ -63,7 +64,6 @@
 
         <Preference
             android:title="@string/weather_settings_title"
-            settings:layout="@layout/top_level_preference_top_card"
             android:summary="@string/weather_settings_summary">
             <intent
                 android:action="android.intent.action.MAIN"

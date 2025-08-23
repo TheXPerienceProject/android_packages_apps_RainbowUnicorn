@@ -18,4 +18,11 @@ limitations under the License.
 
     <color name="preview_container_border">@*android:color/accent_device_default_light</color>
 
+    <!-- Light theme -->
+    <color name="m3_sys_color_on_surface_light">#1D1B20</color>
+    <color name="m3_sys_color_on_surface_variant_light">#49454F</color>
+
+    <!-- Dark theme -->  
+    <color name="m3_sys_color_on_surface_dark">#E6E0E9</color>
+    <color name="m3_sys_color_on_surface_variant_dark">#CAC4D0</color>
 </resources>

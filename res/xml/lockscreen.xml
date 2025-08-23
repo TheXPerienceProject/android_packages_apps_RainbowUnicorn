@@ -62,6 +62,13 @@
     	    android:max="210"
             android:dependency="keyguard_now_bar_enabled" />
         
+
+        <Preference
+            android:key="depth_wallpaper"
+            android:title="@string/dw_wallpaper_enabled_title"
+            android:summary="@string/dw_wallpaper_enabled_summary"
+            android:fragment="mx.xperience.unicorn.fragments.WallpaperDepth"/>
+        
     </PreferenceCategory>
 
     <PreferenceCategory

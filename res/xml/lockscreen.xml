@@ -69,6 +69,13 @@
             android:summary="@string/dw_wallpaper_enabled_summary"
             android:fragment="mx.xperience.unicorn.fragments.WallpaperDepth"/>
         
+        <Preference
+            android:key="wallpaper_settings"
+            android:icon="@drawable/ic_settings_ui"
+            android:title="@string/wallpaper_settings_title"
+            android:summary="@string/wallpaper_settings_summary"
+            android:fragment="mx.xperience.unicorn.fragments.Wallpaper" />
+        
     </PreferenceCategory>
 
     <PreferenceCategory

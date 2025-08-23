@@ -52,6 +52,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_QUICK_PULLDOWN = "qs_quick_pulldown";
     private static final String PREF_NEW_STATUS_BAR_ICONS = "new_status_bar_icons";
+    private static final String PREF_CLOCK_CHIP = "statusbar_clock_chip";
 
     private static final int PULLDOWN_DIR_NONE = 0;
     private static final int PULLDOWN_DIR_RIGHT = 1;
@@ -59,6 +60,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final int PULLDOWN_DIR_BOTH = 3;
 
     private SystemSettingListPreference mQuickPulldown;
+    private SystemSettingListPreference mClockChipPref;
     private SwitchPreferenceCompat mNewStatusBarIconsPref;
 
     @Override
@@ -88,6 +90,17 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             resolver, "new_status_bar_icons_enabled", 1, UserHandle.USER_CURRENT) == 1;
         mNewStatusBarIconsPref.setChecked(newIconsEnabled);
         updatePreferenceStates(newIconsEnabled);
+
+        mClockChipPref = (SystemSettingListPreference) findPreference(PREF_CLOCK_CHIP);
+        if (mClockChipPref != null) {
+            mClockChipPref.setOnPreferenceChangeListener(this);
+            int currentVal = Settings.System.getIntForUser(
+                resolver,
+                "statusbar_clock_chip",
+                0,//default
+                UserHandle.USER_CURRENT);
+            mClockChipPref.setValue(String.valueOf(currentVal));
+        }
 
     }
 
@@ -129,6 +142,19 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             XperienceUtils.showSystemUiRestartDialog(context);
             return true;
         }
+
+        if (preference == mClockChipPref) {
+            int value = Integer.parseInt((String) objValue);
+            Settings.System.putIntForUser(resolver,
+                "statusbar_clock_chip",
+                value,
+                UserHandle.USER_CURRENT);
+
+            // Whenever the clock chip style changes, request a SystemUI restart.
+            XperienceUtils.showSystemUiRestartDialog(context);
+            return true;
+        }
+
         return false;
     }
 

@@ -30,7 +30,7 @@ import mx.xperience.framework.preference.CustomSeekBarPreference;
 
 import java.util.List;
 
-import com.android.settings.utils.SystemRestartUtils;
+import com.android.internal.util.xperience.XperienceUtils;
 
 @SearchIndexable
 public class Wallpaper extends SettingsPreferenceFragment 
@@ -66,7 +66,7 @@ public class Wallpaper extends SettingsPreferenceFragment
           if (preference == mDimLvlPref) {
               android.os.SystemProperties.set("persist.sys.wallpaper.dim_level", newValue.toString());
           }
-          SystemRestartUtils.showSystemUIRestartDialog(getContext());
+          XperienceUtils.showSystemUiRestartDialog(getContext());
           return true;
         }
         return false;

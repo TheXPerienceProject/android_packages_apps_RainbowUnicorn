@@ -18,7 +18,7 @@
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <!--<PreferenceCategory
+    <PreferenceCategory
         android:key="lockscreen_clock_category"
         settings:layout="@layout/top_level_preference_top_card"
         android:title="@string/lockscreen_clock_category_title">
@@ -29,7 +29,7 @@
             android:summary="@string/theme_customization_lock_clock_summary"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.LockClockFontsPickerPreview"/>
 
-    </PreferenceCategory>-->
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="lockscreen_interface_category"
@@ -41,6 +41,13 @@
             android:summary="@string/doze_display_summary"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.doze.AODSettings" />-->
         
+        <Preference
+            android:key="lockscreen_widgets"
+            android:icon="@drawable/widgets"
+            android:title="@string/lockscreen_widgets_title"
+            android:summary="@string/lockscreen_widgets_enabled_summary"
+            android:fragment="mx.xperience.unicorn.fragments.LockScreenWidgets" />
+
         <Preference
             android:key="peek_display"
             android:title="@string/peek_display_notifications_title"

@@ -88,6 +88,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             resolver, "new_status_bar_icons_enabled", 1, UserHandle.USER_CURRENT) == 1;
         mNewStatusBarIconsPref.setChecked(newIconsEnabled);
         updatePreferenceStates(newIconsEnabled);
+
     }
 
     /**
@@ -103,6 +104,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         //findPreference("network_traffic_settings").setEnabled(oldPrefsEnabled);
         //findPreference("ongoing_progress_settings").setEnabled(oldPrefsEnabled);
         //findPreference("show_fourg_icon").setEnabled(oldPrefsEnabled);
+        findPreference("statusbar_clock_chip").setEnabled(oldPrefsEnabled);
     }
 
     @Override

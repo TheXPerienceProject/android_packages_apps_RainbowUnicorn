@@ -286,7 +286,7 @@
     <string name="aod_display_category_title">Pantalla siempre activa</string>
     <string name="aod_pulse_category_title">Pulso/Doze</string>
     <!-- Statusbar Clock background chip -->
-    <string name="statusbar_clock_chip_title">Chip de fondo</string>
+    <string name="statusbar_clock_chip_title">Reloj con fondo (chip)</string>
     <string name="statusbar_clock_chip_summary">Mostrar un fondo detrás del reloj con el color de acento</string>
     <string name="solid_accent">Acento de color sólido</string>
     <string name="outline">Outline</string>

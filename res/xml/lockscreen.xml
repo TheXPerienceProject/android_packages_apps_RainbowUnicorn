@@ -41,6 +41,12 @@
             android:summary="@string/doze_display_summary"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.doze.AODSettings" />-->
         
+        <Preference
+            android:key="peek_display"
+            android:title="@string/peek_display_notifications_title"
+            android:summary="@string/peek_display_notifications_summary"
+            android:fragment="mx.xperience.unicorn.fragments.PeekDisplay" />
+        
         <mx.xperience.framework.preference.SystemSettingSwitchPreference
             android:key="keyguard_now_bar_enabled"
             android:title="@string/keyguard_now_bar_enabled_title"

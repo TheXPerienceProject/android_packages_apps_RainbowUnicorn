@@ -46,4 +46,25 @@
     <!-- Bluetooth -->
     <!-- Freeform launch mode -->
     <!-- Network traffic -->
+    <!-- Font styles -->
+    <!-- Lockscreen Clock Highlight Guide -->
+    <!-- Lockscreen Clock Revamp -->
+    <string name="lockscreen_settings_title">Schermbeveiliging</string>
+    <!-- AOD custom image -->
+    <!-- Depth Wallpaper -->
+    <!-- Lockscreen categories -->
+    <!-- Lockscreen widgets  -->
+    <!-- Weather -->
+    <!-- AOD Settings -->
+    <!-- Statusbar Clock background chip -->
+    <!-- Custom Clock Style -->
+    <!-- Doze settings -->
+    <!-- Now Bar -->
+    <!-- Nowbar height -->
+    <!-- AOD wallpaper -->
+    <!-- Peek Display -->
+    <!-- Peek Display Styles -->
+    <!-- Wallpaper Styles -->
+    <!-- Lockscreen Widgets Styles -->
+    <!-- Apply Button -->
 </resources>

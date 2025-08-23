@@ -47,11 +47,18 @@ limitations under the License.
             settings:layout="@layout/dashboard_preference_middle"
             android:icon="@drawable/ic_misc_settings"/>
 
-        <Preference
+        <!--<Preference
             android:key="lockclock_fonts"
             android:title="LockClockFonts"
             settings:layout="@layout/dashboard_preference_middle"
-            android:fragment="mx.xperience.unicorn.fragments.lockscreen.LockClockFontsPickerPreview" />
+            android:fragment="mx.xperience.unicorn.fragments.lockscreen.LockClockFontsPickerPreview" />-->
+
+        <Preference
+            android:key="lockscreen"
+            android:title="LockScreen"
+            settings:layout="@layout/dashboard_preference_middle"
+            android:icon="@drawable/ic_clock"
+            android:fragment="mx.xperience.unicorn.fragments.Lockscreen" />
 
         <Preference
             android:key="spoofing"

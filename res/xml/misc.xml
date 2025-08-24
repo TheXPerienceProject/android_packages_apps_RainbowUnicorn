@@ -63,4 +63,14 @@
             android:summary="@string/notifications_edge_light_summary"
             android:fragment="mx.xperience.unicorn.fragments.notifications.EdgeLightSettings" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/notifications" >
+        <!-- Notification row transparency -->
+        <mx.xperience.framework.preferenceSecureSettingSwitchPreference
+            android:key="notification_row_transparency"
+            android:title="@string/notification_row_transparency_title"
+            android:summary="@string/notification_row_transparency_summary"
+            android:defaultValue="true" />
+        </PreferenceCategory>
 </PreferenceScreen>

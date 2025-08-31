@@ -415,4 +415,7 @@
     <!-- Apply Button -->
     <string name="apply_change_button_title">Apply</string>
 
+    <!-- WiFi Standard icon -->
+    <string name="wifi_standard_icon_title">WiFi standard</string>
+    <string name="wifi_standard_icon_summary">Display WiFi standard next to WiFi signal</string>
 </resources>

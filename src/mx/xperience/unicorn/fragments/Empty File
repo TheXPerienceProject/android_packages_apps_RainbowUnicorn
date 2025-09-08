@@ -1,0 +1,17 @@
+package mx.xperience.unicorn.fragments;
+
+public class LockscreenSettings extends MiscSettings {
+    
+    @Override
+    public void onCreate(Bundle icicle) {
+        // Forzar el uso de lockscreen.xml
+        Bundle args = getArguments();
+        if (args == null) {
+            args = new Bundle();
+        }
+        args.putInt("xml_res_id", R.xml.lockscreen);
+        setArguments(args);
+        
+        super.onCreate(icicle);
+    }
+}

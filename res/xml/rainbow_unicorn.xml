@@ -54,6 +54,13 @@ limitations under the License.
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.LockClockFontsPickerPreview" />-->
 
         <Preference
+            android:key="monet_settings"
+            android:title="@string/monet_settings"
+            settings:layout="@layout/dashboard_preference_middle"
+            android:icon="@drawable/ic_monet"
+            android:fragment="mx.xperience.unicorn.fragments.MonetSettings" />
+
+        <Preference
             android:key="lockscreen"
             android:title="LockScreen"
             settings:layout="@layout/dashboard_preference_middle"

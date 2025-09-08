@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2011-2025 The XPerience Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Círculo base con colorBackground -->
+    <path
+        android:fillColor="?android:attr/colorBackground"
+        android:pathData="M12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22Z" />
+
+    <!-- Segmentos con colorAccent y diferentes opacidades -->
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M12,4C13.63,4 15.16,4.37 16.5,5.03L15.5,7.28C14.63,6.91 13.75,6.7 12.88,6.64L12,4Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M5.03,7.5C4.37,8.84 4,10.37 4,12C4,13.63 4.37,15.16 5.03,16.5L7.28,15.5C6.91,14.63 6.7,13.75 6.64,12.88L5.03,7.5Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M7.5,18.97C8.84,19.63 10.37,20 12,20C13.63,20 15.16,19.63 16.5,18.97L15.5,16.72C14.63,17.09 13.75,17.3 12.88,17.36L7.5,18.97Z" />
+    <path
+        android:fillColor="#9C27B0"
+        android:pathData="M18.97,16.5C19.63,15.16 20,13.63 20,12C20,10.37 19.63,8.84 18.97,7.5L16.72,8.5C17.09,9.37 17.3,10.25 17.36,11.12L18.97,16.5Z" />
+
+    <!-- Punto central con colorForeground -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,14C13.1,14 14,13.1 14,12C14,10.9 13.1,10 12,10C10.9,10 10,10.9 10,12C10,13.1 10.9,14 12,14Z" />
+
+</vector>

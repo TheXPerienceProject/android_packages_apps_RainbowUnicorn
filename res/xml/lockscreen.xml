@@ -115,4 +115,16 @@
             android:defaultValue="true"
             android:dependency="lockscreen_weather_enabled" />
     </PreferenceCategory>
+
+    <!-- Udfps animation -->
+    <PreferenceCategory
+        android:key="themes_animations_category"
+        android:title="@string/themes_animations_category">
+        
+       <Preference
+            android:key="udfps_animation"
+            android:title="@string/themes_udfps_animation_title"
+            android:summary="@string/themes_udfps_animation_summary"
+            android:fragment="mx.xperience.unicorn.UdfpsAnimations" />
+        </PreferenceCategory>
 </PreferenceScreen>

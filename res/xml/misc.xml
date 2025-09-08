@@ -31,19 +31,6 @@
         android:entryValues="@array/screen_off_animation_values"
         android:defaultValue="1" />
 
-<!--
-    <PreferenceCategory
-        android:key="themes_animations_category"
-        android:title="@string/themes_animations_category">
-        -->
-        <!-- Udfps animation -->
-       <!-- <Preference
-            android:key="udfps_animation"
-            android:title="@string/themes_udfps_animation_title"
-            android:summary="@string/themes_udfps_animation_summary"
-            android:fragment="com.android.settings.xperience.themes.UdfpsAnimations" />
-        </PreferenceCategory>-->
-
     <!-- Freeform launch mode -->
 
 

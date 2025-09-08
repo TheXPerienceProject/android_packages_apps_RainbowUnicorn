@@ -43,6 +43,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
 
+import com.android.internal.util.xperience.XperienceUtils;
 import com.android.internal.util.android.OmniJawsClient;
 
 import java.util.ArrayList;
@@ -55,9 +56,15 @@ public class Lockscreen extends SettingsPreferenceFragment implements
     private static final String LOCKSCREEN_INTERFACE_CATEGORY = "lockscreen_interface_category";
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
+    private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
+    private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
+
     private OmniJawsClient mWeatherClient;
     private Preference mWeather;
     private PreferenceCategory mLockScreenCategory;
+
+    private PreferenceCategory mAnimationsCategory;
+    private Preference mUdfpsAnimation;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -74,6 +81,36 @@ public class Lockscreen extends SettingsPreferenceFragment implements
         mWeather = (Preference) findPreference(KEY_WEATHER);
         mWeatherClient = new OmniJawsClient(getContext());
         updateWeatherSettings();
+
+		Resources res = null;
+
+        float density = Resources.getSystem().getDisplayMetrics().density;
+
+        try {
+            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        mAnimationsCategory = (PreferenceCategory) findPreference(KEY_ANIMATIONS_CATEGORY);
+        mUdfpsAnimation = (Preference) findPreference(KEY_UDFPS_ANIMATION);
+
+        FingerprintManager fingerprintManager = (FingerprintManager)
+                getActivity().getSystemService(ctx.FINGERPRINT_SERVICE);
+
+        if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+            mAnimationsCategory.removePreference(mUdfpsAnimation);
+        } else {
+            if (!XperienceUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations")) {
+                mAnimationsCategory.removePreference(mUdfpsAnimation);
+            }
+        }
+
+        // Check if the category is now empty
+        if (mAnimationsCategory.getPreferenceCount() == 0) {
+            
+            preferenceScreen.removePreference(mAnimationsCategory);
+        }
     }
 
     @Override
@@ -120,6 +157,17 @@ public class Lockscreen extends SettingsPreferenceFragment implements
                     List<String> keys = super.getNonIndexableKeys(context);
 
                 final Resources resources = context.getResources();
+
+                FingerprintManager fingerprintManager = (FingerprintManager)
+                        context.getSystemService(Context.FINGERPRINT_SERVICE);
+
+                if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+                    keys.add(KEY_UDFPS_ANIMATION);
+                } else {
+                    if (!XperienceUtils.isPackageInstalled(context, "mx.xperience.udfps.animations")) {
+                        keys.add(KEY_UDFPS_ANIMATION);
+                    }
+                }
                 return keys;
             }
     };

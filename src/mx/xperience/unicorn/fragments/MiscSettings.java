@@ -49,12 +49,6 @@ import java.util.List;
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
-/*
-    private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
-    private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
-
-    private PreferenceCategory mAnimationsCategory;
-    private Preference mUdfpsAnimation;*/
 
     private static final String KEY_MISCELLANEOUS_CATEGORY = "quick_settings_miscellaneous_category";
     private static final String KEY_QS_BLUETOOTH_SHOW_DIALOG = "qs_bt_show_dialog";
@@ -69,36 +63,6 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.misc);
         Context ctx = getContext();
         PreferenceScreen preferenceScreen = getPreferenceScreen();
-
-		/*Resources res = null;
-
-        float density = Resources.getSystem().getDisplayMetrics().density;
-
-        try {
-            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        mAnimationsCategory = (PreferenceCategory) findPreference(KEY_ANIMATIONS_CATEGORY);
-        mUdfpsAnimation = (Preference) findPreference(KEY_UDFPS_ANIMATION);
-
-        FingerprintManager fingerprintManager = (FingerprintManager)
-                getActivity().getSystemService(ctx.FINGERPRINT_SERVICE);
-
-        if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
-            mAnimationsCategory.removePreference(mUdfpsAnimation);
-        } else {
-            if (!VoltageUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations")) {
-                mAnimationsCategory.removePreference(mUdfpsAnimation);
-            }
-        }
-
-        // Check if the category is now empty
-        if (mAnimationsCategory.getPreferenceCount() == 0) {
-            
-            preferenceScreen.removePreference(mAnimationsCategory);
-        }*/
 
         mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
 
@@ -144,16 +108,6 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
                 final Resources resources = context.getResources();
 
-                /*FingerprintManager fingerprintManager = (FingerprintManager)
-                        context.getSystemService(Context.FINGERPRINT_SERVICE);
-
-                if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
-                    keys.add(KEY_UDFPS_ANIMATION);
-                } else {
-                    if (!VoltageUtils.isPackageInstalled(context, "mx.xperience.udfps.animations")) {
-                        keys.add(KEY_UDFPS_ANIMATION);
-                    }
-                }*/
                 if (!DeviceUtils.deviceSupportsBluetooth(context)) {
                     keys.add(KEY_QS_BLUETOOTH_SHOW_DIALOG);
                 }

@@ -60,13 +60,13 @@
             android:summary="@string/keyguard_now_bar_enabled_summary"
             android:defaultValue="false" />
             
-	    <mx.xperience.framework.preference.SystemSettingSeekBarPreference
-    	    android:key="nowbar_margin_bottom"
-    	    android:title="@string/now_bar_height_title"
-    	    android:summary="@string/now_bar_height_summary"
-    	    android:defaultValue="18"
-    	    android:min="0"
-    	    android:max="210"
+        <mx.xperience.framework.preference.SystemSettingSeekBarPreference
+            android:key="nowbar_margin_bottom"
+            android:title="@string/now_bar_height_title"
+            android:summary="@string/now_bar_height_summary"
+            android:defaultValue="18"
+            android:min="0"
+            android:max="210"
             android:dependency="keyguard_now_bar_enabled" />
         
 
@@ -125,6 +125,6 @@
             android:key="udfps_animation"
             android:title="@string/themes_udfps_animation_title"
             android:summary="@string/themes_udfps_animation_summary"
-            android:fragment="mx.xperience.unicorn.UdfpsAnimations" />
+            android:fragment="mx.xperience.unicorn.fragments.UdfpsAnimations" />
         </PreferenceCategory>
 </PreferenceScreen>

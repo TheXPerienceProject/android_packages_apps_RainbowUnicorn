@@ -1,18 +1,8 @@
 /*
- * Copyright (C) 2022-2024 crDroid Android Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+    Copyright (C) 2022-2024 crDroid Android Project
+    Copyright (C) 2011-2025 The XPerience Project
+    SPDX-License-Identifier: Apache-2.0
+*/
 
 package mx.xperience.unicorn.fragments;
 
@@ -70,6 +60,21 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
         getActivity().setTitle(R.string.themes_udfps_animation_title);
 
         loadResources();
+    }
+
+    @Override
+    public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+        // Return null to prevent the preference framework from creating its own RecyclerView
+        return null;
+    }
+
+    @Override
+    public void setDivider(@Nullable Drawable divider) {
+        // Override to prevent NPE - we're using our own RecyclerView
+        if (getListView() != null) {
+            super.setDivider(divider);
+        }
+        // Otherwise do nothing - our custom layout handles dividers
     }
 
     private void loadResources() {

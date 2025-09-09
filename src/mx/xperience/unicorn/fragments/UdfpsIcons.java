@@ -1,18 +1,8 @@
 /*
- * Copyright (C) 2022-2024 crDroid Android Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+    Copyright (C) 2022-2024 crDroid Android Project
+    Copyright (C) 2011-2025 The XPerience Project
+    SPDX-License-Identifier: Apache-2.0
+*/
 
 package mx.xperience.unicorn.fragments;
 
@@ -42,6 +32,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.Fragment;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -65,7 +56,8 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UdfpsIcons extends SettingsPreferenceFragment {
+// The class extends from a normal Fragment to have full control over the layout.
+public class UdfpsIcons extends Fragment {
 
     private RecyclerView mRecyclerView;
 
@@ -84,35 +76,39 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
     }
 
     private void loadResources() {
-    /*    try {
+        try {
             PackageManager pm = getActivity().getPackageManager();
             udfpsRes = pm.getResourcesForApplication(mPkg);
+            mIcons = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_icons",
+                "array", mPkg));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
+            udfpsRes = null; // We ensure that udfpsRes is null if the packet is not found.
+            // It is not necessary to throw an exception, as the code is already prepared to handle a null resource.
         }
-
-        mIcons = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_icons",
-                "array", mPkg));*/
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
+
+        // If the resources did not load, there is nothing to display.
+        if (udfpsRes == null) {
+            Toast.makeText(getContext(), "Udfps icons resources not found.", Toast.LENGTH_LONG).show();
+            // We return an empty view to avoid a crash.
+            return new View(getContext());
+        }
+
         View view = inflater.inflate(
                 R.layout.item_view, container, false);
 
-        /*mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         UdfpsIconAdapter mUdfpsIconAdapter = new UdfpsIconAdapter(getActivity());
-        mRecyclerView.setAdapter(mUdfpsIconAdapter);*/
+        mRecyclerView.setAdapter(mUdfpsIconAdapter);
 
         return view;
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return MetricsEvent.RAINBOW_UNICORN;
     }
 
     @Override
@@ -120,7 +116,7 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
         super.onResume();
     }
 
-   /* public class UdfpsIconAdapter extends RecyclerView.Adapter<UdfpsIconAdapter.UdfpsIconViewHolder> {
+    public class UdfpsIconAdapter extends RecyclerView.Adapter<UdfpsIconAdapter.UdfpsIconViewHolder> {
         Context context;
         String mSelectedIcon;
         String mAppliedIcon;
@@ -171,6 +167,7 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
 
         @Override
         public int getItemCount() {
+            if (mIcons == null) return 0;
             return mIcons.length;
         }
 
@@ -208,5 +205,5 @@ public class UdfpsIcons extends SettingsPreferenceFragment {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 }

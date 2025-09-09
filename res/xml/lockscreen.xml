@@ -126,5 +126,11 @@
             android:title="@string/themes_udfps_animation_title"
             android:summary="@string/themes_udfps_animation_summary"
             android:fragment="mx.xperience.unicorn.fragments.UdfpsAnimations" />
+
+       <Preference
+            android:key="udfps_icons"
+            android:title="@string/themes_udfps_icon_title"
+            android:summary="@string/themes_udfps_icon_summary"
+            android:fragment="mx.xperience.unicorn.fragments.UdfpsAnimations" />
         </PreferenceCategory>
 </PreferenceScreen>

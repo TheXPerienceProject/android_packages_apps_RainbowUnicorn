@@ -131,6 +131,6 @@
             android:key="udfps_icons"
             android:title="@string/themes_udfps_icon_title"
             android:summary="@string/themes_udfps_icon_summary"
-            android:fragment="mx.xperience.unicorn.fragments.UdfpsAnimations" />
+            android:fragment="mx.xperience.unicorn.fragments.UdfpsIcons" />
         </PreferenceCategory>
 </PreferenceScreen>

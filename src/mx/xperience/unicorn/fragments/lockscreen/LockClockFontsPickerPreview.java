@@ -42,10 +42,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.utils.SystemRestartUtils;
@@ -57,7 +57,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 import java.util.List;
 
-public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
+public class LockClockFontsPickerPreview extends Fragment {
 
     private static final String TAG = "LockClockFontsPickerPreview";
     private static final String PREF_FIRST_TIME = "first_time_clock_face_access";
@@ -100,9 +100,9 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fontManager = new FontManager(getActivity(), true);
-        getActivity().setTitle(getActivity().getString(R.string.theme_customization_lock_clock_title));
-        mThemeUtils = ThemeUtils.getInstance(getActivity());
+        fontManager = new FontManager(requireActivity(), true);
+        requireActivity().setTitle(getString(R.string.theme_customization_lock_clock_title));
+        mThemeUtils = ThemeUtils.getInstance(requireActivity());
     }
 
     @Nullable
@@ -540,8 +540,4 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
         mHandler = null;
     }
 
-    @Override
-    public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.VIEW_UNKNOWN;
-    }
 }

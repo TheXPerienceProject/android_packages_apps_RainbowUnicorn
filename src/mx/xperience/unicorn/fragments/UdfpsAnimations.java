@@ -36,11 +36,13 @@ import com.bumptech.glide.Glide;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
-import com.android.settings.SettingsPreferenceFragment;
 
 import java.util.Arrays;
 
-public class UdfpsAnimations extends SettingsPreferenceFragment {
+import androidx.fragment.app.Fragment;
+import android.widget.Toast;
+// The class extends from a normal Fragment to have full control over the layout.
+public class UdfpsAnimations extends Fragment {
 
     private RecyclerView mRecyclerView;
     private String mPkg = "mx.xperience.udfps.animations";
@@ -62,42 +64,36 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
         loadResources();
     }
 
-    @Override
-    public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        // Return null to prevent the preference framework from creating its own RecyclerView
-        return null;
-    }
-
-    @Override
-    public void setDivider(@Nullable Drawable divider) {
-        // Override to prevent NPE - we're using our own RecyclerView
-        if (getListView() != null) {
-            super.setDivider(divider);
-        }
-        // Otherwise do nothing - our custom layout handles dividers
-    }
-
     private void loadResources() {
         try {
-            PackageManager pm = getActivity().getPackageManager();
+            PackageManager pm = requireActivity().getPackageManager();
             udfpsRes = pm.getResourcesForApplication(mPkg);
+            // If the resources are obtained, then we load them.
+            mAnims = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_styles",
+                    "array", mPkg));
+            mAnimPreviews = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_previews",
+                    "array", mPkg));
+            mTitles = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_titles",
+                    "array", mPkg));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
+            udfpsRes = null; // We ensure that udfpsRes is null if the packet is not found.
+            // It is not necessary to throw an exception, as the code is already prepared to handle a null resource.
         }
-
-        mAnims = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_styles",
-                "array", mPkg));
-        mAnimPreviews = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_previews",
-                "array", mPkg));
-        mTitles = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_titles",
-                "array", mPkg));
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(
-                R.layout.item_view, container, false);
+
+        // If the resources did not load, there is nothing to display.
+        if (udfpsRes == null) {
+            Toast.makeText(getContext(), "Animation resources not found.", Toast.LENGTH_LONG).show();
+            // We return an empty view to avoid a crash.
+            return new View(getContext());
+        }
+
+        View view = inflater.inflate(R.layout.item_view, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
@@ -106,11 +102,6 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
         mRecyclerView.setAdapter(mUdfpsAnimAdapter);
 
         return view;
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return MetricsEvent.RAINBOW_UNICORN;
     }
 
     public class UdfpsAnimAdapter extends RecyclerView.Adapter<UdfpsAnimAdapter.UdfpsAnimViewHolder> {
@@ -122,11 +113,11 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
             this.context = context;
         }
 
+        @NonNull
         @Override
-        public UdfpsAnimViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public UdfpsAnimViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_option, parent, false);
-            UdfpsAnimViewHolder vh = new UdfpsAnimViewHolder(v);
-            return vh;
+            return new UdfpsAnimViewHolder(v);
         }
 
         @Override
@@ -167,6 +158,7 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
 
         @Override
         public int getItemCount() {
+            if (mAnims == null) return 0;
             return mAnims.length;
         }
 
@@ -181,6 +173,7 @@ public class UdfpsAnimations extends SettingsPreferenceFragment {
         }
 
         private void updateActivatedStatus(String anim, boolean isActivated) {
+            if (mAnims == null || mRecyclerView == null) return;
             int index = Arrays.asList(mAnims).indexOf(anim);
             if (index < 0) {
                 return;

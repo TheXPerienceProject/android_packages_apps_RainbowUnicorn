@@ -53,6 +53,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QUICK_PULLDOWN = "qs_quick_pulldown";
     private static final String PREF_NEW_STATUS_BAR_ICONS = "new_status_bar_icons";
     private static final String PREF_CLOCK_CHIP = "statusbar_clock_chip";
+    private static final String PREF_SHOW_REFRESH_RATE = "show_refresh_rate";
 
     private static final int PULLDOWN_DIR_NONE = 0;
     private static final int PULLDOWN_DIR_RIGHT = 1;
@@ -62,6 +63,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private SystemSettingListPreference mQuickPulldown;
     private SystemSettingListPreference mClockChipPref;
     private SwitchPreferenceCompat mNewStatusBarIconsPref;
+    private SwitchPreferenceCompat mShowRefreshRatePref;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -102,6 +104,16 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             mClockChipPref.setValue(String.valueOf(currentVal));
         }
 
+        mShowRefreshRatePref = (SwitchPreferenceCompat) findPreference(PREF_SHOW_REFRESH_RATE);
+        if (mShowRefreshRatePref != null) {
+            mShowRefreshRatePref.setOnPreferenceChangeListener(this);
+            boolean refreshRateEnabled = Settings.System.getIntForUser(
+                resolver, 
+                Settings.System.SHOW_REFRESH_RATE, 
+                0, 
+                UserHandle.USER_CURRENT) == 1;
+            mShowRefreshRatePref.setChecked(refreshRateEnabled);
+        }
     }
 
     /**
@@ -152,6 +164,18 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
             // Whenever the clock chip style changes, request a SystemUI restart.
             XperienceUtils.showSystemUiRestartDialog(context);
+            return true;
+        }
+
+        if (preference == mShowRefreshRatePref) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(resolver, 
+                Settings.System.SHOW_REFRESH_RATE, 
+                value ? 1 : 0, 
+                UserHandle.USER_CURRENT);
+            
+            // Reiniciar SystemUI para aplicar cambios
+            //XperienceUtils.showSystemUiRestartDialog(context);
             return true;
         }
 

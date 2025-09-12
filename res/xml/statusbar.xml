@@ -73,6 +73,12 @@
         android:summary="@string/statusbar_notif_count_summary"
         android:defaultValue="false" />
 
+    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+        android:key="show_refresh_rate"
+        android:title="@string/show_refresh_rate_title"
+        android:summary="@string/show_refresh_rate_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:key="island_notification"
         android:title="@string/island_notification_title"

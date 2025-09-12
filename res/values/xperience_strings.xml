@@ -439,4 +439,8 @@
     <string name="island_notification_footer_text">
         The Island notification feature, inspired by iOS\'s Dynamic Island, transforms Android\'s heads-up notifications into quick-access and compact notification utility.\n\nIsland Quick Access Controls includes the following features:\n1. Tap island notification to quick answer phone calls.\n2. Long press island notification to reject phone calls.\n3. Long press island notification to expand the island notification preview.
     </string>
+
+    <!--Statusbar RR -->
+    <string name="show_refresh_rate_title">Display refresh rate</string>
+    <string name="show_refresh_rate_summary">Displays the current refresh rate (Hz) in the status bar.</string>
 </resources>

@@ -358,4 +358,7 @@
     <string name="lockscreen_widgets_transparency_summary">Configurar el nivel de opacidad del widget de estilo translúcido</string>
     <!-- Apply Button -->
     <string name="apply_change_button_title">Aplicar</string>
+    <!--Statusbar RR -->
+    <string name="show_refresh_rate_title">Mostrar tasa de refresco</string>
+    <string name="show_refresh_rate_summary">Muestra la tasa de refresco actual (Hz) en la barra de estado</string>
 </resources>

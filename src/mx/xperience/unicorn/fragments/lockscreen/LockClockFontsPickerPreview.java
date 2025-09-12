@@ -20,6 +20,7 @@ package mx.xperience.unicorn.fragments.lockscreen;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.ColorStateList;
+import android.database.ContentObserver;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -27,6 +28,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.TypedValue;
@@ -73,7 +75,10 @@ public class LockClockFontsPickerPreview extends Fragment {
     private int mClockPosition = 0;
 
     private ThemeUtils mThemeUtils;
-    private Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
+
+    private ContentObserver mClockStyleObserver;
+    private boolean mIsObserverRegistered = false;
 
     private final static int[] mCenterClocks = {2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16};
 
@@ -114,6 +119,7 @@ public class LockClockFontsPickerPreview extends Fragment {
         viewPager = rootView.findViewById(R.id.view_pager);
         pagerAdapter = new ClockPagerAdapter();
         viewPager.setAdapter(pagerAdapter);
+        registerClockStyleObserver();
         mClockPosition = Settings.Secure.getIntForUser(getContext().getContentResolver(), "clock_style", 0, UserHandle.USER_CURRENT);
         if (mClockPosition < 0 || mClockPosition >= CLOCK_LAYOUTS.length) {
             mClockPosition = 0;
@@ -204,24 +210,35 @@ public class LockClockFontsPickerPreview extends Fragment {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
             @Override
             public void onPageSelected(int position) {
-                mClockPosition = position;
-                if (viewPager != null) {
-                    viewPager.performHapticFeedback(android.view.HapticFeedbackConstants.CLOCK_TICK);
-                }
-                updateClockName(position);
-
-                if (isStaticClockStyle(mClockPosition)) {
-                    fontMessage.setVisibility(View.VISIBLE);
-                } else {
-                    fontMessage.setVisibility(View.GONE);
-                    if (mCurrentFontPosition >= 0 && mCurrentFontPosition < fontPackageNames.size()) {
-                        String fontPackage = fontPackageNames.get(mCurrentFontPosition);
-                        applyFontToAllPreviews(fontPackage);
+                if (mClockPosition != position) {
+                    mClockPosition = position;
+                    if (viewPager != null) {
+                        viewPager.performHapticFeedback(android.view.HapticFeedbackConstants.CLOCK_TICK);
                     }
+                    updateClockName(position);
+                    toggleFontMessage(position);
+                    applyCurrentFontToPreview();
                 }
             }
         });
         return rootView;
+    }
+
+    private void toggleFontMessage(int position) {
+        TextView fontMessage = getView().findViewById(R.id.font_message);
+        if (isStaticClockStyle(position)) {
+            fontMessage.setVisibility(View.VISIBLE);
+        } else {
+            fontMessage.setVisibility(View.GONE);
+        }
+    }
+
+    private void applyCurrentFontToPreview() {
+        List<String> fontPackageNames = fontManager.getAllFontPackages();
+        if (!isStaticClockStyle(mClockPosition) && mCurrentFontPosition >= 0 && mCurrentFontPosition < fontPackageNames.size()) {
+            String fontPackage = fontPackageNames.get(mCurrentFontPosition);
+            applyFontToAllPreviews(fontPackage);
+        }
     }
 
     private void updateClockName(int position) {
@@ -514,6 +531,59 @@ public class LockClockFontsPickerPreview extends Fragment {
         }
     }
 
+    // Methods for registering/unregistering the observer
+    private void registerClockStyleObserver() {
+        if (mIsObserverRegistered || getContext() == null) return;
+
+        mClockStyleObserver = new ContentObserver(mHandler) {
+            @Override
+            public void onChange(boolean selfChange) {
+                super.onChange(selfChange);
+                updateClockPosition();
+            }
+        };
+
+        getContext().getContentResolver().registerContentObserver(
+            Settings.Secure.getUriFor("clock_style"),
+            false,
+            mClockStyleObserver,
+            UserHandle.USER_CURRENT
+        );
+
+        mIsObserverRegistered = true;
+    }
+
+    private void updateClockPosition() {
+        if (!isAdded() || getContext() == null || viewPager == null) return;
+
+        int newClockPosition = Settings.Secure.getIntForUser(
+            getContext().getContentResolver(),
+            "clock_style",
+            0,
+            UserHandle.USER_CURRENT
+        );
+
+        if (newClockPosition != mClockPosition) {
+            mClockPosition = newClockPosition;
+            mHandler.post(() -> {
+                if (isAdded() && viewPager != null) {
+                    viewPager.setCurrentItem(mClockPosition);
+                    updateClockName(mClockPosition);
+                }
+            });
+        }
+    }
+
+    private void unregisterClockStyleObserver() {
+        if (mIsObserverRegistered && mClockStyleObserver != null && getContext() != null) {
+            try {
+                getContext().getContentResolver().unregisterContentObserver(mClockStyleObserver);
+            } catch (Exception ignored) {}
+            mClockStyleObserver = null;
+            mIsObserverRegistered = false;
+        }
+    }
+
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -529,15 +599,16 @@ public class LockClockFontsPickerPreview extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        unregisterClockStyleObserver();
         if (mHandler != null) {
             mHandler.removeCallbacksAndMessages(null);
         }
+        viewPager = null; // Prevent memory leaks
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mHandler = null;
     }
 
 }

@@ -51,6 +51,9 @@ import java.util.Collections;
 public class StatusBarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String PREF_SHOW_REFRESH_RATE = "show_refresh_rate";
+
+    private SwitchPreferenceCompat mShowRefreshRatePref;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -62,7 +65,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         PreferenceScreen prefSet = getPreferenceScreen();
 
 
-        /*mShowRefreshRatePref = (SwitchPreferenceCompat) findPreference(PREF_SHOW_REFRESH_RATE);
+        mShowRefreshRatePref = (SwitchPreferenceCompat) findPreference(PREF_SHOW_REFRESH_RATE);
         if (mShowRefreshRatePref != null) {
             mShowRefreshRatePref.setOnPreferenceChangeListener(this);
             boolean refreshRateEnabled = Settings.System.getIntForUser(
@@ -71,7 +74,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                 0, 
                 UserHandle.USER_CURRENT) == 1;
             mShowRefreshRatePref.setChecked(refreshRateEnabled);
-        }*/
+        }
 
         //dynamic_island
         Preference openApp = findPreference("dynamic_island");
@@ -109,7 +112,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         final Context context = getContext();
-/*
+
         if (preference == mShowRefreshRatePref) {
             boolean value = (Boolean) objValue;
             Settings.System.putIntForUser(resolver, 
@@ -120,7 +123,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             // Reiniciar SystemUI para aplicar cambios
             //XperienceUtils.showSystemUiRestartDialog(context);
             return true;
-        }*/
+        }
 
         return false;
     }

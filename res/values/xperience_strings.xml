@@ -191,6 +191,10 @@
     <string name="status_bar_bluetooth_battery_title">Bluetooth battery status</string>
     <string name="status_bar_bluetooth_battery_summary">Display battery status for the connected Bluetooth device, if available</string>
 
+    <!-- Sidebar -->
+    <string name="sidebar_title">Sidebar</string>
+    <string name="sidebar_summary">Quickly open apps in a floating window</string>
+
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Floating window</string>
     <string name="freeform_launch_mode_1">Native AOSP</string>

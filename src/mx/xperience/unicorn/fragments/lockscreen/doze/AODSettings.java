@@ -73,39 +73,21 @@ public class AODSettings extends SettingsPreferenceFragment {
         return super.onPreferenceTreeClick(preference);
     }
 
-@Override
-public void onActivityResult(int requestCode, int resultCode, Intent result) {
-    super.onActivityResult(requestCode, resultCode, result);
-    
-    if (requestCode == CUSTOM_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && result != null) {
-        Context context = getContext();
-        if (context == null) return;
-        
-        Uri imgUri = result.getData();
-        if (imgUri != null) {
-            try {
-                // Limpiar archivos antiguos primero
-                ImageUtils.cleanupOldFiles(context, "lockscreen_aod_image", "LOCKSCREEN_CUSTOM_AOD_IMAGE");
-                
-                String savedImagePath = ImageUtils.saveImageToInternalStorage(
-                    context, imgUri, "lockscreen_aod_image", "LOCKSCREEN_CUSTOM_AOD_IMAGE");
-                
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent result) {
+        super.onActivityResult(requestCode, resultCode, result);
+        if (requestCode == CUSTOM_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && result != null) {
+            Uri imgUri = result.getData();
+            if (imgUri != null) {
+                String savedImagePath = ImageUtils.saveImageToInternalStorage(getContext(), imgUri, "lockscreen_aod_image", "LOCKSCREEN_CUSTOM_AOD_IMAGE");
                 if (savedImagePath != null) {
-                    ContentResolver resolver = context.getContentResolver();
-                    Settings.System.putStringForUser(resolver, "custom_aod_image_uri", 
-                        savedImagePath, UserHandle.USER_CURRENT);
-                    
+                    ContentResolver resolver = getContext().getContentResolver();
+                    Settings.System.putStringForUser(resolver, "custom_aod_image_uri", savedImagePath, UserHandle.USER_CURRENT);
                     mCustomImagePreference.setSummary(savedImagePath);
-                    Toast.makeText(context, R.string.custom_aod_image_saved, Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, R.string.custom_aod_image_save_failed, Toast.LENGTH_LONG).show();
                 }
-            } catch (Exception e) {
-                Toast.makeText(context, R.string.custom_aod_image_save_error, Toast.LENGTH_LONG).show();
             }
         }
     }
-}
 
     @Override
     public int getMetricsCategory() {

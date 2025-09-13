@@ -34,13 +34,14 @@
     <!-- Themes -->
     <!-- Access QS on lockscreen -->
     <!-- Miscellaneous -->
-    <!-- Miscellaneous/Spoofing -->
-    <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
+    <!-- Keybox -->
+    <!-- PIF -->
     <!-- Lock screen -->
     <!-- Double tap to sleep on status bar or lockscreen -->
     <!-- more misc-->
     <!-- Ongoing action chip -->
     <!-- Bluetooth -->
+    <!-- Sidebar -->
     <!-- Freeform launch mode -->
     <!-- Network traffic -->
     <string name="network_traffic_hidearrow">Скрыть стрелки</string>
@@ -67,4 +68,7 @@
     <!-- Wallpaper Styles -->
     <!-- Lockscreen Widgets Styles -->
     <!-- Apply Button -->
+    <!-- Monet settings -->
+    <!-- Island Notification -->
+    <!--Statusbar RR -->
 </resources>

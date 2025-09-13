@@ -99,41 +99,30 @@
     <string name="show_qs_on_secure_keyguard_summary">Permitir cambiar la configuración rápida en la pantalla de bloqueo</string>
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>
-    <!-- Miscellaneous/Spoofing -->
-    <string name="gms_spoof_title">Play Integrity fix</string>
-    <string name="gms_spoof_summary">Falsifica tu dispositivo para pasar la certificación de Google Play</string>
-    <string name="spoofing_title">Falsificación de componentes</string>
-    <string name="spoofing_summary">Elude las restricciones de la aplicación mediante suplantación de componentes</string>
-    <string name="spoofing_system_wide_category">Todo el sistema</string>
-    <string name="spoofing_pixel_props_title">Props de píxel</string>
-    <string name="spoofing_pixel_props_summary">Falsifica un grupo selecto de apps de Google para que crean estar en el último dispositivo Pixel</string>
-    <string name="tensor_spoof_title">Simular funciones de Tensor</string>
-    <string name="tensor_spoof_summary">Desbloquear características de tensor/píxel</string>
-    <string name="spoofing_storage_encryption_title">Cifrado de almacenamiento</string>
-    <string name="spoofing_storage_encryption_summary">Simula que el almacenamiento del dispositivo está cifrado</string>
-    <string name="spoofing_app_specific_category">Aplicación específica</string>
-    <string name="spoofing_qsb_title">Aplicaciones de Google</string>
-    <string name="spoofing_qsb_summary">Simula que la app de Google se ejecuta en el último Pixel para habilitar funciones exclusivas</string>
-    <string name="spoofing_vending_title">Play Store</string>
-    <string name="spoofing_vending_summary">Simula que la Play Store se ejecuta en el último Pixel</string>
-    <string name="spoofing_photos_title">Fotos de Google</string>
-    <string name="spoofing_photos_summary">Suplanta el dispositivo como Pixel XL en la aplicación Google Fotos para desbloquear el respaldo de imágenes ilimitado</string>
-    <string name="spoofing_snap_title">SnapChat</string>
-    <string name="spoofing_snap_summary">Suplanta el dispositivo como Pixel XL en la aplicación Snapchat para solucionar posibles problemas con el chat</string>
-    <string name="gameprops_title">Desbloquea una tasa de fotogramas más alta en los juegos</string>
-    <string name="gameprops_summary">Falsifica tu dispositivo como otro modelo para ciertos juegos y desbloquea mayor tasa de FPS</string>
-    <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
-    <string name="toast_spoofing_success">Pif.json descargado con éxito. Spoofing como %1$s para la integridad de Google Play.</string>
-    <string name="toast_spoofing_failure">Fallo al falsear propiedades.</string>
-    <string name="update_pif_json_title">Actualizar Play Integrity fix</string>
-    <string name="update_pif_json_summary">Actualizar el dispositivo de suplantación de PIF, requiere conexión a Internet.</string>
-    <string name="show_pif_properties_title">Propiedades de corrección de integridad de Google Play</string>
-    <string name="show_pif_properties_summary">Mostrar todas las propiedades PIF establecidas actualmente</string>
-    <string name="error_loading_properties">Error al cargar las propiedades PIF</string>
-    <string name="pif_spoofing_title">Seleccione el archivo JSON PIF</string>
-    <string name="pif_spoofing_summary">Elija el archivo PIF JSON que se usará para suplantar la integridad de Google Play</string>
-    <string name="keybox_data_title">Seleccione el keybox XML para suplantación</string>
-    <string name="keybox_data_summary">Seleccione el keybox xml para todas las aplicaciones del sistema. Haga clic en el botón eliminar para restablecer los valores de datos keybox utilizados por el sistema.</string>
+    <!-- Keybox -->
+    <string name="keybox_title">Keybox</string>
+    <string name="keybox_summary">Gestionar datos keybox del dispositivo</string>
+    <string name="keybox_data_title">Cargar datos de keybox</string>
+    <string name="keybox_data_summary">Seleccione un archivo XML «keybox» para cargar</string>
+    <string name="keybox_data_summary_loaded">Cargado %1$s «keybox» con %2$d certificados (%3$s)</string>
+    <string name="keybox_data_delete_title">Eliminar datos de «keybox»</string>
+    <string name="keybox_data_delete_summary">Eliminar datos de «keybox» cargados actualmente</string>
+    <string name="keybox_data_loaded">Datos de «keybox» cargados correctamente</string>
+    <string name="keybox_data_cleared">Datos de «keybox» borrados</string>
+    <string name="keybox_data_error">No se pudieron cargar los datos de «keybox»</string>
+    <string name="keybox_data_invalid">Archivo keybox XML inválido</string>
+    <!-- PIF -->
+    <string name="pif_title">Play Integrity</string>
+    <string name="pif_summary">Gestionar los datos de Play Integrity del dispositivo para Google Play Services</string>
+    <string name="pif_data_title">Cargar datos PIF</string>
+    <string name="pif_data_summary">Seleccione un archivo PIF JSON a cargar</string>
+    <string name="pif_data_delete_title">Borrar datos PIF</string>
+    <string name="pif_data_delete_summary">Eliminar datos PIF cargados actualmente</string>
+    <string name="pif_data_loaded">Datos PIF cargados correctamente</string>
+    <string name="pif_data_cleared">Datos PIF borrados</string>
+    <string name="pif_data_error">Error al cargar los datos PIF</string>
+    <string name="pif_data_invalid">Archivo JSON PIF inválido</string>
+    <string name="pif_data_summary_loaded">Datos PIF cargados: %1$d props (%2$s)</string>
     <!-- Lock screen -->
     <string name="lock_screen_interface_category">Interfaz</string>
     <string name="lock_screen_charging_stats_title">Estadísticas de carga</string>
@@ -175,6 +164,9 @@
     <!-- Bluetooth -->
     <string name="status_bar_bluetooth_battery_title">Estado de la batería del dispositivo Bluetooth</string>
     <string name="status_bar_bluetooth_battery_summary">Muestra el nivel de batería de los dispositivos bluetooth conectados, si está disponible</string>
+    <!-- Sidebar -->
+    <string name="sidebar_title">Barra Lateral</string>
+    <string name="sidebar_summary">Abrir aplicaciones rápidamente en una ventana flotante</string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Ventana flotante</string>
     <string name="freeform_launch_mode_1">AOSP nativo</string>
@@ -358,8 +350,42 @@
     <string name="lockscreen_widgets_transparency_summary">Configurar el nivel de opacidad del widget de estilo translúcido</string>
     <!-- Apply Button -->
     <string name="apply_change_button_title">Aplicar</string>
-
+    <!-- Monet settings -->
+    <string name="monet_settings">Ajustes Monet</string>
+    <string name="monet_settings_title">Personalización de Monet</string>
+    <string name="monet_settings_sammary">Personalizar el motor de temas dinámicos</string>
+    <string name="monet_engine_custom_color_title">Color de acento</string>
+    <string name="monet_engine_custom_color_summary">Elige color de acento personalizado</string>
+    <string name="monet_engine_custom_bgcolor_title">Color de fondo</string>
+    <string name="monet_engine_custom_bgcolor_summary">Elegir color personalizado para el fondo</string>
+    <string name="monet_engine_color_override_title">Color personalizado</string>
+    <string name="monet_engine_luminance_factor_title">Luminosidad</string>
+    <string name="monet_engine_luminance_factor_summary">Valores más altos producen colores más brillantes</string>
+    <string name="monet_engine_chroma_factor_title">Factor cromático</string>
+    <string name="monet_engine_chroma_factor_summary">Valores más altos producen colores más fuertes</string>
+    <string name="monet_engine_whole_palette_title">Paleta completa</string>
+    <string name="monet_engine_whole_palette_summary">Hace que la selección de luminancia y croma afecte también a los colores secundarios</string>
+    <string name="monet_engine_tint_background_title">Tinte de fondo</string>
+    <string name="monet_engine_tint_background_summary">Hace que la selección de luminancia y crominancia afecte también a los colores de fondo</string>
+    <string name="monet_engine_style_title">Estilo del tema</string>
+    <string name="monet_engine_style_tonal_spot">Tonal Spot (Por defecto)</string>
+    <string name="monet_engine_style_vibrant">Vibrante</string>
+    <string name="monet_engine_style_expressive">Expresivo</string>
+    <string name="monet_engine_style_spritz">Spritz</string>
+    <string name="monet_engine_style_rainbow">Arcoiris</string>
+    <string name="monet_engine_style_fruit_salad">Ensalada de fruta</string>
+    <string name="monet_engine_style_content">Contenido</string>
+    <string name="monet_engine_style_monochromatic">Monocromático</string>
+    <string name="monet_engine_color_source_title">Fuente de color</string>
+    <string name="monet_engine_color_source_preset">Preajuste</string>
+    <string name="monet_engine_wallpaper_color_title">Selecciona un color de acento diferente al de tu fondo de pantalla</string>
+    <string name="monet_engine_wallpaper_color_summary">Selector de color de fondo de pantalla</string>
+    <string name="monet_engine_wallpaper_color_not_available">No disponible</string>
+    <!-- Island Notification -->
+    <string name="island_notification_title">Notificación de isla</string>
+    <string name="island_notification_summary">Mostrar notificaciones emergentes al estilo Dynamic Island</string>
+    <string name="island_notification_footer_text">        La función de notificación Island, inspirada en Dynamic Island de iOS, transforma las notificaciones emergentes de Android en una utilidad de notificaciones compacta y de acceso rápido. \n\nIsland Quick Access Controls incluye las siguientes funciones:\n1. Toca la notificación Island para responder rápidamente a las llamadas telefónicas.\n2. Mantén pulsada la notificación Island para rechazar las llamadas telefónicas.\n3. Mantén pulsada la notificación Island para ampliar la vista previa de la notificación Island.    </string>
     <!--Statusbar RR -->
-    <string name="show_refresh_rate_title">Mostrar tasa de refresco</string>
-    <string name="show_refresh_rate_summary">Muestra la tasa de refresco actual (Hz) en la barra de estado</string>
+    <string name="show_refresh_rate_title">Frecuencia de actualización de la pantalla</string>
+    <string name="show_refresh_rate_summary">Muestra la frecuencia de actualización actual (Hz) en la barra de estado.</string>
 </resources>

@@ -53,6 +53,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.utils.SystemRestartUtils;
 
 import com.android.internal.util.android.ThemeUtils;
+import com.android.internal.util.xperience.XperienceUtils;
 import mx.xperience.unicorn.fragments.ui.fonts.FontArrayAdapter;
 import mx.xperience.unicorn.fragments.ui.fonts.FontManager;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -292,7 +293,8 @@ public class LockClockFontsPickerPreview extends Fragment {
                 Settings.Secure.putIntForUser(getContext().getContentResolver(),
                     "lock_screen_custom_clock_face", 0, UserHandle.USER_CURRENT);
 
-                applyChangesAndRestart();
+                // Show restart dialog
+                XperienceUtils.showSystemUiRestartDialog(getContext());
             }
         });
     }

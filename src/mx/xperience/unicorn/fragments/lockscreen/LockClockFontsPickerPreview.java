@@ -293,6 +293,8 @@ public class LockClockFontsPickerPreview extends Fragment {
                 Settings.Secure.putIntForUser(getContext().getContentResolver(),
                     "lock_screen_custom_clock_face", 0, UserHandle.USER_CURRENT);
 
+                // dont forget to apply clock
+                updateClockOverlays(mClockPosition);
                 // Show restart dialog
                 XperienceUtils.showSystemUiRestartDialog(getContext());
             }

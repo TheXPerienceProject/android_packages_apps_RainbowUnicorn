@@ -58,6 +58,7 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
     private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
     private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
+    private static final String KEY_UDFPS_ICON = "udfps_icons";
 
     private OmniJawsClient mWeatherClient;
     private Preference mWeather;
@@ -65,6 +66,7 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
     private PreferenceCategory mAnimationsCategory;
     private Preference mUdfpsAnimation;
+    private Preference mUdfpsIcon;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -94,15 +96,18 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
         mAnimationsCategory = (PreferenceCategory) findPreference(KEY_ANIMATIONS_CATEGORY);
         mUdfpsAnimation = (Preference) findPreference(KEY_UDFPS_ANIMATION);
+        mUdfpsIcon = (Preference) findPreference(KEY_UDFPS_ICON);
 
         FingerprintManager fingerprintManager = (FingerprintManager)
                 getActivity().getSystemService(ctx.FINGERPRINT_SERVICE);
 
         if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
             mAnimationsCategory.removePreference(mUdfpsAnimation);
+            mAnimationsCategory.removePreference(mUdfpsIcon);
         } else {
             if (!XperienceUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations")) {
                 mAnimationsCategory.removePreference(mUdfpsAnimation);
+                mAnimationsCategory.removePreference(mUdfpsIcon);
             }
         }
 

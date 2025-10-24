@@ -12,29 +12,39 @@
         android:title="@string/keybox_title"
         android:summary="@string/keybox_summary">
 
-        <Preference
+        <mx.xperience.framework.preference.SecureSettingSwitchPreference
+            android:key="gms_cert_chain"
+            android:title="@string/gms_cert_chain_title"
+            android:summary="@string/gms_cert_chain_summary"
+            android:defaultValue="false" />
+
+        <mx.xperience.unicorn.preferences.KeyboxDataPreference
             android:key="keybox_data_setting"
             android:title="@string/keybox_data_title"
             android:summary="@string/keybox_data_summary" />
 
-        <Preference
-            android:key="keybox_data_delete"
-            android:title="@string/keybox_data_delete_title"
-            android:summary="@string/keybox_data_delete_summary" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/pif_title"
         android:summary="@string/pif_summary">
 
-        <Preference
+        <mx.xperience.unicorn.preferences.PifDataPreference
             android:key="pif_data_setting"
             android:title="@string/pif_data_title"
             android:summary="@string/pif_data_summary" />
 
-        <Preference
-            android:key="pif_data_delete"
-            android:title="@string/pif_data_delete_title"
-            android:summary="@string/pif_data_delete_summary" />
+        <mx.xperience.framework.preference.SecureSettingSwitchPreference
+            android:key="pi_restrict_to_gms"
+            android:title="@string/pi_restrict_to_gms_title"
+            android:summary="@string/pi_restrict_to_gms_summary"
+            android:defaultValue="true" />
+
+        <!-- Google Photos spoof -->
+        <mx.xperience.framework.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pihooks.gphotos"
+            android:title="@string/gphotos_spoof_title"
+            android:summary="@string/gphotos_spoof_summary"
+            android:defaultValue="true" />
     </PreferenceCategory>
 </PreferenceScreen>

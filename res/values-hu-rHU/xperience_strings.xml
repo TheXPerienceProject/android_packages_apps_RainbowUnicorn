@@ -95,6 +95,9 @@
     <string name="miscellaneous_spoofing_category">Hamisítás, álcázás</string>
     <!-- Keybox -->
     <!-- PIF -->
+    <!-- GMS cert chain -->
+    <!-- Play Integrity restriction -->
+    <!-- Google Photos Spoof -->
     <!-- Lock screen -->
     <string name="lock_screen_interface_category">Kezelőfelület</string>
     <string name="lock_screen_charging_stats_title">Töltési statisztikák</string>

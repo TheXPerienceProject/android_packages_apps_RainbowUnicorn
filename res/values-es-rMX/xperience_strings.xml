@@ -105,8 +105,14 @@
     <string name="keybox_data_title">Cargar datos de keybox</string>
     <string name="keybox_data_summary">Seleccione un archivo XML «keybox» para cargar</string>
     <string name="keybox_data_summary_loaded">Cargado %1$s «keybox» con %2$d certificados (%3$s)</string>
+    <string name="keybox_data_loaded_summary">Cargado %1$s «keybox» con %2$d certificados (%3$s)</string>
     <string name="keybox_data_delete_title">Eliminar datos de «keybox»</string>
     <string name="keybox_data_delete_summary">Eliminar datos de «keybox» cargados actualmente</string>
+    <string name="keybox_delete_content_description">Eliminar datos de «keybox»</string>
+    <string name="keybox_toast_invalid_file_selected">No es un archivo XML. Elige un XML de keybox válido.</string>
+    <string name="keybox_toast_missing_data">XML de keybox inválido: faltan campos requeridos</string>
+    <string name="keybox_toast_file_loaded">Keybox cargada</string>
+    <string name="keybox_toast_file_cleared">Keybox borrada</string>
     <string name="keybox_data_loaded">Datos de «keybox» cargados correctamente</string>
     <string name="keybox_data_cleared">Datos de «keybox» borrados</string>
     <string name="keybox_data_error">No se pudieron cargar los datos de «keybox»</string>
@@ -114,15 +120,29 @@
     <!-- PIF -->
     <string name="pif_title">Play Integrity</string>
     <string name="pif_summary">Gestionar los datos de Play Integrity del dispositivo para Google Play Services</string>
-    <string name="pif_data_title">Cargar datos PIF</string>
-    <string name="pif_data_summary">Seleccione un archivo PIF JSON a cargar</string>
+    <string name="pif_data_title">Seleccionar PIF JSON para suplantar</string>
+    <string name="pif_data_summary">Seleccione el JSON PIF utilizado para la suplantación de identidad de prop para los servicios móviles de Google y Play Store. Haga clic en el botón Eliminar para restablecer los datos PIF props y utilizar los props PIF dinámicos, que se utilizan de forma predeterminada.</string>
     <string name="pif_data_delete_title">Borrar datos PIF</string>
     <string name="pif_data_delete_summary">Eliminar datos PIF cargados actualmente</string>
     <string name="pif_data_loaded">Datos PIF cargados correctamente</string>
+    <string name="pif_data_loaded_summary">Props %1$d cargados (%2$s)</string>
     <string name="pif_data_cleared">Datos PIF borrados</string>
     <string name="pif_data_error">Error al cargar los datos PIF</string>
     <string name="pif_data_invalid">Archivo JSON PIF inválido</string>
     <string name="pif_data_summary_loaded">Datos PIF cargados: %1$d props (%2$s)</string>
+    <string name="pif_delete_content_description">Borrar datos PIF</string>
+    <string name="pif_toast_invalid_file_selected">No es un archivo JSON. Elija un JSON PIF válido.</string>
+    <string name="pif_toast_file_loaded">PIF JSON cargado</string>
+    <string name="pif_toast_file_cleared">Datos PIF borrados</string>
+    <!-- GMS cert chain -->
+    <string name="gms_cert_chain_title">Desactivar Forzar la Integridad \"strong\"</string>
+    <string name="gms_cert_chain_summary">Forzar una integridad \"Strong\" rompe aplicaciones como Google Pay, pero al habilitar esta opción se soluciona el problema.</string>
+    <!-- Play Integrity restriction -->
+    <string name="pi_restrict_to_gms_title">Restringir la integridad de la PlayStore</string>
+    <string name="pi_restrict_to_gms_summary">Cuando está habilitado, el falseamiento del keybox está restringido a los paquetes de integración de Google Play solamente. Desactivar para permitir que todos los paquetes usen el keybox spoofing.</string>
+    <!-- Google Photos Spoof -->
+    <string name="gphotos_spoof_title">Almacenamiento ilimitado de Fotos</string>
+    <string name="gphotos_spoof_summary">Simular el dispositivo como Pixel XL para tener almacenamiento ilimitado en las copias de seguridad de Google Fotos</string>
     <!-- Lock screen -->
     <string name="lock_screen_interface_category">Interfaz</string>
     <string name="lock_screen_charging_stats_title">Estadísticas de carga</string>

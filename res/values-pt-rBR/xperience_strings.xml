@@ -38,6 +38,9 @@
     <!-- Miscellaneous -->
     <!-- Keybox -->
     <!-- PIF -->
+    <!-- GMS cert chain -->
+    <!-- Play Integrity restriction -->
+    <!-- Google Photos Spoof -->
     <!-- Lock screen -->
     <!-- Double tap to sleep on status bar or lockscreen -->
     <!-- more misc-->
@@ -66,6 +69,7 @@
     <!-- Wallpaper Styles -->
     <!-- Lockscreen Widgets Styles -->
     <!-- Apply Button -->
+    <!-- WiFi Standard icon -->
     <!-- Monet settings -->
     <string name="monet_engine_custom_color_title">Cor de destaque</string>
     <!-- Island Notification -->

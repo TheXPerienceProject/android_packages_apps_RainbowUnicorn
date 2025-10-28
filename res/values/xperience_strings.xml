@@ -157,6 +157,13 @@
     <string name="pif_toast_file_loaded">PIF JSON loaded</string>
     <string name="pif_toast_file_cleared">PIF JSON cleared</string>
 
+    <!-- PIF Download Strings -->
+    <string name="download_pif_content_description">Download PIF from our API</string>
+    <string name="pif_toast_download_success">PIF data downloaded successfully</string>
+    <string name="pif_toast_download_error">Failed to download PIF data</string>
+    <string name="pif_toast_no_internet">No internet connection</string>
+    <string name="pif_toast_invalid_json">Invalid JSON received</string>
+
     <!-- GMS cert chain -->
     <string name="gms_cert_chain_title">Disable forcing strong integrity</string>
     <string name="gms_cert_chain_summary">Forcing strong integrity breaks apps like Google Pay, enabling this option fixes such apps.</string>

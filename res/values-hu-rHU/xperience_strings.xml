@@ -16,6 +16,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
     <!-- Categories -->
+    <string name="misc_title">Érdekességek</string>
     <string name="misc_summary">álcázás, animációk</string>
     <string name="statusbar_title">Állapotsor</string>
     <string name="statusbar_summary">Óra, szolgáltató, állapotikonok</string>
@@ -43,7 +44,9 @@
     <string name="show_fourg_icon_title">4G-ikon</string>
     <string name="show_fourg_icon_summary">LTE helyett 4G ikon jelenik meg a térerő ikon mellett</string>
     <!-- Battery customizations -->
+    <string name="battery_settings_title">Akkumulátor-beállítások</string>
     <string name="battery_settings_summary">Az állapotsori akkuikon viselkedésének és stílusának szabályozása</string>
+    <string name="battery_options">Akkumulátor</string>
     <string name="battery_style_title">Akkumulátorstílus</string>
     <string name="battery_style_port">Álló (Portré)</string>
     <string name="battery_style_circle">Kör</string>
@@ -57,6 +60,9 @@
     <string name="show_battery_percent_charging_title">Csak töltéskor</string>
     <string name="show_battery_percent_charging_summary">Töltés közben mindenképp megjeleníti a százalék-értéket az ikon mellett</string>
     <!-- Battery saver -->
+    <string name="battery_saver_refresh_rate_title">Képernyőfrissítés-csökkentés</string>
+    <string name="battery_saver_refresh_rate_summary">Ha az akkukímélőt bekapcsolja, energiatakarékosságból max. 60 Hz lesz a képernyőfrissítés</string>
+    <string name="battery_saver_refresh_rate_disabled_summary">Az \'Extrém frissítési érték\' bekapcsolva</string>
     <!-- Screen Off animation -->
     <string name="screen_off_animation_title">Képernyő-kikapcsolási animáció</string>
     <string name="screen_off_animation_default">Alapértelmezett</string>
@@ -94,51 +100,315 @@
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Hamisítás, álcázás</string>
     <!-- Keybox -->
+    <string name="keybox_title">Kulcsbox</string>
+    <string name="keybox_summary">A készülékhez tartozó kulcsbox kezelése</string>
+    <string name="keybox_data_title">A kulcsbox-adatok betöltése</string>
+    <string name="keybox_data_summary">Válassza ki a betöltendő XML-fájlt</string>
+    <string name="keybox_data_summary_loaded">%1$s betöltve, %2$d bizonyítvánnyal ( %3$s )</string>
+    <string name="keybox_data_loaded_summary">%1$s betöltve, %2$d bizonyítvánnyal ( %3$s )</string>
+    <string name="keybox_data_delete_title">Kulcsbox-adatok törlése</string>
+    <string name="keybox_data_delete_summary">A jelenleg betöltött kulcsbox-adat törlése</string>
+    <string name="keybox_delete_content_description">Kulcsbox-adatok törlése</string>
+    <string name="keybox_toast_invalid_file_selected">Ez nem XML-fájl. Válasszon egy valós Kulcsbox-XML-t.</string>
+    <string name="keybox_toast_missing_data">Érvénytelen Kulcsbox-XML: kötelező mezők hiányoznak</string>
+    <string name="keybox_toast_file_loaded">A Kulcsbox betöltve</string>
+    <string name="keybox_toast_file_cleared">A Kulcsbox eltávolítva</string>
+    <string name="keybox_data_loaded">A kulcsbox-adat sikeresen betöltve</string>
+    <string name="keybox_data_cleared">A kulcsbox-adat eltávolítva</string>
+    <string name="keybox_data_error">Meghiúsult az adatbetöltés</string>
+    <string name="keybox_data_invalid">Érvénytelen kulcsbox XML-fájl</string>
     <!-- PIF -->
+    <string name="pif_title">Google Play Integritás</string>
+    <string name="pif_summary">A Google Play Szolgáltatásokhoz tartozó Google Play Integritás kezelése</string>
+    <string name="pif_data_title">Az álcázáshoz válasszon PIF JSON-t</string>
+    <string name="pif_data_summary">Válassza ki a PIF JSON-t, amelyet a Google mobilszolgáltatásokban és a Play Áruházban használt prop-igazolási álcázáshoz használ. Kattintson a törlés gombra a PIF adatprop-ok visszaállításához és az alapértelmezés szerint használt dinamikus PIF prop-ok használatához.</string>
+    <string name="pif_data_delete_title">PIF-adatok törlése</string>
+    <string name="pif_data_delete_summary">A jelenleg betöltött PIF-adat törlése</string>
+    <string name="pif_data_loaded">PIF-adat sikeresen betöltve</string>
+    <string name="pif_data_loaded_summary">%1$d betöltve ( %2$s )</string>
+    <string name="pif_data_cleared">PIF-adat eltávolítva</string>
+    <string name="pif_data_error">Meghiúsult az adatbetöltés</string>
+    <string name="pif_data_invalid">Érvénytelen PIF JSON-fájl</string>
+    <string name="pif_data_summary_loaded">PIF-adat betöltve: %1$d kellék ( %2$s )</string>
+    <string name="pif_delete_content_description">PIF-adatok törlése</string>
+    <string name="pif_toast_invalid_file_selected">Ez nem JSON-fájl. Válasszon egy érvényes PIF JSON-t.</string>
+    <string name="pif_toast_file_loaded">A PIF JSON betöltve</string>
+    <string name="pif_toast_file_cleared">A PIF JSON eltávolítva</string>
     <!-- GMS cert chain -->
+    <string name="gms_cert_chain_title">Az erős integritás-kényszerítés letiltása</string>
+    <string name="gms_cert_chain_summary">Az erős integritás erőltetése megbéníthatja pl. a Google Pay-t, ennek az opciónak az engedélyezése kijavítja az ilyen alkalmazásokat.</string>
     <!-- Play Integrity restriction -->
+    <string name="pi_restrict_to_gms_title">A Google Play integrás álcázásának korlátozása</string>
+    <string name="pi_restrict_to_gms_summary">Ha ez engedélyezve van, a kulcsbox-álcázás csak a Google Play Integrity csomagokra korlátozódik. Tiltsa le, ha azt szeretné, hogy az összes csomag használhassa a kulcsbox-álcázást.</string>
     <!-- Google Photos Spoof -->
+    <string name="gphotos_spoof_title">Korlátlan fénykép-tárhely</string>
+    <string name="gphotos_spoof_summary">Eszközinformáció-hamisitás hogy a \'Google Fényképek\' Pixel XL készüléknek lássa és így korlátlan tárhelyhez juthasson</string>
     <!-- Lock screen -->
     <string name="lock_screen_interface_category">Kezelőfelület</string>
     <string name="lock_screen_charging_stats_title">Töltési statisztikák</string>
     <string name="lock_screen_charging_stats_summary">Töltés közben megjeleníti a maximális aktuális töltőfeszültséget, teljesítményt és az akkumulátor hőmérsékletét a zárképernyőn</string>
     <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Alvómód érintéssel</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Az állapotsor vagy a záróképernyő dupla érintésére kikapcsol a képernyő</string>
     <!-- more misc-->
+    <string name="quick_settings_miscellaneous_category">A gyorsbeállítások finomhangolása</string>
+    <string name="quick_settings_bluetooth_show_dialog_title">Bluetooth-csempeüzenet</string>
+    <string name="quick_settings_bluetooth_show_dialog_summary">Ha megérinti a csempét, vagy a Bluetooth-párbeszédpanel vagy a Bluetooth-állapot jelenik meg</string>
     <!-- Ongoing action chip -->
+    <string name="ongoing_progress_settings_title">Folyamatkijelzés az értesítési sávban</string>
+    <string name="ongoing_progress_settings_summary">A Folyamatkijelzés beállításai</string>
+    <string name="ongoing_action_chip_title">Műveletkijelzés</string>
+    <string name="ongoing_action_chip_summary">Folyamatban lévő műveletek (például letöltések) kijelzésének megjelenítése az állapotsorban</string>
+    <string name="ongoing_action_chip_opacity_title">A sáv átlátszósága</string>
+    <string name="ongoing_action_chip_opacity_summary">A folyamatjelző átlátszóságának szabályzása</string>
+    <string name="compact_progress_mode_title">Kompakt folyamatjelző</string>
+    <string name="compact_progress_mode_summary">Kompakt, kör alakú jelző használata a folyamatban lévő műveletekhez</string>
+    <string name="show_media_progress_title">Médiafolyamat-kijelzés</string>
+    <string name="show_media_progress_summary">A médialejátszási folyamat megjelenítése az állapotsoron</string>
+    <string name="progress_footer_text">     Az állapotsor folyamatjelzője valós idejű infókat nyújt mind a médialejátszásról, mind az aktív letöltésekről/feltöltésekről.
+     
+     - 🎵 Médiafolyamatok:
+     • a zene- és videólejátszás folyamatát jeleníti meg lejátszás közben.
+     • Lejátszás-vezérlők egy koppintással (Előző, Következő szám).
+     • Lejátszás/Leállítás duplakoppal.
+     • Balra húzással az előző számra ugorhat.
+     • Jobbra húzással a következő számra ugorhat.
+     • Hosszan nyomással megnyílik a Lejátszó alkalmazás.
+     
+     - 📥 Le- és feltöltési folyamatok:
+     • A folyamatban lévő le- és feltöltések állapotát mutatja.
+     • Automatikusan eltűnik, ha nincs aktív folyamat.
+     • Egyetlen koppintással megnyílik a letöltő-alkalmazás.
+     A folyamatjelző sáv dinamikusan vált a média és a letöltési állapotok között, így Ön mindig egy pillantással áttekintheti a legfontosabb információkat.
+     </string>
     <!-- Bluetooth -->
+    <string name="status_bar_bluetooth_battery_title">Bluetooth-akkuállapot</string>
+    <string name="status_bar_bluetooth_battery_summary">Ha megoldható, megjeleníti a csatlakoztatott bluetooth eszköz akkuállapotát</string>
     <!-- Sidebar -->
+    <string name="sidebar_title">Oldalsáv</string>
+    <string name="sidebar_summary">Gyorsal indíthat alkalmazásokat a felugró oldalsávból</string>
     <!-- Freeform launch mode -->
+    <string name="freeform_launch_mode_title">Lebegő ablak</string>
+    <string name="freeform_launch_mode_1">Eredeti AOSP</string>
+    <string name="freeform_launch_mode_2">LMO SzabadForma</string>
     <!-- Network traffic -->
+    <string name="network_traffic_settings_title">Hálózatiforgalom-figyelő</string>
+    <string name="network_traffic_settings_summary">Hálózati forgalom-figyelő megjelenítése, és testreszabása</string>
+    <string name="network_traffic_location_title">Helyadatok</string>
     <string name="network_traffic_location_disable">Kikapcsolva</string>
+    <string name="network_traffic_location_statusbar">Állapotsor</string>
+    <string name="network_traffic_location_quick_statusbar">Gyors értesítési sáv</string>
+    <string name="network_traffic_mode_title">Megjelenítési mód</string>
+    <string name="network_traffic_mode_up">Csak a feltöltés</string>
+    <string name="network_traffic_mode_down">Csak a letöltés</string>
+    <string name="network_traffic_mode_all">Feltöltés és letöltés</string>
+    <string name="network_traffic_autohide">Automatikus elrejtés</string>
+    <string name="network_traffic_autohide_summary">Elrejti a forgalomkijelzést, ha nincs forgalom</string>
+    <string name="network_traffic_autohide_kilobits">Kb/s</string>
+    <string name="network_traffic_autohide_kilobytes">KB/s</string>
+    <string name="network_traffic_autohide_threshold">Tétlenségi időköz</string>
+    <string name="network_traffic_refresh_interval_title">Frissítési gyakoriság</string>
+    <string name="network_traffic_refresh_interval_summary">Időtartam, amely után a sebesség újra mérésre kerül</string>
+    <string name="network_traffic_units_title">A hálózati forgalom mértékegysége</string>
+    <string name="network_traffic_units_bits">Bit / másodperc (b/s)</string>
+    <string name="network_traffic_units_kilobits">Kilobit / másodperc (kb/s)</string>
+    <string name="network_traffic_units_megabits">Megabit / másodperc (Mb/s)</string>
+    <string name="network_traffic_units_bytes">Bájt / másodperc (B/s)</string>
+    <string name="network_traffic_units_kilobytes">Kilobájt / másodperc (kB/s)</string>
+    <string name="network_traffic_units_megabytes">Megabájt / másodperc (MB/s)</string>
     <string name="network_traffic_hidearrow">Nyilak elrejtése</string>
     <string name="network_traffic_hidearrow_summary">Elrejti a Hálózati forgalmat jelző nyilakat</string>
+    <string name="colors_title">Színek</string>
+    <string name="fonts_title">Betűtípusok</string>
+    <string name="fonts_summary">XPERIENCE123\nABCDEFGHIJKL\n0123456789</string>
+    <string name="theme_customization_lock_clock_title">Óralap</string>
+    <string name="theme_customization_lock_clock_summary">Módosíthatja a záróképernyő-óra megjelenését</string>
     <!-- Font styles -->
+    <string name="font_styles_title">Betűstílusok</string>
+    <string name="font_styles_summary">A rendszer-betűtípus módosítása</string>
+    <string name="font_preview_text">A nőgyógyászod\neltiltott a szextől\n...de mit mondott a fogorvosod?\n\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijkl\nmnopqrstuvwxyz\n1234567890</string>
+    <string name="apply_button_text">Alkalmazás</string>
+    <string name="font_picker_select_font">Válasszon betűtípust</string>
     <!-- Lockscreen Clock Highlight Guide -->
+    <string name="ls_clock_face_highlight_text">Csúsztassa balra vagy jobbra az órastílusok megtekintéséhez</string>
     <!-- Lockscreen Clock Revamp -->
+    <string name="ls_clock_custom_font_not_supported">A kiválasztott óra nem támogatja az egyéni betűtípusokat</string>
     <string name="lockscreen_settings_title">Duplakopp a Képernyőzáron</string>
+    <string name="lockscreen_settings_summary">A záróképernyő kinézetének megváltoztatása</string>
     <!-- AOD custom image -->
+    <string name="lockscreen_title">Záróképernyő</string>
+    <string name="lockscreen_custom_image_enabled_title">A \'Mindig bekapcsolva\' (AOD) kép bekapcsolása a záróképernyőn</string>
+    <string name="lockscreen_custom_image_title">A záróképernyő \'Mindig bekapcsolva\' (AOD) képe</string>
+    <string name="lockscreen_custom_image_summary">Válasszon a záróképernyőhöz AOD-képet</string>
+    <string name="lockscreen_custom_image_pick_summary">Válasszon AOD-képet a galériából</string>
     <!-- Depth Wallpaper -->
+    <string name="dw_file_header_select_title">Témaválasztás a térhatású háttérképhez</string>
+    <string name="dw_file_header_select_summary">Válasszon térhatású háttérképtárgyat a tárhelyről.</string>
+    <string name="dw_wallpaper_enabled_title">Térhatású Háttérkép</string>
+    <string name="dw_wallpaper_enabled_summary">Itt kapcsolható be az iOS ihlette térhatású háttérkép. Szükséges egy tárgykép.</string>
+    <string name="dw_wallpaper_opacity_title">A térhatású háttér átlátszósága</string>
+    <string name="depth_wallpaper_offset_x_title">A térhatású háttér vízszintes eltolása</string>
+    <string name="depth_wallpaper_offset_y_title">A térhatású háttér függőleges eltolása</string>
+    <string name="dw_footer_text">        A mélységi háttérkép funkció, amelyet az iOS Háttérkép Tárgyszegmentációja ihlette, lehetővé teszi a téma átfedését a lezárási képernyő órája felett, hogy az mélységi hatást jelenítsen meg.\n\nA mélységi háttérkép beállításához:\n1. Állítson be háttérképet azzal a témával vagy hátterrel, amely felett szeretné, hogy a téma álljon.\n2. Válassza ki a követni kívánt tárgyképet, ez a kép a lezárási képernyő órája fölé kerül.\n3. Módosítsa az eltolásokat és az átlátszóságot kedve szerint.
+    </string>
     <!-- Lockscreen categories -->
     <string name="lockscreen_interface_category">Kezelőfelület</string>
     <!-- Lockscreen widgets  -->
+    <string name="lockscreen_widgets_title">A záróképernyő kisalkalmazásai</string>
+    <string name="lockscreen_widgets_enabled_title">Engedélyezi a kisalkalmazásokat a záróképernyőn</string>
+    <string name="lockscreen_widgets_enabled_summary">Új kisalkalmazás hozzáadása</string>
+    <string name="lockscreen_display_widgets_title">Készülékinfó-kisalkalmazás</string>
+    <string name="lockscreen_display_widgets_summary">Megjeleníti a készülékinfót a záróképernyőn</string>
+    <string name="large_widgets_category_title">Nagy indítóelemek</string>
+    <string name="main_custom_widgets1">Nagyméretű 1</string>
+    <string name="main_custom_widgets2">Nagyméretű 2</string>
+    <string name="mini_widgets_category_title">Mini indítóelemek</string>
+    <string name="custom_widgets1">Kisméretű 1</string>
+    <string name="custom_widgets2">Kisméretű 2</string>
+    <string name="custom_widgets3">Kisméretű 3</string>
+    <string name="custom_widgets4">Kisméretű 4</string>
+    <string name="camera">Fényképezőgép</string>
+    <string name="clock_timer">Óra/Időzítő</string>
+    <string name="calculator">Számológép</string>
+    <string name="gallery">Galéria</string>
+    <string name="media">Médialejátszó</string>
+    <string name="torch">Zseblámpa</string>
+    <string name="controls_media_button_play">Lejátszás</string>
+    <string name="weather">Időjárás</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="data">Mobiladat</string>
+    <string name="ringer">Csengés</string>
+    <string name="bt">Bluetooth</string>
+    <string name="hotspot">Hotspot</string>
+    <string name="wallet">Pénztárca</string>
+    <string name="lockscreen_shortcut_qr">QR-kód beolvasó</string>
     <!-- Weather -->
+    <string name="weather_settings_title">Az \'Időjárás\' beállításai</string>
+    <string name="weather_settings_summary">Testre szabható ikoncsomag és időjárás-szolgáltatás</string>
+    <string name="lockscreen_weather_category">Időjárás</string>
+    <string name="lockscreen_weather_title">Az \'Időjárás\" frissítése</string>
+    <string name="lockscreen_weather_summary">Megjeleníti a jelenlegi időjárás-frissítést</string>
+    <string name="lockscreen_weather_enabled_info">A bekapcsoláshoz időjárás-szolgáltatás szükséges</string>
+    <string name="lockscreen_weather_location_title">Jelenlegi helyszín</string>
+    <string name="lockscreen_weather_location_summary">Megjeleníti a jelenlegi időjárási helyszínt</string>
+    <string name="lockscreen_weather_text_title">Aktuális időjárás-viszonyok</string>
+    <string name="lockscreen_weather_text_summary">Megjeleníti az épp aktuális hőfokot és adatokat</string>
+    <string name="lockscreen_weather_style_title">Pixel-stílus</string>
+    <string name="lockscreen_weather_style_summary">Az időjárás külön sorban jelenik meg</string>
     <!-- AOD Settings -->
+    <string name="aod_display_category_title">\'Mindig bekapcsolva\' (AOD)</string>
+    <string name="aod_pulse_category_title">Pulse / Doze</string>
     <!-- Statusbar Clock background chip -->
+    <string name="statusbar_clock_chip_title">Hátteres óralap</string>
+    <string name="statusbar_clock_chip_summary">Az óra mögött megjelenít egy hátteret</string>
+    <string name="solid_accent">Egyszínű kiemelés</string>
+    <string name="outline">Körvonalas</string>
+    <string name="solid_accent_gradient">Egyszínű átmenetes kiemelés</string>
+    <string name="solid_gradient">Egyszínű átmenetes oldal</string>
+    <string name="solid_gradient_corner">Átmenetes éles kiemelés</string>
+    <string name="solid_gradient_void">Void átmenet</string>
+    <string name="solid_gradient_neumorph">Neumorph átmenet</string>
+    <string name="solid_gradient_stroke">Éles simított átmenet</string>
+    <string name="solid_accent_transperent">Átetsző kiemelés</string>
+    <string name="solid_gradient_light">Fényelt átmenet</string>
+    <string name="solid_gradient_shape">Éles átmentes sarok</string>
+    <string name="solid_gradient_void_light">Fényelt Void átmenet</string>
     <!-- Custom Clock Style -->
+    <string name="lockscreen_clock_category_title">A záróképernyő órája</string>
+    <string name="lockscreen_clock_category_summary">Itt állíthatja be az óra stílusát</string>
+    <string name="custom_clock_style">Egyéni órastílus</string>
     <!-- Doze settings -->
+    <string name="doze_display_title">Környezeti kijelző</string>
+    <string name="doze_display_summary">A környezeti kijelző testreszabása</string>
+    <string name="qs_header_needs_gallery">Telepítenie kéne egy Galéria-alkalmazást!</string>
+    <string name="custom_aod_image_not_supported">A jelenlegi órastílus nem támogatja az egyedi képeket</string>
+    <string name="custom_aod_image_not_set">Érintse meg egyedi kép választásához</string>
+    <string name="custom_aod_image_saved">Az egyedi kép sikeresen elmentve</string>
+    <string name="custom_aod_image_save_failed">Nem sikerült elmenteni a képet</string>
+    <string name="custom_aod_image_save_error">Hiba a kép mentése közben</string>
     <!-- Now Bar -->
+    <string name="keyguard_now_bar_enabled_title">\'Most sáv\'</string>
+    <string name="keyguard_now_bar_enabled_summary">Engedélyezi a záróképernyőn a \'Most sáv\'-ot</string>
     <!-- Nowbar height -->
+    <string name="now_bar_height_title">A \'Most sáv\' magassága</string>
+    <string name="now_bar_height_summary">Szabályozhatja a \'Most sáv\' magasságát</string>
     <!-- AOD wallpaper -->
+    <string name="aod_wallpaper_title">Mindig bekapcsolva (AOD) - háttérkép</string>
+    <string name="aod_wallpaper_summary">Háttérkép megjelenítése bekapcsolt AOD-nál</string>
+    <string name="default_clock_name">Alapértelmezett óra</string>
     <!-- Peek Display -->
+    <string name="peek_display_notifications_title">Bekukucskáló kijelző</string>
+    <string name="peek_display_notifications_summary">Bekapcsolhat egy minimalista értesítési stílust a záróképernyőn</string>
+    <string name="peek_display_location_title">A \'Bekukucskáló kijelző\' elhelyezkedáse</string>
+    <string name="peek_display_bottom_margin_title">A \'Bekukucskáló kijelző\' (alsó) felső margója</string>
     <string name="top">Felső</string>
     <string name="bottom">Alsó</string>
     <!-- Peek Display Styles -->
+    <string name="peek_display_minimalist">Minimalista</string>
+    <string name="peek_display_style_title">A \'Bekukucskáló kijelző\' stílusa</string>
     <!-- Wallpaper Styles -->
+    <string name="wallpaper_settings_title">A háttérkép stílusa</string>
+    <string name="wallpaper_settings_summary">Beállíthatja a háttérkép tulajdonságait és stílusát</string>
+    <string name="wallpaper_blur_title">Háttérkép-homályosítás</string>
+    <string name="wallpaper_blur_summary">Bekapcsolhatja vagy megszüntetheti a háttérkép homályosítási hatását</string>
+    <string name="wallpaper_blur_filter">A \'Háttérkép-homályosítás\' stílusa</string>
+    <string name="wallpaper_dim_title">Háttérkép-halványítás</string>
+    <string name="wallpaper_dim_level_title">A halványítás mértéke</string>
+    <string name="wallpaper_dim_level_summary">Beállíthatja a halványítás erősségét</string>
+    <string name="glass_blur">Üvegszerű elmosás</string>
+    <string name="frosted_blur">Fagyásos elmosás</string>
+    <string name="wallpaper_styles_footer">        A háttérképstílusok hatékony működéséhez a felhasználónak elkülönítve kell beállítani a záróképernyő és a kezdőképernyő háttérképeit.\nUgyanaz a háttérkép használható, de nem szabad egyszerre alkalmazni a lezárási képernyőn és a kezdőképernyőn.\nEz választható ha az elmosódásra és a halványításra MINDKÉT OPCIÓT használja.
+    </string>
+    <string name="monet_engine_color_source_both">Mindkettő (alapértelmezett)</string>
+    <string name="monet_engine_color_source_home">Kezdőképernyő háttérkép</string>
+    <string name="monet_engine_color_source_lock">Záróképernyő háttérkép</string>
     <!-- Lockscreen Widgets Styles -->
+    <string name="lockscreen_widgets_style_title">A záróképernyő kisalkalmazások stílusa</string>
+    <string name="lockscreen_widgets_style1">Material lekerekített</string>
+    <string name="lockscreen_widgets_style2">Material négyzetes</string>
+    <string name="lockscreen_widgets_style3">Átlátszó (Négyzetes)</string>
+    <string name="lockscreen_widgets_style4">Átlátszó (Lekerekített)</string>
+    <string name="lockscreen_widgets_transparency_title">Az átlátszó stílus áttetszőség-erőssége</string>
+    <string name="lockscreen_widgets_transparency_summary">Szabályzhatja a stílus átlátszósági szintjét</string>
     <!-- Apply Button -->
+    <string name="apply_change_button_title">Alkalmazás</string>
     <!-- Monet settings -->
+    <string name="monet_settings">Monet-beállítások</string>
+    <string name="monet_settings_title">A \'Monet\' személyre szabása</string>
+    <string name="monet_settings_sammary">A dinamikus témamotor testreszabása</string>
     <string name="monet_engine_custom_color_title">Kiemelőszín</string>
+    <string name="monet_engine_custom_color_summary">Válassza ki a kiemelés egyéni színét</string>
+    <string name="monet_engine_custom_bgcolor_title">Háttérszín</string>
+    <string name="monet_engine_custom_bgcolor_summary">Válassza ki a háttér egyéni színét</string>
+    <string name="monet_engine_color_override_title">Egyéni szín</string>
+    <string name="monet_engine_luminance_factor_title">Fénysűrűség</string>
+    <string name="monet_engine_luminance_factor_summary">A magasabb értékek élénkebb színeket eredményeznek</string>
+    <string name="monet_engine_chroma_factor_title">Színerősség</string>
+    <string name="monet_engine_chroma_factor_summary">A magasabb értékek erősebb színeket eredményeznek</string>
+    <string name="monet_engine_whole_palette_title">Az egész paletta</string>
+    <string name="monet_engine_whole_palette_summary">A \'Fényerősség\' és a \'Színerősség\' kiválasztása a másodlagos színeket is befolyásolja</string>
+    <string name="monet_engine_tint_background_title">Háttérkitöltés</string>
+    <string name="monet_engine_tint_background_summary">A \'Fényerősség\' és a \'Színerősség\' kiválasztása a háttérszíneket is befolyásolja</string>
+    <string name="monet_engine_style_title">Témastílus</string>
+    <string name="monet_engine_style_tonal_spot">Tónusfolt (alapértelmezett)</string>
+    <string name="monet_engine_style_vibrant">Vibráló</string>
+    <string name="monet_engine_style_expressive">Kifejező</string>
+    <string name="monet_engine_style_spritz">Fröccs</string>
+    <string name="monet_engine_style_rainbow">Szivárvány</string>
+    <string name="monet_engine_style_fruit_salad">Gyümölcssaláta</string>
+    <string name="monet_engine_style_content">Tartalom</string>
+    <string name="monet_engine_style_monochromatic">Monokróm</string>
+    <string name="monet_engine_color_source_title">Színforrás</string>
+    <string name="monet_engine_color_source_preset">Előre beállított</string>
+    <string name="monet_engine_wallpaper_color_title">Válasszon egy másik kiemelőszínt a háttérképből</string>
+    <string name="monet_engine_wallpaper_color_summary">Háttérkép színválasztó</string>
+    <string name="monet_engine_wallpaper_color_not_available">Nem elérhető</string>
     <!-- Island Notification -->
+    <string name="island_notification_title">Dinamikus Sziget</string>
+    <string name="island_notification_summary">Felugró értesítések \'Dinamikus Sziget\' stílusban</string>
+    <string name="island_notification_footer_text">A \'Dinamikus Sziget\' stílust az iOS Dinamikus Szigete inspirálta, majd átalakították az Android felugró értesítéseihez, egy gyors hozzáférésű kompakt értesítési módot kaptunk.\n\nEz a Sziget-stílus a következőket tartalmazza:\n1. A Sziget érintésével gyors hívásfogadás.\n2. A Sziget hosszan nyomásával a bejövő hívás elutasítása.\n3. A Sziget hosszan nyomásával az előnézet kibontását.
+    </string>
     <!--Statusbar RR -->
+    <string name="show_refresh_rate_title">Képernyőfrissítés megjelenîtése</string>
+    <string name="show_refresh_rate_summary">Jelenítse meg az aktuális frissítési értéket az állapotsoron.</string>
 </resources>

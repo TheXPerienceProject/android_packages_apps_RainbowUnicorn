@@ -3,6 +3,7 @@ package mx.xperience.unicorn.fragments;
 import com.android.internal.logging.nano.MetricsProto;
 
 import android.os.Bundle;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -113,6 +114,21 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                 0, 
                 UserHandle.USER_CURRENT) == 1;
             mShowRefreshRatePref.setChecked(refreshRateEnabled);
+        }
+
+        //dynamic_island
+        Preference openApp = findPreference("dynamic_island");
+
+        if (openApp != null) {
+            openApp.setOnPreferenceClickListener(pref -> {
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(
+                        "mx.xperience.isladinamica",
+                        "mx.xperience.isladinamica.MainActivity"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+            });
         }
     }
 

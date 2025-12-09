@@ -479,4 +479,8 @@
     <!--Statusbar RR -->
     <string name="show_refresh_rate_title">Display refresh rate</string>
     <string name="show_refresh_rate_summary">Displays the current refresh rate (Hz) in the status bar.</string>
+
+    <!-- Dynamic island-->
+    <string name="dynamic_island">Dynamic Island (Beta)</string>
+    <string name="dynamic_island_summary">Dynamic island based on iOS. For now, it only displays the island when playing music, but it will be updated over time.</string>
 </resources>

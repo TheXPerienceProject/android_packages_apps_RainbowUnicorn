@@ -479,4 +479,8 @@
     <!-- Dynamic island-->
     <string name="dynamic_island">Dynamic Island (Beta)</string>
     <string name="dynamic_island_summary">Dynamic island based on iOS. For now, it only displays the island when playing music, but it will be updated over time.</string>
+
+    <!-- Battery adviser -->
+    <string name="battery_adviser">Battery Adviser</string>
+    <string name="battery_adviser_summary">System load and health predictions</string>
 </resources>

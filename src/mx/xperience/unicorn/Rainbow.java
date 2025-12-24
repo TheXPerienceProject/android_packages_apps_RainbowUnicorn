@@ -19,11 +19,15 @@ package mx.xperience.unicorn;
 import com.android.internal.logging.nano.MetricsProto;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Surface;
-import android.preference.Preference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.PreferenceFragment;
 import com.android.settings.R;
 
 import com.android.settings.SettingsPreferenceFragment;
@@ -35,6 +39,20 @@ public class Rainbow extends SettingsPreferenceFragment {
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.rainbow_unicorn);
+
+        Preference openApp = findPreference("battery_adviser");
+
+        if (openApp != null) {
+            openApp.setOnPreferenceClickListener(pref -> {
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(
+                        "mx.xperience.batteryadviser",
+                        "mx.xperience.batteryadviser.MainActivity"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+            });
+        }
 
     }
 

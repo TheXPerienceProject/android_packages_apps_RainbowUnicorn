@@ -70,9 +70,16 @@ limitations under the License.
         <Preference
             android:key="spoofing"
             android:title="@string/miscellaneous_spoofing_category"
-            settings:layout="@layout/dashboard_preference_bottom"
+            settings:layout="@layout/dashboard_preference_middle"
             android:fragment="mx.xperience.unicorn.fragments.Spoofing"
             android:icon="@drawable/ic_key" />
+
+        <Preference
+            android:key="battery_adviser"
+            android:title="@string/battery_adviser"
+            android:summary="@string/battery_adviser_summary"
+            android:icon="@drawable/ic_battery_adviser_settings"
+            settings:layout="@layout/dashboard_preference_bottom"/>
 
 
 </PreferenceScreen>

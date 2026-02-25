@@ -37,11 +37,16 @@
     <!-- Themes -->
     <!-- Access QS on lockscreen -->
     <!-- Miscellaneous -->
+    <!-- Miscellaneous/Spoofing -->
     <!-- Keybox -->
     <!-- PIF -->
+    <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
+    <!-- PIF Download Strings -->
     <!-- GMS cert chain -->
     <!-- Play Integrity restriction -->
     <!-- Google Photos Spoof -->
+    <!-- Miscellaneous/Spoofing/Per-app spoofing -->
+    <!-- Vbmeta hash attestation -->
     <!-- Lock screen -->
     <!-- Double tap to sleep on status bar or lockscreen -->
     <!-- more misc-->
@@ -75,4 +80,11 @@
     <!-- Monet settings -->
     <!-- Island Notification -->
     <!--Statusbar RR -->
+    <!-- Dynamic island-->
+    <!-- Battery adviser -->
+    <!-- Power menu -->
+    <!-- Advanced restart options -->
+    <!-- Text shown for the title of the restart systemui option -->
+    <!-- Hide applist -->
+    <!-- Buttons title -->
 </resources>

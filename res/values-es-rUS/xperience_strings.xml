@@ -16,6 +16,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
     <!-- Categories -->
+    <string name="button_title">Botones</string>
     <string name="misc_title">Misceláneos</string>
     <string name="misc_summary">falsificación, animaciones</string>
     <string name="statusbar_title">Barra de estado</string>
@@ -100,6 +101,22 @@
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>
     <!-- Miscellaneous/Spoofing -->
+    <string name="spoofing_title">Falsificación de componentes</string>
+    <string name="spoofing_summary">Elude las restricciones de la aplicación mediante suplantación de componentes</string>
+    <string name="spoofing_system_wide_category">Todo el sistema</string>
+    <string name="spoofing_pixel_props_title">Props de píxel</string>
+    <string name="spoofing_pixel_props_summary">Falsifica un grupo selecto de apps de Google para que crean estar en el último dispositivo Pixel</string>
+    <string name="tensor_spoof_title">Simular funciones de Tensor</string>
+    <string name="tensor_spoof_summary">Desbloquear características de tensor/píxel</string>
+    <string name="gms_spoof_title">Corrección de integridad de Google Play</string>
+    <string name="gms_spoof_summary">Espode tu dispositivo para pasar la Attestation de Google Play (No aplicable a las gapps aisladas)</string>
+    <string name="spoofing_app_specific_category">Aplicación específica</string>
+    <string name="spoofing_vending_title">Simular por Play Store</string>
+    <string name="spoofing_vending_summary">Simula que la Play Store se ejecuta en el último Pixel</string>
+    <string name="spoofing_photos_title">Suplantación de Fotos de Google</string>
+    <string name="spoofing_photos_summary">Suplanta el dispositivo como Pixel XL en la aplicación Google Fotos para desbloquear el respaldo de imágenes ilimitado</string>
+    <string name="spoofing_snap_title">Engañar Snapchat</string>
+    <string name="spoofing_snap_summary">Suplanta el dispositivo como Pixel XL en la aplicación Snapchat para solucionar posibles problemas con el chat</string>
     <!-- Keybox -->
     <string name="keybox_title">Keybox</string>
     <string name="keybox_summary">Gestionar datos keybox del dispositivo</string>
@@ -136,7 +153,21 @@
     <string name="pif_toast_file_loaded">PIF JSON cargado</string>
     <string name="pif_toast_file_cleared">Datos PIF borrados</string>
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
+    <string name="toast_spoofing_success">Descargado correctamente pif.json. Suplantación de identidad como %1$s para la integridad de Google Play.</string>
+    <string name="toast_spoofing_failure">Fallo al falsear propiedades.</string>
+    <string name="update_pif_json_title">Actualizar la corrección de integridad de Google Play</string>
+    <string name="update_pif_json_summary">Actualizar el dispositivo de suplantación de PIF, requiere conexión a Internet.</string>
+    <string name="show_pif_properties_title">Propiedades de corrección de integridad de Google Play</string>
+    <string name="show_pif_properties_summary">Mostrar todas las propiedades PIF establecidas actualmente</string>
+    <string name="error_loading_properties">Error al cargar las propiedades PIF</string>
+    <string name="pif_spoofing_title">Seleccione el archivo JSON PIF</string>
+    <string name="pif_spoofing_summary">Elija el archivo PIF JSON que se usará para suplantar la integridad de Google Play</string>
     <!-- PIF Download Strings -->
+    <string name="download_pif_content_description">Descargar PIF de nuestra API</string>
+    <string name="pif_toast_download_success">Datos PIF descargados con éxito</string>
+    <string name="pif_toast_download_error">Error al descargar los datos PIF</string>
+    <string name="pif_toast_no_internet">Sin conexión a internet</string>
+    <string name="pif_toast_invalid_json">JSON recibido inválido</string>
     <!-- GMS cert chain -->
     <string name="gms_cert_chain_title">Desactivar Forzar la Integridad \"strong\"</string>
     <string name="gms_cert_chain_summary">Forzar una integridad \"Strong\" rompe aplicaciones como Google Pay, pero al habilitar esta opción se soluciona el problema.</string>
@@ -147,7 +178,13 @@
     <string name="gphotos_spoof_title">Almacenamiento ilimitado de Fotos</string>
     <string name="gphotos_spoof_summary">Simular el dispositivo como Pixel XL para tener almacenamiento ilimitado en las copias de seguridad de Google Fotos</string>
     <!-- Miscellaneous/Spoofing/Per-app spoofing -->
+    <string name="gameprops_title">Habilitar la suplantación por aplicación</string>
+    <string name="gameprops_summary">Habilita las opciones de suplantación de identidad por aplicación</string>
+    <string name="gameprops_load_json_title">Seleccionar el archivo JSON de props por aplicación</string>
+    <string name="gameprops_load_json_summary">Elija el archivo PIF JSON que se usará para suplantar la integridad de Google Play</string>
     <!-- Vbmeta hash attestation -->
+    <string name="vbmeta_attestation_title">Detección de autocorrección VBMeta</string>
+    <string name="vbmeta_attestation_summary">Realiza la certificación de clave para generar un hash de arranque verificado al iniciar. Requiere reiniciar el sistema.</string>
     <!-- Lock screen -->
     <string name="lock_screen_interface_category">Interfaz</string>
     <string name="lock_screen_charging_stats_title">Estadísticas de carga</string>
@@ -417,17 +454,44 @@
     <string name="show_refresh_rate_title">Frecuencia de actualización de la pantalla</string>
     <string name="show_refresh_rate_summary">Muestra la frecuencia de actualización actual (Hz) en la barra de estado.</string>
     <!-- Dynamic island-->
+    <string name="dynamic_island">Isla Dinámica (Beta)</string>
+    <string name="dynamic_island_summary">Isla dinámica basada en iOS. Por ahora, sólo muestra la isla cuando toca música y notificaciones, pero se actualizará con el tiempo.</string>
     <!-- Battery adviser -->
+    <string name="battery_adviser">Asesor de batería</string>
+    <string name="battery_adviser_summary">Predicciones de carga y salud del sistema</string>
     <!-- Power menu -->
+    <string name="power_menu_title">Menú de apagado</string>
+    <string name="power_menu_summary">Personalizar menú de apagado</string>
+    <string name="power_menu_actions_title">Comportamiento</string>
     <string name="power_menu_screenshot_title">Captura de Pantalla</string>
+    <string name="power_menu_screenshot_summary">Mantener presionado para hacer una captura de pantalla parcial</string>
+    <string name="power_menu_advanced_title">Opciones de reinicio avanzado</string>
     <string name="power_menu_airplane_title">Modo avión</string>
+    <string name="power_menu_torch_title">Linterna</string>
     <string name="power_menu_settings_title">Ajustes</string>
+    <string name="power_menu_lockdown_title">Bloqueo</string>
+    <string name="power_menu_lockdown_unavailable">El bloqueo está deshabilitado ya que Keyguard no es seguro</string>
+    <string name="power_menu_soundpanel_title">Panel de sonido</string>
     <string name="power_menu_users_title">Usuarios</string>
     <string name="power_menu_logout_title">Cerrar sesión</string>
+    <string name="power_menu_emergency_title">Emergencia</string>
+    <string name="power_menu_devicecontrols_title">Control de dispositivos</string>
     <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Reinicio avanzado</string>
+    <string name="advanced_reboot_summary">Cuando se desbloquea, incluye opciones en el menú de apagado para reiniciar en el recovery o cargador de arranque (fastboot)</string>
+    <string name="advanced_reboot_secured_title">Pantalla de bloqueo segura</string>
+    <string name="advanced_reboot_secured_summary">Mostrar opciones de reinicio avanzado en la pantalla de bloqueo seguro</string>
     <!-- Text shown for the title of the restart systemui option -->
+    <string name="power_menu_restart_systemui_title">Reinicia la Ui del sistema</string>
     <!-- Hide applist -->
+    <string name="hide_applist_title">Ocultar lista de aplicaciones</string>
+    <string name="hide_applist_summary">Evitar que las aplicaciones revisen las aplicaciones seleccionadas de la lista</string>
+    <string name="menu_show_overlay">Mostrar superposiciones</string>
+    <string name="menu_hide_overlay">Ocultar superposición</string>
     <!-- Buttons title -->
     <string name="volume_category">Control de volumen</string>
+    <string name="volume_keys_title">Botones de volumen</string>
+    <string name="powermenu_title">Menú de apagado</string>
+    <string name="volume_panel_on_left_title">Mostrar el panel de volumen en la izquierda</string>
+    <string name="volume_panel_on_left_summary">Mostrar panel de aplicaciones recientes en el borde izquierdo</string>
 </resources>

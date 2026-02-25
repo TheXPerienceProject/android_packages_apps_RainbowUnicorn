@@ -99,6 +99,7 @@
     <string name="show_qs_on_secure_keyguard_summary">Permitir cambiar la configuración rápida en la pantalla de bloqueo</string>
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>
+    <!-- Miscellaneous/Spoofing -->
     <!-- Keybox -->
     <string name="keybox_title">Keybox</string>
     <string name="keybox_summary">Gestionar datos keybox del dispositivo</string>
@@ -134,6 +135,8 @@
     <string name="pif_toast_invalid_file_selected">No es un archivo JSON. Elija un JSON PIF válido.</string>
     <string name="pif_toast_file_loaded">PIF JSON cargado</string>
     <string name="pif_toast_file_cleared">Datos PIF borrados</string>
+    <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
+    <!-- PIF Download Strings -->
     <!-- GMS cert chain -->
     <string name="gms_cert_chain_title">Desactivar Forzar la Integridad \"strong\"</string>
     <string name="gms_cert_chain_summary">Forzar una integridad \"Strong\" rompe aplicaciones como Google Pay, pero al habilitar esta opción se soluciona el problema.</string>
@@ -143,6 +146,8 @@
     <!-- Google Photos Spoof -->
     <string name="gphotos_spoof_title">Almacenamiento ilimitado de Fotos</string>
     <string name="gphotos_spoof_summary">Simular el dispositivo como Pixel XL para tener almacenamiento ilimitado en las copias de seguridad de Google Fotos</string>
+    <!-- Miscellaneous/Spoofing/Per-app spoofing -->
+    <!-- Vbmeta hash attestation -->
     <!-- Lock screen -->
     <string name="lock_screen_interface_category">Interfaz</string>
     <string name="lock_screen_charging_stats_title">Estadísticas de carga</string>
@@ -411,4 +416,18 @@
     <!--Statusbar RR -->
     <string name="show_refresh_rate_title">Frecuencia de actualización de la pantalla</string>
     <string name="show_refresh_rate_summary">Muestra la frecuencia de actualización actual (Hz) en la barra de estado.</string>
+    <!-- Dynamic island-->
+    <!-- Battery adviser -->
+    <!-- Power menu -->
+    <string name="power_menu_screenshot_title">Captura de Pantalla</string>
+    <string name="power_menu_airplane_title">Modo avión</string>
+    <string name="power_menu_settings_title">Ajustes</string>
+    <string name="power_menu_users_title">Usuarios</string>
+    <string name="power_menu_logout_title">Cerrar sesión</string>
+    <!-- Advanced restart options -->
+    <string name="advanced_reboot_title">Reinicio avanzado</string>
+    <!-- Text shown for the title of the restart systemui option -->
+    <!-- Hide applist -->
+    <!-- Buttons title -->
+    <string name="volume_category">Control de volumen</string>
 </resources>

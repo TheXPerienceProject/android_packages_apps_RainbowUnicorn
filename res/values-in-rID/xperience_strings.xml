@@ -46,11 +46,16 @@
     <!-- Themes -->
     <!-- Access QS on lockscreen -->
     <!-- Miscellaneous -->
+    <!-- Miscellaneous/Spoofing -->
     <!-- Keybox -->
     <!-- PIF -->
+    <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
+    <!-- PIF Download Strings -->
     <!-- GMS cert chain -->
     <!-- Play Integrity restriction -->
     <!-- Google Photos Spoof -->
+    <!-- Miscellaneous/Spoofing/Per-app spoofing -->
+    <!-- Vbmeta hash attestation -->
     <!-- Lock screen -->
     <!-- Double tap to sleep on status bar or lockscreen -->
     <!-- more misc-->
@@ -86,4 +91,18 @@
     <string name="monet_engine_custom_color_title">Warna aksen</string>
     <!-- Island Notification -->
     <!--Statusbar RR -->
+    <!-- Dynamic island-->
+    <!-- Battery adviser -->
+    <!-- Power menu -->
+    <string name="power_menu_screenshot_title">Tangkapan layar</string>
+    <string name="power_menu_airplane_title">Mode pesawat</string>
+    <string name="power_menu_settings_title">Setelan</string>
+    <string name="power_menu_users_title">Pengguna</string>
+    <string name="power_menu_logout_title">Keluar</string>
+    <!-- Advanced restart options -->
+    <string name="advanced_reboot_title">Mulai ulang lanjutan</string>
+    <!-- Text shown for the title of the restart systemui option -->
+    <!-- Hide applist -->
+    <!-- Buttons title -->
+    <string name="volume_category">Volume rocker</string>
 </resources>

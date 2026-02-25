@@ -50,9 +50,6 @@ import java.util.List;
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String KEY_MISCELLANEOUS_CATEGORY = "quick_settings_miscellaneous_category";
-    private static final String KEY_QS_BLUETOOTH_SHOW_DIALOG = "qs_bt_show_dialog";
-
     private PreferenceCategory mMiscellaneousCategory;
 
     @Override
@@ -64,11 +61,11 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         Context ctx = getContext();
         PreferenceScreen preferenceScreen = getPreferenceScreen();
 
-        mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
+       /* mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
 
         if (!DeviceUtils.deviceSupportsBluetooth(ctx)) {
             preferenceScreen.removePreference(mMiscellaneousCategory);
-        }
+        }*/
     }
 
     @Override
@@ -108,9 +105,9 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
                 final Resources resources = context.getResources();
 
-                if (!DeviceUtils.deviceSupportsBluetooth(context)) {
+                /*if (!DeviceUtils.deviceSupportsBluetooth(context)) {
                     keys.add(KEY_QS_BLUETOOTH_SHOW_DIALOG);
-                }
+                }*/
                 return keys;
             }
     };

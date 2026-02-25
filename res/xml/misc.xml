@@ -19,56 +19,5 @@
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceCategory
-        android:key="lock_screen_interface_category"
-        android:title="@string/lock_screen_interface_category">
 
-    <mx.xperience.framework.preference.SystemSettingListPreference
-        android:key="screen_off_animation"
-        android:title="@string/screen_off_animation_title"
-        android:dialogTitle="@string/screen_off_animation_title"
-        android:entries="@array/screen_off_animation_entries"
-        android:entryValues="@array/screen_off_animation_values"
-        android:defaultValue="1" />
-
-        <!-- Freeform launch mode -->
-        <mx.xperience.framework.preference.SystemSettingListPreference
-            android:key="freeform_launch_mode"
-            android:title="@string/freeform_launch_mode_title"
-            android:dialogTitle="@string/freeform_launch_mode_title"
-            android:entries="@array/freeform_launch_mode_entries"
-            android:entryValues="@array/freeform_launch_mode_values"
-            android:defaultValue="0"
-            android:summary="%s" />
-
-        <!-- Sidebar -->
-        <Preference
-            android:key="sidebar"
-            android:title="@string/sidebar_title"
-            android:summary="@string/sidebar_summary">
-            <intent
-                android:action="android.intent.action.IA_SETTINGS"
-                android:targetPackage="com.libremobileos.sidebar"
-                android:targetClass="com.libremobileos.sidebar.ui.sidebar.SidebarSettingsActivity" />
-        </Preference>
-
-        <!-- Charging stats -->
-        <mx.xperience.framework.preference.SystemSettingSwitchPreference
-            android:key="lockscreen_battery_info"
-            android:title="@string/lock_screen_charging_stats_title"
-            android:summary="@string/lock_screen_charging_stats_summary"
-            android:defaultValue="true" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="quick_settings_miscellaneous_category"
-        android:title="@string/quick_settings_miscellaneous_category">
-
-        <!-- QS Bluetooth Dialog -->
-        <mx.xperience.framework.preference.SystemSettingSwitchPreference
-            android:key="qs_bt_show_dialog"
-            android:title="@string/quick_settings_bluetooth_show_dialog_title"
-            android:summary="@string/quick_settings_bluetooth_show_dialog_summary"
-            android:defaultValue="true" />
-    </PreferenceCategory>
 </PreferenceScreen>

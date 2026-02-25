@@ -18,6 +18,7 @@
     <string name="title" translatable="false">Rainbow Unicorn</string>
 
     <!-- Categories -->
+    <string name="button_title">Buttons</string>
     <string name="misc_title">Miscellaneous</string>
     <string name="misc_summary">spoof, animations</string>
     <string name="statusbar_title">Status bar</string>
@@ -120,6 +121,24 @@
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>
 
+    <!-- Miscellaneous/Spoofing -->
+    <string name="spoofing_title">Component spoofing</string>
+    <string name="spoofing_summary">Bypass app restrictions by spoofing components</string>
+    <string name="spoofing_system_wide_category">System-Wide</string>
+    <string name="spoofing_pixel_props_title">Pixel props</string>
+    <string name="spoofing_pixel_props_summary">Spoof a select group of Google apps to the latest Pixel device</string>
+    <string name="tensor_spoof_title">Spoof tensor features</string>
+    <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
+    <string name="gms_spoof_title">Play Integrity fix</string>
+    <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation (not applicable to sandboxed gapps)</string>
+    <string name="spoofing_app_specific_category">App-Specific</string>
+    <string name="spoofing_vending_title">Play Store spoof</string>
+    <string name="spoofing_vending_summary">Spoof the Play Store to the latest Pixel device</string>
+    <string name="spoofing_photos_title">Google Photos spoof</string>
+    <string name="spoofing_photos_summary">Spoof the Google Photos app as a Pixel XL</string>
+    <string name="spoofing_snap_title">Snapchat spoof</string>
+    <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
+
     <!-- Keybox -->
     <string name="keybox_title">Keybox</string>
     <string name="keybox_summary">Manage device keybox data</string>
@@ -156,6 +175,16 @@
     <string name="pif_toast_invalid_file_selected">Not a JSON file. Choose a valid PIF JSON.</string>
     <string name="pif_toast_file_loaded">PIF JSON loaded</string>
     <string name="pif_toast_file_cleared">PIF JSON cleared</string>
+    <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
+    <string name="toast_spoofing_success">Successfully downloaded pif.json. Spoofing as %1$s for Play Integrity.</string>
+    <string name="toast_spoofing_failure">Failed to spoof properties.</string>
+    <string name="update_pif_json_title">Update Play Integrity fix</string>
+    <string name="update_pif_json_summary">Update PIF spoofing device, requires internet connection.</string>
+    <string name="show_pif_properties_title">Play Integrity fix properties</string>
+    <string name="show_pif_properties_summary">Show all currently set PIF properties</string>
+    <string name="error_loading_properties">Error loading PIF properties</string>
+    <string name="pif_spoofing_title">Select PIF JSON file</string>
+    <string name="pif_spoofing_summary">Choose the PIF JSON file to be used to spoof Play Integrity</string>
 
     <!-- PIF Download Strings -->
     <string name="download_pif_content_description">Download PIF from our API</string>
@@ -173,6 +202,16 @@
     <!-- Google Photos Spoof -->
     <string name="gphotos_spoof_title">Unlimited Photos storage</string>
     <string name="gphotos_spoof_summary">Spoof your device as Pixel XL for Google Photos app only to provide unlimited storage for backup</string>
+
+    <!-- Miscellaneous/Spoofing/Per-app spoofing -->
+    <string name="gameprops_title">Enable per-app game spoof</string>
+    <string name="gameprops_summary">Enables per-app game spoofing options</string>
+    <string name="gameprops_load_json_title">Select per-app game props JSON file</string>
+    <string name="gameprops_load_json_summary">Choose the JSON file to be used to spoof more games</string>
+
+    <!-- Vbmeta hash attestation -->
+    <string name="vbmeta_attestation_title">Autofix VBMeta detection</string>
+    <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot. Requires system restart.</string>
 
     <!-- Lock screen -->
     <string name="lock_screen_interface_category">Interface</string>
@@ -483,4 +522,50 @@
     <!-- Dynamic island-->
     <string name="dynamic_island">Dynamic Island (Beta)</string>
     <string name="dynamic_island_summary">Dynamic island based on iOS. For now, it only displays the island when playing music, but it will be updated over time.</string>
+
+    <!-- Battery adviser -->
+    <string name="battery_adviser">Battery Adviser</string>
+    <string name="battery_adviser_summary">System load and health predictions</string>
+
+    <!-- Power menu -->
+    <string name="power_menu_title">Power menu</string>
+    <string name="power_menu_summary">Customize power menu options</string>
+    <string name="power_menu_actions_title">Actions</string>
+    <string name="power_menu_screenshot_title">Screenshot</string>
+    <string name="power_menu_screenshot_summary">Long-press for partial screenshot</string>
+    <string name="power_menu_advanced_title">Advanced reboot options</string>
+    <string name="power_menu_airplane_title">Airplane</string>
+    <string name="power_menu_torch_title">Flashlight</string>
+    <string name="power_menu_settings_title">Settings</string>
+    <string name="power_menu_lockdown_title">Lockdown</string>
+    <string name="power_menu_lockdown_unavailable">Lockdown is disabled as keyguard isn\'t secure</string>
+    <string name="power_menu_soundpanel_title">Sound panel</string>
+    <string name="power_menu_users_title">Users</string>
+    <string name="power_menu_logout_title">Logout</string>
+    <string name="power_menu_emergency_title">Emergency</string>
+    <string name="power_menu_devicecontrols_title">Device controls</string>
+
+    <!-- Advanced restart options -->
+    <string name="advanced_reboot_title">Advanced restart</string>
+    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for restarting into recovery or bootloader</string>
+    <string name="advanced_reboot_secured_title">Secured lockscreen</string>
+    <string name="advanced_reboot_secured_summary">Display advanced restart options on secured lockscreen</string>
+
+    <!-- Text shown for the title of the restart systemui option -->
+    <string name="power_menu_restart_systemui_title">Restart SystemUI</string>
+
+    <!-- Hide applist -->
+    <string name="hide_applist_title">Hide applist</string>
+    <string name="hide_applist_summary">Prevent apps from checking selected apps from appslist</string>
+    <string name="menu_show_overlay">Show overlay</string>
+    <string name="menu_hide_overlay">Hide overlay</string>
+
+    <!-- Buttons title -->
+    <string name="volume_category">Volume Rocker</string>
+    <string name="volume_keys_title">Volume keys</string>
+    <string name="powermenu_title">Power menu</string>
+
+    <string name="volume_panel_on_left_title">Show volume panel on left</string>
+    <string name="volume_panel_on_left_summary">Display volume panel on the left side of the screen</string>
+
 </resources>

@@ -23,6 +23,12 @@ limitations under the License.
         android:layout="@layout/preference_category">
         </PreferenceCategory>
 
+        <Preference
+            android:key="button_category"
+            settings:layout="@layout/dashboard_preference_top"
+            android:fragment="mx.xperience.unicorn.fragments.ButtonSettings"
+            android:title="@string/button_title" />
+
         <!-- Misc -->
         <!--<Preference
             android:key="security_category"
@@ -36,16 +42,16 @@ limitations under the License.
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
             android:fragment="mx.xperience.unicorn.fragments.StatusBarSettings"
-            settings:layout="@layout/dashboard_preference_top"
+            settings:layout="@layout/dashboard_preference_middle"
             android:icon="@drawable/ic_status_settings"/>
 
         <!-- Misc -->
-        <Preference
+        <!--<Preference
             android:key="misc_category"
             android:title="@string/misc_title"
             android:fragment="mx.xperience.unicorn.fragments.MiscSettings"
             settings:layout="@layout/dashboard_preference_middle"
-            android:icon="@drawable/ic_misc_settings"/>
+            android:icon="@drawable/ic_misc_settings"/>-->
 
         <!--<Preference
             android:key="lockclock_fonts"
@@ -53,7 +59,7 @@ limitations under the License.
             settings:layout="@layout/dashboard_preference_middle"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.LockClockFontsPickerPreview" />-->
 
-        <Preference
+        <!--<Preference
             android:key="monet_settings"
             android:title="@string/monet_settings"
             settings:layout="@layout/dashboard_preference_middle"
@@ -65,14 +71,21 @@ limitations under the License.
             android:title="LockScreen"
             settings:layout="@layout/dashboard_preference_middle"
             android:icon="@drawable/ic_clock"
-            android:fragment="mx.xperience.unicorn.fragments.Lockscreen" />
+        android:fragment="mx.xperience.unicorn.fragments.Lockscreen" />-->
 
         <Preference
             android:key="spoofing"
             android:title="@string/miscellaneous_spoofing_category"
-            settings:layout="@layout/dashboard_preference_bottom"
+            settings:layout="@layout/dashboard_preference_middle"
             android:fragment="mx.xperience.unicorn.fragments.Spoofing"
             android:icon="@drawable/ic_key" />
+
+        <Preference
+            android:key="battery_adviser"
+            android:title="@string/battery_adviser"
+            android:summary="@string/battery_adviser_summary"
+            android:icon="@drawable/ic_battery_adviser_settings"
+            settings:layout="@layout/dashboard_preference_bottom"/>
 
 
 </PreferenceScreen>

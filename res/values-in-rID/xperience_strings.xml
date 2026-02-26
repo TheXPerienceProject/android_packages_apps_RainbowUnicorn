@@ -105,4 +105,5 @@
     <!-- Hide applist -->
     <!-- Buttons title -->
     <string name="volume_category">Volume rocker</string>
+    <!-- Power menu on secure lockscreen -->
 </resources>

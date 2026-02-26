@@ -102,4 +102,5 @@
     <!-- Hide applist -->
     <!-- Buttons title -->
     <string name="volume_category">Tombol volume</string>
+    <!-- Power menu on secure lockscreen -->
 </resources>

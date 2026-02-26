@@ -433,4 +433,5 @@
     <!-- Hide applist -->
     <!-- Buttons title -->
     <string name="volume_category">Hangerőszabályzó</string>
+    <!-- Power menu on secure lockscreen -->
 </resources>

@@ -568,4 +568,7 @@
     <string name="volume_panel_on_left_title">Show volume panel on left</string>
     <string name="volume_panel_on_left_summary">Display volume panel on the left side of the screen</string>
 
+    <!-- Power menu on secure lockscreen -->
+    <string name="lockscreen_enable_power_menu_title">Power menu</string>
+    <string name="lockscreen_enable_power_menu_summary">Allow accessing power menu on secure lockscreen</string>
 </resources>

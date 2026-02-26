@@ -494,4 +494,7 @@
     <string name="powermenu_title">Menú de apagado</string>
     <string name="volume_panel_on_left_title">Mostrar el panel de volumen en la izquierda</string>
     <string name="volume_panel_on_left_summary">Mostrar panel de aplicaciones recientes en el borde izquierdo</string>
+    <!-- Power menu on secure lockscreen -->
+    <string name="lockscreen_enable_power_menu_title">Menú de apagado</string>
+    <string name="lockscreen_enable_power_menu_summary">Permitir menú de encendido en la pantalla de bloqueo</string>
 </resources>

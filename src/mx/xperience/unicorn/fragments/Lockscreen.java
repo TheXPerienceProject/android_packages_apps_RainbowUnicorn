@@ -54,6 +54,8 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
     private static final String LOCKSCREEN_INTERFACE_CATEGORY = "lockscreen_interface_category";
 
+    private PreferenceCategory mLockScreenCategory;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);

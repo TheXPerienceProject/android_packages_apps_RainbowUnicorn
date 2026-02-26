@@ -18,7 +18,7 @@ limitations under the License.
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.voltage.support.preferences.SystemSettingSwitchPreference
+    <mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="lockscreen_enable_power_menu"
         android:title="@string/lockscreen_enable_power_menu_title"
         android:summary="@string/lockscreen_enable_power_menu_summary"

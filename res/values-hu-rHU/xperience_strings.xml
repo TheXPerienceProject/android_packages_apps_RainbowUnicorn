@@ -59,6 +59,16 @@
     <string name="battery_percent_inside_summary">Százalék megjelenítése az ikonon belül</string>
     <string name="show_battery_percent_charging_title">Csak töltéskor</string>
     <string name="show_battery_percent_charging_summary">Töltés közben mindenképp megjeleníti a százalék-értéket az ikon mellett</string>
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_title">Akkumulátorkijelző</string>
+    <string name="status_bar_battery_style_circle">Kör</string>
+    <string name="status_bar_battery_style_dotted_circle">Pontozott kör</string>
+    <string name="status_bar_battery_style_text">Szöveg</string>
+    <!-- Status bar - Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Százalékos akkujelzés</string>
+    <string name="status_bar_battery_percentage_default">Rejtett</string>
+    <string name="status_bar_battery_percentage_text_inside">Az ikonon belül</string>
+    <string name="status_bar_battery_percentage_text_next">Az ikon mellett</string>
     <!-- Battery saver -->
     <string name="battery_saver_refresh_rate_title">Képernyőfrissítés-csökkentés</string>
     <string name="battery_saver_refresh_rate_summary">Ha az akkukímélőt bekapcsolja, energiatakarékosságból max. 60 Hz lesz a képernyőfrissítés</string>

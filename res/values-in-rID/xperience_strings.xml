@@ -33,6 +33,15 @@
     <string name="battery_style_circle">Lingkaran</string>
     <string name="battery_style_landscape">Mendatar</string>
     <string name="battery_style_text">Teks</string>
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_style_circle">Lingkaran</string>
+    <string name="status_bar_battery_style_dotted_circle">Lingkaran bertitik</string>
+    <string name="status_bar_battery_style_text">Teks</string>
+    <!-- Status bar - Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Persentase baterai</string>
+    <string name="status_bar_battery_percentage_default">Tersembunyi</string>
+    <string name="status_bar_battery_percentage_text_inside">Didalam ikon</string>
+    <string name="status_bar_battery_percentage_text_next">Di samping ikon</string>
     <!-- Battery saver -->
     <!-- Screen Off animation -->
     <string name="screen_off_animation_default">Bawaan</string>

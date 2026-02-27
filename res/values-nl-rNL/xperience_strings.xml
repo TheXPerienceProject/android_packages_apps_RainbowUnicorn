@@ -27,6 +27,13 @@
     <string name="battery_style_circle">Cirkel</string>
     <string name="battery_style_landscape">Landschap</string>
     <string name="battery_style_text">Tekst</string>
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_style_circle">Cirkel</string>
+    <string name="status_bar_battery_style_dotted_circle">Gestippelde cirkel</string>
+    <string name="status_bar_battery_style_text">Tekst</string>
+    <!-- Status bar - Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Batterij percentage</string>
+    <string name="status_bar_battery_percentage_default">Verborgen</string>
     <!-- Battery saver -->
     <!-- Screen Off animation -->
     <!-- Status bar max notification -->
@@ -87,4 +94,5 @@
     <!-- Text shown for the title of the restart systemui option -->
     <!-- Hide applist -->
     <!-- Buttons title -->
+    <!-- Power menu on secure lockscreen -->
 </resources>

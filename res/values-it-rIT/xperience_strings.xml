@@ -27,6 +27,13 @@
     <string name="battery_style_circle">Cerchio</string>
     <string name="battery_style_landscape">Orizzontale</string>
     <string name="battery_style_text">Testo</string>
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_style_circle">Cerchio</string>
+    <string name="status_bar_battery_style_dotted_circle">Cerchio puntato</string>
+    <string name="status_bar_battery_style_text">Testo</string>
+    <!-- Status bar - Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Percentuale della batteria</string>
+    <string name="status_bar_battery_percentage_default">Nascosta</string>
     <!-- Battery saver -->
     <!-- Screen Off animation -->
     <!-- Status bar max notification -->
@@ -87,4 +94,5 @@
     <!-- Text shown for the title of the restart systemui option -->
     <!-- Hide applist -->
     <!-- Buttons title -->
+    <!-- Power menu on secure lockscreen -->
 </resources>

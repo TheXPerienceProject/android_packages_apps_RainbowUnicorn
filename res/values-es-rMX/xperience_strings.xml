@@ -60,6 +60,18 @@
     <string name="battery_percent_inside_summary">Mostrar porcentaje dentro del icono</string>
     <string name="show_battery_percent_charging_title">Mostrar porcentaje al cargar</string>
     <string name="show_battery_percent_charging_summary">Forzar mostrar el porcentaje al lado del icono al cargar</string>
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_title">Indicador de batería</string>
+    <string name="status_bar_battery_style_title">Estilo de batería</string>
+    <string name="status_bar_battery_style_icon_landscape">Icono horizontal</string>
+    <string name="status_bar_battery_style_circle">Circular</string>
+    <string name="status_bar_battery_style_dotted_circle">Círculo punteado</string>
+    <string name="status_bar_battery_style_text">Texto</string>
+    <!-- Status bar - Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Porcentaje de batería</string>
+    <string name="status_bar_battery_percentage_default">Oculto</string>
+    <string name="status_bar_battery_percentage_text_inside">Dentro del icono</string>
+    <string name="status_bar_battery_percentage_text_next">Junto al icono</string>
     <!-- Battery saver -->
     <string name="battery_saver_refresh_rate_title">Reducir la frecuencia de actualización</string>
     <string name="battery_saver_refresh_rate_summary">Utiliza una frecuencia de actualización de pantalla de 60 Hz para ahorrar energía cuando el modo de ahorro de batería está activado</string>
@@ -494,4 +506,7 @@
     <string name="powermenu_title">Menú de apagado</string>
     <string name="volume_panel_on_left_title">Mostrar el panel de volumen en la izquierda</string>
     <string name="volume_panel_on_left_summary">Mostrar panel de aplicaciones recientes en el borde izquierdo</string>
+    <!-- Power menu on secure lockscreen -->
+    <string name="lockscreen_enable_power_menu_title">Menú de apagado</string>
+    <string name="lockscreen_enable_power_menu_summary">Permitir menú de encendido en la pantalla de bloqueo</string>
 </resources>

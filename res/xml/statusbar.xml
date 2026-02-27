@@ -25,6 +25,12 @@
     </Preference>
 
     <Preference
+        android:fragment="mx.xperience.unicorn.fragments.BatterySettings"
+        android:key="battery_settings"
+        android:title="@string/battery_settings_title"
+        android:summary="@string/battery_settings_summary" />
+
+    <Preference
         android:key="dynamic_island"
         android:title="@string/dynamic_island"
         android:summary="@string/dynamic_island_summary" />

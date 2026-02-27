@@ -62,6 +62,8 @@
     <string name="show_battery_percent_charging_summary">Forzar mostrar el porcentaje al lado del icono al cargar</string>
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_title">Indicador de batería</string>
+    <string name="status_bar_battery_style_title">Estilo de batería</string>
+    <string name="status_bar_battery_style_icon_landscape">Icono horizontal</string>
     <string name="status_bar_battery_style_circle">Circular</string>
     <string name="status_bar_battery_style_dotted_circle">Círculo punteado</string>
     <string name="status_bar_battery_style_text">Texto</string>

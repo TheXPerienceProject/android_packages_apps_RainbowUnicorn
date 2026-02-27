@@ -24,6 +24,10 @@
     <!-- Status bar - icons -->
     <!-- 4G icon -->
     <!-- Battery customizations -->
+    <!-- Status bar - Battery -->
+    <!-- Status bar - Battery percentage -->
+    <string name="status_bar_battery_percentage_text_inside">Dentro do ícone</string>
+    <string name="status_bar_battery_percentage_text_next">Próximo ao ícone</string>
     <!-- Battery saver -->
     <!-- Screen Off animation -->
     <!-- Status bar max notification -->

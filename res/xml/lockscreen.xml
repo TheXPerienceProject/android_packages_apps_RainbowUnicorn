@@ -78,4 +78,25 @@ limitations under the License.
             android:summary="@string/themes_udfps_animation_summary"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.UdfpsAnimations" />
     </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="lock_screen_charging_category"
+        android:title="@string/lock_screen_charging_category">
+
+        <mx.xperience.framework.preference.SystemSettingListPreference
+            android:key="wireless_charging_ripple_shape"
+            android:title="@string/ripple_shape_title"
+            android:summary="%s"
+            android:entries="@array/ripple_shape_entries"
+            android:entryValues="@array/ripple_shape_values"
+            android:defaultValue="2" />
+
+        <!-- Dynamic charging animation -->
+        <mx.xperience.framework.preference.SystemSettingSwitchPreference
+            android:key="wireless_charging_dynamic_color"
+            android:title="@string/wireless_charging_dynamic_color_title"
+            android:summary="@string/wireless_charging_dynamic_color_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 </PreferenceScreen>

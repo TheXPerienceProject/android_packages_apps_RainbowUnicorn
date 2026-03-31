@@ -48,5 +48,10 @@ limitations under the License.
             android:summary="@string/display_icon_summary"
             android:defaultValue="false" />
 
+        <Preference
+            android:key="nowplaying_settings"
+            android:title="@string/nowplaying_title"
+            android:summary="@string/nowplaying_summary"
+            android:fragment="mx.xperience.unicorn.fragments.lockscreen.NowplayingSettings" />
         </PreferenceCategory>
 </PreferenceScreen>

@@ -444,4 +444,10 @@
     <!-- Buttons title -->
     <string name="volume_category">Hangerőszabályzó</string>
     <!-- Power menu on secure lockscreen -->
+    <!-- Edge Light -->
+    <string name="notifications_edge_light_summary">A képernyő oldalsó széleit világítsa meg az értesítés villogó jelzése</string>
+    <string name="notifications_edge_light_enable_ttile">Engedélyezés</string>
+    <!-- Notifications/Edge light -->
+    <string name="edge_light_summary">A képernyő oldalsó széleit világítsa meg az értesítés villogó jelzése</string>
+    <string name="custom_color">Egyéni szín</string>
 </resources>

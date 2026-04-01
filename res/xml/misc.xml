@@ -44,4 +44,15 @@
             android:targetClass="com.libremobileos.sidebar.ui.sidebar.SidebarSettingsActivity" />
         </Preference>
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/notifications_edge_light_title">
+
+        <!-- Edge light -->
+        <Preference
+            android:key="edge_light_settings"
+            android:title="@string/notifications_edge_light_title"
+            android:summary="@string/notifications_edge_light_summary"
+            android:fragment="mx.xperience.unicorn.fragments.notifications.EdgeLightSettings" />
+    </PreferenceCategory>
 </PreferenceScreen>

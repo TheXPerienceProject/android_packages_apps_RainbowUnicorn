@@ -115,4 +115,7 @@
     <!-- Buttons title -->
     <string name="volume_category">Volume rocker</string>
     <!-- Power menu on secure lockscreen -->
+    <!-- Edge Light -->
+    <string name="notifications_edge_light_enable_ttile">Aktifkan</string>
+    <!-- Notifications/Edge light -->
 </resources>

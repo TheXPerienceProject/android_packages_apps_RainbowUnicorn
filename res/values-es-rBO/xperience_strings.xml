@@ -509,4 +509,10 @@
     <!-- Power menu on secure lockscreen -->
     <string name="lockscreen_enable_power_menu_title">Menú de apagado</string>
     <string name="lockscreen_enable_power_menu_summary">Permitir menú de encendido en la pantalla de bloqueo</string>
+    <!-- Edge Light -->
+    <string name="notifications_edge_light_summary">Enciende los bordes laterales de la pantalla en el pulso de notificación</string>
+    <string name="notifications_edge_light_enable_ttile">Activar</string>
+    <!-- Notifications/Edge light -->
+    <string name="edge_light_summary">Enciende los bordes laterales de la pantalla en el pulso de notificación</string>
+    <string name="custom_color">Color personalizado</string>
 </resources>

@@ -112,4 +112,7 @@
     <!-- Buttons title -->
     <string name="volume_category">Tombol volume</string>
     <!-- Power menu on secure lockscreen -->
+    <!-- Edge Light -->
+    <string name="notifications_edge_light_enable_ttile">Aktifkan</string>
+    <!-- Notifications/Edge light -->
 </resources>

@@ -97,4 +97,7 @@
     <!-- Hide applist -->
     <!-- Buttons title -->
     <!-- Power menu on secure lockscreen -->
+    <!-- Edge Light -->
+    <string name="notifications_edge_light_enable_ttile">Ativar</string>
+    <!-- Notifications/Edge light -->
 </resources>

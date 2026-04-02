@@ -8,21 +8,41 @@ package mx.xperience.unicorn.fragments.notifications;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class EdgeLightSettings extends SettingsPreferenceFragment {
+import java.util.List;
+import java.util.ArrayList;
+
+import com.android.internal.util.android.VibrationUtils;
+
+public class EdgeLightSettings extends SettingsPreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.edge_light_settings);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        return false;
     }
 
     public static void reset(Context context) {
@@ -46,5 +66,13 @@ public class EdgeLightSettings extends SettingsPreferenceFragment {
     @Override
     public int getMetricsCategory() {
         return MetricsEvent.RAINBOW_UNICORN;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference != null && preference.getKey() != null) {
+            VibrationUtils.triggerVibration(getContext(), 3);
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 }

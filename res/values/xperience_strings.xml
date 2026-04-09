@@ -21,7 +21,7 @@
     <string name="button_title">Buttons</string>
     <string name="misc_title">Miscellaneous</string>
     <string name="misc_summary">spoof, animations</string>
-    <string name="statusbar_title">Status bar</string>
+    <string name="statusbar_title">Status bar / QuickSettings</string>
     <string name="statusbar_summary">Clock, carrier, status icons</string>
 
     <!-- General strings -->
@@ -613,4 +613,7 @@
     <string name="rainbow_color">Rainbow gradient color</string>
     <string name="custom_color">Custom color</string>
 
+
+    <string name="ios_style">iOS-style control panel</string>
+    <string name="ios_style_summary">Show iOS-style brightness, volume sliders and music player in expanded quick settings</string>
 </resources>

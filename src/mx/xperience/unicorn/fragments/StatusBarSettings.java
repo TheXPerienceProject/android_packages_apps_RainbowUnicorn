@@ -52,8 +52,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String PREF_SHOW_REFRESH_RATE = "show_refresh_rate";
+    private static final String KEY_QS_IOS_CONTROL_PANEL = "qs_ios_control_panel";
 
     private SwitchPreferenceCompat mShowRefreshRatePref;
+    private SystemSettingSwitchPreference mQsIosControlPanel;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -74,6 +76,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                 0, 
                 UserHandle.USER_CURRENT) == 1;
             mShowRefreshRatePref.setChecked(refreshRateEnabled);
+        }
+
+        mQsIosControlPanel = findPreference(KEY_QS_IOS_CONTROL_PANEL);
+        if (mQsIosControlPanel != null) {
+            mQsIosControlPanel.setOnPreferenceChangeListener(this);
         }
 
         //dynamic_island
@@ -122,6 +129,17 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             
             // Reiniciar SystemUI para aplicar cambios
             //XperienceUtils.showSystemUiRestartDialog(context);
+            return true;
+
+        } else if (preference == mQsIosControlPanel) {
+            boolean isIosEnabled = (Boolean) objValue;
+            //disable stock brightness slider when ios style is enabled
+            Settings.Secure.putIntForUser(resolver,
+                    "qs_show_brightness_slider",
+                    isIosEnabled ? 0 : 1,
+                    UserHandle.USER_CURRENT);
+            //show the dialog to restart the systemUI
+            XperienceUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }
 

@@ -19,7 +19,6 @@
     <string name="button_title">Botones</string>
     <string name="misc_title">Misceláneos</string>
     <string name="misc_summary">falsificación, controles de volumen</string>
-    <string name="statusbar_title">Barra de estado</string>
     <string name="statusbar_summary">Reloj, operador, iconos de estado</string>
     <!-- General strings -->
     <string name="ok">Aceptar</string>

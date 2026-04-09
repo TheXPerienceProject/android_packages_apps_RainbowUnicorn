@@ -37,6 +37,12 @@
         android:defaultValue="true" />
 
     <Preference
+        android:key="cutout_progress"
+        android:title="@string/cutout_progress_title"
+        android:summary="@string/cutout_progress_summary"
+        android:fragment="mx.xperience.unicorn.fragments.CutoutProgressSettingsFragment" />
+
+    <Preference
         android:key="dynamic_island"
         android:title="@string/dynamic_island"
         android:summary="@string/dynamic_island_summary" />

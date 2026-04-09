@@ -19,6 +19,7 @@
     <string name="button_title">Botones</string>
     <string name="misc_title">Misceláneos</string>
     <string name="misc_summary">falsificación, controles de volumen</string>
+    <string name="statusbar_title">Barra de estado / Ajustes rapidos</string>
     <string name="statusbar_summary">Reloj, operador, iconos de estado</string>
     <!-- General strings -->
     <string name="ok">Aceptar</string>
@@ -509,9 +510,31 @@
     <string name="lockscreen_enable_power_menu_title">Menú de apagado</string>
     <string name="lockscreen_enable_power_menu_summary">Permitir menú de encendido en la pantalla de bloqueo</string>
     <!-- Edge Light -->
+    <string name="notifications_edge_light_title">Iluminación de los bordes</string>
     <string name="notifications_edge_light_summary">Enciende los bordes laterales de la pantalla en el pulso de notificación</string>
     <string name="notifications_edge_light_enable_ttile">Activar</string>
     <!-- Notifications/Edge light -->
     <string name="edge_light_summary">Enciende los bordes laterales de la pantalla en el pulso de notificación</string>
+    <string name="edge_light_color_mode_title">Modo de color</string>
+    <string name="edge_light_pulse_count_title">Control de Pulsado</string>
+    <string name="edge_light_pulse_count_summary">Número de pulsaciones para la luz del borde</string>
+    <string name="edge_light_stroke_width_title">Tamaño del trazo</string>
+    <string name="edge_light_stroke_width_summary">Establecer ancho para la luz del borde</string>
+    <string name="edge_light_style_title">Estilo del renderizado</string>
+    <string name="edge_light_style_default">Por defecto (izquierda/derecha)</string>
+    <string name="edge_light_style_frame">Contorno (todos los lados)</string>
+    <string name="edge_light_animation_effect_title">Efectos de Animación</string>
+    <string name="edge_light_animation_effect_none">Estándar</string>
+    <string name="edge_light_animation_effect_breathing">Respiración</string>
+    <string name="edge_light_animation_effect_wave">Ondas</string>
+    <string name="edge_light_animation_effect_sparkle">Destellos</string>
+    <string name="edge_light_animation_effect_chase">Perseguir</string>
+    <string name="edge_light_animation_effect_comet">Cometa</string>
+    <string name="accent_color">Color de acento (por defecto)</string>
+    <string name="notification_color">Color de notificación</string>
+    <string name="wallpaper_color">Color del fondo de pantalla</string>
+    <string name="rainbow_color">Color degradado del arco iris</string>
     <string name="custom_color">Color personalizado</string>
+    <string name="ios_style">Panel de control al estilo de iOS</string>
+    <string name="ios_style_summary">Mostrar controles deslizantes de brillo y volumen al estilo de iOS, así como el reproductor de música, en el menú de ajustes rápidos ampliado</string>
 </resources>

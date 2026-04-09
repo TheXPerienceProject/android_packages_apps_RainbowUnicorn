@@ -90,4 +90,8 @@
     <!-- Hide applist -->
     <!-- Buttons title -->
     <!-- Power menu on secure lockscreen -->
+    <!-- Edge Light -->
+    <string name="notifications_edge_light_summary">Подсвечивать края экрана при получении уведомления</string>
+    <!-- Notifications/Edge light -->
+    <string name="edge_light_summary">Подсвечивать края экрана при получении уведомления</string>
 </resources>

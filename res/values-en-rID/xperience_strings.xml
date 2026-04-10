@@ -115,4 +115,11 @@
     <!-- Edge Light -->
     <string name="notifications_edge_light_enable_ttile">Aktifkan</string>
     <!-- Notifications/Edge light -->
+    <!-- Cutout Progress -->
+    <!-- Charging Ring -->
+    <!-- Music Ring -->
+    <!-- Ambient display -->
+    <string name="ambient_battery_disable_title">Nonaktifkan</string>
+    <!-- Now Playing -->
+    <string name="enable">Aktifkan</string>
 </resources>

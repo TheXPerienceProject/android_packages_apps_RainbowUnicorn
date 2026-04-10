@@ -100,4 +100,10 @@
     <!-- Edge Light -->
     <string name="notifications_edge_light_enable_ttile">Ativar</string>
     <!-- Notifications/Edge light -->
+    <!-- Cutout Progress -->
+    <!-- Charging Ring -->
+    <!-- Music Ring -->
+    <!-- Ambient display -->
+    <!-- Now Playing -->
+    <string name="enable">Ativar</string>
 </resources>

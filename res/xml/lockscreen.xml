@@ -54,4 +54,28 @@ limitations under the License.
             android:summary="@string/nowplaying_summary"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.NowplayingSettings" />
         </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="themes_icons_category"
+        android:title="@string/themes_icons_category">
+
+        <!-- Udfps icon -->
+        <Preference
+            android:key="udfps_icon"
+            android:title="@string/themes_udfps_icon_title"
+            android:summary="@string/themes_udfps_icon_summary"
+            android:fragment="mx.xperience.unicorn.fragments.lockscreen.UdfpsIcons" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="themes_animations_category"
+        android:title="@string/themes_animations_category">
+
+        <!-- Udfps animation -->
+        <Preference
+            android:key="udfps_animation"
+            android:title="@string/themes_udfps_animation_title"
+            android:summary="@string/themes_udfps_animation_summary"
+            android:fragment="mx.xperience.unicorn.fragments.lockscreen.UdfpsAnimations" />
+    </PreferenceCategory>
 </PreferenceScreen>

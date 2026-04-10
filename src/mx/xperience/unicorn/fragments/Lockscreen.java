@@ -53,8 +53,15 @@ public class Lockscreen extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String LOCKSCREEN_INTERFACE_CATEGORY = "lockscreen_interface_category";
+    private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
+    private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
+    private static final String KEY_UDFPS_ICON = "udfps_icons";
 
     private PreferenceCategory mLockScreenCategory;
+
+    private PreferenceCategory mAnimationsCategory;
+    private Preference mUdfpsAnimation;
+    private Preference mUdfpsIcon;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -68,6 +75,28 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
         mLockScreenCategory = (PreferenceCategory) findPreference(LOCKSCREEN_INTERFACE_CATEGORY);
 
+        mAnimationsCategory = (PreferenceCategory) findPreference(KEY_ANIMATIONS_CATEGORY);
+        mUdfpsAnimation = (Preference) findPreference(KEY_UDFPS_ANIMATION);
+        mUdfpsIcon = (Preference) findPreference(KEY_UDFPS_ICON);
+
+        FingerprintManager fingerprintManager = (FingerprintManager)
+                getActivity().getSystemService(ctx.FINGERPRINT_SERVICE);
+
+        if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+            mAnimationsCategory.removePreference(mUdfpsAnimation);
+            mAnimationsCategory.removePreference(mUdfpsIcon);
+        } else {
+            if (!XperienceUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations")) {
+                mAnimationsCategory.removePreference(mUdfpsAnimation);
+                mAnimationsCategory.removePreference(mUdfpsIcon);
+            }
+        }
+
+        // Check if the category is now empty
+        if (mAnimationsCategory.getPreferenceCount() == 0) {
+
+            preferenceScreen.removePreference(mAnimationsCategory);
+        }
     }
 
     @Override
@@ -108,6 +137,13 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
                 FingerprintManager fingerprintManager = (FingerprintManager)
                         context.getSystemService(Context.FINGERPRINT_SERVICE);
+                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+                    keys.add(KEY_UDFPS_ANIMATION);
+                } else {
+                    if (!XperienceUtils.isPackageInstalled(context, "mx.xperience.udfps.animations")) {
+                        keys.add(KEY_UDFPS_ANIMATION);
+                    }
+                }
                 return keys;
             }
     };

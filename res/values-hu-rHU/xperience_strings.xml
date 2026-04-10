@@ -449,4 +449,8 @@
     <!-- Notifications/Edge light -->
     <string name="edge_light_summary">A képernyő oldalsó széleit világítsa meg az értesítés villogó jelzése</string>
     <string name="custom_color">Egyéni szín</string>
+    <!-- Cutout Progress -->
+    <string name="cutout_progress_ring_color_mode_rainbow">Szivárvány</string>
+    <!-- Charging Ring -->
+    <!-- Music Ring -->
 </resources>

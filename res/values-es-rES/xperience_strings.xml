@@ -508,6 +508,7 @@
     <string name="volume_panel_on_left_summary">Mostrar panel de aplicaciones recientes en el borde izquierdo</string>
     <!-- Power menu on secure lockscreen -->
     <string name="lockscreen_enable_power_menu_title">Menú de apagado</string>
+    <string name="lockscreen_enable_power_menu_cat">Menú de apagado</string>
     <string name="lockscreen_enable_power_menu_summary">Permitir menú de encendido en la pantalla de bloqueo</string>
     <!-- Edge Light -->
     <string name="notifications_edge_light_title">Iluminación de los bordes</string>
@@ -627,4 +628,10 @@
     <string name="cutout_progress_music_clockwise_title">Sentido de las agujas del reloj</string>
     <string name="cutout_progress_music_aod_title">Mostrar en Pantalla Ambiente</string>
     <string name="cutout_progress_music_aod_summary">Mantener visible el icono de música en la pantalla de espera</string>
+    <!-- Ambient display -->
+    <string name="ambient_battery_disable_title">Desactivado</string>
+    <string name="display_icon_title">Íconos</string>
+    <!-- Now Playing -->
+    <string name="nowplaying_appearance_title">Aspecto</string>
+    <string name="enable">Activar</string>
 </resources>

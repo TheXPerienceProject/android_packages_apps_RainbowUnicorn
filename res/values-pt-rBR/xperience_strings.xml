@@ -103,4 +103,7 @@
     <!-- Cutout Progress -->
     <!-- Charging Ring -->
     <!-- Music Ring -->
+    <!-- Ambient display -->
+    <!-- Now Playing -->
+    <string name="enable">Ativar</string>
 </resources>

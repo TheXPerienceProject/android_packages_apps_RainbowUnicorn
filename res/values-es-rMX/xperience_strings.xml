@@ -537,4 +537,9 @@
     <string name="custom_color">Color personalizado</string>
     <string name="ios_style">Panel de control al estilo de iOS</string>
     <string name="ios_style_summary">Mostrar controles deslizantes de brillo y volumen al estilo de iOS, así como el reproductor de música, en el menú de ajustes rápidos ampliado</string>
+    <!-- Cutout Progress -->
+    <string name="cutout_progress_stroke_width_title">Tamaño del trazo</string>
+    <string name="cutout_progress_ring_color_mode_rainbow">Arcoiris</string>
+    <!-- Charging Ring -->
+    <!-- Music Ring -->
 </resources>

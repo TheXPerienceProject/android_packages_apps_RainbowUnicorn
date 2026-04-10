@@ -121,4 +121,8 @@
     <!-- Cutout Progress -->
     <!-- Charging Ring -->
     <!-- Music Ring -->
+    <!-- Ambient display -->
+    <string name="ambient_battery_disable_title">Disabled</string>
+    <!-- Now Playing -->
+    <string name="enable">Aktifkan</string>
 </resources>

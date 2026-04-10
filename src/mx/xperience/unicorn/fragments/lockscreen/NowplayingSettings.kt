@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mist.settings.fragments.lockscreen
+package mx.xperience.unicorn.fragments.lockscreen
 
 import android.content.Context
 import android.os.Bundle

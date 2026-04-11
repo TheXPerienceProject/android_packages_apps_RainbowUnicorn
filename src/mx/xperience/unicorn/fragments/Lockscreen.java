@@ -82,20 +82,24 @@ public class Lockscreen extends SettingsPreferenceFragment implements
         FingerprintManager fingerprintManager = (FingerprintManager)
                 getActivity().getSystemService(ctx.FINGERPRINT_SERVICE);
 
-        if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
-            mAnimationsCategory.removePreference(mUdfpsAnimation);
-            mAnimationsCategory.removePreference(mUdfpsIcon);
-        } else {
-            if (!XperienceUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations")) {
-                mAnimationsCategory.removePreference(mUdfpsAnimation);
-                mAnimationsCategory.removePreference(mUdfpsIcon);
+        if (mAnimationsCategory != null) {
+            boolean isPackageInstalled = XperienceUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations");
+            boolean noHardware = (fingerprintManager == null || !fingerprintManager.isHardwareDetected());
+
+            if (noHardware || !isPackageInstalled) {
+                if (mUdfpsAnimation != null) {
+                    mAnimationsCategory.removePreference(mUdfpsAnimation);
+                }
+                if (mUdfpsIcon != null) {
+                    mAnimationsCategory.removePreference(mUdfpsIcon);
+                }
             }
-        }
 
-        // Check if the category is now empty
-        if (mAnimationsCategory.getPreferenceCount() == 0) {
+            // Check if the category is now empty
+            if (mAnimationsCategory.getPreferenceCount() == 0) {
 
-            preferenceScreen.removePreference(mAnimationsCategory);
+                preferenceScreen.removePreference(mAnimationsCategory);
+            }
         }
     }
 

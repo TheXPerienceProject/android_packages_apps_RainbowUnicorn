@@ -458,4 +458,7 @@
     <string name="display_icon_title">Ikonok</string>
     <!-- Now Playing -->
     <string name="enable">Engedélyezés</string>
+    <!-- Ripple Shape -->
+    <!-- Dynamic charging animation -->
+    <!-- Charging animation -->
 </resources>

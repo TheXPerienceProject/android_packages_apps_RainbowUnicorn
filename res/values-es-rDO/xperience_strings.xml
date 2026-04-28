@@ -666,4 +666,7 @@
     <string name="nowplaying_expand_dialog_summary">Expandir el diálogo de Ahora en reproducción</string>
     <string name="enable">Activar</string>
     <string name="disable">Deshabilitar</string>
+    <!-- Ripple Shape -->
+    <!-- Dynamic charging animation -->
+    <!-- Charging animation -->
 </resources>

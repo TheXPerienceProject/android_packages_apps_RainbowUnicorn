@@ -122,4 +122,7 @@
     <string name="ambient_battery_disable_title">Nonaktifkan</string>
     <!-- Now Playing -->
     <string name="enable">Aktifkan</string>
+    <!-- Ripple Shape -->
+    <!-- Dynamic charging animation -->
+    <!-- Charging animation -->
 </resources>

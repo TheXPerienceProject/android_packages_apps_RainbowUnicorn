@@ -104,4 +104,7 @@
     <!-- Ambient display -->
     <!-- Now Playing -->
     <string name="enable">Attiva</string>
+    <!-- Ripple Shape -->
+    <!-- Dynamic charging animation -->
+    <!-- Charging animation -->
 </resources>

@@ -106,4 +106,7 @@
     <!-- Ambient display -->
     <!-- Now Playing -->
     <string name="enable">Ativar</string>
+    <!-- Ripple Shape -->
+    <!-- Dynamic charging animation -->
+    <!-- Charging animation -->
 </resources>

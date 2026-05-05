@@ -667,6 +667,12 @@
     <string name="enable">Activar</string>
     <string name="disable">Deshabilitar</string>
     <!-- Ripple Shape -->
+    <string name="ripple_shape_title">Forma del efecto de onda de carga</string>
     <!-- Dynamic charging animation -->
+    <string name="wireless_charging_dynamic_color_title">Color dinámico de carga</string>
+    <string name="wireless_charging_dynamic_color_summary">Usa el nivel de batería para determinar el color de la animación de carga</string>
     <!-- Charging animation -->
+    <string name="lock_screen_charging_category">Animación de carga en la pantalla de bloqueo</string>
+    <string name="charging_animation_title">Animación de carga</string>
+    <string name="charging_animation_summary">Mostrar una animación cuando se conecta el dispositivo</string>
 </resources>

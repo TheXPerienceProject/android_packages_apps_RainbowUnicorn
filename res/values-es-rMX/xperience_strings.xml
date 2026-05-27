@@ -112,23 +112,6 @@
     <string name="show_qs_on_secure_keyguard_summary">Permitir cambiar la configuración rápida en la pantalla de bloqueo</string>
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>
-    <!-- Miscellaneous/Spoofing -->
-    <string name="spoofing_title">Falsificación de componentes</string>
-    <string name="spoofing_summary">Elude las restricciones de la aplicación mediante suplantación de componentes</string>
-    <string name="spoofing_system_wide_category">Todo el sistema</string>
-    <string name="spoofing_pixel_props_title">Props de píxel</string>
-    <string name="spoofing_pixel_props_summary">Falsifica un grupo selecto de apps de Google para que crean estar en el último dispositivo Pixel</string>
-    <string name="tensor_spoof_title">Simular funciones de Tensor</string>
-    <string name="tensor_spoof_summary">Desbloquear características de tensor/píxel</string>
-    <string name="gms_spoof_title">Corrección de integridad de Google Play</string>
-    <string name="gms_spoof_summary">Espode tu dispositivo para pasar la Attestation de Google Play (No aplicable a las gapps aisladas)</string>
-    <string name="spoofing_app_specific_category">Aplicación específica</string>
-    <string name="spoofing_vending_title">Simular por Play Store</string>
-    <string name="spoofing_vending_summary">Simula que la Play Store se ejecuta en el último Pixel</string>
-    <string name="spoofing_photos_title">Suplantación de Fotos de Google</string>
-    <string name="spoofing_photos_summary">Suplanta el dispositivo como Pixel XL en la aplicación Google Fotos para desbloquear el respaldo de imágenes ilimitado</string>
-    <string name="spoofing_snap_title">Engañar Snapchat</string>
-    <string name="spoofing_snap_summary">Suplanta el dispositivo como Pixel XL en la aplicación Snapchat para solucionar posibles problemas con el chat</string>
     <!-- Keybox -->
     <string name="keybox_title">Keybox</string>
     <string name="keybox_summary">Gestionar datos keybox del dispositivo</string>
@@ -677,4 +660,19 @@
     <string name="charging_animation_summary">Mostrar una animación cuando se conecta el dispositivo</string>
     <!-- Multi Audio Focus -->
     <!-- Running services - Background processes tab -->
+    <!-- Miscellaneous/Spoofing -->
+    <string name="spoofing_title">Spoofing</string>
+    <string name="spoofing_integrity_category">Play Integrity</string>
+    <string name="spoofing_pixel_props_title">Props de píxel</string>
+    <string name="spoofing_snap_summary">Suplanta el dispositivo como Pixel XL en la aplicación Snapchat para solucionar posibles problemas con el chat</string>
+    <string name="app_spoofing_disabled">Desactivado</string>
+    <!-- Miscellaneous/Play Integrity & TrickyStore -->
+    <!-- Generic actions & labels -->
+    <string name="action_enable">Activar</string>
+    <string name="action_disable">Deshabilitar</string>
+    <string name="action_apply">Aplicar</string>
+    <string name="action_set">Aplicar</string>
+    <string name="action_reset">Restablecer</string>
+    <string name="action_restart">Reiniciar</string>
+    <string name="default_value">Predeterminado</string>
 </resources>

@@ -55,7 +55,6 @@
     <!-- Themes -->
     <!-- Access QS on lockscreen -->
     <!-- Miscellaneous -->
-    <!-- Miscellaneous/Spoofing -->
     <!-- Keybox -->
     <!-- PIF -->
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
@@ -130,4 +129,11 @@
     <!-- Charging animation -->
     <!-- Multi Audio Focus -->
     <!-- Running services - Background processes tab -->
+    <!-- Miscellaneous/Spoofing -->
+    <string name="app_spoofing_disabled">Disabled</string>
+    <!-- Miscellaneous/Play Integrity & TrickyStore -->
+    <!-- Generic actions & labels -->
+    <string name="action_enable">Aktifkan</string>
+    <string name="action_restart">Memulai ulang</string>
+    <string name="default_value">Bawaan</string>
 </resources>

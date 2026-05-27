@@ -675,4 +675,6 @@
     <string name="lock_screen_charging_category">Animación de carga en la pantalla de bloqueo</string>
     <string name="charging_animation_title">Animación de carga</string>
     <string name="charging_animation_summary">Mostrar una animación cuando se conecta el dispositivo</string>
+    <!-- Multi Audio Focus -->
+    <!-- Running services - Background processes tab -->
 </resources>

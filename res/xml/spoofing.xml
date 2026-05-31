@@ -42,6 +42,25 @@
             android:summary="@string/user_selectable_app_spoofing_summary"
             android:fragment="mx.xperience.unicorn.fragments.UserSelectedAppSpoofSettings" />
 
+        <!-- Pixel props -->
+        <Preference
+            android:key="pi_pp_spoof"
+            android:title="@string/spoofing_pixel_props_title"
+            android:summary="@string/spoofing_pixel_props_summary"
+            android:fragment="mx.xperience.unicorn.fragments.PixelPropsSettings" />
+    </PreferenceCategory>
+
+    <!-- Features -->
+    <PreferenceCategory
+        android:key="spoofing_features_category"
+        android:title="@string/spoofing_features_category">
+
+        <!-- Tensor feature targets -->
+        <Preference
+            android:key="tensor_targets_settings"
+            android:title="@string/tensor_spoof_title"
+            android:summary="@string/tensor_spoof_summary"
+            android:fragment="mx.xperience.unicorn.fragments.TensorTargetsSettings" />
     </PreferenceCategory>
 
     <PreferenceCategory

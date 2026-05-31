@@ -80,14 +80,6 @@ class TensorTargetsSettings : SettingsPreferenceFragment() {
         requireActivity().title = getString(R.string.tensor_spoof_title)
     }
 
-    override fun setDivider(divider: Drawable?) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
-
-    override fun setDividerHeight(height: Int) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
-
     override fun getMetricsCategory() = MetricsProto.MetricsEvent.VIEW_UNKNOWN
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {}
@@ -103,6 +95,14 @@ class TensorTargetsSettings : SettingsPreferenceFragment() {
                 TensorTargetsContent(context = requireContext())
             }
         }
+    }
+
+    override fun setDivider(divider: Drawable?) {
+        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
+    }
+
+    override fun setDividerHeight(height: Int) {
+        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
     }
 }
 

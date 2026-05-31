@@ -7,6 +7,7 @@ package mx.xperience.unicorn.fragments
 
 import android.app.ActivityManager
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
@@ -123,14 +124,6 @@ class PixelPropsSettings : SettingsPreferenceFragment() {
         requireActivity().title = getString(R.string.spoofing_pixel_props_title)
     }
 
-    override fun setDivider(divider: Drawable?) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
-
-    override fun setDividerHeight(height: Int) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
-
     override fun getMetricsCategory() = MetricsProto.MetricsEvent.VIEW_UNKNOWN
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {}
@@ -146,6 +139,14 @@ class PixelPropsSettings : SettingsPreferenceFragment() {
                 PixelPropsContent(context = requireContext())
             }
         }
+    }
+
+    override fun setDivider(divider: Drawable?) {
+        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
+    }
+
+    override fun setDividerHeight(height: Int) {
+        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
     }
 }
 

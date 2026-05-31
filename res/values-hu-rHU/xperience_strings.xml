@@ -108,7 +108,6 @@
     <string name="show_qs_on_secure_keyguard_summary">Megengedi a gyorsbeállítások lehúzását a biztonsági záróképernyőn</string>
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Hamisítás, álcázás</string>
-    <!-- Miscellaneous/Spoofing -->
     <!-- Keybox -->
     <string name="keybox_title">Kulcsbox</string>
     <string name="keybox_summary">A készülékhez tartozó kulcsbox kezelése</string>
@@ -461,4 +460,18 @@
     <!-- Ripple Shape -->
     <!-- Dynamic charging animation -->
     <!-- Charging animation -->
+    <!-- Multi Audio Focus -->
+    <!-- Running services - Background processes tab -->
+    <!-- Miscellaneous/Spoofing -->
+    <string name="spoofing_title">Hamisítás, álcázás</string>
+    <string name="spoofing_integrity_category">Google Play Integritás</string>
+    <string name="app_spoofing_disabled">Kikapcsolva</string>
+    <!-- Miscellaneous/Play Integrity & TrickyStore -->
+    <!-- Generic actions & labels -->
+    <string name="action_enable">Engedélyezés</string>
+    <string name="action_apply">Alkalmazás</string>
+    <string name="action_set">Beállítás</string>
+    <string name="action_reset">Visszaállítás</string>
+    <string name="action_restart">Újraindítás</string>
+    <string name="default_value">Alapértelmezett</string>
 </resources>

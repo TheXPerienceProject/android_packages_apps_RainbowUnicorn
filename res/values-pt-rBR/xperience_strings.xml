@@ -40,7 +40,6 @@
     <!-- Themes -->
     <!-- Access QS on lockscreen -->
     <!-- Miscellaneous -->
-    <!-- Miscellaneous/Spoofing -->
     <!-- Keybox -->
     <!-- PIF -->
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
@@ -109,4 +108,11 @@
     <!-- Ripple Shape -->
     <!-- Dynamic charging animation -->
     <!-- Charging animation -->
+    <!-- Multi Audio Focus -->
+    <!-- Running services - Background processes tab -->
+    <!-- Miscellaneous/Spoofing -->
+    <!-- Miscellaneous/Play Integrity & TrickyStore -->
+    <!-- Generic actions & labels -->
+    <string name="action_enable">Ativar</string>
+    <string name="action_restart">Reiniciar</string>
 </resources>

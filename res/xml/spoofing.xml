@@ -72,7 +72,7 @@
             android:key="pi_photos_spoof"
             android:title="@string/spoofing_photos_title"
             android:summary="@string/spoofing_photos_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <!-- Snapchat -->
         <mx.xperience.framework.preference.SecureSettingSwitchPreference

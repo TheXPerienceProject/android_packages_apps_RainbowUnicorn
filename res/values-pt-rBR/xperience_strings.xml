@@ -115,4 +115,5 @@
     <!-- Generic actions & labels -->
     <string name="action_enable">Ativar</string>
     <string name="action_restart">Reiniciar</string>
+    <!-- Notification row transparency -->
 </resources>

@@ -107,4 +107,5 @@
     <!-- Miscellaneous/Play Integrity & TrickyStore -->
     <!-- Generic actions & labels -->
     <string name="action_set">Установить</string>
+    <!-- Notification row transparency -->
 </resources>

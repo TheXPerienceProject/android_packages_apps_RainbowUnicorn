@@ -21,7 +21,8 @@
 
     <mx.xperience.framework.preference.SystemSettingMainSwitchPreference
         android:key="nowplaying_enabled"
-        android:title="@string/enable"
+        android:title="@string/nowplaying_title"
+        android:summary="@string/nowplaying_summary"
         android:defaultValue="false" />
 
     <mx.xperience.framework.preference.SystemSettingListPreference
@@ -45,9 +46,9 @@
         settings:units="dp" />
 
     <mx.xperience.framework.preference.SystemSettingSwitchPreference
-        android:key="nowplaying_use_compact_style"
-        android:title="@string/nowplaying_compact_style_title"
-        android:summary="@string/nowplaying_compact_style_summary"
+        android:key="nowplaying_lyrics_mode"
+        android:title="@string/nowplaying_lyrics_mode_title"
+        android:summary="@string/nowplaying_lyrics_mode_summary"
         android:dependency="nowplaying_enabled"
         android:defaultValue="false" />
 
@@ -58,23 +59,12 @@
         android:dependency="nowplaying_enabled"
         android:defaultValue="true" />
 
-    <mx.xperience.framework.preference.SystemSettingSwitchPreference
-        android:key="nowplaying_use_accent_color"
-        android:title="@string/nowplaying_use_accent_color_title"
-        android:summary="@string/nowplaying_use_accent_color_summary"
-        android:dependency="nowplaying_enabled"
-        android:defaultValue="false" />
-
-    <mx.xperience.framework.preference.SystemSettingSeekBarPreference
-        android:key="nowplaying_vertical_position"
-        android:title="@string/nowplaying_vertical_position_title"
-        android:summary="@string/nowplaying_vertical_position_summary"
-        android:dependency="nowplaying_enabled"
-        android:max="100"
-        android:min="10"
-        android:defaultValue="90"
-        settings:interval="1"
-        settings:units="%" />
+    <mx.xperience.framework.preference.SystemSettingListPreference
+        android:key="nowplaying_color_mode"
+        android:title="@string/nowplaying_color_mode_title"
+        android:entries="@array/nowplaying_color_mode_entries"
+        android:entryValues="@array/nowplaying_color_mode_values"
+        android:defaultValue="0" />
 
     <mx.xperience.framework.preference.SystemSettingSeekBarPreference
         android:key="nowplaying_track_text_size"

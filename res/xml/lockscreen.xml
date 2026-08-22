@@ -52,7 +52,7 @@ limitations under the License.
             android:key="nowplaying_settings"
             android:title="@string/nowplaying_title"
             android:summary="@string/nowplaying_summary"
-            android:fragment="mx.xperience.unicorn.fragments.lockscreen.NowplayingSettings" />
+            android:fragment="mx.xperience.unicorn.fragments.lockscreen.NowPlayingSettings" />
         </PreferenceCategory>
 
     <PreferenceCategory

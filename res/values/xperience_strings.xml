@@ -983,4 +983,8 @@
     <string name="notification_row_transparency_summary">Set translucent background for notifications in QS</string>
     <string name="notification_row_transparency_lockscreen_title">Translucent lockscreen notifications</string>
     <string name="notification_row_transparency_lockscreen_summary">Set translucent background for notifications in lockscreen</string>
+
+    <!-- Status bar - Battery estimate -->
+    <string name="status_bar_battery_estimate_title">Battery time remaining</string>
+    <string name="status_bar_battery_estimate_summary">Show estimated time until the battery is empty in Quick Settings</string>
 </resources>

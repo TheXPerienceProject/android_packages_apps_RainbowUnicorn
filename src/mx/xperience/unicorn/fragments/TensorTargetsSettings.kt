@@ -96,14 +96,6 @@ class TensorTargetsSettings : SettingsPreferenceFragment() {
             }
         }
     }
-
-    override fun setDivider(divider: Drawable?) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
-
-    override fun setDividerHeight(height: Int) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -320,6 +312,7 @@ private fun TensorTargetsContent(context: android.content.Context) {
                                 }
                                 scope.launch(Dispatchers.IO) {
                                     writeTargetsSet(defaultApps)
+                                    killPackages(activityManager, defaultApps)
                                 }
                             },
                             enabled = globalEnabled,
@@ -335,21 +328,23 @@ private fun TensorTargetsContent(context: android.content.Context) {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    if (isLoading) {
-                        SpoofingLoadingBox(modifier = Modifier.weight(1f))
-                    } else if (filteredApps.isEmpty()) {
-                        SpoofingEmptyState(
-                            icon = Icons.Default.Memory,
-                            title = stringResource(R.string.tensor_targets_none_configured),
-                            description = stringResource(
-                                R.string.tensor_targets_empty_description),
-                            modifier = Modifier.weight(1f),
-                        )
-                    } else {
+                    AppListAnimatedContent(
+                        isLoading = isLoading,
+                        isEmpty = filteredApps.isEmpty(),
+                        hasSearchQuery = searchQuery.isNotEmpty(),
+                        modifier = Modifier.weight(1f),
+                        emptyContent = {
+                            SpoofingEmptyState(
+                                icon = Icons.Default.Memory,
+                                title = stringResource(R.string.tensor_targets_none_configured),
+                                description = stringResource(
+                                    R.string.tensor_targets_empty_description),
+                                modifier = Modifier.fillMaxSize(),
+                            )
+                        },
+                    ) {
                         LazyColumn(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .weight(1f),
+                            modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(6.dp),
                         ) {
                             items(filteredApps, key = { it.packageName }) { app ->

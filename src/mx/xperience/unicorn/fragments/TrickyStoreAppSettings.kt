@@ -6,7 +6,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 
 package mx.xperience.unicorn.fragments;
-
 import android.app.ActivityManager
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
@@ -48,6 +47,7 @@ import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -102,8 +102,16 @@ class TrickyStoreAppSettings : SettingsPreferenceFragment() {
     companion object {
         const val TARGET_KEY = "spoof_trickystore_target"
         val DEFAULT_TARGETS = setOf(
-            "com.google.android.gms",
+            "android",
+            // GMS — AUTO mode, same as Specter (no special mode assigned)
             "com.android.vending",
+            "com.google.android.gsf",
+            "com.google.android.gms",
+            "com.google.android.contactkeys",
+            "com.google.android.ims",
+            "com.google.android.safetycore",
+            "com.google.android.apps.walletnfcrel",
+            "com.google.android.apps.nbu.paisa.user",
         )
         val DEFAULT_TARGET_MODES = mapOf(
             // Revolut — cert gen (original EvoX default)
@@ -131,14 +139,6 @@ class TrickyStoreAppSettings : SettingsPreferenceFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requireActivity().title = getString(R.string.tricky_store_title)
-    }
-
-    override fun setDivider(divider: Drawable?) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
-
-    override fun setDividerHeight(height: Int) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
     }
 
     override fun getMetricsCategory() = MetricsProto.MetricsEvent.VIEW_UNKNOWN
@@ -218,6 +218,20 @@ private fun TrickyStoreAppSettingsContent(
     LaunchedEffect(showSystemApps) {
         isLoading = true
         withContext(Dispatchers.IO) {
+            // Seed defaults on first run if key is empty
+            val existing = Settings.Secure.getString(
+                context.contentResolver, TrickyStoreAppSettings.TARGET_KEY)
+            if (existing.isNullOrEmpty()) {
+                val seed = TrickyStoreAppSettings.DEFAULT_TARGETS.map { it } +
+                    TrickyStoreAppSettings.DEFAULT_TARGET_MODES.map { (pkg, mode) ->
+                        pkg + mode.symbol }
+                Settings.Secure.putString(
+                    context.contentResolver,
+                    TrickyStoreAppSettings.TARGET_KEY,
+                    seed.joinToString("\n"),
+                )
+            }
+
             val pm = context.packageManager
             val targetMap = loadTargetMap()
             val targeted = targetMap.keys.toSet()
@@ -228,10 +242,26 @@ private fun TrickyStoreAppSettingsContent(
                 targeted = targeted,
                 extraFilter = { app ->
                     val isSystem = app.flags and ApplicationInfo.FLAG_SYSTEM != 0
-                    val isExcluded = EXCLUDED_SUFFIXES.any { app.packageName.contains(it) }
-                    !(isSystem && isExcluded)
+                    val isSuffixExcluded = EXCLUDED_SUFFIXES.any { app.packageName.contains(it) }
+                    !(isSystem && isSuffixExcluded)
                 },
             )
+
+            // Prune stale entries (uninstalled apps), keeping protected defaults
+            val installedPackages = installed.map { it.packageName }.toSet()
+            val cleanedTargetMap = targetMap.filterKeys {
+                it in installedPackages || it in TrickyStoreAppSettings.DEFAULT_TARGETS
+            }
+            if (cleanedTargetMap.size != targetMap.size) {
+                val lines = cleanedTargetMap.map { (pkg, mode) -> pkg + mode.symbol }
+                Settings.Secure.putString(
+                    context.contentResolver,
+                    TrickyStoreAppSettings.TARGET_KEY,
+                    lines.joinToString("\n"),
+                )
+            }
+
+            val mappedApps = installed
                 .sortedWith(targetedFirstComparator(pm, targeted))
                 .map { app ->
                     TrickyAppState(
@@ -240,15 +270,15 @@ private fun TrickyStoreAppSettingsContent(
                             label = pm.getApplicationLabel(app).toString(),
                             icon = runCatching { pm.getApplicationIcon(app) }.getOrNull(),
                             isSystem = app.flags and ApplicationInfo.FLAG_SYSTEM != 0,
-                            isSelected = targetMap.containsKey(app.packageName),
+                            isSelected = cleanedTargetMap.containsKey(app.packageName),
                         ),
-                        mode = targetMap[app.packageName] ?: TargetMode.AUTO,
+                        mode = cleanedTargetMap[app.packageName] ?: TargetMode.AUTO,
                     )
                 }
 
             withContext(Dispatchers.Main) {
                 allApps.clear()
-                allApps.addAll(installed)
+                allApps.addAll(mappedApps)
                 isLoading = false
             }
         }
@@ -318,6 +348,42 @@ private fun TrickyStoreAppSettingsContent(
                         }
                     } else null,
                 )
+                TextButton(
+                    onClick = {
+                        val previouslySelected = allApps
+                            .filter { it.entry.isSelected }
+                            .map { it.entry.packageName }
+                            .toSet()
+
+                        allApps.indices.forEach { i ->
+                            val pkg = allApps[i].entry.packageName
+                            allApps[i] = allApps[i].copy(
+                                entry = allApps[i].entry.copy(
+                                    isSelected = pkg in TrickyStoreAppSettings.DEFAULT_TARGETS ||
+                                            pkg in TrickyStoreAppSettings.DEFAULT_TARGET_MODES,
+                                ),
+                                mode = TrickyStoreAppSettings.DEFAULT_TARGET_MODES[pkg]
+                                    ?: TargetMode.AUTO,
+                            )
+                        }
+
+                        val newSelected = allApps
+                            .filter { it.entry.isSelected }
+                            .map { it.entry.packageName }
+                            .toSet()
+
+                        // Kill anything that was added or removed by the reset
+                        val toKill = (previouslySelected + newSelected) -
+                            previouslySelected.intersect(newSelected)
+
+                        scope.launch(Dispatchers.IO) {
+                            saveTargets()
+                            killPackages(activityManager, toKill)
+                        }
+                    },
+                ) {
+                    Text(stringResource(R.string.action_reset))
+                }
             }
 
             Row(
@@ -346,31 +412,52 @@ private fun TrickyStoreAppSettingsContent(
 
                 OutlinedButton(
                     onClick = {
-                        allApps.indices.forEach { i ->
-                            val pkg = allApps[i].entry.packageName
-                            allApps[i] = allApps[i].copy(
-                                entry = allApps[i].entry.copy(
-                                    isSelected = pkg in TrickyStoreAppSettings.DEFAULT_TARGETS ||
-                                            pkg in TrickyStoreAppSettings.DEFAULT_TARGET_MODES,
-                                ),
-                                mode = TrickyStoreAppSettings.DEFAULT_TARGET_MODES[pkg]
-                                    ?: TargetMode.AUTO,
-                            )
-                        }
                         scope.launch(Dispatchers.IO) {
+                            // Re-use the already-loaded allApps list: non-system apps
+                            // are those whose isSystem flag is false. No redundant PM
+                            // query needed.
+                            val teeBroken = runCatching {
+                                android.security.trickystore
+                                    .TrickyStoreService.getInstance().isTeeBroken()
+                            }.getOrDefault(false)
+
+                            var addedCount = 0
+                            withContext(Dispatchers.Main) {
+                                allApps.indices.forEach { i ->
+                                    val state = allApps[i]
+                                    if (!state.entry.isSelected && !state.entry.isSystem) {
+                                        val mode = when {
+                                            TrickyStoreAppSettings.DEFAULT_TARGET_MODES
+                                                .containsKey(state.entry.packageName) ->
+                                                TrickyStoreAppSettings.DEFAULT_TARGET_MODES[state.entry.packageName]!!
+                                            teeBroken -> TargetMode.LEAF_HACK
+                                            else -> TargetMode.AUTO
+                                        }
+                                        allApps[i] = state.copy(
+                                            entry = state.entry.copy(isSelected = true),
+                                            mode = mode,
+                                        )
+                                        addedCount++
+                                    }
+                                }
+                            }
                             saveTargets()
-                            killPackages(
-                                activityManager,
-                                TrickyStoreAppSettings.DEFAULT_TARGETS +
-                                    TrickyStoreAppSettings.DEFAULT_TARGET_MODES.keys,
-                            )
+                            withContext(Dispatchers.Main) {
+                                val msg = context.resources.getQuantityString(
+                                    R.plurals.ts_added_installed_count,
+                                    addedCount,
+                                    addedCount,
+                                )
+                                android.widget.Toast.makeText(
+                                    context, msg, android.widget.Toast.LENGTH_SHORT).show()
+                            }
                         }
                     },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(
-                        stringResource(R.string.action_reset),
+                        stringResource(R.string.action_add_installed),
                         style = MaterialTheme.typography.labelMedium,
                     )
                 }
@@ -378,13 +465,22 @@ private fun TrickyStoreAppSettingsContent(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            if (isLoading) {
-                SpoofingLoadingBox(modifier = Modifier.weight(1f))
-            } else {
+            AppListAnimatedContent(
+                isLoading = isLoading,
+                isEmpty = filteredApps.isEmpty(),
+                hasSearchQuery = searchQuery.isNotEmpty(),
+                modifier = Modifier.weight(1f),
+                emptyContent = {
+                    SpoofingEmptyState(
+                        icon = Icons.Default.Shield,
+                        title = stringResource(R.string.ts_no_targets),
+                        description = stringResource(R.string.ts_target_apps_empty_description),
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                },
+            ) {
                 LazyColumn(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f),
+                    modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                 ) {
                     items(filteredApps, key = { it.entry.packageName }) { state ->
@@ -398,9 +494,28 @@ private fun TrickyStoreAppSettingsContent(
                                 val i = allApps.indexOfFirst {
                                     it.entry.packageName == state.entry.packageName }
                                 if (i >= 0) {
+                                    val teeBroken = runCatching {
+                                        android.security.trickystore
+                                            .TrickyStoreService.getInstance().isTeeBroken()
+                                    }.getOrDefault(false)
+                                    val defaultMode = when {
+                                        !nowEnabled -> allApps[i].mode
+                                        teeBroken -> TargetMode.LEAF_HACK
+                                        else -> allApps[i].mode
+                                    }
                                     allApps[i] = allApps[i].copy(
-                                        entry = allApps[i].entry.copy(isSelected = nowEnabled))
-                                    scope.launch(Dispatchers.IO) { saveTargets() }
+                                        entry = allApps[i].entry.copy(isSelected = nowEnabled),
+                                        mode = defaultMode,
+                                    )
+                                    scope.launch(Dispatchers.IO) {
+                                        saveTargets()
+                                        if (!nowEnabled) {
+                                            killPackages(
+                                                activityManager,
+                                                setOf(state.entry.packageName),
+                                            )
+                                        }
+                                    }
                                 }
                             },
                             extraContent = if (state.entry.isSelected) {

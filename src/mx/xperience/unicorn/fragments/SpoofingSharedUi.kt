@@ -9,12 +9,21 @@ import android.app.ActivityManager
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,6 +31,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -39,6 +49,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -106,27 +117,39 @@ fun killPackages(activityManager: ActivityManager?, packages: Set<String>) {
 // via the optional `extraFilter` predicate.
 // ---------------------------------------------------------------------------
 
+// Overlay packages are stable for the process lifetime. Cache the set so
+// repeated filterInstalledApps calls (e.g. on showSystemApps toggles across
+// any screen) don't re-scan the full package list every time. Set to null to
+// invalidate if a package-install broadcast is ever observed.
+private var cachedOverlayPackages: Set<String>? = null
+
+private fun getOverlayPackages(pm: PackageManager): Set<String> {
+    cachedOverlayPackages?.let { return it }
+    return pm.getInstalledPackages(0)
+        .filter { it.overlayTarget != null }
+        .map { it.packageName }
+        .toSet()
+        .also { cachedOverlayPackages = it }
+}
+
 fun filterInstalledApps(
     pm: PackageManager,
     showSystem: Boolean,
     targeted: Set<String>,
     hidden: Set<String> = emptySet(),
-                        extraFilter: ((ApplicationInfo) -> Boolean)? = null,
+    extraFilter: ((ApplicationInfo) -> Boolean)? = null,
 ): List<ApplicationInfo> {
-    val overlayPackages = pm.getInstalledPackages(0)
-    .filter { it.overlayTarget != null }
-    .map { it.packageName }
-    .toSet()
+    val overlayPackages = getOverlayPackages(pm)
 
     return pm.getInstalledApplications(PackageManager.GET_META_DATA)
-    .filter { app ->
-        if (app.packageName in overlayPackages) return@filter false
+        .filter { app ->
+            if (app.packageName in overlayPackages) return@filter false
             if (app.packageName in hidden) return@filter false
-                if (extraFilter != null && !extraFilter(app)) return@filter false
-                    val isSystem = app.flags and ApplicationInfo.FLAG_SYSTEM != 0
-                    if (isSystem && !showSystem && app.packageName !in targeted) return@filter false
-                        true
-    }
+            if (extraFilter != null && !extraFilter(app)) return@filter false
+            val isSystem = app.flags and ApplicationInfo.FLAG_SYSTEM != 0
+            if (isSystem && !showSystem && app.packageName !in targeted) return@filter false
+            true
+        }
 }
 
 // ---------------------------------------------------------------------------
@@ -164,15 +187,15 @@ fun AppIconOrPlaceholder(
             bitmap = bitmap,
             contentDescription = null,
             modifier = Modifier
-            .size(sizeDp.dp)
-            .clip(RoundedCornerShape(cornerDp)),
+                .size(sizeDp.dp)
+                .clip(RoundedCornerShape(cornerDp)),
         )
     } else {
         Box(
             modifier = Modifier
-            .size(sizeDp.dp)
-            .clip(RoundedCornerShape(cornerDp))
-            .background(MaterialTheme.colorScheme.surfaceVariant),
+                .size(sizeDp.dp)
+                .clip(RoundedCornerShape(cornerDp))
+                .background(MaterialTheme.colorScheme.surfaceVariant),
         )
     }
 }
@@ -190,16 +213,54 @@ fun SystemAppBadge(
     Badge(
         modifier = modifier,
         containerColor = if (isCritical)
-        MaterialTheme.colorScheme.error
+            MaterialTheme.colorScheme.error
         else
             MaterialTheme.colorScheme.tertiary,
-          contentColor = if (isCritical)
-          MaterialTheme.colorScheme.onError
-          else
-              MaterialTheme.colorScheme.onTertiary,
+        contentColor = if (isCritical)
+            MaterialTheme.colorScheme.onError
+        else
+            MaterialTheme.colorScheme.onTertiary,
     ) {
         Text(stringResource(R.string.common_system_badge))
     }
+}
+
+// ---------------------------------------------------------------------------
+// CheckCloseSwitch
+// Shared Switch with a Check/Close thumb icon, matching the ForceFullscreen
+// (AxionOS) picker-row toggle style. Used by AppPickerItem's per-row switch
+// and any other Switch that wants the same check/x thumb treatment (the
+// SpoofingHeaderCard master switch already does its own Crossfade version
+// of this and is left as-is).
+// ---------------------------------------------------------------------------
+
+@Composable
+fun CheckCloseSwitch(
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+) {
+    Switch(
+        checked = checked,
+        onCheckedChange = onCheckedChange,
+        modifier = modifier,
+        enabled = enabled,
+        thumbContent = {
+            val icon = if (checked) Icons.Rounded.Check else Icons.Rounded.Close
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(SwitchDefaults.IconSize),
+            )
+        },
+        colors = SwitchDefaults.colors(
+            checkedThumbColor = MaterialTheme.colorScheme.primary,
+            checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
+            checkedIconColor = MaterialTheme.colorScheme.onPrimary,
+            uncheckedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        ),
+    )
 }
 
 // ---------------------------------------------------------------------------
@@ -219,31 +280,34 @@ fun SpoofingHeaderCard(
     modifier: Modifier = Modifier,
     checked: Boolean? = null,
     onCheckedChange: ((Boolean) -> Unit)? = null,
-                       hapticOnToggle: Boolean = true,
-                       icon: @Composable () -> Unit,
+    hapticOnToggle: Boolean = true,
+    icon: @Composable () -> Unit,
 ) {
     val haptic = LocalHapticFeedback.current
     Card(
         modifier = modifier.fillMaxWidth(),
-         shape = RoundedCornerShape(24.dp),
-         colors = CardDefaults.cardColors(
-             containerColor = MaterialTheme.colorScheme.surfaceBright,
-         ),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceBright,
+        ),
     ) {
         Row(
             modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp),
+                .fillMaxWidth()
+                .padding(20.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(
                 modifier = Modifier
-                .size(48.dp)
-                .clip(CircleShape)
-                .background(
-                    if (checked != false) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surfaceVariant,
-                ),
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(
+                        when (checked) {
+                            true  -> MaterialTheme.colorScheme.primary
+                            false -> MaterialTheme.colorScheme.surfaceVariant
+                            null  -> MaterialTheme.colorScheme.primaryContainer
+                        },
+                    ),
                 contentAlignment = Alignment.Center,
             ) {
                 icon()
@@ -252,13 +316,13 @@ fun SpoofingHeaderCard(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = title,
-                     style = MaterialTheme.typography.titleLarge,
-                     fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
                 )
                 Text(
                     text = subtitle,
-                     style = MaterialTheme.typography.bodyMedium,
-                     color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
             if (checked != null && onCheckedChange != null) {
@@ -274,10 +338,10 @@ fun SpoofingHeaderCard(
                         Crossfade(
                             targetState = checked,
                             animationSpec = MaterialTheme.motionScheme.slowEffectsSpec(),
-                                  label = "header_switch_thumb",
+                            label = "header_switch_thumb",
                         ) { on ->
                             if (on) Icon(Icons.Rounded.Check, null, Modifier.size(16.dp))
-                                else Icon(Icons.Rounded.Close, null, Modifier.size(16.dp))
+                            else Icon(Icons.Rounded.Close, null, Modifier.size(16.dp))
                         }
                     },
                 )
@@ -302,15 +366,15 @@ fun SpoofingAnimatedVisibility(
         visible = visible,
         modifier = modifier,
         enter = fadeIn(MaterialTheme.motionScheme.defaultEffectsSpec()) +
-        expandVertically(
-            animationSpec = MaterialTheme.motionScheme.defaultSpatialSpec(),
-                         expandFrom = Alignment.Top,
-        ),
+                expandVertically(
+                    animationSpec = MaterialTheme.motionScheme.defaultSpatialSpec(),
+                    expandFrom = Alignment.Top,
+                ),
         exit = fadeOut(MaterialTheme.motionScheme.fastEffectsSpec()) +
-        shrinkVertically(
-            animationSpec = MaterialTheme.motionScheme.fastSpatialSpec(),
-                         shrinkTowards = Alignment.Top,
-        ),
+               shrinkVertically(
+                   animationSpec = MaterialTheme.motionScheme.fastSpatialSpec(),
+                   shrinkTowards = Alignment.Top,
+               ),
         content = { content() },
     )
 }
@@ -348,34 +412,34 @@ fun SpoofingEmptyState(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-         shape = RoundedCornerShape(16.dp),
-         colors = CardDefaults.cardColors(
-             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
-         ),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
+        ),
     ) {
         Column(
             modifier = Modifier
-            .fillMaxWidth()
-            .padding(32.dp),
-               horizontalAlignment = Alignment.CenterHorizontally,
-               verticalArrangement = Arrangement.spacedBy(8.dp),
+                .fillMaxWidth()
+                .padding(32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Icon(
                 imageVector = icon,
-                 contentDescription = null,
-                 modifier = Modifier.size(48.dp),
-                 tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
             )
             Text(
                 text = title,
-                 style = MaterialTheme.typography.titleMedium,
-                 textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleMedium,
+                textAlign = TextAlign.Center,
             )
             Text(
                 text = description,
-                 style = MaterialTheme.typography.bodySmall,
-                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                 textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                textAlign = TextAlign.Center,
             )
         }
     }
@@ -395,12 +459,67 @@ fun SectionLabel(
 ) {
     Text(
         text = text,
-         style = MaterialTheme.typography.labelMedium,
-         color = MaterialTheme.colorScheme.primary,
-         fontWeight = FontWeight.Bold,
-         modifier = if (includeBottomPadding)
-         modifier.padding(start = 4.dp, bottom = 8.dp)
-         else
-             modifier.padding(start = 4.dp),
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.primary,
+        fontWeight = FontWeight.Bold,
+        modifier = if (includeBottomPadding)
+            modifier.padding(start = 4.dp, bottom = 8.dp)
+        else
+            modifier.padding(start = 4.dp),
     )
+}
+
+// ---------------------------------------------------------------------------
+// AppListAnimatedContent
+// Adapted from ForceFullscreenCompose.kt's AnimatedContent state-transition
+// pattern (LineageOS/AxionOS diff). Wraps the loading/empty/content
+// branching used by PixelProps, TensorTargets, and TrickyStoreAppSettings
+// behind a single shared AnimatedContent + sealed state, instead of each
+// screen hand-rolling its own if/else block.
+// ---------------------------------------------------------------------------
+
+private sealed class AppListScreenState {
+    object Loading : AppListScreenState()
+    data class Empty(val hasSearchQuery: Boolean) : AppListScreenState()
+    object Content : AppListScreenState()
+}
+
+@OptIn(ExperimentalAnimationApi::class)
+@Composable
+fun AppListAnimatedContent(
+    isLoading: Boolean,
+    isEmpty: Boolean,
+    hasSearchQuery: Boolean,
+    modifier: Modifier = Modifier,
+    loadingContent: @Composable () -> Unit = { SpoofingLoadingBox(modifier = Modifier.fillMaxSize()) },
+    emptyContent: @Composable (hasSearchQuery: Boolean) -> Unit,
+    content: @Composable () -> Unit,
+) {
+    AnimatedContent(
+        targetState = when {
+            isLoading -> AppListScreenState.Loading
+            isEmpty -> AppListScreenState.Empty(hasSearchQuery)
+            else -> AppListScreenState.Content
+        },
+        modifier = modifier,
+        transitionSpec = {
+            fadeIn(animationSpec = tween(300, easing = LinearEasing)) +
+                    slideInVertically(
+                        animationSpec = tween(300, easing = FastOutSlowInEasing),
+                        initialOffsetY = { it / 4 },
+                    ) togetherWith
+                    fadeOut(animationSpec = tween(200, easing = LinearEasing)) +
+                    slideOutVertically(
+                        animationSpec = tween(200, easing = FastOutLinearInEasing),
+                        targetOffsetY = { -it / 4 },
+                    )
+        },
+        label = "app_list_state_animation",
+    ) { state ->
+        when (state) {
+            is AppListScreenState.Loading -> loadingContent()
+            is AppListScreenState.Empty -> emptyContent(state.hasSearchQuery)
+            is AppListScreenState.Content -> content()
+        }
+    }
 }

@@ -7,7 +7,6 @@ package mx.xperience.unicorn.fragments
 
 import android.app.ActivityManager
 import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
@@ -61,8 +60,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.android.internal.logging.nano.MetricsProto
-import com.android.internal.util.evolution.PixelDeviceRepository
-import com.android.internal.util.evolution.PixelPropsUtils
+import com.android.internal.util.xperience.PixelDeviceRepository
+import com.android.internal.util.xperience.PixelPropsUtils
 import com.android.settings.R
 import com.android.settings.SettingsPreferenceFragment
 import com.android.settingslib.spa.framework.theme.SettingsTheme
@@ -74,39 +73,8 @@ private const val PP_TARGETS_KEY = "pi_pp_targets"
 private const val PP_MODEL_KEY   = "pi_pp_model"
 private const val PP_ENABLED_KEY = "pi_pp_spoof"
 
-private val DEFAULT_PP_TARGETS = setOf(
-    "com.amazon.avod.thirdpartyclient",
-    "com.android.chrome",
-    "com.breel.wallpapers20",
-    "com.disney.disneyplus",
-    "com.google.android.aicore",
-    "com.google.android.apps.accessibility.magnifier",
-    "com.google.android.apps.aiwallpapers",
-    "com.google.android.apps.bard",
-    "com.google.android.apps.customization.pixel",
-    "com.google.android.apps.emojiwallpaper",
-    "com.google.android.apps.pixel.agent",
-    "com.google.android.apps.pixel.creativeassistant",
-    "com.google.android.apps.pixel.nowplaying",
-    "com.google.android.apps.pixel.psi",
-    "com.google.android.apps.pixel.subzero",
-    "com.google.android.apps.pixel.support",
-    "com.google.android.apps.privacy.wildlife",
-    "com.google.android.apps.subscriptions.red",
-    "com.google.android.apps.wallpaper",
-    "com.google.android.apps.wallpaper.pixel",
-    "com.google.android.apps.weather",
-    "com.google.android.googlequicksearchbox",
-    "com.google.android.pcs",
-    "com.google.android.wallpaper.effects",
-    "com.google.pixel.livewallpaper",
-    "com.microsoft.android.smsorganizer",
-    "com.nhs.online.nhsonline",
-    "com.nothing.smartcenter",
-    "com.realme.link",
-    "in.startv.hotstar",
-    "jp.id_credit_sp2.android",
-)
+// DEFAULT_PP_TARGETS now lives in PixelDeviceRepository.DEFAULT_PP_TARGETS (Java Set<String>),
+// shared with PixelPropsUtils rather than kept as a separate Kotlin copy.
 
 // PpAppEntry kept for external references; internally we use AppListEntry
 data class PpAppEntry(
@@ -139,14 +107,6 @@ class PixelPropsSettings : SettingsPreferenceFragment() {
                 PixelPropsContent(context = requireContext())
             }
         }
-    }
-
-    override fun setDivider(divider: Drawable?) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
-    }
-
-    override fun setDividerHeight(height: Int) {
-        // Do nothing to prevent NullPointerException because we use Compose instead of RecyclerView
     }
 }
 
@@ -209,15 +169,12 @@ private fun PixelPropsContent(context: android.content.Context) {
         )
     }
     var profiles by remember {
-        mutableStateOf(
-            PixelDeviceRepository.readCache(context)
-                .ifEmpty { PixelDeviceRepository.FALLBACK_PROFILES },
-        )
+        mutableStateOf(PixelDeviceRepository.FALLBACK_PROFILES)
     }
     var selectedCodename by remember {
         mutableStateOf(
             Settings.Secure.getString(context.contentResolver, PP_MODEL_KEY)
-                ?: if (isTablet) "tangorpro" else "mustang",
+                ?: if (isTablet) "tangorpro" else PixelDeviceRepository.getDefaultPhoneCodename(),
         )
     }
     var showModelDropdown by remember { mutableStateOf(false) }
@@ -228,7 +185,7 @@ private fun PixelPropsContent(context: android.content.Context) {
 
     fun readTargetsSet(): Set<String> {
         val raw = Settings.Secure.getString(context.contentResolver, PP_TARGETS_KEY)
-        if (raw.isNullOrBlank()) return DEFAULT_PP_TARGETS
+        if (raw.isNullOrBlank()) return PixelDeviceRepository.DEFAULT_PP_TARGETS
         return raw.split(",").filter { it.isNotBlank() }.toSet()
     }
 
@@ -240,15 +197,17 @@ private fun PixelPropsContent(context: android.content.Context) {
         )
     }
 
-    // Fetch profiles in the background
+    // Fetch profiles in the background — stable-only, since prop spoofing
+    // should never present as a canary/beta build.
     LaunchedEffect(Unit) {
         scope.launch(Dispatchers.IO) {
-            val fresh = PixelDeviceRepository.getProfiles(context)
+            val fresh = PixelDeviceRepository.getStableProfiles(context)
             val resolved = fresh.ifEmpty { PixelDeviceRepository.FALLBACK_PROFILES }
             withContext(Dispatchers.Main) {
                 profiles = resolved
                 if (resolved.none { it.codename == selectedCodename }) {
-                    val defaultCodename = if (isTablet) "tangorpro" else "mustang"
+                    val defaultCodename = if (isTablet) "tangorpro"
+                        else PixelDeviceRepository.getDefaultPhoneCodename(resolved)
                     selectedCodename = defaultCodename
                     Settings.Secure.putString(
                         context.contentResolver, PP_MODEL_KEY, defaultCodename)
@@ -299,6 +258,8 @@ private fun PixelPropsContent(context: android.content.Context) {
                 app.packageName.lowercase().contains(q)
         }
     }
+
+    val displayProfiles = remember(profiles) { profiles }
 
     val activeCount = allApps.count { it.isSelected }
     val selectedProfile = profiles.find { it.codename == selectedCodename }
@@ -377,7 +338,7 @@ private fun PixelPropsContent(context: android.content.Context) {
                                     onDismissRequest = { showModelDropdown = false },
                                     modifier = Modifier.heightIn(max = 320.dp),
                                 ) {
-                                    profiles.forEach { profile ->
+                                    displayProfiles.forEach { profile ->
                                         DropdownMenuItem(
                                             text = {
                                                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -487,12 +448,30 @@ private fun PixelPropsContent(context: android.content.Context) {
                             onClick = {
                                 allApps.indices.forEach { i ->
                                     allApps[i] = allApps[i].copy(
-                                        isSelected = allApps[i].packageName in DEFAULT_PP_TARGETS,
+                                        isSelected = allApps[i].packageName in PixelDeviceRepository.DEFAULT_PP_TARGETS,
                                     )
                                 }
                                 scope.launch(Dispatchers.IO) {
-                                    writeTargetsSet(DEFAULT_PP_TARGETS)
-                                    killPackages(activityManager, DEFAULT_PP_TARGETS)
+                                    Settings.Secure.putString(
+                                        context.contentResolver,
+                                        PixelDeviceRepository.STABLE_CACHE_KEY,
+                                        "",
+                                    )
+                                    writeTargetsSet(PixelDeviceRepository.DEFAULT_PP_TARGETS)
+                                    killPackages(activityManager, PixelDeviceRepository.DEFAULT_PP_TARGETS)
+                                    val fresh = PixelDeviceRepository.getStableProfiles(context, true)
+                                    val resolved = fresh.ifEmpty { PixelDeviceRepository.FALLBACK_PROFILES }
+                                    val defaultCodename = if (isTablet) "tangorpro"
+                                        else PixelDeviceRepository.getDefaultPhoneCodename(resolved)
+                                    Settings.Secure.putString(
+                                        context.contentResolver,
+                                        PP_MODEL_KEY,
+                                        defaultCodename,
+                                    )
+                                    withContext(Dispatchers.Main) {
+                                        profiles = resolved
+                                        selectedCodename = defaultCodename
+                                    }
                                 }
                             },
                             modifier = Modifier.weight(1f),
@@ -507,20 +486,22 @@ private fun PixelPropsContent(context: android.content.Context) {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    if (isLoading) {
-                        SpoofingLoadingBox(modifier = Modifier.weight(1f))
-                    } else if (filteredApps.isEmpty()) {
-                        SpoofingEmptyState(
-                            icon = Icons.Default.Android,
-                            title = stringResource(R.string.ts_no_targets),
-                            description = stringResource(R.string.pp_empty_description),
-                            modifier = Modifier.weight(1f),
-                        )
-                    } else {
+                    AppListAnimatedContent(
+                        isLoading = isLoading,
+                        isEmpty = filteredApps.isEmpty(),
+                        hasSearchQuery = searchQuery.isNotEmpty(),
+                        modifier = Modifier.weight(1f),
+                        emptyContent = {
+                            SpoofingEmptyState(
+                                icon = Icons.Default.Android,
+                                title = stringResource(R.string.ts_no_targets),
+                                description = stringResource(R.string.pp_empty_description),
+                                modifier = Modifier.fillMaxSize(),
+                            )
+                        },
+                    ) {
                         LazyColumn(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .weight(1f),
+                            modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(6.dp),
                         ) {
                             items(filteredApps, key = { it.packageName }) { app ->

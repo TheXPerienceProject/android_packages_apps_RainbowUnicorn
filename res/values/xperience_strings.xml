@@ -828,6 +828,9 @@
     <string name="pif_delete_config_summary">Remove the currently active configuration file</string>
     <string name="pif_delete_title">Delete %s?</string>
     <string name="pif_delete_message">This configuration file will be permanently removed.</string>
+    <string name="pif_wipe_playstore_title">Clear Play Store data?</string>
+    <string name="pif_wipe_playstore_message">Applying this fingerprint works best with a fresh Play Store session. Clear Play Store app data now? This will sign you out and clear its local cache and download queue.</string>
+    <string name="pif_wipe_confirm">Clear data</string>
     <string name="pif_deleted">Deleted %s</string>
     <string name="pif_config_details">Configuration details</string>
     <string name="pif_failed">Failed: %s</string>
@@ -908,6 +911,40 @@
     <string name="ts_fetch_keybox_auto_replaced">Keybox automatically replaced with a valid one</string>
     <string name="ts_fetch_keybox_soft_banned_refetch">Keybox soft-banned, keeping it and attempting to fetch a better one…</string>
     <string name="ts_fetch_keybox_no_valid_found">No valid keybox available yet, will retry tomorrow</string>
+    <!-- TrickyStore: security patch -->
+    <string name="ts_patch_stale_warning">Security patch date %1$s is more than 12 months old</string>
+
+    <!-- TrickyStore: revocation status -->
+    <string name="ts_revocation_expiring_soon">Keybox certificate is expiring soon</string>
+    <string name="ts_revocation_chain_invalid">Keybox certificate chain is invalid</string>
+    <string name="ts_revocation_untrusted_root">Keybox certificate root is not trusted</string>
+
+    <!-- TrickyStore: automatic keybox replacement -->
+    <string name="ts_fetch_keybox_suspended_refetch">Keybox is suspended. Fetching a replacement…</string>
+
+    <!-- TrickyStore: untrusted root dialog -->
+    <string name="ts_untrusted_root_title">Untrusted keybox root</string>
+    <string name="ts_untrusted_root_message">The imported keybox is not signed by a trusted Google attestation root. It may not work correctly. Do you want to keep it or replace it?</string>
+    <string name="ts_untrusted_root_keep">Keep</string>
+    <string name="ts_untrusted_root_replace">Replace</string>
+
+    <!-- TrickyStore: invalid chain dialog -->
+    <string name="ts_chain_invalid_title">Invalid keybox certificate chain</string>
+    <string name="ts_chain_invalid_message">The imported keybox has an invalid certificate chain and may not work correctly. Do you want to keep it or replace it?</string>
+
+    <!-- TrickyStore: expiring certificate dialog -->
+    <string name="ts_expiry_unknown">unknown date</string>
+    <string name="ts_expiring_soon_title">Keybox expiring soon</string>
+    <string name="ts_expiring_soon_message">The current keybox certificate expires on %1$s. Do you want to keep it or replace it?</string>
+
+    <!-- TrickyStore app list -->
+    <string name="action_add_installed">Add installed apps</string>
+
+    <plurals name="ts_added_installed_count">
+        <item quantity="one">%d installed app added</item>
+        <item quantity="other">%d installed apps added</item>
+    </plurals>
+    <string name="ts_target_apps_empty_description">No apps match your search or configuration</string>
 
     <!-- Generic actions & labels -->
     <string name="action_enable">Enable</string>

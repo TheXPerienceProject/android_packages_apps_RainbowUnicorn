@@ -23,14 +23,16 @@ import com.android.settings.SettingsPreferenceFragment
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
-import java.nio.charset.StandardCharsets
 import java.net.HttpURLConnection
 import java.net.URL
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
 import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,50 +41,111 @@ import org.json.JSONObject
 
 class TrickyStore : SettingsPreferenceFragment() {
 
-    private enum class RevocationStatus { UNKNOWN, CHECKING, VALID, REVOKED, SUSPENDED, SOFT_BANNED }
+    // ----- Revocation status enum -------------------------------------------
+
+    private enum class RevocationStatus {
+        UNKNOWN, CHECKING, VALID, REVOKED, SUSPENDED, EXPIRING_SOON,
+        CHAIN_INVALID, UNTRUSTED_ROOT
+    }
+
+    // ---- State --------------------------------------------------------------
 
     private var currentRevocationStatus: RevocationStatus = RevocationStatus.UNKNOWN
-
-    // Prevents concurrent revocation checks (duplicate onResume after onCreate,
-    // or rotation while a check is already in-flight).
+    private var currentRevocationReason: String = ""   // e.g. "KEY_COMPROMISE"
     private var isCheckInProgress = false
+    private var isKeyboxPickerOpen = false
+
+    // ---- Trust anchors (SHA-256 of DER-encoded cert) ------------------------
+
+    companion object {
+        // Google Hardware Attestation Root (RSA-4096)
+        // Original issuance 2019, serial d50ff25ba3f2d6b3, valid until 2034
+        private const val GOOGLE_ROOT_RSA_2019_SHA256 =
+            "1EF1A04B8BA58AB94589AC498C8982A783F24EA7307E0159A0C3A73B377D87CC"
+
+        // Google Hardware Attestation Root (RSA-4096)
+        // Reissued 2022, serial f1c172a699eaf51d, valid until 2042
+        // Same public key as 2019 root, different cert (currently served by /attestation/root)
+        private const val GOOGLE_ROOT_RSA_2022_SHA256 =
+            "CEDB1CB6DC896AE5EC797348BCE9286753C2B38EE71CE0FBE34A9A1248800DFC"
+
+        // Google Hardware Attestation Root (EC P-384) "Key Attestation CA1"
+        // Issued 2025, serial 84a9d0297b0eb58ae7ff0e80de760605, valid until 2035
+        // RKP devices use this root exclusively from April 2026 onward
+        private const val GOOGLE_ROOT_EC_2025_SHA256 =
+            "C6E5DC76BD81307046A3CCC979F0FAC6BDDEF46CC9B533B2134EB0E99F67550E"
+
+        // Keys & setting names
+        private const val KEYBOX_KEY                 = "spoof_trickystore_keybox"
+        private const val KEYBOX_SOURCE_KEY          = "spoof_trickystore_keybox_source"
+        private const val KEYBOX_SOURCE_OFFICIAL     = "official"
+        private const val KEYBOX_SOURCE_USER         = "user"
+        private const val TARGET_KEY                 = TrickyStoreAppSettings.TARGET_KEY
+        internal const val PATCH_KEY                 = "spoof_trickystore_patch"
+        private const val LAST_FETCHED_KEY           = "spoof_trickystore_last_fetched"
+        private const val LAST_REVOCATION_CHECK_KEY  = "spoof_trickystore_last_revocation_check"
+        private const val LAST_NO_VALID_KEY          = "spoof_trickystore_last_no_valid"
+        private const val LAST_REVOCATION_STATUS_KEY = "spoof_trickystore_last_revocation_status"
+        private const val LAST_REVOCATION_REASON_KEY = "spoof_trickystore_last_revocation_reason"
+
+        private const val CACHED_REVOKED_SERIALS_KEY = "spoof_trickystore_cached_revoked_serials"
+        private const val CACHED_REVOKED_AT_KEY       = "spoof_trickystore_cached_revoked_at"
+        private val CACHE_TRUST_WINDOW_MS = TimeUnit.DAYS.toMillis(7)
+
+        private const val TRICKYSTORE_ENABLED_KEY    = "spoof_trickystore_enabled"
+
+        private const val VENDING_PACKAGE            = "com.android.vending"
+        private const val DROIDGUARD_PACKAGE         = "com.google.android.gms.unstable"
+        private const val GMS_PACKAGE                = "com.google.android.gms"
+        private const val GMS_PERSISTENT_PACKAGE     = "com.google.android.gms.persistent"
+        private const val RKPD_PACKAGE               = "com.google.android.rkpdapp"
+        private const val GSF_PACKAGE                = "com.google.android.gsf"
+        private const val CONTACT_KEYS_PACKAGE       = "com.google.android.contactkeys"
+        private const val SAFETY_CORE_PACKAGE        = "com.google.android.safetycore"
+        private const val VELVET_PACKAGE             = "com.google.android.googlequicksearchbox"
+
+        private const val REVOCATION_URL     =
+            "https://android.googleapis.com/attestation/status?encrypted=0"
+        private const val OFFICIAL_KEYBOX_URL =
+            "https://v15.next.forgejo.org/EvolutionX/keybox/raw/branch/main/keybox.xml"
+
+        /** Warn user when the leaf cert expires within this window. */
+        private val EXPIRY_WARN_MS = TimeUnit.DAYS.toMillis(14)
+    }
+
+    // ---- Properties ---------------------------------------------------------
 
     private val isTrickyStoreEnabled: Boolean
         get() = Settings.System.getInt(
-            requireContext().contentResolver,
-            TRICKYSTORE_ENABLED_KEY, 1
-        ) != 0
+            requireContext().contentResolver, TRICKYSTORE_ENABLED_KEY, 1) != 0
 
-    // Guards against autoFetchIfNoKeybox() firing while the user is mid-import.
-    private var isKeyboxPickerOpen = false
-    private var softBannedSerialsCache: Set<String>? = null
+    // ---- Activity-result launchers ------------------------------------------
 
     private val keyboxPicker = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         isKeyboxPickerOpen = false
-        if (result.resultCode == Activity.RESULT_OK) {
-            result.data?.data?.let { uri ->
-                try {
-                    val bytes = requireContext().contentResolver.openInputStream(uri)?.use { it.readBytes() }
-                        ?: ByteArray(0)
-                    val encoded = Base64.encodeToString(bytes, Base64.NO_WRAP)
-                    Settings.Secure.putString(
-                        requireContext().contentResolver,
-                        KEYBOX_KEY,
-                        encoded
-                    )
-                    saveLastFetchedTimestamp()
-                    killGms()
-                    toast(getString(R.string.ts_keybox_imported))
-                    currentRevocationStatus = RevocationStatus.UNKNOWN
-                    Settings.Secure.putString(
-                        requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY, "")
-                    refreshStatus()
-                    checkKeyboxRevocation()
-                } catch (e: Exception) {
-                    toast(getString(R.string.ts_failed, e.message ?: ""))
-                }
+        if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
+        result.data?.data?.let { uri ->
+            try {
+                val bytes = requireContext().contentResolver.openInputStream(uri)
+                    ?.use { it.readBytes() } ?: ByteArray(0)
+                val encoded = Base64.encodeToString(bytes, Base64.NO_WRAP)
+                Settings.Secure.putString(
+                    requireContext().contentResolver, KEYBOX_KEY, encoded)
+                Settings.Secure.putString(
+                    requireContext().contentResolver, KEYBOX_SOURCE_KEY, KEYBOX_SOURCE_USER)
+                saveLastFetchedTimestamp()
+                killGms()
+                toast(getString(R.string.ts_keybox_imported))
+                currentRevocationStatus = RevocationStatus.UNKNOWN
+                currentRevocationReason = ""
+                Settings.Secure.putString(
+                    requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY, "")
+                refreshStatus()
+                checkKeyboxRevocation()
+            } catch (e: Exception) {
+                toast(getString(R.string.ts_failed, e.message ?: ""))
             }
         }
     }
@@ -90,25 +153,22 @@ class TrickyStore : SettingsPreferenceFragment() {
     private val targetPicker = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            result.data?.data?.let { uri ->
-                try {
-                    val text = requireContext().contentResolver.openInputStream(uri)?.use { input ->
-                        input.readBytes().toString(StandardCharsets.UTF_8)
-                    } ?: ""
-                    Settings.Secure.putString(
-                        requireContext().contentResolver,
-                        TARGET_KEY,
-                        text
-                    )
-                    toast(getString(R.string.ts_target_list_imported))
-                    refreshStatus()
-                } catch (e: Exception) {
-                    toast(getString(R.string.ts_failed, e.message ?: ""))
-                }
+        if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
+        result.data?.data?.let { uri ->
+            try {
+                val text = requireContext().contentResolver.openInputStream(uri)
+                    ?.use { it.readBytes().toString(StandardCharsets.UTF_8) } ?: ""
+                Settings.Secure.putString(
+                    requireContext().contentResolver, TARGET_KEY, text)
+                toast(getString(R.string.ts_target_list_imported))
+                refreshStatus()
+            } catch (e: Exception) {
+                toast(getString(R.string.ts_failed, e.message ?: ""))
             }
         }
     }
+
+    // ---- Lifecycle ----------------------------------------------------------
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -143,11 +203,9 @@ class TrickyStore : SettingsPreferenceFragment() {
             true
         }
 
-        findPreference<Preference>("ts_fetch_keybox")?.apply {
-                setOnPreferenceClickListener {
-                    fetchOfficialKeybox()
-                    true
-                }
+        findPreference<Preference>("ts_fetch_keybox")?.setOnPreferenceClickListener {
+            fetchOfficialKeybox()
+            true
         }
 
         findPreference<Preference>("ts_revocation_status")?.setOnPreferenceClickListener {
@@ -155,55 +213,49 @@ class TrickyStore : SettingsPreferenceFragment() {
             true
         }
 
+        // Restore persisted status
         currentRevocationStatus = when (
-            Settings.Secure.getString(requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY)
+            Settings.Secure.getString(
+                requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY)
         ) {
-            "VALID"      -> RevocationStatus.VALID
-            "REVOKED"    -> RevocationStatus.REVOKED
-            "SUSPENDED"  -> RevocationStatus.SUSPENDED
-            "SOFT_BANNED"-> RevocationStatus.SOFT_BANNED
-            else         -> RevocationStatus.UNKNOWN
+            "VALID"          -> RevocationStatus.VALID
+            "REVOKED"        -> RevocationStatus.REVOKED
+            "SUSPENDED"      -> RevocationStatus.SUSPENDED
+            "EXPIRING_SOON"  -> RevocationStatus.EXPIRING_SOON
+            "CHAIN_INVALID"  -> RevocationStatus.CHAIN_INVALID
+            "UNTRUSTED_ROOT" -> RevocationStatus.UNTRUSTED_ROOT
+            else             -> RevocationStatus.UNKNOWN
         }
+        currentRevocationReason = Settings.Secure.getString(
+            requireContext().contentResolver, LAST_REVOCATION_REASON_KEY) ?: ""
 
         refreshStatus()
-
-        // If a check was interrupted (e.g. by rotation), LAST_REVOCATION_CHECK_KEY was written
-        // but LAST_REVOCATION_STATUS_KEY was not — force a re-check on next onResume by clearing
-        // the timestamp so the 24h gate treats it as never checked.
-        val lastChecked = Settings.Secure.getLong(
-            requireContext().contentResolver, LAST_REVOCATION_CHECK_KEY, 0L)
-        val lastStatus = Settings.Secure.getString(
-            requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY)
-        if (lastChecked > 0L && lastStatus.isNullOrEmpty()) {
-            Settings.Secure.putLong(
-                requireContext().contentResolver, LAST_REVOCATION_CHECK_KEY, 0L)
-        }
     }
 
     override fun onResume() {
         super.onResume()
         refreshStatus()
-        if (isTrickyStoreEnabled) {
-            val lastChecked = Settings.Secure.getLong(
-                requireContext().contentResolver, LAST_REVOCATION_CHECK_KEY, 0L)
-            val overADay = System.currentTimeMillis() - lastChecked > 24 * 60 * 60 * 1000L
-            if (overADay && !isCheckInProgress) {
-                checkKeyboxRevocation()
-            } else {
-                autoFetchIfNoKeybox()
-            }
+        if (!isTrickyStoreEnabled) return
+
+        val lastChecked = Settings.Secure.getLong(
+            requireContext().contentResolver, LAST_REVOCATION_CHECK_KEY, 0L)
+        val overADay = System.currentTimeMillis() - lastChecked > TimeUnit.HOURS.toMillis(24)
+        if (overADay && !isCheckInProgress) {
+            checkKeyboxRevocation()
+        } else {
+            autoFetchIfNoKeybox()
         }
     }
 
+    // ---- UI refresh ---------------------------------------------------------
+
     private fun refreshStatus() {
         val keyboxExists = !Settings.Secure.getString(
-            requireContext().contentResolver, KEYBOX_KEY
-        ).isNullOrEmpty()
+            requireContext().contentResolver, KEYBOX_KEY).isNullOrEmpty()
 
-        val targetContent = Settings.Secure.getString(requireContext().contentResolver, TARGET_KEY)
-        val targetCount = if (!targetContent.isNullOrEmpty()) {
-            targetContent.lines().count { it.isNotBlank() }
-        } else 0
+        val targetContent = Settings.Secure.getString(
+            requireContext().contentResolver, TARGET_KEY)
+        val targetCount = targetContent?.lines()?.count { it.isNotBlank() } ?: 0
 
         findPreference<Preference>("ts_import_keybox")?.summary =
             if (keyboxExists) getString(R.string.ts_keybox_installed)
@@ -217,36 +269,60 @@ class TrickyStore : SettingsPreferenceFragment() {
 
         val patchDate = Settings.Secure.getString(requireContext().contentResolver, PATCH_KEY)
         findPreference<Preference>("ts_security_patch")?.summary =
-            if (!patchDate.isNullOrEmpty()) patchDate
-            else getString(R.string.ts_no_patch)
+            if (!patchDate.isNullOrEmpty()) {
+                if (isPatchDateStale(patchDate)) {
+                    getString(R.string.ts_patch_stale_warning, patchDate)
+                } else {
+                    patchDate
+                }
+            } else {
+                getString(R.string.ts_no_patch)
+            }
 
         findPreference<Preference>("ts_verification_mode")?.summary = buildVerificationSummary()
 
-        applyRevocationUi(currentRevocationStatus)
-
+        applyRevocationUi(currentRevocationStatus, currentRevocationReason)
         updateFetchButtonState(keyboxExists)
     }
 
-    private fun applyRevocationUi(status: RevocationStatus) {
+    private fun applyRevocationUi(status: RevocationStatus, reason: String = "") {
         val pref = findPreference<Preference>("ts_revocation_status") ?: return
         if (!isAdded) return
 
-        val (iconRes, summary) = when (status) {
+        val effectiveStatus = if (!isUserImportedKeybox() &&
+            (status == RevocationStatus.CHAIN_INVALID ||
+             status == RevocationStatus.UNTRUSTED_ROOT)) {
+            RevocationStatus.VALID
+        } else {
+            status
+        }
+
+        val reasonSuffix = if (reason.isNotEmpty()) " ($reason)" else ""
+
+        val (iconRes, summary) = when (effectiveStatus) {
             RevocationStatus.VALID -> Pair(
                 R.drawable.ic_ts_status_valid,
                 getString(R.string.ts_revocation_valid)
             )
             RevocationStatus.REVOKED -> Pair(
                 R.drawable.ic_ts_status_revoked,
-                getString(R.string.ts_revocation_revoked, "")
+                getString(R.string.ts_revocation_revoked, reasonSuffix)
             )
             RevocationStatus.SUSPENDED -> Pair(
                 R.drawable.ic_ts_status_suspended,
-                getString(R.string.ts_revocation_suspended, "")
+                getString(R.string.ts_revocation_suspended, reasonSuffix)
             )
-            RevocationStatus.SOFT_BANNED -> Pair(
-                R.drawable.ic_ts_status_revoked,
-                getString(R.string.ts_revocation_soft_banned)
+            RevocationStatus.EXPIRING_SOON -> Pair(
+                R.drawable.ic_ts_status_suspended,  // amber warning icon
+                getString(R.string.ts_revocation_expiring_soon)
+            )
+            RevocationStatus.CHAIN_INVALID -> Pair(
+                R.drawable.ic_ts_status_suspended,
+                getString(R.string.ts_revocation_chain_invalid)
+            )
+            RevocationStatus.UNTRUSTED_ROOT -> Pair(
+                R.drawable.ic_ts_status_suspended,  // amber
+                getString(R.string.ts_revocation_untrusted_root)
             )
             RevocationStatus.CHECKING -> Pair(
                 R.drawable.ic_ts_status_unknown,
@@ -254,7 +330,8 @@ class TrickyStore : SettingsPreferenceFragment() {
             )
             RevocationStatus.UNKNOWN -> Pair(
                 R.drawable.ic_ts_status_unknown,
-                if (!Settings.Secure.getString(requireContext().contentResolver, KEYBOX_KEY).isNullOrEmpty())
+                if (!Settings.Secure.getString(
+                        requireContext().contentResolver, KEYBOX_KEY).isNullOrEmpty())
                     getString(R.string.ts_revocation_not_yet_checked)
                 else
                     getString(R.string.ts_revocation_no_keybox)
@@ -272,9 +349,9 @@ class TrickyStore : SettingsPreferenceFragment() {
     private fun updateFetchButtonState(keyboxExists: Boolean) {
         val fetchPref = findPreference<Preference>("ts_fetch_keybox") ?: return
 
-        val isValid = currentRevocationStatus == RevocationStatus.VALID
+        val isBlockingStatus = currentRevocationStatus == RevocationStatus.VALID
 
-        if (isValid) {
+        if (isBlockingStatus) {
             fetchPref.isEnabled = false
             fetchPref.summary = getString(R.string.ts_fetch_keybox_blocked)
         } else {
@@ -287,29 +364,14 @@ class TrickyStore : SettingsPreferenceFragment() {
         }
     }
 
-    private fun isNoValidCooldownActive(): Boolean {
-        val last = Settings.Secure.getLong(
-            requireContext().contentResolver, LAST_NO_VALID_KEY, 0L)
-        return last > 0L && System.currentTimeMillis() - last < 24 * 60 * 60 * 1000L
-    }
-
-    private fun markNoValidKeyboxFound() {
-        Settings.Secure.putLong(
-            requireContext().contentResolver, LAST_NO_VALID_KEY,
-            System.currentTimeMillis()
-        )
-    }
-
-    private fun clearNoValidKeyboxCooldown() {
-        Settings.Secure.putLong(
-            requireContext().contentResolver, LAST_NO_VALID_KEY, 0L)
-    }
+    // ---- Revocation check ---------------------------------------------------
 
     private fun checkKeyboxRevocation() {
         if (isCheckInProgress) return
         val raw = Settings.Secure.getString(requireContext().contentResolver, KEYBOX_KEY)
         if (raw.isNullOrEmpty()) {
             currentRevocationStatus = RevocationStatus.UNKNOWN
+            currentRevocationReason = ""
             applyRevocationUi(RevocationStatus.UNKNOWN)
             updateFetchButtonState(keyboxExists = false)
             autoFetchIfNoKeybox()
@@ -327,43 +389,41 @@ class TrickyStore : SettingsPreferenceFragment() {
             }
             isCheckInProgress = false
             if (!isAdded) return@launch
-            Settings.Secure.putLong(
-                requireContext().contentResolver, LAST_REVOCATION_CHECK_KEY,
-                System.currentTimeMillis()
-            )
+
             result.fold(
-                onSuccess = { status ->
+                onSuccess = { (status, reason) ->
                     currentRevocationStatus = status
+                    currentRevocationReason = reason
+
                     if (status != RevocationStatus.UNKNOWN) {
+                        Settings.Secure.putLong(
+                            requireContext().contentResolver,
+                            LAST_REVOCATION_CHECK_KEY, System.currentTimeMillis())
                         Settings.Secure.putString(
                             requireContext().contentResolver,
-                            LAST_REVOCATION_STATUS_KEY,
-                            status.name
-                        )
-                    }
-                    applyRevocationUi(status)
-                    updateFetchButtonState(keyboxExists = true)
-                    if (status == RevocationStatus.REVOKED) {
+                            LAST_REVOCATION_STATUS_KEY, status.name)
                         Settings.Secure.putString(
-                            requireContext().contentResolver, KEYBOX_KEY, "")
-                        Settings.Secure.putLong(
-                            requireContext().contentResolver, LAST_FETCHED_KEY, 0L)
-                        currentRevocationStatus = RevocationStatus.UNKNOWN
-                        refreshStatus()
-                        toast(getString(R.string.ts_fetch_keybox_revoked_refetch))
-                        if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
-                    } else if (status == RevocationStatus.SOFT_BANNED) {
-                        toast(getString(R.string.ts_fetch_keybox_soft_banned_refetch))
-                        if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
+                            requireContext().contentResolver,
+                            LAST_REVOCATION_REASON_KEY, reason)
                     }
+
+                    applyRevocationUi(status, reason)
+                    updateFetchButtonState(keyboxExists = true)
+                    refreshStatus()  // update keybox-info row too
+
+                    handleActionableStatus(status)
                 },
                 onFailure = { e ->
-                    val pref = findPreference<Preference>("ts_revocation_status") ?: return@fold
+                    val pref = findPreference<Preference>("ts_revocation_status")
+                        ?: return@fold
                     pref.setIcon(when (currentRevocationStatus) {
-                        RevocationStatus.VALID                        -> R.drawable.ic_ts_status_valid
-                        RevocationStatus.REVOKED, RevocationStatus.SOFT_BANNED -> R.drawable.ic_ts_status_revoked
-                        RevocationStatus.SUSPENDED                    -> R.drawable.ic_ts_status_suspended
-                        else                                          -> R.drawable.ic_ts_status_unknown
+                        RevocationStatus.VALID                         -> R.drawable.ic_ts_status_valid
+                        RevocationStatus.REVOKED,
+                        RevocationStatus.CHAIN_INVALID                 -> R.drawable.ic_ts_status_revoked
+                        RevocationStatus.UNTRUSTED_ROOT,
+                        RevocationStatus.SUSPENDED,
+                        RevocationStatus.EXPIRING_SOON                 -> R.drawable.ic_ts_status_suspended
+                        else                                           -> R.drawable.ic_ts_status_unknown
                     })
                     pref.summary = getString(R.string.ts_revocation_error, e.message)
                 }
@@ -371,34 +431,108 @@ class TrickyStore : SettingsPreferenceFragment() {
         }
     }
 
-    private fun performRevocationCheck(raw: String): RevocationStatus {
-        val xml = decodeKeyboxForRevocation(raw)
-            ?: return RevocationStatus.UNKNOWN
+    private fun handleActionableStatus(status: RevocationStatus) {
+        when (status) {
+            RevocationStatus.REVOKED, RevocationStatus.SUSPENDED -> {
+                Settings.Secure.putString(requireContext().contentResolver, KEYBOX_KEY, "")
+                Settings.Secure.putLong(requireContext().contentResolver, LAST_FETCHED_KEY, 0L)
+                currentRevocationStatus = RevocationStatus.UNKNOWN
+                refreshStatus()
+                toast(getString(
+                    if (status == RevocationStatus.REVOKED)
+                        R.string.ts_fetch_keybox_revoked_refetch
+                    else
+                        R.string.ts_fetch_keybox_suspended_refetch
+                ))
+                if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
+            }
+            RevocationStatus.EXPIRING_SOON -> {
+                showExpiringSoonDialog()
+            }
+            RevocationStatus.CHAIN_INVALID -> {
+                if (isUserImportedKeybox()) showChainInvalidDialog()
+                // else: official keybox with chain issues — leave it alone,
+                // strong integrity may still pass
+            }
+            RevocationStatus.UNTRUSTED_ROOT -> {
+                if (isUserImportedKeybox()) showUntrustedRootDialog()
+                // else: same, leave official keybox in place
+            }
+            else -> Unit
+        }
+    }
 
-        val serials = extractCertSerials(xml)
-        if (serials.isEmpty()) return RevocationStatus.UNKNOWN
+    // ---- Core revocation logic (runs on IO dispatcher) ----------------------
 
-        val json = fetchRevocationJson()
-            ?: return RevocationStatus.UNKNOWN   // network error — treat as unknown, not invalid
+    private fun performRevocationCheck(raw: String): Pair<RevocationStatus, String> {
+        val xml = decodeKeyboxXml(raw)
+            ?: return Pair(RevocationStatus.UNKNOWN, "")
 
-        val entries = json.optJSONObject("entries")
+        // 1. Parse certificates
+        val certs = extractCertificates(xml)
+        if (certs.isEmpty()) return Pair(RevocationStatus.UNKNOWN, "")
+
+        // 2. Validate chain: each cert must be signed by the next, root must be trusted
+        val chainError = validateChain(certs)
+        if (chainError != null) {
+            val status = if (chainError == "UNTRUSTED_ROOT")
+                RevocationStatus.UNTRUSTED_ROOT
+            else
+                RevocationStatus.CHAIN_INVALID
+            return Pair(status, chainError)
+        }
+
+        // 4. Check leaf cert expiry
+        val leafCert = certs.first()
+        val now = System.currentTimeMillis()
+        if (leafCert.notAfter.time < now) {
+            // Already expired – treat like chain invalid so it gets replaced
+            return Pair(RevocationStatus.CHAIN_INVALID, "CERT_EXPIRED")
+        }
+        val expiringStatus = if (leafCert.notAfter.time - now < EXPIRY_WARN_MS)
+            RevocationStatus.EXPIRING_SOON else null
+
+        // 5. Fetch Google's revocation JSON
+        val serials = certs.map { it.serialNumber.toString(16).lowercase() }
+        val revJson = fetchRevocationJson()
+            ?: return checkCachedRevocation(serials)
+
+        // 6. Check each serial against the revocation list
+        val entries = revJson.optJSONObject("entries")
         if (entries != null) {
             for (serial in serials) {
                 val entry = entries.optJSONObject(serial) ?: continue
                 val status = entry.optString("status", "").uppercase()
+                val reason = entry.optString("reason", "").uppercase()
                 when (status) {
-                    "REVOKED" -> return RevocationStatus.REVOKED
-                    "SUSPENDED" -> return RevocationStatus.SUSPENDED
+                    "REVOKED"   -> {
+                        cacheRevokedSerial(serial)
+                        return Pair(RevocationStatus.REVOKED, reason)
+                    }
+                    "SUSPENDED" -> {
+                        cacheRevokedSerial(serial)
+                        return Pair(RevocationStatus.SUSPENDED, reason)
+                    }
                 }
             }
         }
+        // Live check passed cleanly — clear any stale cached bad-serial entry
+        // for this keybox so a future offline fallback doesn't misfire.
+        clearCachedRevokedSerials()
 
-        if (isKeyboxSoftBanned(serials)) return RevocationStatus.SOFT_BANNED
+        // 7. If the cert is expiring soon, surface that now (it passed all other checks)
+        if (expiringStatus != null) {
+            val expiryFormatted = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                .format(leafCert.notAfter)
+            return Pair(expiringStatus, expiryFormatted)
+        }
 
-        return RevocationStatus.VALID
+        return Pair(RevocationStatus.VALID, "")
     }
 
-    private fun decodeKeyboxForRevocation(payload: String): String? {
+    // ---- Certificate parsing ------------------------------------------------
+
+    private fun decodeKeyboxXml(payload: String): String? {
         val trimmed = payload.trim()
         if (trimmed.startsWith("<")) return trimmed
         return try {
@@ -408,8 +542,8 @@ class TrickyStore : SettingsPreferenceFragment() {
         } catch (_: Exception) { null }
     }
 
-    private fun extractCertSerials(xml: String): List<String> {
-        val serials = mutableListOf<String>()
+    private fun extractCertificates(xml: String): List<X509Certificate> {
+        val certs = mutableListOf<X509Certificate>()
         val factory = CertificateFactory.getInstance("X.509")
         val matcher = Pattern.compile(
             "-----BEGIN CERTIFICATE-----([\\s\\S]+?)-----END CERTIFICATE-----"
@@ -418,12 +552,56 @@ class TrickyStore : SettingsPreferenceFragment() {
             try {
                 val der = Base64.decode(
                     matcher.group(1)!!.replace("\\s".toRegex(), ""), Base64.DEFAULT)
-                val cert = factory.generateCertificate(ByteArrayInputStream(der)) as X509Certificate
-                serials.add(cert.serialNumber.toString(16).uppercase())
+                certs.add(
+                    factory.generateCertificate(ByteArrayInputStream(der)) as X509Certificate)
             } catch (_: Exception) {}
         }
-        return serials
+        return certs
     }
+
+    /**
+     * Validates the certificate chain:
+     * - Each cert[i] must be signed by cert[i+1]
+     * - The last cert must be self-signed and its public-key fingerprint must
+     *   match one of the known Google attestation root fingerprints.
+     *
+     * Returns null if the chain is valid, or a short error string on failure.
+     */
+    private fun validateChain(certs: List<X509Certificate>): String? {
+        if (certs.size < 2) return "CHAIN_TOO_SHORT"
+
+        // Verify each link: cert[i] signed by cert[i+1]
+        for (i in 0 until certs.size - 1) {
+            try {
+                certs[i].verify(certs[i + 1].publicKey)
+            } catch (_: Exception) {
+                return "BAD_SIGNATURE_AT_$i"
+            }
+        }
+
+        // Root must be self-signed
+        val root = certs.last()
+        try {
+            root.verify(root.publicKey)
+        } catch (_: Exception) {
+            return "ROOT_NOT_SELF_SIGNED"
+        }
+
+        // Root public-key must match a known Google attestation root
+        val rootFingerprint = sha256Hex(root.encoded)
+        val knownRoots = setOf(
+            normalise(GOOGLE_ROOT_RSA_2019_SHA256),
+            normalise(GOOGLE_ROOT_RSA_2022_SHA256),
+            normalise(GOOGLE_ROOT_EC_2025_SHA256),
+        )
+        if (rootFingerprint !in knownRoots) {
+            return "UNTRUSTED_ROOT"
+        }
+
+        return null  // chain is valid
+    }
+
+    // ---- Network helpers ----------------------------------------------------
 
     private fun fetchRevocationJson(): JSONObject? = try {
         val conn = URL(REVOCATION_URL).openConnection() as HttpURLConnection
@@ -434,61 +612,71 @@ class TrickyStore : SettingsPreferenceFragment() {
         else null
     } catch (_: Exception) { null }
 
-    private fun isKeyboxSoftBanned(serials: List<String>): Boolean {
-        val cached = softBannedSerialsCache
-        if (cached != null) return serials.any { it in cached }
+    // ---- Offline revocation cache --------------------------------------------
 
-        val files = fetchSoftBannedFileList() ?: return false
-        val allBanned = mutableSetOf<String>()
-        for (filename in files) {
-            val xml = fetchRawKeybox("$SOFTBANNED_RAW_BASE_URL$filename") ?: continue
-            allBanned.addAll(extractCertSerials(xml))
-        }
-        softBannedSerialsCache = allBanned
-        return serials.any { it in allBanned }
+    /**
+     * Records that [serial] was seen as revoked/suspended on a successful live
+     * check, so a later fetch failure can still flag it. Downgrade-only: this
+     * cache is never consulted to assert VALID, only REVOKED/SUSPENDED.
+     */
+    private fun cacheRevokedSerial(serial: String) {
+        Settings.Secure.putString(
+            requireContext().contentResolver, CACHED_REVOKED_SERIALS_KEY, serial)
+        Settings.Secure.putLong(
+            requireContext().contentResolver, CACHED_REVOKED_AT_KEY,
+            System.currentTimeMillis())
     }
 
-    private fun fetchSoftBannedFileList(): List<String>? = try {
-        val conn = URL(SOFTBANNED_API_URL).openConnection() as HttpURLConnection
-        conn.connectTimeout = 10_000
-        conn.readTimeout = 10_000
-        if (conn.responseCode == HttpURLConnection.HTTP_OK) {
-            val response = org.json.JSONArray(
-                BufferedReader(InputStreamReader(conn.inputStream)).use { it.readText() }
-            )
-            (0 until response.length()).mapNotNull { i ->
-                response.optJSONObject(i)
-                    ?.optString("name")
-                    ?.takeIf { it.endsWith(".xml") }
-            }
-        } else null
-    } catch (_: Exception) { null }
+    private fun clearCachedRevokedSerials() {
+        Settings.Secure.putString(
+            requireContext().contentResolver, CACHED_REVOKED_SERIALS_KEY, "")
+        Settings.Secure.putLong(
+            requireContext().contentResolver, CACHED_REVOKED_AT_KEY, 0L)
+    }
 
-    private fun fetchRawKeybox(url: String): String? = try {
-        val conn = URL(url).openConnection() as HttpURLConnection
-        conn.connectTimeout = 10_000
-        conn.readTimeout = 10_000
-        if (conn.responseCode == HttpURLConnection.HTTP_OK)
-            conn.inputStream.use { it.readBytes().toString(Charsets.UTF_8) }
-        else null
-    } catch (_: Exception) { null }
+    /**
+     * Fallback used when the live revocation fetch fails. Only ever returns
+     * REVOKED/SUSPENDED (if a cached serial for this keybox is still within
+     * the trust window) or UNKNOWN — never VALID, since we cannot confirm
+     * that today without a successful live check.
+     */
+    private fun checkCachedRevocation(serials: List<String>): Pair<RevocationStatus, String> {
+        val cachedAt = Settings.Secure.getLong(
+            requireContext().contentResolver, CACHED_REVOKED_AT_KEY, 0L)
+        if (cachedAt == 0L ||
+            System.currentTimeMillis() - cachedAt > CACHE_TRUST_WINDOW_MS) {
+            return Pair(RevocationStatus.UNKNOWN, "")
+        }
+        val cachedSerial = Settings.Secure.getString(
+            requireContext().contentResolver, CACHED_REVOKED_SERIALS_KEY)
+        return if (!cachedSerial.isNullOrEmpty() && serials.contains(cachedSerial)) {
+            Pair(RevocationStatus.SUSPENDED, "CACHED_OFFLINE")
+        } else {
+            Pair(RevocationStatus.UNKNOWN, "")
+        }
+    }
+
+    // ---- Auto-fetch ---------------------------------------------------------
 
     private fun autoFetchIfNoKeybox() {
         if (!isTrickyStoreEnabled) return
         if (isKeyboxPickerOpen) return
         if (isCheckInProgress) return
         if (isNoValidCooldownActive()) return
+
         val existing = Settings.Secure.getString(requireContext().contentResolver, KEYBOX_KEY)
         if (!existing.isNullOrEmpty()) {
-            // Only auto-fetch for UNKNOWN here; REVOKED and SOFT_BANNED are handled
-            // inside checkKeyboxRevocation() after a fresh check result comes in.
-            // Triggering a fetch based on stale persisted status risks a redundant
-            // fetch race if a check is about to fire anyway.
-            if (currentRevocationStatus == RevocationStatus.UNKNOWN) fetchOfficialKeybox(silent = true)
+            // Only replace when we have a definitively non-functional keybox
+            if (currentRevocationStatus == RevocationStatus.REVOKED ||
+                currentRevocationStatus == RevocationStatus.SUSPENDED) {
+                fetchOfficialKeybox(silent = true)
+            }
             return
         }
         fetchOfficialKeybox(silent = true)
     }
+
+    // ---- Official keybox fetch ----------------------------------------------
 
     private fun fetchOfficialKeybox(silent: Boolean = false) {
         val pref = findPreference<Preference>("ts_fetch_keybox")
@@ -496,6 +684,7 @@ class TrickyStore : SettingsPreferenceFragment() {
             pref?.isEnabled = false
             pref?.summary = getString(R.string.ts_fetch_keybox_fetching)
         }
+
         lifecycleScope.launch {
             val result = withContext(Dispatchers.IO) {
                 runCatching {
@@ -508,49 +697,73 @@ class TrickyStore : SettingsPreferenceFragment() {
                     conn.inputStream.use { it.readBytes().toString(Charsets.UTF_8) }
                 }
             }
-            if (!silent) {
-                updateFetchButtonState(keyboxExists = true)
-            }
+
+            if (!silent) updateFetchButtonState(keyboxExists = true)
             if (!isAdded) return@launch
+
             result.fold(
                 onSuccess = { xml ->
                     if (!isTrickyStoreEnabled) return@fold
                     try {
+                        // Deduplicate: don't install same content we already have
                         val existing = Settings.Secure.getString(
                             requireContext().contentResolver, KEYBOX_KEY)
                         val existingXml = if (!existing.isNullOrEmpty())
-                            decodeKeyboxForRevocation(existing) else null
+                            decodeKeyboxXml(existing) else null
                         if (existingXml != null && existingXml.trim() == xml.trim()) {
                             if (!silent) toast(getString(R.string.ts_fetch_keybox_same_file))
-                            else toast(getString(R.string.ts_fetch_keybox_no_valid_found))
+                            return@fold
+                        }
+
+                        val fetchedCerts = extractCertificates(xml)
+
+                        // Check expiry of the leaf cert
+                        val leafExpiry = fetchedCerts.firstOrNull()?.notAfter
+                        val now = System.currentTimeMillis()
+                        if (leafExpiry != null && leafExpiry.time < now) {
+                            if (!silent) toast(getString(
+                                R.string.ts_fetch_keybox_failed, "Cert already expired"))
                             markNoValidKeyboxFound()
                             return@fold
                         }
-                        val fetchedSerials = extractCertSerials(xml)
+
+                        val fetchedSerials = fetchedCerts.map {
+                            it.serialNumber.toString(16).lowercase()
+                        }
+
+                        // Check revocation
                         val revocationJson = withContext(Dispatchers.IO) { fetchRevocationJson() }
                         val entries = revocationJson?.optJSONObject("entries")
-                        if (entries != null && fetchedSerials.isNotEmpty()) {
-                            val fetchedRevoked = fetchedSerials.any { serial ->
-                                entries.optJSONObject(serial)
-                                    ?.optString("status", "")
-                                    ?.uppercase() == "REVOKED"
-                            }
-                            if (fetchedRevoked) {
-                                toast(getString(R.string.ts_fetch_keybox_no_valid_found))
-                                markNoValidKeyboxFound()
-                                return@fold
+                        var fetchedInvalid = false
+                        if (entries != null) {
+                            fetchedInvalid = fetchedSerials.any { serial ->
+                                val e = entries.optJSONObject(serial)
+                                val s = e?.optString("status", "")?.uppercase()
+                                s == "REVOKED" || s == "SUSPENDED"
                             }
                         }
+
+                        if (fetchedInvalid) {
+                            toast(getString(R.string.ts_fetch_keybox_no_valid_found))
+                            markNoValidKeyboxFound()
+                            return@fold
+                        }
+
                         clearNoValidKeyboxCooldown()
-                        softBannedSerialsCache = null
+
                         val encoded = Base64.encodeToString(
                             xml.toByteArray(Charsets.UTF_8), Base64.NO_WRAP)
                         Settings.Secure.putString(
                             requireContext().contentResolver, KEYBOX_KEY, encoded)
+                        Settings.Secure.putString(
+                            requireContext().contentResolver, KEYBOX_SOURCE_KEY, KEYBOX_SOURCE_OFFICIAL)
                         saveLastFetchedTimestamp()
                         killGms()
-                        toast(getString(if (silent) R.string.ts_fetch_keybox_auto_replaced else R.string.ts_fetch_keybox_success))
+                        toast(getString(
+                            if (silent) R.string.ts_fetch_keybox_auto_replaced
+                            else R.string.ts_fetch_keybox_success))
                         currentRevocationStatus = RevocationStatus.UNKNOWN
+                        currentRevocationReason = ""
                         refreshStatus()
                         checkKeyboxRevocation()
                     } catch (e: Exception) {
@@ -568,12 +781,32 @@ class TrickyStore : SettingsPreferenceFragment() {
         }
     }
 
+    // ---- Cooldown helpers ---------------------------------------------------
+
+    private fun isNoValidCooldownActive(): Boolean {
+        val last = Settings.Secure.getLong(
+            requireContext().contentResolver, LAST_NO_VALID_KEY, 0L)
+        return last > 0L &&
+               System.currentTimeMillis() - last < TimeUnit.HOURS.toMillis(24)
+    }
+
+    private fun markNoValidKeyboxFound() {
+        Settings.Secure.putLong(
+            requireContext().contentResolver, LAST_NO_VALID_KEY,
+            System.currentTimeMillis())
+    }
+
+    private fun clearNoValidKeyboxCooldown() {
+        Settings.Secure.putLong(
+            requireContext().contentResolver, LAST_NO_VALID_KEY, 0L)
+    }
+
+    // ---- Timestamp helpers --------------------------------------------------
+
     private fun saveLastFetchedTimestamp() {
         Settings.Secure.putLong(
-            requireContext().contentResolver,
-            LAST_FETCHED_KEY,
-            System.currentTimeMillis()
-        )
+            requireContext().contentResolver, LAST_FETCHED_KEY,
+            System.currentTimeMillis())
     }
 
     private fun getLastFetchedFormatted(): String? {
@@ -590,18 +823,20 @@ class TrickyStore : SettingsPreferenceFragment() {
         return SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date(millis))
     }
 
+    // ---- Verification-mode summary ------------------------------------------
+
     private fun buildVerificationSummary(): String {
         val content = Settings.Secure.getString(
-            requireContext().contentResolver, TARGET_KEY
-        ) ?: return getString(R.string.ts_verification_mode_auto)
+            requireContext().contentResolver, TARGET_KEY)
+            ?: return getString(R.string.ts_verification_mode_auto)
 
         var auto = 0; var cert = 0; var leaf = 0
         content.lines().forEach { line ->
-            val trimmed = line.trim()
-            if (trimmed.isNotBlank()) when {
-                trimmed.endsWith("!") -> cert++
-                trimmed.endsWith("?") -> leaf++
-                else                  -> auto++
+            val t = line.trim()
+            if (t.isNotBlank()) when {
+                t.endsWith("!") -> cert++
+                t.endsWith("?") -> leaf++
+                else            -> auto++
             }
         }
 
@@ -615,6 +850,8 @@ class TrickyStore : SettingsPreferenceFragment() {
         }.joinToString(" · ")
     }
 
+    // ---- Dialogs ------------------------------------------------------------
+
     private fun showDeleteKeyboxDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.ts_delete_keybox_title)
@@ -627,8 +864,13 @@ class TrickyStore : SettingsPreferenceFragment() {
                         requireContext().contentResolver, LAST_FETCHED_KEY, 0L)
                     toast(getString(R.string.ts_keybox_deleted))
                     currentRevocationStatus = RevocationStatus.UNKNOWN
+                    currentRevocationReason = ""
                     Settings.Secure.putString(
                         requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY, "")
+                    Settings.Secure.putString(
+                        requireContext().contentResolver, LAST_REVOCATION_REASON_KEY, "")
+                    Settings.Secure.putString(
+                        requireContext().contentResolver, KEYBOX_SOURCE_KEY, "")
                     clearNoValidKeyboxCooldown()
                     Settings.Secure.putLong(
                         requireContext().contentResolver, LAST_REVOCATION_CHECK_KEY, 0L)
@@ -638,6 +880,69 @@ class TrickyStore : SettingsPreferenceFragment() {
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun showUntrustedRootDialog() {
+        if (!isAdded) return
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.ts_untrusted_root_title)
+            .setMessage(R.string.ts_untrusted_root_message)
+            .setPositiveButton(R.string.ts_untrusted_root_keep) { _, _ ->
+                // User acknowledges — leave keybox installed, don't refetch
+            }
+            .setNegativeButton(R.string.ts_untrusted_root_replace) { _, _ ->
+                Settings.Secure.putString(requireContext().contentResolver, KEYBOX_KEY, "")
+                Settings.Secure.putLong(requireContext().contentResolver, LAST_FETCHED_KEY, 0L)
+                Settings.Secure.putString(requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY, "")
+                Settings.Secure.putString(requireContext().contentResolver, LAST_REVOCATION_REASON_KEY, "")
+                currentRevocationStatus = RevocationStatus.UNKNOWN
+                currentRevocationReason = ""
+                refreshStatus()
+                if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun showChainInvalidDialog() {
+        if (!isAdded) return
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.ts_chain_invalid_title)
+            .setMessage(R.string.ts_chain_invalid_message)
+            .setPositiveButton(R.string.ts_untrusted_root_keep) { _, _ -> }
+            .setNegativeButton(R.string.ts_untrusted_root_replace) { _, _ ->
+                Settings.Secure.putString(requireContext().contentResolver, KEYBOX_KEY, "")
+                Settings.Secure.putLong(requireContext().contentResolver, LAST_FETCHED_KEY, 0L)
+                Settings.Secure.putString(requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY, "")
+                Settings.Secure.putString(requireContext().contentResolver, LAST_REVOCATION_REASON_KEY, "")
+                currentRevocationStatus = RevocationStatus.UNKNOWN
+                currentRevocationReason = ""
+                refreshStatus()
+                if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun showExpiringSoonDialog() {
+        if (!isAdded) return
+        val expiryStr = currentRevocationReason.ifEmpty { getString(R.string.ts_expiry_unknown) }
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.ts_expiring_soon_title)
+            .setMessage(getString(R.string.ts_expiring_soon_message, expiryStr))
+            .setPositiveButton(R.string.ts_untrusted_root_keep) { _, _ -> }
+            .setNegativeButton(R.string.ts_untrusted_root_replace) { _, _ ->
+                Settings.Secure.putString(requireContext().contentResolver, KEYBOX_KEY, "")
+                Settings.Secure.putLong(requireContext().contentResolver, LAST_FETCHED_KEY, 0L)
+                Settings.Secure.putString(requireContext().contentResolver, LAST_REVOCATION_STATUS_KEY, "")
+                Settings.Secure.putString(requireContext().contentResolver, LAST_REVOCATION_REASON_KEY, "")
+                currentRevocationStatus = RevocationStatus.UNKNOWN
+                currentRevocationReason = ""
+                refreshStatus()
+                if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
+            }
+            .setCancelable(false)
             .show()
     }
 
@@ -693,8 +998,7 @@ class TrickyStore : SettingsPreferenceFragment() {
             .setPositiveButton(android.R.string.ok, null)
             .setNegativeButton(android.R.string.cancel, null)
             .setNeutralButton(R.string.action_delete) { _, _ ->
-                Settings.Secure.putString(
-                    requireContext().contentResolver, PATCH_KEY, "")
+                Settings.Secure.putString(requireContext().contentResolver, PATCH_KEY, "")
                 refreshStatus()
             }
             .create()
@@ -713,42 +1017,62 @@ class TrickyStore : SettingsPreferenceFragment() {
             }
             dialog.getButton(AlertDialog.BUTTON_NEUTRAL).isEnabled = current.isNotEmpty()
         }
-
         dialog.show()
     }
 
+    private fun isUserImportedKeybox(): Boolean =
+        Settings.Secure.getString(
+            requireContext().contentResolver, KEYBOX_SOURCE_KEY) == KEYBOX_SOURCE_USER
+
+    // ---- GMS kill -----------------------------------------------------------
+
     private fun killGms() {
         try {
-            val am = requireContext().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-            am.forceStopPackage(VENDING_PACKAGE)
-            am.forceStopPackage(DROIDGUARD_PACKAGE)
-            am.forceStopPackage(GMS_PACKAGE)
+            val am =
+                requireContext().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            listOf(
+                VENDING_PACKAGE, DROIDGUARD_PACKAGE, GMS_PACKAGE,
+                GMS_PERSISTENT_PACKAGE, RKPD_PACKAGE, GSF_PACKAGE,
+                CONTACT_KEYS_PACKAGE, SAFETY_CORE_PACKAGE, VELVET_PACKAGE
+            ).forEach { am.forceStopPackage(it) }
+            requireContext().packageManager.clearApplicationUserData(VENDING_PACKAGE, null)
         } catch (_: Exception) {}
     }
+
+    // ---- Crypto helpers -----------------------------------------------------
+
+    /** SHA-256 of [input] bytes, returned as contiguous uppercase hex. */
+    private fun sha256Hex(input: ByteArray): String {
+        val digest = MessageDigest.getInstance("SHA-256").digest(input)
+        return digest.joinToString("") { "%02X".format(it) }
+    }
+
+    /** Strip colons/spaces and uppercase for consistent comparison. */
+    private fun normalise(fingerprint: String) =
+        fingerprint.replace(":", "").replace(" ", "").uppercase()
+
+    /**
+     * Returns true if [patchDate] (a single YYYY-MM-DD value, not the
+     * multi-line per-package block format) is more than 12 months old.
+     * Unparsable input returns false — we don't warn on values we can't read.
+     */
+    private fun isPatchDateStale(patchDate: String): Boolean {
+        val dateRe = Regex("""\d{4}-\d{2}-\d{2}""")
+        val trimmed = patchDate.trim()
+        if (!dateRe.matches(trimmed)) return false
+        return try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US).apply { isLenient = false }
+            val patchMs = sdf.parse(trimmed)?.time ?: return false
+            System.currentTimeMillis() - patchMs > TimeUnit.DAYS.toMillis(365)
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    // ---- Misc ---------------------------------------------------------------
 
     private fun toast(msg: String) =
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
 
     override fun getMetricsCategory(): Int = MetricsProto.MetricsEvent.RAINBOW_UNICORN
-
-    companion object {
-        private const val KEYBOX_KEY            = "spoof_trickystore_keybox"
-        private const val TARGET_KEY            = TrickyStoreAppSettings.TARGET_KEY
-        internal const val PATCH_KEY            = "spoof_trickystore_patch"
-        private const val LAST_FETCHED_KEY          = "spoof_trickystore_last_fetched"
-        private const val LAST_REVOCATION_CHECK_KEY = "spoof_trickystore_last_revocation_check"
-        private const val LAST_NO_VALID_KEY         = "spoof_trickystore_last_no_valid"
-        private const val LAST_REVOCATION_STATUS_KEY = "spoof_trickystore_last_revocation_status"
-        private const val VENDING_PACKAGE       = "com.android.vending"
-        private const val DROIDGUARD_PACKAGE    = "com.google.android.gms.unstable"
-        private const val GMS_PACKAGE           = "com.google.android.gms"
-        private const val REVOCATION_URL        = "https://android.googleapis.com/attestation/status"
-        private const val OFFICIAL_KEYBOX_URL   =
-            "https://git.evolution-x.org/EvoX/keybox/raw/branch/main/keybox.xml"
-        private const val TRICKYSTORE_ENABLED_KEY = "spoof_trickystore_enabled"
-        private const val SOFTBANNED_API_URL    =
-            "https://git.evolution-x.org/api/v1/repos/EvoX/keybox/contents/softbanned"
-        private const val SOFTBANNED_RAW_BASE_URL =
-            "https://git.evolution-x.org/EvoX/keybox/raw/branch/main/softbanned/"
-    }
 }

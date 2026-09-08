@@ -22,7 +22,7 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.internal.util.evolution.PixelPropsUtils;
+import com.android.internal.util.xperience.PixelPropsUtils;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.SettingsPreferenceFragment;
@@ -62,13 +62,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
         final Context context = getContext();
         final ContentResolver resolver = context.getContentResolver();
         mHandler = new Handler(Looper.getMainLooper());
-
-        if (PixelPropsUtils.isCustomForkBuild()) {
-            if (getPreferenceScreen() != null) {
-                getPreferenceScreen().removeAll();
-            }
-            return;
-        }
 
         mFeaturesCategory = (PreferenceCategory) findPreference(KEY_FEATURES_CATEGORY);
         mAppSpecificCategory = (PreferenceCategory) findPreference(KEY_APP_SPECIFIC_CATEGORY);

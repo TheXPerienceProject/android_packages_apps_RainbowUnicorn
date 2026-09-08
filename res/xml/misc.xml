@@ -20,18 +20,18 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
 
-    <mx.xperience.framework.preference.SystemSettingListPreference
+    <!--<mx.xperience.framework.preference.SystemSettingListPreference
         android:key="screen_off_animation"
         android:title="@string/screen_off_animation_title"
         android:dialogTitle="@string/screen_off_animation_title"
         android:entries="@array/screen_off_animation_entries"
         android:entryValues="@array/screen_off_animation_values"
-        android:defaultValue="1" />
+        android:defaultValue="1" />-->
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:title="@string/freeform_launch_mode_title">
 
-    <!-- Freeform launch mode -->
+    <-Freeform launch mode -
     <mx.xperience.framework.preference.SystemSettingListPreference
         android:key="freeform_launch_mode"
         android:title="@string/freeform_launch_mode_title"
@@ -41,7 +41,7 @@
         android:defaultValue="0"
         android:summary="%s" />
 
-    <!-- Sidebar -->
+     Sidebar 
     <Preference
         android:key="sidebar"
         android:title="@string/sidebar_title"
@@ -51,22 +51,22 @@
             android:targetPackage="com.libremobileos.sidebar"
             android:targetClass="com.libremobileos.sidebar.ui.sidebar.SidebarSettingsActivity" />
         </Preference>
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:title="@string/notifications_edge_light_title">
 
-        <!-- Edge light -->
+        < Edge light -
         <Preference
             android:key="edge_light_settings"
             android:title="@string/notifications_edge_light_title"
             android:summary="@string/notifications_edge_light_summary"
             android:fragment="mx.xperience.unicorn.fragments.notifications.EdgeLightSettings" />
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:title="@string/notifications" >
-        <!-- Notification row transparency -->
+        < Notification row transparency -
         <mx.xperience.framework.preference.SecureSettingSwitchPreference
             android:key="notification_row_transparency"
             android:title="@string/notification_row_transparency_title"
@@ -77,5 +77,5 @@
             android:title="@string/notification_row_transparency_lockscreen_title"
             android:summary="@string/notification_row_transparency_lockscreen_summary"
             android:defaultValue="true" />
-        </PreferenceCategory>
+        </PreferenceCategory>-->
 </PreferenceScreen>

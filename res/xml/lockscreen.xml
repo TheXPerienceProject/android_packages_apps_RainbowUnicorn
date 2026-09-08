@@ -18,7 +18,7 @@ limitations under the License.
     android:title="@string/misc_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="powermenu"
         android:title="@string/lockscreen_enable_power_menu_cat">
 
@@ -28,9 +28,9 @@ limitations under the License.
         android:summary="@string/lockscreen_enable_power_menu_summary"
         android:defaultValue="true" />
 
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 
-    <PreferenceCategory
+   <!-- <PreferenceCategory
         android:key="ambient_display_category"
         android:title="@string/ambient_display_category_title">
 
@@ -53,7 +53,7 @@ limitations under the License.
             android:title="@string/nowplaying_title"
             android:summary="@string/nowplaying_summary"
             android:fragment="mx.xperience.unicorn.fragments.lockscreen.NowplayingSettings" />
-        </PreferenceCategory>
+        </PreferenceCategory>-->
 
     <PreferenceCategory
         android:key="themes_icons_category"
@@ -80,7 +80,7 @@ limitations under the License.
     </PreferenceCategory>
 
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="lock_screen_charging_category"
         android:title="@string/lock_screen_charging_category">
 
@@ -92,11 +92,11 @@ limitations under the License.
             android:entryValues="@array/ripple_shape_values"
             android:defaultValue="2" />
 
-        <!-- Dynamic charging animation -->
+        <!- Dynamic charging animation -
         <mx.xperience.framework.preference.SystemSettingSwitchPreference
             android:key="wireless_charging_dynamic_color"
             android:title="@string/wireless_charging_dynamic_color_title"
             android:summary="@string/wireless_charging_dynamic_color_summary"
             android:defaultValue="true" />
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 </PreferenceScreen>

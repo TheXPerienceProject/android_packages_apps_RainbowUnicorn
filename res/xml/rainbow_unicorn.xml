@@ -66,12 +66,12 @@ limitations under the License.
             android:icon="@drawable/ic_monet"
         android:fragment="mx.xperience.unicorn.fragments.MonetSettings" />-->
 
-        <Preference
+        <!--<Preference
             android:key="lockscreen"
             android:title="LockScreen"
             settings:layout="@layout/dashboard_preference_middle"
             android:icon="@drawable/ic_clock"
-        android:fragment="mx.xperience.unicorn.fragments.Lockscreen" />
+        android:fragment="mx.xperience.unicorn.fragments.Lockscreen" />-->
 
         <Preference
             android:key="spoofing"

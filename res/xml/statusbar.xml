@@ -24,7 +24,7 @@
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
     </Preference>
 
-    <Preference
+    <!--<Preference
         android:fragment="mx.xperience.unicorn.fragments.BatterySettings"
         android:key="battery_settings"
         android:title="@string/battery_settings_title"
@@ -40,7 +40,7 @@
         android:key="cutout_progress"
         android:title="@string/cutout_progress_title"
         android:summary="@string/cutout_progress_summary"
-        android:fragment="mx.xperience.unicorn.fragments.CutoutProgressSettingsFragment" />
+        android:fragment="mx.xperience.unicorn.fragments.CutoutProgressSettingsFragment" />-->
 
     <Preference
         android:key="dynamic_island"
@@ -48,7 +48,7 @@
         android:summary="@string/dynamic_island_summary" />
 
     <!-- ongoing progress -->
-    <Preference
+    <!--<Preference
         android:key="ongoing_progress_settings"
         android:title="@string/ongoing_progress_settings_title"
         android:summary="@string/ongoing_progress_settings_summary"
@@ -64,5 +64,5 @@
         android:key="show_refresh_rate"
         android:title="@string/show_refresh_rate_title"
         android:summary="@string/show_refresh_rate_summary"
-        android:defaultValue="true" />
+        android:defaultValue="true" />-->
 </PreferenceScreen>

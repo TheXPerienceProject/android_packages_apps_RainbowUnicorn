@@ -38,7 +38,6 @@ import mx.xperience.framework.preference.SystemSettingMasterSwitchPreference;
 import mx.xperience.framework.preference.SystemSettingListPreference;
 import mx.xperience.framework.preference.SecureSettingSwitchPreference;
 import mx.xperience.unicorn.utils.DeviceUtils;
-import com.android.internal.util.xperience.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;

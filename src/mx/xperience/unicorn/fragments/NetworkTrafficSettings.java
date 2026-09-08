@@ -53,7 +53,7 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.network_traffic_settings);
         final ContentResolver resolver = getActivity().getContentResolver();
 
-        mNetTrafficAutohideThreshold = (CustomSeekBarPreference)
+        /*mNetTrafficAutohideThreshold = (CustomSeekBarPreference)
                 findPreference(Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
         mNetTrafficRefreshInterval = (CustomSeekBarPreference)
                 findPreference(Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL);
@@ -71,32 +71,32 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
 
         int location = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_LOCATION, 0, UserHandle.USER_CURRENT);
-        updateEnabledStates(location);
+        updateEnabledStates(location);*/
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mNetTrafficLocation) {
+        /*if (preference == mNetTrafficLocation) {
             int location = Integer.valueOf((String) newValue);
             updateEnabledStates(location);
             return true;
-        }
+        }*/
         return false;
     }
 
     private void updateEnabledStates(int location) {
-        final boolean enabled = location != 0;
+        /*final boolean enabled = location != 0;
         mNetTrafficMode.setEnabled(enabled);
         mNetTrafficAutohide.setEnabled(enabled);
         mNetTrafficAutohideThreshold.setEnabled(enabled);
         mNetTrafficHideArrow.setEnabled(enabled);
         mNetTrafficRefreshInterval.setEnabled(enabled);
-        mNetTrafficUnits.setEnabled(enabled);
+        mNetTrafficUnits.setEnabled(enabled);*/
     }
 
     public static void reset(Context mContext) {
         ContentResolver resolver = mContext.getContentResolver();
-        Settings.System.putIntForUser(resolver,
+        /*Settings.System.putIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_LOCATION, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_MODE, 0, UserHandle.USER_CURRENT);
@@ -109,7 +109,7 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
         Settings.System.putIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL, 2, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_HIDEARROW, 0, UserHandle.USER_CURRENT);
+                Settings.System.NETWORK_TRAFFIC_HIDEARROW, 0, UserHandle.USER_CURRENT);*/
     }
 
     @Override

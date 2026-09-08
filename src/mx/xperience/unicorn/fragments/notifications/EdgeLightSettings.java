@@ -29,7 +29,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.android.internal.util.android.VibrationUtils;
+//import com.android.internal.util.android.VibrationUtils;
 
 public class EdgeLightSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -47,7 +47,7 @@ public class EdgeLightSettings extends SettingsPreferenceFragment implements
 
     public static void reset(Context context) {
         ContentResolver resolver = context.getContentResolver();
-        Settings.System.putIntForUser(resolver,
+       /* Settings.System.putIntForUser(resolver,
                 Settings.System.EDGE_LIGHT_ENABLED, 0, UserHandle.USER_CURRENT);
         Settings.System.putStringForUser(resolver,
                 Settings.System.EDGE_LIGHT_COLOR_MODE, "accent", UserHandle.USER_CURRENT);
@@ -60,7 +60,7 @@ public class EdgeLightSettings extends SettingsPreferenceFragment implements
         Settings.System.putStringForUser(resolver,
                 Settings.System.EDGE_LIGHT_STYLE, "default", UserHandle.USER_CURRENT);
         Settings.System.putStringForUser(resolver,
-                Settings.System.EDGE_LIGHT_ANIMATION_EFFECT, "none", UserHandle.USER_CURRENT);
+                Settings.System.EDGE_LIGHT_ANIMATION_EFFECT, "none", UserHandle.USER_CURRENT);*/
     }
 
     @Override
@@ -71,7 +71,7 @@ public class EdgeLightSettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference != null && preference.getKey() != null) {
-            VibrationUtils.triggerVibration(getContext(), 3);
+           // VibrationUtils.triggerVibration(getContext(), 3);
         }
         return super.onPreferenceTreeClick(preference);
     }

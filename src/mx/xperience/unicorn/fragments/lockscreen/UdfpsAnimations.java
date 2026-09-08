@@ -31,7 +31,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -124,20 +124,20 @@ public class UdfpsAnimations extends Fragment {
         public void onBindViewHolder(UdfpsAnimViewHolder holder, final int position) {
             String animName = mAnims[position];
 
-            Glide.with(holder.image.getContext())
+            /*Glide.with(holder.image.getContext())
                     .load("")
                     .placeholder(getDrawable(holder.image.getContext(), mAnimPreviews[position]))
                     .into(holder.image);
-
+*/
             holder.name.setText(mTitles[position]);
 
-            if (position == Settings.System.getInt(context.getContentResolver(),
+            /*if (position == Settings.System.getInt(context.getContentResolver(),
                 Settings.System.UDFPS_ANIM_STYLE, 0)) {
                 mAppliedAnim = animName;
                 if (mSelectedAnim == null) {
                     mSelectedAnim = animName;
                 }
-            }
+            }*/
 
             holder.itemView.setActivated(animName == mSelectedAnim);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -150,8 +150,8 @@ public class UdfpsAnimations extends Fragment {
                     animation = (AnimationDrawable) holder.image.getBackground();
                     animation.setOneShot(true);
                     animation.start();
-                    Settings.System.putInt(getActivity().getContentResolver(),
-                            Settings.System.UDFPS_ANIM_STYLE, position);
+                   /* Settings.System.putInt(getActivity().getContentResolver(),
+                            Settings.System.UDFPS_ANIM_STYLE, position);*/
                 }
             });
         }

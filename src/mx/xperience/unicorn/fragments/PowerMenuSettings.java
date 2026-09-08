@@ -40,14 +40,14 @@ import com.android.internal.util.EmergencyAffordanceManager;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settingslib.applications.ServiceListing;
 
-import com.android.internal.util.xperience.PowerMenuConstants;
-import com.android.internal.util.xperience.PowerMenuUtils;
+//import com.android.internal.util.xperience.PowerMenuConstants;
+//import com.android.internal.util.xperience.PowerMenuUtils;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settingslib.applications.ServiceListing;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.internal.xperience.app.LineageGlobalActions;
+// import com.android.internal.xperience.app.LineageGlobalActions;K
 import com.android.settings.xperience.utils.TelephonyUtils;
 import com.android.settings.xperience.preference.CustomDialogPreference;
 
@@ -56,7 +56,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import static com.android.internal.util.xperience.PowerMenuConstants.*;
+//import static com.android.internal.util.xperience.PowerMenuConstants.*;
 
 public class PowerMenuSettings extends SettingsPreferenceFragment {
     final static String TAG = "PowerMenuActions";
@@ -73,7 +73,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
     private SwitchPreferenceCompat mDeviceControlsPref;
     private SwitchPreferenceCompat mRestartSystemUIPref;
 
-    private LineageGlobalActions mLineageGlobalActions;
+    // private LineageGlobalActions mLineageGlobalActions;
 
     Context mContext;
     private LockPatternUtils mLockPatternUtils;
@@ -87,11 +87,11 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
         mContext = getActivity().getApplicationContext();
         mLockPatternUtils = new LockPatternUtils(mContext);
         mUserManager = UserManager.get(mContext);
-        mLineageGlobalActions = mContext.getSystemService(LineageGlobalActions.class);
+        // mLineageGlobalActions = mContext.getSystemService(LineageGlobalActions.class);
 
         mPowerMenuItemsCategory = findPreference(CATEGORY_POWER_MENU_ITEMS);
 
-        for (String action : PowerMenuConstants.getAllActions()) {
+        /*for (String action : PowerMenuConstants.getAllActions()) {
             if (action.equals(GLOBAL_ACTION_KEY_SCREENSHOT)) {
                 mScreenshotPref = (SwitchPreferenceCompat) findPreference(GLOBAL_ACTION_KEY_SCREENSHOT);
             } else if (action.equals(GLOBAL_ACTION_KEY_AIRPLANE)) {
@@ -107,7 +107,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
             } else if (action.equals(GLOBAL_ACTION_KEY_RESTART_SYSTEMUI)) {
                 mRestartSystemUIPref = findPreference(GLOBAL_ACTION_KEY_RESTART_SYSTEMUI);
             }
-        }
+        }*/
 
         if (!TelephonyUtils.isVoiceCapable(getActivity())) {
             mPowerMenuItemsCategory.removePreference(mEmergencyPref);
@@ -120,23 +120,23 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
         super.onStart();
 
         if (mScreenshotPref != null) {
-            mScreenshotPref.setChecked(mLineageGlobalActions.userConfigContains(
-                GLOBAL_ACTION_KEY_SCREENSHOT));
+           //  mScreenshotPref.setChecked(mLineageGlobalActions.userConfigContains(
+            //     GLOBAL_ACTION_KEY_SCREENSHOT));
         }
 
         if (mAirplanePref != null) {
-            mAirplanePref.setChecked(mLineageGlobalActions.userConfigContains(
-                GLOBAL_ACTION_KEY_AIRPLANE));
+           //  mAirplanePref.setChecked(mLineageGlobalActions.userConfigContains(
+           //      GLOBAL_ACTION_KEY_AIRPLANE));
         }
 
         if (mEmergencyPref != null) {
-            mEmergencyPref.setChecked(mLineageGlobalActions.userConfigContains(
-                GLOBAL_ACTION_KEY_EMERGENCY));
+           //  mEmergencyPref.setChecked(mLineageGlobalActions.userConfigContains(
+            // //     GLOBAL_ACTION_KEY_EMERGENCY));
         }
 
         if (mDeviceControlsPref != null) {
-            mDeviceControlsPref.setChecked(mLineageGlobalActions.userConfigContains(
-                GLOBAL_ACTION_KEY_DEVICECONTROLS));
+           //  mDeviceControlsPref.setChecked(mLineageGlobalActions.userConfigContains(
+           //      GLOBAL_ACTION_KEY_DEVICECONTROLS));
 
             // Enable preference if any device control app is installed
             ServiceListing serviceListing = new ServiceListing.Builder(mContext)
@@ -152,8 +152,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
         }
 
         if (mRestartSystemUIPref != null) {
-            mRestartSystemUIPref.setChecked(mLineageGlobalActions.userConfigContains(
-                GLOBAL_ACTION_KEY_RESTART_SYSTEMUI));
+          //   mRestartSystemUIPref.setChecked(mLineageGlobalActions.userConfigContains(
+             //    GLOBAL_ACTION_KEY_RESTART_SYSTEMUI));
         }
 
         updatePreferences();
@@ -170,32 +170,32 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
         boolean value;
 
         if (preference == mScreenshotPref) {
-            value = mScreenshotPref.isChecked();
-            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_SCREENSHOT);
+          //   value = mScreenshotPref.isChecked();
+           //  mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_SCREENSHOT);
 
         } else if (preference == mAirplanePref) {
             value = mAirplanePref.isChecked();
-            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_AIRPLANE);
+           //  mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_AIRPLANE);
 
         } else if (preference == mUsersPref) {
             value = mUsersPref.isChecked();
-            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_USERS);
+           //  mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_USERS);
 
         } else if (preference == mLockDownPref) {
             value = mLockDownPref.isChecked();
-            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_LOCKDOWN);
+           //  mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_LOCKDOWN);
 
         } else if (preference == mEmergencyPref) {
             value = mEmergencyPref.isChecked();
-            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_EMERGENCY);
+            // mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_EMERGENCY);
 
         } else if (preference == mDeviceControlsPref) {
             value = mDeviceControlsPref.isChecked();
-            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_DEVICECONTROLS);
+            // mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_DEVICECONTROLS);
 
         } else if (preference == mRestartSystemUIPref) {
             value = mRestartSystemUIPref.isChecked();
-            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_RESTART_SYSTEMUI);
+           //  mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_RESTART_SYSTEMUI);
 
         } else {
             return super.onPreferenceTreeClick(preference);
@@ -207,8 +207,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
         boolean isKeyguardSecure = mLockPatternUtils.isSecure(UserHandle.myUserId());
         if (mLockDownPref != null) {
             mLockDownPref.setEnabled(isKeyguardSecure);
-            mLockDownPref.setChecked(mLineageGlobalActions.userConfigContains(
-                GLOBAL_ACTION_KEY_LOCKDOWN));
+            // mLockDownPref.setChecked(mLineageGlobalActions.userConfigContains(
+            //    GLOBAL_ACTION_KEY_LOCKDOWN));
             if (isKeyguardSecure) {
                 mLockDownPref.setSummary(null);
             } else {
@@ -222,8 +222,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
             } else {
                 List<UserInfo> users = mUserManager.getUsers();
                 boolean enabled = (users.size() > 1);
-                mUsersPref.setChecked(mLineageGlobalActions.userConfigContains(
-                    GLOBAL_ACTION_KEY_USERS) && enabled);
+                // mUsersPref.setChecked(mLineageGlobalActions.userConfigContains(
+                //    GLOBAL_ACTION_KEY_USERS) && enabled);
                 mUsersPref.setEnabled(enabled);
             }
         }

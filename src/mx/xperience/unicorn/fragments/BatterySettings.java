@@ -33,11 +33,11 @@ public class BatterySettings extends SettingsPreferenceFragment
 
     private static final String TAG = "BatterySettings";
 
-    private static final String KEY_BATTERY_STYLE =
+    /*private static final String KEY_BATTERY_STYLE =
             Settings.System.STATUS_BAR_BATTERY_STYLE;
 
     private static final String KEY_BATTERY_PERCENT =
-            Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT;
+            Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT;*/
 
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingListPreference mBatteryPercent;
@@ -48,7 +48,7 @@ public class BatterySettings extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.battery_styles);
 
-        mBatteryStyle = (SystemSettingListPreference) findPreference(KEY_BATTERY_STYLE);
+       /* mBatteryStyle = (SystemSettingListPreference) findPreference(KEY_BATTERY_STYLE);
         mBatteryPercent = (SystemSettingListPreference) findPreference(KEY_BATTERY_PERCENT);
 
         Log.d(TAG, "mBatteryStyle = " + mBatteryStyle);
@@ -77,12 +77,12 @@ public class BatterySettings extends SettingsPreferenceFragment
         Log.d(TAG, "Initial style = " + currentStyle);
         Log.d(TAG, "Initial percent = " + currentPercent);
 
-        enableStatusBarBatteryDependents(currentStyle);
+        enableStatusBarBatteryDependents(currentStyle);*/
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-
+/*
         if (preference == mBatteryStyle) {
             int value = Integer.parseInt(newValue.toString());
             Log.d(TAG, "Battery style changed -> " + value);
@@ -91,13 +91,13 @@ public class BatterySettings extends SettingsPreferenceFragment
 
         if (preference == mBatteryPercent) {
             Log.d(TAG, "Battery percent changed -> " + newValue);
-        }
+        }*/
 
         return true;
     }
 
     private void enableStatusBarBatteryDependents(int style) {
-
+/*
         if (mBatteryPercent == null) {
             Log.e(TAG, "Battery percent preference is NULL");
             return;
@@ -110,7 +110,7 @@ public class BatterySettings extends SettingsPreferenceFragment
 
         mBatteryPercent.setEnabled(enablePercent);
 
-        Log.d(TAG, "Battery percent enabled = " + enablePercent);
+        Log.d(TAG, "Battery percent enabled = " + enablePercent);*/
     }
 
     @Override

@@ -68,7 +68,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
 
         mShowRefreshRatePref = (SwitchPreferenceCompat) findPreference(PREF_SHOW_REFRESH_RATE);
-        if (mShowRefreshRatePref != null) {
+        /*if (mShowRefreshRatePref != null) {
             mShowRefreshRatePref.setOnPreferenceChangeListener(this);
             boolean refreshRateEnabled = Settings.System.getIntForUser(
                 resolver, 
@@ -76,7 +76,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                 0, 
                 UserHandle.USER_CURRENT) == 1;
             mShowRefreshRatePref.setChecked(refreshRateEnabled);
-        }
+        }*/
 
         mQsIosControlPanel = findPreference(KEY_QS_IOS_CONTROL_PANEL);
         if (mQsIosControlPanel != null) {
@@ -122,11 +122,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         if (preference == mShowRefreshRatePref) {
             boolean value = (Boolean) objValue;
-            Settings.System.putIntForUser(resolver, 
+            /*Settings.System.putIntForUser(resolver, 
                 Settings.System.SHOW_REFRESH_RATE, 
                 value ? 1 : 0, 
                 UserHandle.USER_CURRENT);
-            
+            */
             // Reiniciar SystemUI para aplicar cambios
             //XperienceUtils.showSystemUiRestartDialog(context);
             return true;
@@ -139,7 +139,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                     isIosEnabled ? 0 : 1,
                     UserHandle.USER_CURRENT);
             //show the dialog to restart the systemUI
-            XperienceUtils.showSystemUiRestartDialog(getActivity());
+            //XperienceUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }
 

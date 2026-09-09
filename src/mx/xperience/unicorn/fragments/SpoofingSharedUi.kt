@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package mx.xperience.unicorn.fragments;
+package mx.xperience.unicorn.fragments
 
 import android.app.ActivityManager
 import android.content.pm.ApplicationInfo

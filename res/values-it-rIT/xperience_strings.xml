@@ -112,4 +112,5 @@
     <!-- Miscellaneous/Play Integrity & TrickyStore -->
     <!-- Generic actions & labels -->
     <string name="action_enable">Attiva</string>
+    <!-- Notification row transparency -->
 </resources>

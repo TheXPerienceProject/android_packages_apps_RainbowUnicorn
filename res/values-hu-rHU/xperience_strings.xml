@@ -474,4 +474,5 @@
     <string name="action_reset">Visszaállítás</string>
     <string name="action_restart">Újraindítás</string>
     <string name="default_value">Alapértelmezett</string>
+    <!-- Notification row transparency -->
 </resources>

@@ -28,17 +28,17 @@
         android:entryValues="@array/screen_off_animation_values"
         android:defaultValue="1" />-->
 
-    <!--<PreferenceCategory
+    <PreferenceCategory
         android:title="@string/freeform_launch_mode_title">
 
-    <-Freeform launch mode -
+    <!--Freeform launch mode -->
     <mx.xperience.framework.preference.SystemSettingListPreference
         android:key="freeform_launch_mode"
         android:title="@string/freeform_launch_mode_title"
         android:dialogTitle="@string/freeform_launch_mode_title"
         android:entries="@array/freeform_launch_mode_entries"
         android:entryValues="@array/freeform_launch_mode_values"
-        android:defaultValue="0"
+        android:defaultValue="1"
         android:summary="%s" />
 
      Sidebar 
@@ -51,7 +51,7 @@
             android:targetPackage="com.libremobileos.sidebar"
             android:targetClass="com.libremobileos.sidebar.ui.sidebar.SidebarSettingsActivity" />
         </Preference>
-    </PreferenceCategory>-->
+    </PreferenceCategory>
 
     <!-- <PreferenceCategory
         android:title="@string/notifications_edge_light_title">

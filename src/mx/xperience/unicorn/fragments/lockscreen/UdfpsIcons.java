@@ -41,7 +41,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import androidx.recyclerview.widget.RecyclerView;
 
-/*import com.bumptech.glide.Glide;*/
+import com.bumptech.glide.Glide;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -136,32 +136,35 @@ public class UdfpsIcons extends Fragment {
         public void onBindViewHolder(UdfpsIconViewHolder holder, final int position) {
             String iconRes = mIcons[position];
 
-           /* Glide.with(holder.image.getContext())
-                    .load("")
-                    .placeholder(getDrawable(holder.image.getContext(), mIcons[position]))
-                    .into(holder.image);
-*/
-            holder.image.setPadding(20,20,20,20);
+            Drawable drawable = getDrawable(holder.image.getContext(), iconRes);
+            holder.image.setImageDrawable(drawable);
 
+            holder.image.setPadding(20, 20, 20, 20);
             holder.name.setVisibility(View.GONE);
 
-            /*if (position == Settings.System.getInt(context.getContentResolver(),
-                Settings.System.UDFPS_ICON, 0)) {
-                mAppliedIcon = iconRes;
-                if (mSelectedIcon == null) {
-                    mSelectedIcon = iconRes;
-                }
-            }*/
-            holder.itemView.setActivated(iconRes == mSelectedIcon);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    updateActivatedStatus(mSelectedIcon, false);
-                    updateActivatedStatus(iconRes, true);
-                    mSelectedIcon = iconRes;
-                    /*Settings.System.putInt(getActivity().getContentResolver(),
-                            Settings.System.UDFPS_ICON, position);
-                */}
+            int current = Settings.System.getIntForUser(
+                    context.getContentResolver(),
+                    Settings.System.UDFPS_ICON,
+                    0,
+                    UserHandle.USER_CURRENT);
+
+            if (position == current) {
+                mSelectedIcon = iconRes;
+            }
+
+            holder.itemView.setActivated(iconRes.equals(mSelectedIcon));
+
+            holder.itemView.setOnClickListener(v -> {
+                updateActivatedStatus(mSelectedIcon, false);
+
+                mSelectedIcon = iconRes;
+                holder.itemView.setActivated(true);
+
+                Settings.System.putIntForUser(
+                        context.getContentResolver(),
+                        Settings.System.UDFPS_ICON,
+                        position,
+                        UserHandle.USER_CURRENT);
             });
         }
 

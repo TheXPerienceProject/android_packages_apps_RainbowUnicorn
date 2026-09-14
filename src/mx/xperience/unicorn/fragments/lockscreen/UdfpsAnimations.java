@@ -6,7 +6,6 @@
 
 package mx.xperience.unicorn.fragments.lockscreen;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -15,185 +14,201 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.PreferenceViewHolder;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
-import com.android.settings.SettingsActivity;
 
-import java.util.Arrays;
-
-import androidx.fragment.app.Fragment;
-import android.widget.Toast;
-// The class extends from a normal Fragment to have full control over the layout.
 public class UdfpsAnimations extends Fragment {
 
+    private static final String TAG = "UdfpsAnimations";
+    private static final String UDFPS_RESOURCES_PACKAGE = "mx.xperience.udfps.animations";
+
     private RecyclerView mRecyclerView;
-    private String mPkg = "mx.xperience.udfps.animations";
-    private AnimationDrawable animation;
-
-    private Resources udfpsRes;
-
-    private String[] mAnims;
-    private String[] mAnimPreviews;
+    private Resources mUdfpsResources;
+    private String[] mAnimations;
+    private String[] mAnimationPreviews;
     private String[] mTitles;
-
-    private UdfpsAnimAdapter mUdfpsAnimAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setTitle(R.string.themes_udfps_animation_title);
-
+        requireActivity().setTitle(R.string.themes_udfps_animation_title);
         loadResources();
     }
 
     private void loadResources() {
         try {
             PackageManager pm = requireActivity().getPackageManager();
-            udfpsRes = pm.getResourcesForApplication(mPkg);
-            // If the resources are obtained, then we load them.
-            mAnims = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_styles",
-                    "array", mPkg));
-            mAnimPreviews = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_previews",
-                    "array", mPkg));
-            mTitles = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_animation_titles",
-                    "array", mPkg));
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            udfpsRes = null; // We ensure that udfpsRes is null if the packet is not found.
-            // It is not necessary to throw an exception, as the code is already prepared to handle a null resource.
+            mUdfpsResources = pm.getResourcesForApplication(UDFPS_RESOURCES_PACKAGE);
+
+            int animationsId = mUdfpsResources.getIdentifier(
+                    "udfps_animation_styles", "array", UDFPS_RESOURCES_PACKAGE);
+            int previewsId = mUdfpsResources.getIdentifier(
+                    "udfps_animation_previews", "array", UDFPS_RESOURCES_PACKAGE);
+            int titlesId = mUdfpsResources.getIdentifier(
+                    "udfps_animation_titles", "array", UDFPS_RESOURCES_PACKAGE);
+
+            if (animationsId == 0 || previewsId == 0 || titlesId == 0) {
+                throw new Resources.NotFoundException("Missing UDFPS animation resources");
+            }
+
+            mAnimations = mUdfpsResources.getStringArray(animationsId);
+            mAnimationPreviews = mUdfpsResources.getStringArray(previewsId);
+            mTitles = mUdfpsResources.getStringArray(titlesId);
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+            Log.w(TAG, "Unable to load UDFPS animation resources", e);
+            mUdfpsResources = null;
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-
-        // If the resources did not load, there is nothing to display.
-        if (udfpsRes == null) {
+        if (mUdfpsResources == null) {
             Toast.makeText(getContext(), "Animation resources not found.", Toast.LENGTH_LONG).show();
-            // We return an empty view to avoid a crash.
-            return new View(getContext());
+            return new View(requireContext());
         }
 
-        View view = inflater.inflate(R.layout.item_view, container, false);
-
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
-        mUdfpsAnimAdapter = new UdfpsAnimAdapter(getActivity());
-        mRecyclerView.setAdapter(mUdfpsAnimAdapter);
-
+        View view = inflater.inflate(R.layout.udfps_picker, container, false);
+        mRecyclerView = view.findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        mRecyclerView.setAdapter(new UdfpsAnimationAdapter(requireContext()));
         return view;
     }
 
-    public class UdfpsAnimAdapter extends RecyclerView.Adapter<UdfpsAnimAdapter.UdfpsAnimViewHolder> {
-        Context context;
-        String mSelectedAnim;
-        String mAppliedAnim;
+    private class UdfpsAnimationAdapter
+            extends RecyclerView.Adapter<UdfpsAnimationAdapter.UdfpsAnimationViewHolder> {
 
-        public UdfpsAnimAdapter(Context context) {
-            this.context = context;
+        private final Context mContext;
+        private int mSelectedPosition;
+
+        UdfpsAnimationAdapter(Context context) {
+            mContext = context;
+            mSelectedPosition = Settings.System.getIntForUser(
+                    context.getContentResolver(),
+                    Settings.System.UDFPS_ANIM_STYLE,
+                    0,
+                    UserHandle.USER_CURRENT);
+
+            if (mSelectedPosition < 0 || mSelectedPosition >= getItemCount()) {
+                mSelectedPosition = 0;
+            }
         }
 
         @NonNull
         @Override
-        public UdfpsAnimViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_option, parent, false);
-            return new UdfpsAnimViewHolder(v);
+        public UdfpsAnimationViewHolder onCreateViewHolder(
+                @NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.udfps_animation_option, parent, false);
+            return new UdfpsAnimationViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(UdfpsAnimViewHolder holder, final int position) {
-            String animName = mAnims[position];
+        public void onBindViewHolder(
+                @NonNull UdfpsAnimationViewHolder holder, int position) {
+            holder.itemView.setActivated(position == mSelectedPosition);
+            holder.name.setText(position < mTitles.length ? mTitles[position] : "");
 
-            Glide.with(holder.image.getContext())
-                    .load("")
-                    .placeholder(getDrawable(holder.image.getContext(), mAnimPreviews[position]))
-                    .into(holder.image);
-
-            holder.name.setText(mTitles[position]);
-
-            if (position == Settings.System.getInt(context.getContentResolver(),
-                Settings.System.UDFPS_ANIM_STYLE, 0)) {
-                mAppliedAnim = animName;
-                if (mSelectedAnim == null) {
-                    mSelectedAnim = animName;
-                }
+            Drawable current = holder.image.getDrawable();
+            if (current instanceof AnimationDrawable) {
+                ((AnimationDrawable) current).stop();
             }
 
-            holder.itemView.setActivated(animName == mSelectedAnim);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    updateActivatedStatus(mSelectedAnim, false);
-                    updateActivatedStatus(animName, true);
-                    mSelectedAnim = animName;
-                    holder.image.setBackgroundDrawable(getDrawable(v.getContext(), mAnims[position]));
-                    animation = (AnimationDrawable) holder.image.getBackground();
-                    animation.setOneShot(true);
-                    animation.start();
-                    Settings.System.putInt(getActivity().getContentResolver(),
-                            Settings.System.UDFPS_ANIM_STYLE, position);
-                }
-            });
+            Drawable preview = position < mAnimationPreviews.length
+                    ? getDrawable(holder.image.getContext(), mAnimationPreviews[position])
+                    : null;
+            holder.image.setImageDrawable(preview);
+
+            holder.itemView.setOnClickListener(v -> selectAnimation(holder));
+        }
+
+        private void selectAnimation(UdfpsAnimationViewHolder holder) {
+            int position = holder.getBindingAdapterPosition();
+            if (position == RecyclerView.NO_POSITION) {
+                return;
+            }
+
+            int oldPosition = mSelectedPosition;
+            mSelectedPosition = position;
+
+            if (oldPosition != position) {
+                notifyItemChanged(oldPosition);
+                notifyItemChanged(position);
+            } else {
+                holder.itemView.setActivated(true);
+            }
+
+            Settings.System.putIntForUser(
+                    mContext.getContentResolver(),
+                    Settings.System.UDFPS_ANIM_STYLE,
+                    position,
+                    UserHandle.USER_CURRENT);
+
+            // Preview the actual animation once when the user selects it.
+            Drawable current = holder.image.getDrawable();
+            if (current instanceof AnimationDrawable) {
+                ((AnimationDrawable) current).stop();
+            }
+
+            Drawable drawable = getDrawable(mContext, mAnimations[position]);
+            holder.image.setImageDrawable(drawable);
+            if (drawable instanceof AnimationDrawable) {
+                AnimationDrawable animation = (AnimationDrawable) drawable;
+                animation.setOneShot(true);
+                holder.image.post(animation::start);
+            }
         }
 
         @Override
         public int getItemCount() {
-            if (mAnims == null) return 0;
-            return mAnims.length;
+            return mAnimations == null ? 0 : mAnimations.length;
         }
 
-        public class UdfpsAnimViewHolder extends RecyclerView.ViewHolder {
-            TextView name;
-            ImageView image;
-            public UdfpsAnimViewHolder(View itemView) {
+        class UdfpsAnimationViewHolder extends RecyclerView.ViewHolder {
+            final TextView name;
+            final ImageView image;
+
+            UdfpsAnimationViewHolder(View itemView) {
                 super(itemView);
-                name = (TextView) itemView.findViewById(R.id.option_label);
-                image = (ImageView) itemView.findViewById(R.id.option_thumbnail);
-            }
-        }
-
-        private void updateActivatedStatus(String anim, boolean isActivated) {
-            if (mAnims == null || mRecyclerView == null) return;
-            int index = Arrays.asList(mAnims).indexOf(anim);
-            if (index < 0) {
-                return;
-            }
-            RecyclerView.ViewHolder holder = mRecyclerView.findViewHolderForAdapterPosition(index);
-            if (holder != null && holder.itemView != null) {
-                holder.itemView.setActivated(isActivated);
+                name = itemView.findViewById(R.id.option_label);
+                image = itemView.findViewById(R.id.option_thumbnail);
             }
         }
     }
 
-    public Drawable getDrawable(Context context, String drawableName) {
+    @Nullable
+    private Drawable getDrawable(Context context, String drawableName) {
+        if (drawableName == null || mUdfpsResources == null) {
+            return null;
+        }
+
+        int resId = mUdfpsResources.getIdentifier(
+                drawableName, "drawable", UDFPS_RESOURCES_PACKAGE);
+        if (resId == 0) {
+            Log.w(TAG, "Drawable not found: " + drawableName);
+            return null;
+        }
+
         try {
-            PackageManager pm = context.getPackageManager();
-            Resources res = pm.getResourcesForApplication(mPkg);
-            return res.getDrawable(res.getIdentifier(drawableName, "drawable", mPkg));
+            Context packageContext = context.createPackageContext(
+                    UDFPS_RESOURCES_PACKAGE, Context.CONTEXT_IGNORE_SECURITY);
+            return packageContext.getDrawable(resId);
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+            Log.w(TAG, "Unable to load drawable: " + drawableName, e);
+            return null;
         }
-        catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

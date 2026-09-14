@@ -55,6 +55,7 @@ public class Lockscreen extends SettingsPreferenceFragment implements
     private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
     private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
     private static final String KEY_UDFPS_ICON = "udfps_icons";
+    private static final String UDFPS_RESOURCES_PACKAGE = "mx.xperience.udfps.animations";
 
     private PreferenceCategory mLockScreenCategory;
 
@@ -82,7 +83,7 @@ public class Lockscreen extends SettingsPreferenceFragment implements
                 getActivity().getSystemService(ctx.FINGERPRINT_SERVICE);
 
         if (mAnimationsCategory != null) {
-            boolean isPackageInstalled = XperienceUtils.isPackageInstalled(ctx, "mx.xperience.udfps.animations");
+            boolean isPackageInstalled = XperienceUtils.isPackageInstalled(ctx, UDFPS_RESOURCES_PACKAGE);
             boolean noHardware = (fingerprintManager == null || !fingerprintManager.isHardwareDetected());
 
             if (noHardware || !isPackageInstalled) {
@@ -140,12 +141,14 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
                 FingerprintManager fingerprintManager = (FingerprintManager)
                         context.getSystemService(Context.FINGERPRINT_SERVICE);
-                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+                boolean hasFingerprint = fingerprintManager != null
+                        && fingerprintManager.isHardwareDetected();
+                boolean hasUdfpsResources = XperienceUtils.isPackageInstalled(
+                        context, UDFPS_RESOURCES_PACKAGE);
+
+                if (!hasFingerprint || !hasUdfpsResources) {
                     keys.add(KEY_UDFPS_ANIMATION);
-                } else {
-                    if (!XperienceUtils.isPackageInstalled(context, "mx.xperience.udfps.animations")) {
-                        keys.add(KEY_UDFPS_ANIMATION);
-                    }
+                    keys.add(KEY_UDFPS_ICON);
                 }
                 return keys;
             }

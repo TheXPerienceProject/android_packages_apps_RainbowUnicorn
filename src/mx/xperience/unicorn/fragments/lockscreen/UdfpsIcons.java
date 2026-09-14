@@ -6,207 +6,168 @@
 
 package mx.xperience.unicorn.fragments.lockscreen;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.UserHandle;
-import android.net.Uri;
-import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.text.TextUtils;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.PreferenceViewHolder;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settingslib.search.Indexable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-// The class extends from a normal Fragment to have full control over the layout.
 public class UdfpsIcons extends Fragment {
 
+    private static final String TAG = "UdfpsIcons";
+    private static final String UDFPS_RESOURCES_PACKAGE = "mx.xperience.udfps.animations";
+
     private RecyclerView mRecyclerView;
-
-    private Resources udfpsRes;
-
-    private String mPkg = "mx.xperience.udfps.animations";
-
+    private Resources mUdfpsResources;
     private String[] mIcons;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setTitle(R.string.themes_udfps_icon_title);
-
+        requireActivity().setTitle(R.string.themes_udfps_icon_title);
         loadResources();
     }
 
     private void loadResources() {
         try {
-            PackageManager pm = getActivity().getPackageManager();
-            udfpsRes = pm.getResourcesForApplication(mPkg);
-            mIcons = udfpsRes.getStringArray(udfpsRes.getIdentifier("udfps_icons",
-                "array", mPkg));
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            udfpsRes = null; // We ensure that udfpsRes is null if the packet is not found.
-            // It is not necessary to throw an exception, as the code is already prepared to handle a null resource.
+            PackageManager pm = requireActivity().getPackageManager();
+            mUdfpsResources = pm.getResourcesForApplication(UDFPS_RESOURCES_PACKAGE);
+            int iconsId = mUdfpsResources.getIdentifier(
+                    "udfps_icons", "array", UDFPS_RESOURCES_PACKAGE);
+            if (iconsId == 0) {
+                throw new Resources.NotFoundException("Missing UDFPS icon resources");
+            }
+            mIcons = mUdfpsResources.getStringArray(iconsId);
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+            Log.w(TAG, "Unable to load UDFPS icon resources", e);
+            mUdfpsResources = null;
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-
-        // If the resources did not load, there is nothing to display.
-        if (udfpsRes == null) {
-            Toast.makeText(getContext(), "Udfps icons resources not found.", Toast.LENGTH_LONG).show();
-            // We return an empty view to avoid a crash.
-            return new View(getContext());
+        if (mUdfpsResources == null) {
+            Toast.makeText(getContext(), "UDFPS icon resources not found.", Toast.LENGTH_LONG).show();
+            return new View(requireContext());
         }
 
-        View view = inflater.inflate(
-                R.layout.item_view, container, false);
-
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
-        UdfpsIconAdapter mUdfpsIconAdapter = new UdfpsIconAdapter(getActivity());
-        mRecyclerView.setAdapter(mUdfpsIconAdapter);
-
+        View view = inflater.inflate(R.layout.udfps_picker, container, false);
+        mRecyclerView = view.findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 4));
+        mRecyclerView.setAdapter(new UdfpsIconAdapter(requireContext()));
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+    private class UdfpsIconAdapter
+            extends RecyclerView.Adapter<UdfpsIconAdapter.UdfpsIconViewHolder> {
 
-    public class UdfpsIconAdapter extends RecyclerView.Adapter<UdfpsIconAdapter.UdfpsIconViewHolder> {
-        Context context;
-        String mSelectedIcon;
-        String mAppliedIcon;
+        private final Context mContext;
+        private int mSelectedPosition;
 
-        public UdfpsIconAdapter(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public UdfpsIconViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_option, parent, false);
-            UdfpsIconViewHolder vh = new UdfpsIconViewHolder(v);
-            return vh;
-        }
-
-        @Override
-        public void onBindViewHolder(UdfpsIconViewHolder holder, final int position) {
-            String iconRes = mIcons[position];
-
-            Drawable drawable = getDrawable(holder.image.getContext(), iconRes);
-            holder.image.setImageDrawable(drawable);
-
-            holder.image.setPadding(20, 20, 20, 20);
-            holder.name.setVisibility(View.GONE);
-
-            int current = Settings.System.getIntForUser(
+        UdfpsIconAdapter(Context context) {
+            mContext = context;
+            mSelectedPosition = Settings.System.getIntForUser(
                     context.getContentResolver(),
                     Settings.System.UDFPS_ICON,
                     0,
                     UserHandle.USER_CURRENT);
 
-            if (position == current) {
-                mSelectedIcon = iconRes;
+            if (mSelectedPosition < 0 || mSelectedPosition >= getItemCount()) {
+                mSelectedPosition = 0;
+            }
+        }
+
+        @NonNull
+        @Override
+        public UdfpsIconViewHolder onCreateViewHolder(
+                @NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.udfps_icon_option, parent, false);
+            return new UdfpsIconViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull UdfpsIconViewHolder holder, int position) {
+            holder.itemView.setActivated(position == mSelectedPosition);
+            holder.image.setImageDrawable(getDrawable(mContext, mIcons[position]));
+            holder.itemView.setOnClickListener(v -> selectIcon(holder));
+        }
+
+        private void selectIcon(UdfpsIconViewHolder holder) {
+            int position = holder.getBindingAdapterPosition();
+            if (position == RecyclerView.NO_POSITION) {
+                return;
             }
 
-            holder.itemView.setActivated(iconRes.equals(mSelectedIcon));
+            int oldPosition = mSelectedPosition;
+            mSelectedPosition = position;
 
-            holder.itemView.setOnClickListener(v -> {
-                updateActivatedStatus(mSelectedIcon, false);
-
-                mSelectedIcon = iconRes;
+            if (oldPosition != position) {
+                notifyItemChanged(oldPosition);
+                notifyItemChanged(position);
+            } else {
                 holder.itemView.setActivated(true);
+            }
 
-                Settings.System.putIntForUser(
-                        context.getContentResolver(),
-                        Settings.System.UDFPS_ICON,
-                        position,
-                        UserHandle.USER_CURRENT);
-            });
+            Settings.System.putIntForUser(
+                    mContext.getContentResolver(),
+                    Settings.System.UDFPS_ICON,
+                    position,
+                    UserHandle.USER_CURRENT);
         }
 
         @Override
         public int getItemCount() {
-            if (mIcons == null) return 0;
-            return mIcons.length;
+            return mIcons == null ? 0 : mIcons.length;
         }
 
-        public class UdfpsIconViewHolder extends RecyclerView.ViewHolder {
-            TextView name;
-            ImageView image;
-            public UdfpsIconViewHolder(View itemView) {
+        class UdfpsIconViewHolder extends RecyclerView.ViewHolder {
+            final ImageView image;
+
+            UdfpsIconViewHolder(View itemView) {
                 super(itemView);
-                name = (TextView) itemView.findViewById(R.id.option_label);
-                image = (ImageView) itemView.findViewById(R.id.option_thumbnail);
-            }
-        }
-
-        private void updateActivatedStatus(String icon, boolean isActivated) {
-            int index = Arrays.asList(mIcons).indexOf(icon);
-            if (index < 0) {
-                return;
-            }
-            RecyclerView.ViewHolder holder = mRecyclerView.findViewHolderForAdapterPosition(index);
-            if (holder != null && holder.itemView != null) {
-                holder.itemView.setActivated(isActivated);
+                image = itemView.findViewById(R.id.option_thumbnail);
             }
         }
     }
 
-    public Drawable getDrawable(Context context, String drawableName) {
+    @Nullable
+    private Drawable getDrawable(Context context, String drawableName) {
+        if (drawableName == null || mUdfpsResources == null) {
+            return null;
+        }
+
+        int resId = mUdfpsResources.getIdentifier(
+                drawableName, "drawable", UDFPS_RESOURCES_PACKAGE);
+        if (resId == 0) {
+            Log.w(TAG, "Drawable not found: " + drawableName);
+            return null;
+        }
+
         try {
-            PackageManager pm = context.getPackageManager();
-            Resources res = pm.getResourcesForApplication(mPkg);
-            Context ctx = context.createPackageContext(
-                    mPkg, Context.CONTEXT_IGNORE_SECURITY);
-            return ctx.getDrawable(res.getIdentifier(drawableName, "drawable", mPkg));
+            Context packageContext = context.createPackageContext(
+                    UDFPS_RESOURCES_PACKAGE, Context.CONTEXT_IGNORE_SECURITY);
+            return packageContext.getDrawable(resId);
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+            Log.w(TAG, "Unable to load drawable: " + drawableName, e);
+            return null;
         }
-        catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

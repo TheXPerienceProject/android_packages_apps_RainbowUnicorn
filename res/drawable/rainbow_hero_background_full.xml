@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="30dp" />
+    <gradient
+        android:angle="0"
+        android:startColor="#1A0F22"
+        android:centerColor="#111D34"
+        android:endColor="#24102C" />
+</shape>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2026 The XPerience Project -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="0"
+        android:startColor="#13252B"
+        android:centerColor="#171C2B"
+        android:endColor="#24142D"
+        android:type="linear" />
+    <corners android:radius="30dp" />
+</shape>

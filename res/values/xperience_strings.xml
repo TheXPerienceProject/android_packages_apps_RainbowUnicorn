@@ -987,4 +987,13 @@
     <!-- Status bar - Battery estimate -->
     <string name="status_bar_battery_estimate_title">Battery time remaining</string>
     <string name="status_bar_battery_estimate_summary">Show estimated time until the battery is empty in Quick Settings</string>
+
+    <!-- Rainbow Unicorn dashboard -->
+    <string name="rainbow_hero_eyebrow" translatable="false">XPerience</string>
+    <string name="rainbow_hero_subtitle">Make Android yours</string>
+    <string name="rainbow_misc_summary">System behavior, gestures and everyday extras</string>
+    <string name="rainbow_spoofing_summary">Device identity and compatibility controls</string>
+
+    <string name="rainbow_title">Rainbow Unicorn</string>
+
 </resources>

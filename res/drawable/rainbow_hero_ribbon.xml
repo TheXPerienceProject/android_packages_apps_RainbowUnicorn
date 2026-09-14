@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2026 The XPerience Project -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="99dp" />
+    <gradient
+        android:angle="0"
+        android:startColor="#35D7FF"
+        android:centerColor="#7C63FF"
+        android:endColor="#FF59A8" />
+</shape>

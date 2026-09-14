@@ -66,4 +66,10 @@
     <color name="sound_engine_menu_border_selected_color">#0b6ae2</color>
     <color name="device_info_rising_version_bg">#000000</color>
     <color name="device_info_rising_version_text">#d9d9d9</color>
+
+    <!-- Rainbow Unicorn dashboard -->
+    <color name="rainbow_dashboard_card">@android:color/system_neutral1_50</color>
+    <color name="rainbow_dashboard_icon_container">@android:color/system_accent1_100</color>
+    <color name="rainbow_dashboard_icon_tint">@android:color/system_accent1_700</color>
+
 </resources>

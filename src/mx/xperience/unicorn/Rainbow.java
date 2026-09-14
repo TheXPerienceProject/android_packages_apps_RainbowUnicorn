@@ -25,12 +25,16 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Surface;
+import android.graphics.Color;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceViewHolder;
+import androidx.recyclerview.widget.RecyclerView;
 import com.android.settings.R;
 
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.widget.HighlightablePreferenceGroupAdapter;
 
 public class Rainbow extends SettingsPreferenceFragment {
 
@@ -53,6 +57,69 @@ public class Rainbow extends SettingsPreferenceFragment {
                 return true;
             });
         }
+    }
+
+
+    @Override
+    protected RecyclerView.Adapter onCreateAdapter(PreferenceScreen preferenceScreen) {
+        return new HighlightablePreferenceGroupAdapter(preferenceScreen, null, false) {
+            @Override
+            public void onBindViewHolder(PreferenceViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+
+                Preference preference = getItem(position);
+                if (preference instanceof RainbowHeaderPreference
+                        || (preference != null
+                        && "rainbow_header".equals(preference.getKey()))) {
+                    // Settings' expressive preference adapter applies its rounded
+                    // row background after Preference.onBindViewHolder(). Clear it
+                    // here, after the adapter has finished binding the row.
+                    clearAdapterBackground(holder);
+                    holder.setDividerAllowedAbove(false);
+                    holder.setDividerAllowedBelow(false);
+                } else if (isDashboardPreference(preference)) {
+                    // The expressive adapter replaces the background declared by
+                    // rainbow_dashboard_preference.xml. Restore our own card after
+                    // the adapter finishes binding so every dashboard row keeps
+                    // its intended rounded shape, including the first one below
+                    // the hero.
+                    restoreDashboardBackground(holder);
+                }
+            }
+        };
+    }
+
+
+    private static boolean isDashboardPreference(Preference preference) {
+        if (preference == null || preference.getKey() == null) {
+            return false;
+        }
+
+        switch (preference.getKey()) {
+            case "statusbar_category":
+            case "lockscreen":
+            case "misc_category":
+            case "spoofing":
+            case "battery_adviser":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private static void clearAdapterBackground(PreferenceViewHolder holder) {
+        holder.itemView.setBackground(null);
+        holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+        holder.itemView.setElevation(0f);
+        holder.itemView.setStateListAnimator(null);
+    }
+
+    private static void restoreDashboardBackground(PreferenceViewHolder holder) {
+        holder.itemView.setBackgroundResource(R.drawable.rainbow_dashboard_card_background);
+        holder.itemView.setElevation(0f);
+        holder.itemView.setStateListAnimator(null);
+        holder.setDividerAllowedAbove(false);
+        holder.setDividerAllowedBelow(false);
     }
 
     @Override

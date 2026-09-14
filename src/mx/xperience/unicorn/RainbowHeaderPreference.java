@@ -18,7 +18,9 @@ package mx.xperience.unicorn;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.util.AttributeSet;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
@@ -38,12 +40,12 @@ public class RainbowHeaderPreference extends Preference {
         init();
     }
 
-    public RainbowHeaderPreference(Context context, android.util.AttributeSet attrs) {
+    public RainbowHeaderPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public RainbowHeaderPreference(Context context, android.util.AttributeSet attrs, int defStyleAttr) {
+    public RainbowHeaderPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -52,17 +54,28 @@ public class RainbowHeaderPreference extends Preference {
         setLayoutResource(R.layout.rainbow_dashboard_header);
         setSelectable(false);
         setPersistent(false);
+        setShouldDisableView(false);
     }
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        holder.itemView.setBackground(new ColorDrawable(Color.TRANSPARENT));
-        holder.itemView.setPadding(0, 0, 0, 0);
-        holder.itemView.setClickable(false);
-        holder.itemView.setFocusable(false);
-        holder.itemView.setElevation(0f);
+        final View item = holder.itemView;
+
+        // Remove the item's background
+        item.setBackground(null);
+        item.setBackgroundColor(Color.TRANSPARENT);
+        item.setPadding(0, 0, 0, 0);
+        item.setClickable(false);
+        item.setFocusable(false);
+        item.setLongClickable(false);
+        item.setElevation(0f);
+
+        if (item instanceof ViewGroup) {
+            ((ViewGroup) item).setClipToPadding(false);
+            ((ViewGroup) item).setClipChildren(false);
+        }
 
         holder.setDividerAllowedAbove(false);
         holder.setDividerAllowedBelow(false);

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="rainbow_misc_summary">Comportamiento del sistema, gestos y extras de uso diario</string>
+    <string name="rainbow_spoofing_summary">Identidad del dispositivo y controles de compatibilidad</string>
+</resources>

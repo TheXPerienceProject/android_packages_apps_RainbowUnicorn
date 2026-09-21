@@ -24,13 +24,13 @@
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
     </Preference>
 
-    <!--<Preference
+    <Preference
         android:fragment="mx.xperience.unicorn.fragments.BatterySettings"
         android:key="battery_settings"
         android:title="@string/battery_settings_title"
         android:summary="@string/battery_settings_summary" />
 
-    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+    <!--<mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="qs_ios_control_panel"
         android:title="@string/ios_style"
         android:summary="@string/ios_style_summary"

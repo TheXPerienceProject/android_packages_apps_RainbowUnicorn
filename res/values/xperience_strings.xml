@@ -74,10 +74,12 @@
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_title">Battery indicator</string>
     <string name="status_bar_battery_style_title">Battery status style</string>
+    <string name="status_bar_battery_style_aosp" translatable="false">AOSP</string>
     <string name="status_bar_battery_style_icon_landscape">Icon landscape</string>
     <string name="status_bar_battery_style_circle">Circle</string>
     <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
     <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_aospa" translatable="false">AOSPA</string>
 
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Battery percentage</string>

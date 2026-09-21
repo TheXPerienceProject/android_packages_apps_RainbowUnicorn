@@ -29,7 +29,7 @@
             android:defaultValue="0" />
 
         <SwitchPreferenceCompat
-            android:key="aospa_battery_percent"
+            android:key="external_battery_percent"
             android:title="@string/status_bar_battery_percentage_title"
             android:summary="@string/status_bar_battery_percentage_text_next"
             android:persistent="false"

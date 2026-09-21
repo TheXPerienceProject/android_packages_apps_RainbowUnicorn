@@ -36,15 +36,19 @@ public class BatterySettings extends SettingsPreferenceFragment
 
     private static final int BATTERY_STYLE_TEXT = 2;
     private static final int BATTERY_STYLE_AOSPA = 4;
+    private static final int BATTERY_STYLE_CAPSULE = 5;
+    private static final int BATTERY_STYLE_PILL = 6;
+    private static final int BATTERY_STYLE_HEX = 7;
+    private static final int BATTERY_STYLE_WAVE = 8;
     private static final int BATTERY_PERCENT_HIDDEN = 0;
     private static final int BATTERY_PERCENT_INSIDE = 1;
     private static final int BATTERY_PERCENT_NEXT = 2;
 
-    private static final String KEY_AOSPA_BATTERY_PERCENT = "aospa_battery_percent";
+    private static final String KEY_EXTERNAL_BATTERY_PERCENT = "external_battery_percent";
 
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingListPreference mBatteryPercent;
-    private SwitchPreferenceCompat mAospaBatteryPercent;
+    private SwitchPreferenceCompat mExternalBatteryPercent;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -54,7 +58,7 @@ public class BatterySettings extends SettingsPreferenceFragment
 
         mBatteryStyle = findPreference(KEY_BATTERY_STYLE);
         mBatteryPercent = findPreference(KEY_BATTERY_PERCENT);
-        mAospaBatteryPercent = findPreference(KEY_AOSPA_BATTERY_PERCENT);
+        mExternalBatteryPercent = findPreference(KEY_EXTERNAL_BATTERY_PERCENT);
 
         if (mBatteryStyle != null) {
             mBatteryStyle.setOnPreferenceChangeListener(this);
@@ -64,8 +68,8 @@ public class BatterySettings extends SettingsPreferenceFragment
             mBatteryPercent.setOnPreferenceChangeListener(this);
         }
 
-        if (mAospaBatteryPercent != null) {
-            mAospaBatteryPercent.setOnPreferenceChangeListener(this);
+        if (mExternalBatteryPercent != null) {
+            mExternalBatteryPercent.setOnPreferenceChangeListener(this);
         }
 
         final int currentStyle = Settings.System.getIntForUser(
@@ -85,12 +89,12 @@ public class BatterySettings extends SettingsPreferenceFragment
             return true;
         }
 
-        if (preference == mAospaBatteryPercent) {
+        if (preference == mExternalBatteryPercent) {
             final int percent = (Boolean) newValue
                     ? BATTERY_PERCENT_NEXT
                     : BATTERY_PERCENT_HIDDEN;
 
-            // AOSPA has a solid center dot, so percentage can only be shown next to it.
+            // Styles without an internal percentage can only show it next to the icon.
             if (mBatteryPercent != null) {
                 mBatteryPercent.setValue(Integer.toString(percent));
             } else {
@@ -108,14 +112,14 @@ public class BatterySettings extends SettingsPreferenceFragment
     }
 
     private void updateBatteryPercentAvailability(int style) {
-        if (mBatteryPercent == null || mAospaBatteryPercent == null) {
+        if (mBatteryPercent == null || mExternalBatteryPercent == null) {
             return;
         }
 
         // Text style already represents the battery level itself.
         if (style == BATTERY_STYLE_TEXT) {
             mBatteryPercent.setVisible(false);
-            mAospaBatteryPercent.setVisible(false);
+            mExternalBatteryPercent.setVisible(false);
             return;
         }
 
@@ -125,7 +129,11 @@ public class BatterySettings extends SettingsPreferenceFragment
                 BATTERY_PERCENT_HIDDEN,
                 UserHandle.USER_CURRENT);
 
-        if (style == BATTERY_STYLE_AOSPA) {
+        if (style == BATTERY_STYLE_AOSPA
+            || style == BATTERY_STYLE_CAPSULE
+            || style == BATTERY_STYLE_PILL
+            || style == BATTERY_STYLE_HEX
+            || style == BATTERY_STYLE_WAVE) {
             // Preserve a visible percentage when moving from an inside-capable style.
             if (percent == BATTERY_PERCENT_INSIDE) {
                 percent = BATTERY_PERCENT_NEXT;
@@ -133,13 +141,13 @@ public class BatterySettings extends SettingsPreferenceFragment
             }
 
             mBatteryPercent.setVisible(false);
-            mAospaBatteryPercent.setChecked(percent == BATTERY_PERCENT_NEXT);
-            mAospaBatteryPercent.setVisible(true);
+            mExternalBatteryPercent.setChecked(percent == BATTERY_PERCENT_NEXT);
+            mExternalBatteryPercent.setVisible(true);
             return;
         }
 
-        // AOSP, Circle and Dotted support all three percentage placements.
-        mAospaBatteryPercent.setVisible(false);
+        // AOSP, Circle, Dotted and Capsule support all three percentage placements.
+        mExternalBatteryPercent.setVisible(false);
         mBatteryPercent.setValue(Integer.toString(percent));
         mBatteryPercent.setVisible(true);
     }

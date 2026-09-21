@@ -20,6 +20,10 @@
         <item>@string/status_bar_battery_style_text</item>
         <item>@string/status_bar_battery_style_dotted_circle</item>
         <item>@string/status_bar_battery_style_aospa</item>
+        <item>@string/status_bar_battery_style_capsule</item>
+        <item>@string/status_bar_battery_style_pill</item>
+        <item>@string/status_bar_battery_style_hex</item>
+        <item>@string/status_bar_battery_style_wave</item>
     </string-array>
 
     <string-array name="status_bar_battery_style_values" translatable="false">
@@ -28,6 +32,10 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <string-array name="status_bar_battery_percentage_entries" translatable="false">

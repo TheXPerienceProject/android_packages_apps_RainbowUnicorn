@@ -79,7 +79,11 @@
     <string name="status_bar_battery_style_circle">Circle</string>
     <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
     <string name="status_bar_battery_style_text">Text</string>
-    <string name="status_bar_battery_style_aospa" translatable="false">AOSPA</string>
+    <string name="status_bar_battery_style_aospa" translatable="false">XPERIENCE</string>
+    <string name="status_bar_battery_style_capsule">Capsule</string>
+    <string name="status_bar_battery_style_pill">Pill</string>
+    <string name="status_bar_battery_style_hex">Hex</string>
+    <string name="status_bar_battery_style_wave">Wave</string>
 
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Battery percentage</string>

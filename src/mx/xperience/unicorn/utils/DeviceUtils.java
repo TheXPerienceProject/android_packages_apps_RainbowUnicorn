@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,19 +16,11 @@
 
 package mx.xperience.unicorn.utils;
 
-import static android.view.WindowManagerPolicyConstants.NAV_BAR_MODE_2BUTTON;
-import static android.view.WindowManagerPolicyConstants.NAV_BAR_MODE_GESTURAL;
-
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.camera2.CameraAccessException;
@@ -36,31 +28,23 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintSensorPropertiesInternal;
-import android.net.ConnectivityManager;
 import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.SystemProperties;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.DisplayCutout;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
 import android.view.Surface;
 
 import java.util.List;
-import java.util.Arrays;
 
 public class DeviceUtils {
-
-    private static final String DEVICE = "ro.xpe.model";
-
 
     public static boolean isPackageInstalled(Context context, String pkg, boolean ignoreState) {
         if (pkg != null) {
             try {
-                PackageInfo pi = context.getPackageManager().getPackageInfo(pkg, 0);
-                if (!pi.applicationInfo.enabled && !ignoreState) {
+                PackageInfo packageInfo = context.getPackageManager().getPackageInfo(pkg, 0);
+                if (!packageInfo.applicationInfo.enabled && !ignoreState) {
                     return false;
                 }
             } catch (PackageManager.NameNotFoundException e) {
@@ -79,13 +63,12 @@ public class DeviceUtils {
         return !TextUtils.isEmpty(name);
     }
 
-
     public static boolean deviceSupportsBluetooth() {
-        return (BluetoothAdapter.getDefaultAdapter() != null);
+        return BluetoothAdapter.getDefaultAdapter() != null;
     }
 
-    public static boolean deviceSupportsNfc(Context ctx) {
-        return NfcAdapter.getDefaultAdapter(ctx) != null;
+    public static boolean deviceSupportsNfc(Context context) {
+        return NfcAdapter.getDefaultAdapter(context) != null;
     }
 
     public static boolean deviceSupportsFlashLight(Context context) {
@@ -93,9 +76,11 @@ public class DeviceUtils {
         try {
             String[] ids = cameraManager.getCameraIdList();
             for (String id : ids) {
-                CameraCharacteristics c = cameraManager.getCameraCharacteristics(id);
-                Boolean flashAvailable = c.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
-                Integer lensFacing = c.get(CameraCharacteristics.LENS_FACING);
+                CameraCharacteristics characteristics =
+                        cameraManager.getCameraCharacteristics(id);
+                Boolean flashAvailable =
+                        characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
+                Integer lensFacing = characteristics.get(CameraCharacteristics.LENS_FACING);
                 if (flashAvailable != null
                         && flashAvailable
                         && lensFacing != null
@@ -104,46 +89,74 @@ public class DeviceUtils {
                 }
             }
         } catch (ArrayIndexOutOfBoundsException | CameraAccessException | AssertionError e) {
-            // Ignore
+            // Ignore.
         }
         return false;
     }
 
     public static boolean isCurrentlySupportedPixel() {
-        boolean isPixelDevice = SystemProperties.get("ro.product.model").matches("Pixel [3-9][a-zA-Z ]*");
-        return isPixelDevice;
+        return SystemProperties.get("ro.product.model").matches("Pixel [3-9][a-zA-Z ]*");
     }
 
-    public static boolean deviceSupportsBluetooth(Context ctx) {
-        BluetoothManager bluetoothManager = (BluetoothManager)
-                ctx.getSystemService(Context.BLUETOOTH_SERVICE);
-        return (bluetoothManager.getAdapter() != null);
+    public static boolean deviceSupportsBluetooth(Context context) {
+        BluetoothManager bluetoothManager =
+                context.getSystemService(BluetoothManager.class);
+        return bluetoothManager != null && bluetoothManager.getAdapter() != null;
     }
 
-     /**
-     * Checks if the device has udfps
-     * @param context context for getting FingerprintManager
-     * @return true is udfps is present
+    /** Returns whether the device has a centered display cutout. */
+    public static boolean hasCenteredCutout(Context context) {
+        Display display = context.getDisplay();
+        if (display == null) {
+            return false;
+        }
+
+        DisplayCutout cutout = display.getCutout();
+        if (cutout == null) {
+            return false;
+        }
+
+        Point realSize = new Point();
+        display.getRealSize(realSize);
+        switch (display.getRotation()) {
+            case Surface.ROTATION_0: {
+                Rect rect = cutout.getBoundingRectTop();
+                return !(rect.left <= 0 || rect.right >= realSize.x);
+            }
+            case Surface.ROTATION_90: {
+                Rect rect = cutout.getBoundingRectLeft();
+                return !(rect.top <= 0 || rect.bottom >= realSize.y);
+            }
+            case Surface.ROTATION_180: {
+                Rect rect = cutout.getBoundingRectBottom();
+                return !(rect.left <= 0 || rect.right >= realSize.x);
+            }
+            case Surface.ROTATION_270: {
+                Rect rect = cutout.getBoundingRectRight();
+                return !(rect.top <= 0 || rect.bottom >= realSize.y);
+            }
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Checks whether the device has an under-display fingerprint sensor.
+     *
+     * @param context context used to obtain {@link FingerprintManager}
+     * @return {@code true} when a UDFPS sensor is present
      */
     public static boolean hasUDFPS(Context context) {
-        final FingerprintManager fingerprintManager =
+        FingerprintManager fingerprintManager =
                 context.getSystemService(FingerprintManager.class);
-        final List<FingerprintSensorPropertiesInternal> props =
-                fingerprintManager.getSensorPropertiesInternal();
-        return props != null && props.size() == 1 && props.get(0).isAnyUdfpsType();
-
-    }
-
-
-    public static boolean hasCenteredCutout(Context context) {
-        android.view.WindowManager wm = context.getSystemService(android.view.WindowManager.class);
-        if (wm == null) return false;
-        DisplayCutout cutout = wm.getCurrentWindowMetrics().getWindowInsets().getDisplayCutout();
-        if (cutout == null || cutout.getBoundingRects().isEmpty()) return false;
-        int width = wm.getCurrentWindowMetrics().getBounds().width();
-        for (Rect r : cutout.getBoundingRects()) {
-            if (Math.abs(r.centerX() - width / 2) <= width / 10) return true;
+        if (fingerprintManager == null) {
+            return false;
         }
-        return false;
+
+        List<FingerprintSensorPropertiesInternal> properties =
+                fingerprintManager.getSensorPropertiesInternal();
+        return properties != null
+                && properties.size() == 1
+                && properties.get(0).isAnyUdfpsType();
     }
 }

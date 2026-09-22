@@ -1,25 +1,215 @@
+/*
+ * SPDX-FileCopyrightText: DerpFest AOSP
+ * SPDX-FileCopyrightText: AxionOS Project
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package mx.xperience.unicorn.fragments.statusbar
-import android.content.*
+
+import android.content.ContentResolver
+import android.content.Context
 import android.database.ContentObserver
 import android.net.Uri
-import android.os.*
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.UserHandle
 import android.provider.Settings
-import androidx.preference.*
+import androidx.preference.Preference
+import androidx.preference.SwitchPreferenceCompat
 import com.android.internal.logging.nano.MetricsProto
 import com.android.settings.R
 import com.android.settings.SettingsPreferenceFragment
 import org.json.JSONArray
+
 class DynamicBar : SettingsPreferenceFragment() {
- private val resolver get()=requireContext().contentResolver
- private val eventTypeIds=listOf("audio_recording","media","lyrics","call","notification","timer","stopwatch","alarm","charging","bluetooth","hotspot","ringer","vpn","clipboard","torch","promoted_ongoing","sports","app_switch","biometric_unlock")
- private var observer:ContentObserver?=null
- override fun onCreatePreferences(s:Bundle?,r:String?){ addPreferencesFromResource(R.xml.dynamic_bar); setupEvents(); updateKeyguard(); registerObserver() }
- private fun disabled():Set<String>{ val j=Settings.Secure.getStringForUser(resolver,"ax_dynamic_bar_events",UserHandle.USER_CURRENT)?:return emptySet(); return try{val a=JSONArray(j);(0 until a.length()).mapTo(mutableSetOf()){a.getString(it)}}catch(e:Exception){emptySet()} }
- private fun setupEvents(){ val d=disabled(); eventTypeIds.forEach{id->findPreference<SwitchPreferenceCompat>("event_$id")?.apply{isChecked=id !in d;setOnPreferenceChangeListener{_,v-> val n=if(v as Boolean) disabled()-id else disabled()+id; Settings.Secure.putStringForUser(resolver,"ax_dynamic_bar_events",if(n.isEmpty()) "" else JSONArray(n.toList()).toString(),UserHandle.USER_CURRENT); if(id=="notification") updateCompact();true}}}; updateCompact() }
- private fun updateCompact(){findPreference<Preference>("ax_dynamic_bar_compact_notifications")?.isVisible=findPreference<SwitchPreferenceCompat>("event_notification")?.isChecked==true}
- private fun updateKeyguard(){ val e=Settings.Secure.getIntForUser(resolver,"ax_dynamic_bar_keyguard_enabled",1,UserHandle.USER_CURRENT)==1; findPreference<Preference>("ax_dynamic_bar_keyguard_battery_chip_mode")?.isVisible=e }
- private fun registerObserver(){observer=object:ContentObserver(Handler(Looper.getMainLooper())){override fun onChange(s:Boolean,u:Uri?){if(u?.lastPathSegment=="ax_dynamic_bar_events") setupEvents(); if(u?.lastPathSegment=="ax_dynamic_bar_keyguard_enabled") updateKeyguard()}}; resolver.registerContentObserver(Settings.Secure.getUriFor("ax_dynamic_bar_events"),false,observer!!); resolver.registerContentObserver(Settings.Secure.getUriFor("ax_dynamic_bar_keyguard_enabled"),false,observer!!)}
- override fun onDestroy(){observer?.let{resolver.unregisterContentObserver(it)};super.onDestroy()}
- override fun getMetricsCategory()=MetricsProto.MetricsEvent.RAINBOW_UNICORN
- companion object { @JvmStatic fun reset(c:Context){val r=c.contentResolver; mapOf("ax_dynamic_bar_enabled" to 0,"ax_dynamic_bar_keyguard_enabled" to 1,"ax_dynamic_bar_compact_notifications" to 1,"ax_dynamic_bar_keyguard_battery_chip_mode" to 1,"ax_dynamic_bar_chip_style" to 0,"ax_dynamic_bar_lockscreen_media_enabled" to 0,"ax_dynamic_bar_lockscreen_media_lyrics_enabled" to 0).forEach{(k,v)->Settings.Secure.putIntForUser(r,k,v,UserHandle.USER_CURRENT)};Settings.Secure.putStringForUser(r,"ax_dynamic_bar_events","",UserHandle.USER_CURRENT)} }
+
+    private val resolver: ContentResolver
+        get() = requireContext().contentResolver
+
+    private val handler = Handler(Looper.getMainLooper())
+    private var settingsObserver: ContentObserver? = null
+
+    private val eventTypeIds = listOf(
+        "audio_recording",
+        "media",
+        "lyrics",
+        "call",
+        "notification",
+        "timer",
+        "stopwatch",
+        "alarm",
+        "charging",
+        "bluetooth",
+        "hotspot",
+        "ringer",
+        "vpn",
+        "clipboard",
+        "torch",
+        "promoted_ongoing",
+        "sports",
+        "app_switch",
+        "biometric_unlock",
+    )
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.dynamic_bar)
+
+        setupKeyguardSubPrefs()
+        setupEventToggles()
+        updateCompactNotificationVisibility()
+        registerObserver()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        settingsObserver?.let { resolver.unregisterContentObserver(it) }
+    }
+
+    private fun setupKeyguardSubPrefs() {
+        val keyguardPref = findPreference<SwitchPreferenceCompat>(SETTINGS_KEY_KEYGUARD_ENABLED)
+        keyguardPref?.setOnPreferenceChangeListener { _, newValue ->
+            updateKeyguardSubPrefsVisibility(newValue as Boolean)
+            true
+        }
+        val keyguardEnabled = Settings.Secure.getIntForUser(
+            resolver, SETTINGS_KEY_KEYGUARD_ENABLED, 1, UserHandle.USER_CURRENT
+        ) == 1
+        updateKeyguardSubPrefsVisibility(keyguardEnabled)
+    }
+
+    private fun updateKeyguardSubPrefsVisibility(keyguardEnabled: Boolean) {
+        findPreference<Preference>(SETTINGS_KEY_BATTERY_CHIP_MODE)?.isVisible = keyguardEnabled
+    }
+
+    private fun setupEventToggles() {
+        val disabledEvents = getDisabledEvents()
+
+        for (typeId in eventTypeIds) {
+            val pref = findPreference<SwitchPreferenceCompat>("event_$typeId") ?: continue
+            pref.isChecked = typeId !in disabledEvents
+            pref.setOnPreferenceChangeListener { _, newValue ->
+                toggleEvent(typeId, newValue as Boolean)
+                if (typeId == "notification") {
+                    updateCompactNotificationVisibility()
+                }
+                true
+            }
+        }
+    }
+
+    private fun getDisabledEvents(): Set<String> {
+        val json = Settings.Secure.getStringForUser(
+            resolver, SETTINGS_KEY_EVENTS, UserHandle.USER_CURRENT
+        ) ?: return emptySet()
+
+        if (json.isBlank()) return emptySet()
+
+        return try {
+            val arr = JSONArray(json)
+            (0 until arr.length()).mapTo(mutableSetOf()) { arr.getString(it) }
+        } catch (_: Exception) {
+            emptySet()
+        }
+    }
+
+    private fun toggleEvent(typeId: String, enabled: Boolean) {
+        val current = getDisabledEvents()
+        val updated = if (enabled) current - typeId else current + typeId
+        val json = if (updated.isEmpty()) "" else JSONArray(updated.toList()).toString()
+        Settings.Secure.putStringForUser(
+            resolver, SETTINGS_KEY_EVENTS, json, UserHandle.USER_CURRENT
+        )
+    }
+
+    private fun updateCompactNotificationVisibility() {
+        val compactPref = findPreference<Preference>(SETTINGS_KEY_COMPACT_NOTIFICATIONS)
+        val notifPref = findPreference<SwitchPreferenceCompat>("event_notification")
+        compactPref?.isVisible = notifPref?.isChecked == true
+    }
+
+    private fun registerObserver() {
+        settingsObserver = object : ContentObserver(handler) {
+            override fun onChange(selfChange: Boolean, uri: Uri?) {
+                when (uri?.lastPathSegment) {
+                    SETTINGS_KEY_EVENTS -> {
+                        val disabledEvents = getDisabledEvents()
+                        for (typeId in eventTypeIds) {
+                            val pref = findPreference<SwitchPreferenceCompat>("event_$typeId")
+                            pref?.isChecked = typeId !in disabledEvents
+                        }
+                        updateCompactNotificationVisibility()
+                    }
+                    SETTINGS_KEY_KEYGUARD_ENABLED -> {
+                        val enabled = Settings.Secure.getIntForUser(
+                            resolver, SETTINGS_KEY_KEYGUARD_ENABLED, 1, UserHandle.USER_CURRENT
+                        ) == 1
+                        updateKeyguardSubPrefsVisibility(enabled)
+                    }
+                }
+            }
+        }
+
+        resolver.registerContentObserver(
+            Settings.Secure.getUriFor(SETTINGS_KEY_EVENTS),
+            false, settingsObserver!!
+        )
+        resolver.registerContentObserver(
+            Settings.Secure.getUriFor(SETTINGS_KEY_KEYGUARD_ENABLED),
+            false, settingsObserver!!
+        )
+    }
+
+    override fun getMetricsCategory(): Int {
+        return MetricsProto.MetricsEvent.RAINBOW_UNICORN
+    }
+
+    companion object {
+        private const val SETTINGS_KEY_ENABLED = "ax_dynamic_bar_enabled"
+        private const val SETTINGS_KEY_KEYGUARD_ENABLED = "ax_dynamic_bar_keyguard_enabled"
+        private const val SETTINGS_KEY_EVENTS = "ax_dynamic_bar_events"
+        private const val SETTINGS_KEY_COMPACT_NOTIFICATIONS = "ax_dynamic_bar_compact_notifications"
+        private const val SETTINGS_KEY_BATTERY_CHIP_MODE = "ax_dynamic_bar_keyguard_battery_chip_mode"
+        private const val SETTINGS_KEY_CHIP_STYLE = "ax_dynamic_bar_chip_style"
+        private const val SETTINGS_KEY_LOCKSCREEN_MEDIA = "ax_dynamic_bar_lockscreen_media_enabled"
+        private const val SETTINGS_KEY_LOCKSCREEN_MEDIA_LYRICS =
+            "ax_dynamic_bar_lockscreen_media_lyrics_enabled"
+
+        @JvmStatic
+        fun reset(context: Context) {
+            val resolver = context.contentResolver
+            Settings.Secure.putIntForUser(
+                resolver, SETTINGS_KEY_ENABLED, 0,
+                UserHandle.USER_CURRENT
+            )
+            Settings.Secure.putIntForUser(
+                resolver, SETTINGS_KEY_KEYGUARD_ENABLED, 1,
+                UserHandle.USER_CURRENT
+            )
+            Settings.Secure.putIntForUser(
+                resolver, SETTINGS_KEY_COMPACT_NOTIFICATIONS, 1,
+                UserHandle.USER_CURRENT
+            )
+            Settings.Secure.putIntForUser(
+                resolver, SETTINGS_KEY_BATTERY_CHIP_MODE, 1,
+                UserHandle.USER_CURRENT
+            )
+            Settings.Secure.putIntForUser(
+                resolver, SETTINGS_KEY_CHIP_STYLE, 0,
+                UserHandle.USER_CURRENT
+            )
+            Settings.Secure.putIntForUser(
+                resolver, SETTINGS_KEY_LOCKSCREEN_MEDIA, 0,
+                UserHandle.USER_CURRENT
+            )
+            Settings.Secure.putIntForUser(
+                resolver, SETTINGS_KEY_LOCKSCREEN_MEDIA_LYRICS, 0,
+                UserHandle.USER_CURRENT
+            )
+            Settings.Secure.putStringForUser(
+                resolver, SETTINGS_KEY_EVENTS, "",
+                UserHandle.USER_CURRENT
+            )
+        }
+    }
 }

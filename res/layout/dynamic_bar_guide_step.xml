@@ -1,1 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="12dp" android:layout_marginBottom="8dp" android:background="@drawable/dynamic_bar_card_bg_small"><TextView android:id="@+id/step_number" android:layout_width="32dp" android:layout_height="32dp" android:gravity="center" android:background="@drawable/dynamic_bar_guide_step_badge" android:textStyle="bold"/><ImageView android:id="@+id/step_icon" android:layout_width="24dp" android:layout_height="24dp" android:layout_marginStart="12dp"/><LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp"><TextView android:id="@+id/step_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textStyle="bold"/><TextView android:id="@+id/step_body" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"/></LinearLayout></LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: DerpFest AOSP
+     SPDX-FileCopyrightText: AxionOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dynamic_bar_card_bg_small">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="top">
+
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp">
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/dynamic_bar_circle_primary_container">
+
+                <ImageView
+                    android:id="@+id/step_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="@null"
+                    android:tint="?android:attr/textColorPrimaryInverse" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/step_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="-2dp"
+                android:layout_marginBottom="-2dp"
+                android:minWidth="18dp"
+                android:minHeight="18dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:background="@drawable/dynamic_bar_guide_step_badge"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/colorAccent" />
+        </FrameLayout>
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="0dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/step_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/step_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?android:attr/textColorSecondary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

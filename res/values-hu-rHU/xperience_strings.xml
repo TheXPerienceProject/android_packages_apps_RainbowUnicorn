@@ -178,7 +178,8 @@
     <string name="compact_progress_mode_summary">Kompakt, kör alakú jelző használata a folyamatban lévő műveletekhez</string>
     <string name="show_media_progress_title">Médiafolyamat-kijelzés</string>
     <string name="show_media_progress_summary">A médialejátszási folyamat megjelenítése az állapotsoron</string>
-    <string name="progress_footer_text">     Az állapotsor folyamatjelzője valós idejű infókat nyújt mind a médialejátszásról, mind az aktív letöltésekről/feltöltésekről.
+    <string name="progress_footer_text">
+     Az állapotsor folyamatjelzője valós idejű infókat nyújt mind a médialejátszásról, mind az aktív letöltésekről/feltöltésekről.
      
      - 🎵 Médiafolyamatok:
      • a zene- és videólejátszás folyamatát jeleníti meg lejátszás közben.
@@ -262,7 +263,8 @@
     <string name="dw_wallpaper_opacity_title">A térhatású háttér átlátszósága</string>
     <string name="depth_wallpaper_offset_x_title">A térhatású háttér vízszintes eltolása</string>
     <string name="depth_wallpaper_offset_y_title">A térhatású háttér függőleges eltolása</string>
-    <string name="dw_footer_text">        A mélységi háttérkép funkció, amelyet az iOS Háttérkép Tárgyszegmentációja ihlette, lehetővé teszi a téma átfedését a lezárási képernyő órája felett, hogy az mélységi hatást jelenítsen meg.\n\nA mélységi háttérkép beállításához:\n1. Állítson be háttérképet azzal a témával vagy hátterrel, amely felett szeretné, hogy a téma álljon.\n2. Válassza ki a követni kívánt tárgyképet, ez a kép a lezárási képernyő órája fölé kerül.\n3. Módosítsa az eltolásokat és az átlátszóságot kedve szerint.
+    <string name="dw_footer_text">
+        A mélységi háttérkép funkció, amelyet az iOS Háttérkép Tárgyszegmentációja ihlette, lehetővé teszi a téma átfedését a lezárási képernyő órája felett, hogy az mélységi hatást jelenítsen meg.\n\nA mélységi háttérkép beállításához:\n1. Állítson be háttérképet azzal a témával vagy hátterrel, amely felett szeretné, hogy a téma álljon.\n2. Válassza ki a követni kívánt tárgyképet, ez a kép a lezárási képernyő órája fölé kerül.\n3. Módosítsa az eltolásokat és az átlátszóságot kedve szerint.
     </string>
     <!-- Lockscreen categories -->
     <string name="lockscreen_interface_category">Kezelőfelület</string>
@@ -370,7 +372,8 @@
     <string name="wallpaper_dim_level_summary">Beállíthatja a halványítás erősségét</string>
     <string name="glass_blur">Üvegszerű elmosás</string>
     <string name="frosted_blur">Fagyásos elmosás</string>
-    <string name="wallpaper_styles_footer">        A háttérképstílusok hatékony működéséhez a felhasználónak elkülönítve kell beállítani a záróképernyő és a kezdőképernyő háttérképeit.\nUgyanaz a háttérkép használható, de nem szabad egyszerre alkalmazni a lezárási képernyőn és a kezdőképernyőn.\nEz választható ha az elmosódásra és a halványításra MINDKÉT OPCIÓT használja.
+    <string name="wallpaper_styles_footer">
+        A háttérképstílusok hatékony működéséhez a felhasználónak elkülönítve kell beállítani a záróképernyő és a kezdőképernyő háttérképeit.\nUgyanaz a háttérkép használható, de nem szabad egyszerre alkalmazni a lezárási képernyőn és a kezdőképernyőn.\nEz választható ha az elmosódásra és a halványításra MINDKÉT OPCIÓT használja.
     </string>
     <string name="monet_engine_color_source_both">Mindkettő (alapértelmezett)</string>
     <string name="monet_engine_color_source_home">Kezdőképernyő háttérkép</string>
@@ -422,7 +425,8 @@
     <!-- Island Notification -->
     <string name="island_notification_title">Dinamikus Sziget</string>
     <string name="island_notification_summary">Felugró értesítések \'Dinamikus Sziget\' stílusban</string>
-    <string name="island_notification_footer_text">A \'Dinamikus Sziget\' stílust az iOS Dinamikus Szigete inspirálta, majd átalakították az Android felugró értesítéseihez, egy gyors hozzáférésű kompakt értesítési módot kaptunk.\n\nEz a Sziget-stílus a következőket tartalmazza:\n1. A Sziget érintésével gyors hívásfogadás.\n2. A Sziget hosszan nyomásával a bejövő hívás elutasítása.\n3. A Sziget hosszan nyomásával az előnézet kibontását.
+    <string name="island_notification_footer_text">
+A \'Dinamikus Sziget\' stílust az iOS Dinamikus Szigete inspirálta, majd átalakították az Android felugró értesítéseihez, egy gyors hozzáférésű kompakt értesítési módot kaptunk.\n\nEz a Sziget-stílus a következőket tartalmazza:\n1. A Sziget érintésével gyors hívásfogadás.\n2. A Sziget hosszan nyomásával a bejövő hívás elutasítása.\n3. A Sziget hosszan nyomásával az előnézet kibontását.
     </string>
     <!--Statusbar RR -->
     <string name="show_refresh_rate_title">Képernyőfrissítés megjelenîtése</string>
@@ -467,6 +471,13 @@
     <string name="spoofing_integrity_category">Google Play Integritás</string>
     <string name="app_spoofing_disabled">Kikapcsolva</string>
     <!-- Miscellaneous/Play Integrity & TrickyStore -->
+    <!-- TrickyStore: security patch -->
+    <!-- TrickyStore: revocation status -->
+    <!-- TrickyStore: automatic keybox replacement -->
+    <!-- TrickyStore: untrusted root dialog -->
+    <!-- TrickyStore: invalid chain dialog -->
+    <!-- TrickyStore: expiring certificate dialog -->
+    <!-- TrickyStore app list -->
     <!-- Generic actions & labels -->
     <string name="action_enable">Engedélyezés</string>
     <string name="action_apply">Alkalmazás</string>
@@ -474,4 +485,12 @@
     <string name="action_reset">Visszaállítás</string>
     <string name="action_restart">Újraindítás</string>
     <string name="default_value">Alapértelmezett</string>
+    <!-- Notification row transparency -->
+    <!-- Status bar - Battery estimate -->
+    <!-- Rainbow Unicorn dashboard -->
+    <!-- Dynamic Bar -->
+    <string name="dynamic_bar_chip_style_circle">Kör</string>
+    <string name="dynamic_bar_event_bluetooth">Bluetooth</string>
+    <string name="dynamic_bar_event_hotspot">Hotspot</string>
+    <!-- Dynamic Island -->
 </resources>

@@ -132,8 +132,21 @@
     <!-- Miscellaneous/Spoofing -->
     <string name="app_spoofing_disabled">Disabled</string>
     <!-- Miscellaneous/Play Integrity & TrickyStore -->
+    <!-- TrickyStore: security patch -->
+    <!-- TrickyStore: revocation status -->
+    <!-- TrickyStore: automatic keybox replacement -->
+    <!-- TrickyStore: untrusted root dialog -->
+    <!-- TrickyStore: invalid chain dialog -->
+    <!-- TrickyStore: expiring certificate dialog -->
+    <!-- TrickyStore app list -->
     <!-- Generic actions & labels -->
     <string name="action_enable">Aktifkan</string>
     <string name="action_restart">Memulai ulang</string>
     <string name="default_value">Bawaan</string>
+    <!-- Notification row transparency -->
+    <!-- Status bar - Battery estimate -->
+    <!-- Rainbow Unicorn dashboard -->
+    <!-- Dynamic Bar -->
+    <string name="dynamic_bar_chip_style_circle">Lingkaran</string>
+    <!-- Dynamic Island -->
 </resources>

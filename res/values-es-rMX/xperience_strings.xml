@@ -67,6 +67,9 @@
     <string name="status_bar_battery_style_circle">Circular</string>
     <string name="status_bar_battery_style_dotted_circle">Círculo punteado</string>
     <string name="status_bar_battery_style_text">Texto</string>
+    <string name="status_bar_battery_style_capsule">Cápsula</string>
+    <string name="status_bar_battery_style_pill">Píldora</string>
+    <string name="status_bar_battery_style_hex">Hexagonal</string>
     <string name="status_bar_battery_style_wave">Ondas</string>
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Porcentaje de batería</string>
@@ -740,6 +743,9 @@
     <string name="pif_delete_config_summary">Eliminar el archivo de configuración activo</string>
     <string name="pif_delete_title">¿Eliminar %s?</string>
     <string name="pif_delete_message">Este archivo de configuración se eliminará permanentemente.</string>
+    <string name="pif_wipe_playstore_title">¿Borrar datos de Play Store?</string>
+    <string name="pif_wipe_playstore_message">La aplicación de esta huella digital funciona mejor con una sesión de Play Store fresca. ¿Borrar datos de la aplicación Play Store ahora? Esto cerrará tu sesión y limpiará su caché local y la cola de descargas.</string>
+    <string name="pif_wipe_confirm">Borrar datos</string>
     <string name="pif_deleted">%s eliminado</string>
     <string name="pif_config_details">Detalles de configuración</string>
     <string name="pif_failed">Fallo: %s</string>
@@ -787,6 +793,7 @@
     <string name="ts_mode_auto">Auto</string>
     <string name="ts_mode_leaf">Leaf</string>
     <string name="ts_mode_cert">Cert</string>
+    <string name="ts_mode_skip">Omitir</string>
     <string name="ts_verification_mode">Modo de verificación</string>
     <string name="ts_verification_mode_auto">Auto</string>
     <string name="ts_verification_mode_cert">Cert</string>
@@ -819,12 +826,32 @@
     <string name="ts_fetch_keybox_soft_banned_refetch">Keybox con restricción temporal, conservándolo e intentando obtener uno mejor…</string>
     <string name="ts_fetch_keybox_no_valid_found">Aún no hay un Keybox válido disponible, se reintentará mañana</string>
     <!-- TrickyStore: security patch -->
+    <string name="ts_patch_stale_warning">La fecha del parche de seguridad %1$s tiene más de 12 meses</string>
     <!-- TrickyStore: revocation status -->
+    <string name="ts_revocation_expiring_soon">El certificado Keybox caducará pronto</string>
+    <string name="ts_revocation_chain_invalid">La cadena de certificado Keybox no es válida</string>
+    <string name="ts_revocation_untrusted_root">La raíz del certificado Keybox no es de confianza</string>
     <!-- TrickyStore: automatic keybox replacement -->
+    <string name="ts_fetch_keybox_suspended_refetch">La Keybox está suspendida. Obteniendo un reemplazo…</string>
     <!-- TrickyStore: untrusted root dialog -->
+    <string name="ts_untrusted_root_title">Raíz del keybox no confiable</string>
+    <string name="ts_untrusted_root_message">El Keybox importado no está firmado por una raíz de certificación confiable de Google. Es posible que no funcione correctamente. ¿Quieres conservarlo o reemplazarlo?</string>
+    <string name="ts_untrusted_root_keep">Mantener</string>
+    <string name="ts_untrusted_root_replace">Reemplazar</string>
     <!-- TrickyStore: invalid chain dialog -->
+    <string name="ts_chain_invalid_title">Cadena de certificados del keybox no válida</string>
+    <string name="ts_chain_invalid_message">El keybox importado tiene una cadena de certificados no válida y puede no funcionar correctamente. ¿Desea conservarlo o reemplazarlo?</string>
     <!-- TrickyStore: expiring certificate dialog -->
+    <string name="ts_expiry_unknown">fecha desconocida</string>
+    <string name="ts_expiring_soon_title">Keybox caduca pronto</string>
+    <string name="ts_expiring_soon_message">El certificado actual del keybox expira en %1$s. ¿Desea mantenerlo o reemplazarlo?</string>
     <!-- TrickyStore app list -->
+    <string name="action_add_installed">Añadir aplicaciones instaladas</string>
+    <plurals name="ts_added_installed_count">
+        <item quantity="one">%d aplicación instalada añadida</item>
+        <item quantity="other">%d aplicaciones instaladas añadidas</item>
+    </plurals>
+    <string name="ts_target_apps_empty_description">Ninguna aplicación coincide con su búsqueda o configuración</string>
     <!-- Generic actions & labels -->
     <string name="action_enable">Activar</string>
     <string name="action_disable">Deshabilitar</string>
@@ -857,12 +884,106 @@
     <string name="common_system_badge">SIS</string>
     <!-- Notification row transparency -->
     <!-- Status bar - Battery estimate -->
+    <string name="status_bar_battery_estimate_title">Tiempo restante de batería</string>
+    <string name="status_bar_battery_estimate_summary">Mostrar el tiempo estimado hasta que la batería esté vacía en los ajustes rápidos</string>
     <!-- Rainbow Unicorn dashboard -->
+    <string name="rainbow_hero_subtitle">Haz que Android sea tuyo</string>
+    <string name="rainbow_misc_summary">Comportamiento del sistema, gestos y extras diarios</string>
+    <string name="rainbow_spoofing_summary">Controles de identidad y compatibilidad de dispositivos</string>
     <!-- Dynamic Bar -->
+    <string name="dynamic_bar_category_title">Barra dinámica</string>
+    <string name="dynamic_bar">Barra dinámica</string>
+    <string name="dynamic_bar_summary">Chip inteligente para la barra de estado que muestra eventos activos como grabación, contenido multimedia, temporizadores y más</string>
+    <string name="dynamic_bar_enable">Habilitar la barra dinámica</string>
+    <string name="dynamic_bar_enable_summary">Mostrar un chip dinámico en la barra de estado para eventos en vivo</string>
+    <string name="dynamic_bar_keyguard_enable">Barra dinámica en la pantalla de bloqueo</string>
+    <string name="dynamic_bar_keyguard_enable_summary">Sustituye la indicación en la pantalla de bloqueo por un chip de la barra dinámica, con controles y acciones rápidas</string>
+    <string name="dynamic_bar_keyguard_battery_chip">Información de la batería en la pantalla de bloqueo</string>
+    <string name="dynamic_bar_keyguard_battery_chip_disabled">No mostrar nunca</string>
+    <string name="dynamic_bar_keyguard_battery_chip_charging">Solo al estar cargando</string>
+    <string name="dynamic_bar_keyguard_battery_chip_always">Mostrar siempre</string>
+    <string name="dynamic_bar_lockscreen_media">Música en pantalla de bloqueo</string>
+    <string name="dynamic_bar_lockscreen_media_summary">Mostrar el reproductor de música en la pantalla de bloqueo incluso cuando la barra dinámica está apagada</string>
+    <string name="dynamic_bar_lockscreen_media_lyrics">Letras en la pantalla de bloqueo</string>
+    <string name="dynamic_bar_lockscreen_media_lyrics_summary">Mostrar letras bajo el chip de música de la pantalla de bloqueo cuando esté disponible</string>
+    <string name="dynamic_bar_chip_style_title">Estilo de chip de barra de estado</string>
+    <string name="dynamic_bar_chip_style_pill">Píldora</string>
     <string name="dynamic_bar_chip_style_circle">Circular</string>
+    <string name="dynamic_bar_compact_notifications">Notificación compacta</string>
+    <string name="dynamic_bar_compact_notifications_summary">Mostrar notificaciones primero como un pequeño chip, toque para expandir</string>
+    <string name="dynamic_bar_events">Eventos</string>
+    <string name="dynamic_bar_event_audio_recording">Grabación de audio</string>
+    <string name="dynamic_bar_event_audio_recording_summary">Grabadora de voz y captura de audio</string>
+    <string name="dynamic_bar_event_media">Reproducción multimedia</string>
+    <string name="dynamic_bar_event_media_summary">Ahora reproduciendo música y controles de audio</string>
+    <string name="dynamic_bar_event_call">Llamada en curso</string>
+    <string name="dynamic_bar_event_call_summary">Llamadas entrantes y activas</string>
+    <string name="dynamic_bar_event_notification_summary">Alertas de notificación entrantes</string>
+    <string name="dynamic_bar_event_timer">Temporizador</string>
+    <string name="dynamic_bar_event_timer_summary">Temporizador de cuenta regresiva desde la aplicación reloj</string>
+    <string name="dynamic_bar_event_stopwatch">Cronómetro</string>
+    <string name="dynamic_bar_event_stopwatch_summary">Poner en marcha el cronómetro desde la aplicación de reloj</string>
+    <string name="dynamic_bar_event_alarm">Alarma</string>
+    <string name="dynamic_bar_event_alarm_summary">Sonando y próximas alarmas</string>
+    <string name="dynamic_bar_event_charging">Carga iniciada</string>
+    <string name="dynamic_bar_event_charging_summary">Nivel de batería al conectar</string>
     <string name="dynamic_bar_event_bluetooth">Bluetooth</string>
+    <string name="dynamic_bar_event_bluetooth_summary">Estado de conexión del dispositivo</string>
     <string name="dynamic_bar_event_hotspot">Punto de acceso (hotspot)</string>
+    <string name="dynamic_bar_event_hotspot_summary">Indicador de punto de acceso móvil activo</string>
+    <string name="dynamic_bar_event_ringer">Modo de timbre</string>
+    <string name="dynamic_bar_event_ringer_summary">Cambios en los modos silencioso, vibración y timbre</string>
+    <string name="dynamic_bar_event_vpn">VPN</string>
+    <string name="dynamic_bar_event_vpn_summary">Indicador de conexión VPN activa</string>
+    <string name="dynamic_bar_event_clipboard">Portapapeles</string>
+    <string name="dynamic_bar_event_clipboard_summary">Vista previa de texto e imagen copiada</string>
     <string name="dynamic_bar_event_torch">Linterna</string>
+    <string name="dynamic_bar_event_torch_summary">Interruptor de linterna y brillo</string>
+    <string name="dynamic_bar_event_ongoing">Actividades en curso</string>
+    <string name="dynamic_bar_event_ongoing_summary">Navegación, entregas y otras actividades en tiempo real</string>
+    <string name="dynamic_bar_event_sports">Deportes</string>
+    <string name="dynamic_bar_event_sports_summary">Resultados en vivo y actualizaciones de juegos</string>
+    <string name="dynamic_bar_event_app_switch">Interruptor de aplicación reciente</string>
+    <string name="dynamic_bar_event_app_switch_summary">Mostrar chip al cambiar entre aplicaciones recientes</string>
+    <string name="dynamic_bar_event_biometric">Desbloqueo biométrico</string>
+    <string name="dynamic_bar_event_biometric_summary">Mostrar chip en el desbloqueo con huella o rostro</string>
+    <string name="dynamic_bar_guide_title">Cómo usar la barra dinámica</string>
+    <string name="dynamic_bar_guide_chip">Los eventos aparecen en la barra de estado mostrando eventos activos como grabación, reproducción multimedia y temporizadores</string>
+    <string name="dynamic_bar_guide_swipe">Cuando haya varios eventos activos, desliza el chip a la izquierda o derecha para cambiar entre ellos</string>
+    <string name="dynamic_bar_guide_expand">Toca un chip para expandirlo y convertirlo en una tarjeta detallada con controles e información adicional</string>
+    <string name="dynamic_bar_guide_dismiss">Desliza la tarjeta expandida para cerrarla. El evento sigue ejecutándose en segundo plano</string>
+    <string name="dynamic_bar_guide_keyguard">El chip de la barra dinámica también se muestra en la parte inferior de la pantalla de bloqueo con controles de reproducción y accesos rápidos</string>
+    <string name="dynamic_bar_guide_chip_title">Aspecto del chip</string>
+    <string name="dynamic_bar_guide_swipe_title">Desliza para cambiar entre chips</string>
+    <string name="dynamic_bar_guide_expand_title">Toca para expandir</string>
+    <string name="dynamic_bar_guide_dismiss_title">Desliza para descartar</string>
+    <string name="dynamic_bar_guide_keyguard_title">Chip de pantalla de bloqueo</string>
+    <string name="dynamic_bar_footer_title">Acerca de la barra dinámica</string>
+    <string name="dynamic_bar_footer_body">La barra dinámica transforma la barra de estado en un centro interactivo. Los chips de estado aparecen y se animan según los eventos del sistema, para ver la información de un vistazo sin interrumpir el flujo de trabajo.\\n\\nCada tipo de evento tiene su propio color de acento y una tarjeta ampliada con acciones rápidas.</string>
     <!-- Dynamic Island -->
+    <string name="status_bar_dynamic_island_title">Isla Dinámica</string>
+    <string name="status_bar_dynamic_island_summary">Incorpora actividades en vivo, controles y actualizaciones al recorte de la cámara</string>
+    <string name="dynamic_island_width_title">Ancho de Dynamic Island</string>
+    <string name="dynamic_island_width_summary">Modificar el ancho del chip de Dynamic Island</string>
+    <string name="dynamic_island_footer_title">Acerca de Isla Dinámica</string>
+    <string name="dynamic_island_intro">Dynamic Island muestra las actividades en curso en el recorte de la cámara.\n\nControla la música, sigue las grabaciones de pantalla, administra la linterna, consulta resultados en vivo y mantén las llamadas y las descargas en la parte superior de la pantalla sin que te molesten.</string>
+    <string name="dynamic_island_features_title">Características</string>
+    <string name="dynamic_island_media_controls_title">Control de medios</string>
+    <string name="dynamic_island_media_controls_summary">Mantén tu música cerrada con controles de reproducción, obras de arte y actividad en vivo</string>
+    <string name="dynamic_island_screen_recording_title">Grabación de pantalla</string>
+    <string name="dynamic_island_screen_recording_summary">Mantén un seguimiento de tu grabación con tiempo en vivo y controles rápidos</string>
+    <string name="dynamic_island_alarms_title">Alarmas</string>
+    <string name="dynamic_island_alarms_summary">Mostrar la siguiente alarma en la isla</string>
+    <string name="dynamic_island_stopwatch_title">Cronómetro</string>
+    <string name="dynamic_island_stopwatch_summary">Mantén un cronómetro visible en la isla</string>
     <string name="dynamic_island_flashlight_title">Linterna</string>
+    <string name="dynamic_island_flashlight_summary">Controla tu linterna desde la isla</string>
+    <string name="dynamic_island_live_scores_title">Puntuaciones en vivo</string>
+    <string name="dynamic_island_live_scores_summary">Sigue las puntuaciones y actualizaciones de deportes en vivo desde aplicaciones soportadas</string>
+    <string name="dynamic_island_lyrics_title">Letras de música</string>
+    <string name="dynamic_island_lyrics_summary">Sigue la letra debajo de la tarjeta de música cuando esté disponible</string>
+    <string name="dynamic_island_ongoing_activities_title">Actividades en curso</string>
+    <string name="dynamic_island_ongoing_activities_summary">Mostrar tareas en segundo plano como descargas, copias de seguridad o descomprimir en la isla</string>
+    <string name="dynamic_island_calls_title">Llamadas en curso</string>
+    <string name="dynamic_island_calls_summary">Muestra el estado de tu llamada actual con duración y controles rápidos</string>
 </resources>

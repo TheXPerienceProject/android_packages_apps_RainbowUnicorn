@@ -83,20 +83,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             mQsIosControlPanel.setOnPreferenceChangeListener(this);
         }
 
-        //dynamic_island
-        Preference openApp = findPreference("dynamic_island");
-
-        if (openApp != null) {
-            openApp.setOnPreferenceClickListener(pref -> {
-                Intent intent = new Intent();
-                intent.setComponent(new ComponentName(
-                        "mx.xperience.isladinamica",
-                        "mx.xperience.isladinamica.MainActivity"));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                return true;
-            });
-        }
     }
 
     /**

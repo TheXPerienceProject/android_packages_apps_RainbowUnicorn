@@ -42,10 +42,9 @@
         android:summary="@string/cutout_progress_summary"
         android:fragment="mx.xperience.unicorn.fragments.CutoutProgressSettingsFragment" />-->
 
-    <Preference
-        android:key="dynamic_island"
-        android:title="@string/dynamic_island"
-        android:summary="@string/dynamic_island_summary" />
+    <Preference android:key="dynamic_bar_settings" android:title="@string/dynamic_bar" android:summary="@string/dynamic_bar_footer_body" android:fragment="mx.xperience.unicorn.fragments.statusbar.DynamicBar" />
+
+    <Preference android:key="dynamic_island_settings" android:title="@string/status_bar_dynamic_island_title" android:summary="@string/dynamic_island_intro" android:fragment="mx.xperience.unicorn.fragments.statusbar.DynamicIslandSettings" />
 
     <!-- ongoing progress -->
     <!--<Preference

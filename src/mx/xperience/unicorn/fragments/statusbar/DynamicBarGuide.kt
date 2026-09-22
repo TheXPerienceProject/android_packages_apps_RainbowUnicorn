@@ -1,0 +1,8 @@
+package mx.xperience.unicorn.fragments.statusbar
+import android.os.Bundle
+import android.widget.*
+import com.android.internal.logging.nano.MetricsProto
+import com.android.settings.R
+import com.android.settings.SettingsPreferenceFragment
+import com.android.settingslib.widget.LayoutPreference
+class DynamicBarGuide:SettingsPreferenceFragment(){data class S(val t:Int,val b:Int,val i:Int);val ss=listOf(S(R.string.dynamic_bar_guide_chip_title,R.string.dynamic_bar_guide_chip,R.drawable.ic_dynamic_bar_fiber_manual_record),S(R.string.dynamic_bar_guide_swipe_title,R.string.dynamic_bar_guide_swipe,R.drawable.ic_dynamic_bar_swap_horiz),S(R.string.dynamic_bar_guide_expand_title,R.string.dynamic_bar_guide_expand,R.drawable.ic_dynamic_bar_touch_app),S(R.string.dynamic_bar_guide_dismiss_title,R.string.dynamic_bar_guide_dismiss,R.drawable.ic_dynamic_bar_expand_less),S(R.string.dynamic_bar_guide_keyguard_title,R.string.dynamic_bar_guide_keyguard,R.drawable.ic_dynamic_bar_notifications));override fun onCreatePreferences(b:Bundle?,r:String?){addPreferencesFromResource(R.xml.dynamic_bar_guide_prefs)};override fun onStart(){super.onStart();val p=findPreference<LayoutPreference>("dynamic_bar_guide_content")?:return;ss.forEachIndexed{n,s->val v=p.findViewById<android.view.View>(resources.getIdentifier("guide_step_${n+1}","id",requireContext().packageName))?:return@forEachIndexed;v.findViewById<TextView>(R.id.step_number)?.text="${n+1}";v.findViewById<ImageView>(R.id.step_icon)?.setImageResource(s.i);v.findViewById<TextView>(R.id.step_title)?.setText(s.t);v.findViewById<TextView>(R.id.step_body)?.setText(s.b)}};override fun getMetricsCategory()=MetricsProto.MetricsEvent.RAINBOW_UNICORN}

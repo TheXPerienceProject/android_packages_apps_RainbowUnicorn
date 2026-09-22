@@ -134,4 +134,16 @@ public class DeviceUtils {
 
     }
 
+
+    public static boolean hasCenteredCutout(Context context) {
+        android.view.WindowManager wm = context.getSystemService(android.view.WindowManager.class);
+        if (wm == null) return false;
+        DisplayCutout cutout = wm.getCurrentWindowMetrics().getWindowInsets().getDisplayCutout();
+        if (cutout == null || cutout.getBoundingRects().isEmpty()) return false;
+        int width = wm.getCurrentWindowMetrics().getBounds().width();
+        for (Rect r : cutout.getBoundingRects()) {
+            if (Math.abs(r.centerX() - width / 2) <= width / 10) return true;
+        }
+        return false;
+    }
 }

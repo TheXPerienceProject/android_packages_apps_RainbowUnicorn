@@ -67,6 +67,7 @@
     <string name="status_bar_battery_style_circle">Circular</string>
     <string name="status_bar_battery_style_dotted_circle">Círculo punteado</string>
     <string name="status_bar_battery_style_text">Texto</string>
+    <string name="status_bar_battery_style_wave">Ondas</string>
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Porcentaje de batería</string>
     <string name="status_bar_battery_percentage_default">Oculto</string>
@@ -202,7 +203,8 @@
     <string name="compact_progress_mode_summary">Utiliza un indicador circular compacto para acciones en curso</string>
     <string name="show_media_progress_title">Mostrar el progreso multimedia</string>
     <string name="show_media_progress_summary">Muestra el progreso de la reproducción multimedia en la barra de estado</string>
-    <string name="progress_footer_text">\"La barra de progreso de la barra de estado proporciona actualizaciones en tiempo real tanto para la reproducción multimedia como para las descargas/cargas activas.
+    <string name="progress_footer_text">
+\"La barra de progreso de la barra de estado proporciona actualizaciones en tiempo real tanto para la reproducción multimedia como para las descargas/cargas activas.
  
      - 🎵  Progreso multimedia:
      - Muestra el progreso de la reproducción de música y vídeo cuando se está reproduciendo.
@@ -286,7 +288,8 @@
     <string name="dw_wallpaper_opacity_title">Opacidad del fondo de pantalla con profundidad</string>
     <string name="depth_wallpaper_offset_x_title">Desplazamiento horizontal del Fondo de Pantalla Profundo</string>
     <string name="depth_wallpaper_offset_y_title">Desplazamiento vertical del fondo de pantalla Profundo</string>
-    <string name="dw_footer_text">        La función de fondo de pantalla con profundidad, inspirada en la segmentación subjetiva del fondo de pantalla de iOS, permite superponer un sujeto sobre el reloj de la pantalla de bloqueo para mostrar un efecto de profundidad en el fondo de pantalla.\n\nPara configurar la función de fondo de pantalla con profundidad:\n1. Establezca un fondo de pantalla con el sujeto o el fondo sobre el que desea que aparezca el sujeto.\n2. Seleccione una imagen del sujeto que desea rastrear; esta imagen se superpondrá sobre el reloj de la pantalla de bloqueo.\n3. Modifique los desplazamientos y la opacidad según sus necesidades.</string>
+    <string name="dw_footer_text">
+        La función de fondo de pantalla con profundidad, inspirada en la segmentación subjetiva del fondo de pantalla de iOS, permite superponer un sujeto sobre el reloj de la pantalla de bloqueo para mostrar un efecto de profundidad en el fondo de pantalla.\n\nPara configurar la función de fondo de pantalla con profundidad:\n1. Establezca un fondo de pantalla con el sujeto o el fondo sobre el que desea que aparezca el sujeto.\n2. Seleccione una imagen del sujeto que desea rastrear; esta imagen se superpondrá sobre el reloj de la pantalla de bloqueo.\n3. Modifique los desplazamientos y la opacidad según sus necesidades.</string>
     <!-- Lockscreen categories -->
     <string name="lockscreen_interface_category">Interfaz</string>
     <!-- Lockscreen widgets  -->
@@ -444,7 +447,8 @@
     <!-- Island Notification -->
     <string name="island_notification_title">Notificación de isla</string>
     <string name="island_notification_summary">Mostrar notificaciones emergentes al estilo Dynamic Island</string>
-    <string name="island_notification_footer_text">        La función de notificación Island, inspirada en Dynamic Island de iOS, transforma las notificaciones emergentes de Android en una utilidad de notificaciones compacta y de acceso rápido. \n\nIsland Quick Access Controls incluye las siguientes funciones:\n1. Toca la notificación Island para responder rápidamente a las llamadas telefónicas.\n2. Mantén pulsada la notificación Island para rechazar las llamadas telefónicas.\n3. Mantén pulsada la notificación Island para ampliar la vista previa de la notificación Island.    </string>
+    <string name="island_notification_footer_text">
+        La función de notificación Island, inspirada en Dynamic Island de iOS, transforma las notificaciones emergentes de Android en una utilidad de notificaciones compacta y de acceso rápido. \n\nIsland Quick Access Controls incluye las siguientes funciones:\n1. Toca la notificación Island para responder rápidamente a las llamadas telefónicas.\n2. Mantén pulsada la notificación Island para rechazar las llamadas telefónicas.\n3. Mantén pulsada la notificación Island para ampliar la vista previa de la notificación Island.    </string>
     <!--Statusbar RR -->
     <string name="show_refresh_rate_title">Frecuencia de actualización de la pantalla</string>
     <string name="show_refresh_rate_summary">Muestra la frecuencia de actualización actual (Hz) en la barra de estado.</string>
@@ -814,6 +818,13 @@
     <string name="ts_fetch_keybox_auto_replaced">Keybox reemplazado automáticamente por uno válido</string>
     <string name="ts_fetch_keybox_soft_banned_refetch">Keybox con restricción temporal, conservándolo e intentando obtener uno mejor…</string>
     <string name="ts_fetch_keybox_no_valid_found">Aún no hay un Keybox válido disponible, se reintentará mañana</string>
+    <!-- TrickyStore: security patch -->
+    <!-- TrickyStore: revocation status -->
+    <!-- TrickyStore: automatic keybox replacement -->
+    <!-- TrickyStore: untrusted root dialog -->
+    <!-- TrickyStore: invalid chain dialog -->
+    <!-- TrickyStore: expiring certificate dialog -->
+    <!-- TrickyStore app list -->
     <!-- Generic actions & labels -->
     <string name="action_enable">Activar</string>
     <string name="action_disable">Deshabilitar</string>
@@ -844,4 +855,14 @@
     <string name="action_later">Más tarde</string>
     <string name="common_clear_search">Limpiar búsqueda</string>
     <string name="common_system_badge">SIS</string>
+    <!-- Notification row transparency -->
+    <!-- Status bar - Battery estimate -->
+    <!-- Rainbow Unicorn dashboard -->
+    <!-- Dynamic Bar -->
+    <string name="dynamic_bar_chip_style_circle">Circular</string>
+    <string name="dynamic_bar_event_bluetooth">Bluetooth</string>
+    <string name="dynamic_bar_event_hotspot">Punto de acceso (hotspot)</string>
+    <string name="dynamic_bar_event_torch">Linterna</string>
+    <!-- Dynamic Island -->
+    <string name="dynamic_island_flashlight_title">Linterna</string>
 </resources>

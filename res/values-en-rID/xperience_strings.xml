@@ -146,4 +146,5 @@
     <!-- Dynamic Bar -->
     <string name="dynamic_bar_chip_style_circle">Lingkaran</string>
     <!-- Dynamic Island -->
+    <!-- IME button space -->
 </resources>

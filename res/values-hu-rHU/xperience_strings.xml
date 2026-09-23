@@ -493,4 +493,5 @@ A \'Dinamikus Sziget\' stílust az iOS Dinamikus Szigete inspirálta, majd átal
     <string name="dynamic_bar_event_bluetooth">Bluetooth</string>
     <string name="dynamic_bar_event_hotspot">Hotspot</string>
     <!-- Dynamic Island -->
+    <!-- IME button space -->
 </resources>

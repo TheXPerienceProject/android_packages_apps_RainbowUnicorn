@@ -986,4 +986,5 @@
     <string name="dynamic_island_ongoing_activities_summary">Mostrar tareas en segundo plano como descargas, copias de seguridad o descomprimir en la isla</string>
     <string name="dynamic_island_calls_title">Llamadas en curso</string>
     <string name="dynamic_island_calls_summary">Muestra el estado de tu llamada actual con duración y controles rápidos</string>
+    <!-- IME button space -->
 </resources>

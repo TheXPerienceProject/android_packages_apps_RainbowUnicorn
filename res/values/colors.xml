@@ -72,4 +72,6 @@
     <color name="rainbow_dashboard_icon_container">@android:color/system_accent1_100</color>
     <color name="rainbow_dashboard_icon_tint">@android:color/system_accent1_700</color>
 
+    <!-- Edge light -->
+    <color name="edge_light_preview_shell_stroke">#ff601515</color>
 </resources>

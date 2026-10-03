@@ -15,12 +15,21 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notifications_edge_light_title">
+
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="edge_light_preview"
+        android:layout="@layout/edge_light_preview"
+        android:selectable="false"
+        app:allowDividerBelow="false"
+        settings:searchable="false" />
 
     <mx.xperience.framework.preference.SystemSettingMainSwitchPreference
         android:key="edge_light_enabled"
         android:title="@string/notifications_edge_light_enable_ttile"
+        android:summary="@string/edge_light_summary"
         android:defaultValue="true" />
 
     <mx.xperience.framework.preference.SystemSettingSeekBarPreference
@@ -43,6 +52,28 @@
         settings:min="2"
         settings:interval="2"
         settings:units="dp"
+        android:dependency="edge_light_enabled" />
+
+    <mx.xperience.framework.preference.SystemSettingSeekBarPreference
+        android:key="edge_light_spread"
+        android:title="@string/edge_light_spread_title"
+        android:summary="@string/edge_light_spread_summary"
+        android:defaultValue="0"
+        android:max="60"
+        settings:min="0"
+        settings:interval="1"
+        settings:units="%"
+        android:dependency="edge_light_enabled" />
+
+    <mx.xperience.framework.preference.SystemSettingSeekBarPreference
+        android:key="edge_light_intensity"
+        android:title="@string/edge_light_intensity_title"
+        android:summary="@string/edge_light_intensity_summary"
+        android:defaultValue="0"
+        android:max="100"
+        settings:min="0"
+        settings:interval="1"
+        settings:units="%"
         android:dependency="edge_light_enabled" />
 
     <mx.xperience.framework.preference.SystemSettingListPreference

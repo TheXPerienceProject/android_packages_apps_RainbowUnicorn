@@ -601,7 +601,10 @@
     <string name="wallpaper_color">Wallpaper color</string>
     <string name="rainbow_color">Rainbow gradient color</string>
     <string name="custom_color">Custom color</string>
-
+    <string name="edge_light_spread_title">Glow spread</string>
+    <string name="edge_light_spread_summary">How far inward the glow extends from the edge</string>
+    <string name="edge_light_intensity_title">Glow intensity</string>
+    <string name="edge_light_intensity_summary">Peak brightness of the glow effect</string>
 
     <string name="ios_style">iOS-style control panel</string>
     <string name="ios_style_summary">Show iOS-style brightness, volume sliders and music player in expanded quick settings</string>

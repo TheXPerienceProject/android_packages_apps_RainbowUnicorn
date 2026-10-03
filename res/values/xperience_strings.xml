@@ -715,8 +715,7 @@
     <string name="nowplaying_title">Now Playing</string>
     <string name="nowplaying_summary">Show currently playing music info on lockscreen and AOD</string>
     <string name="nowplaying_appearance_title">Appearance</string>
-    <string name="nowplaying_use_accent_color_title">Use accent color</string>
-    <string name="nowplaying_use_accent_color_summary">Use system accent color instead of white</string>
+    <string name="nowplaying_color_mode_title">Text color mode</string>
     <string name="nowplaying_vertical_position_title">Vertical position</string>
     <string name="nowplaying_vertical_position_summary">Adjust position from top to bottom of screen</string>
     <string name="nowplaying_track_text_size_title">Track title size</string>
@@ -737,6 +736,11 @@
     <string name="nowplaying_info_summary">Now Playing displays the currently playing music title and artist on your lockscreen and Always-On Display. It automatically appears when music is playing and disappears when stopped. The position can be adjusted to appear anywhere from the top to bottom of the screen.</string>
     <string name="nowplaying_expand_dialog">Expand dialog</string>
     <string name="nowplaying_expand_dialog_summary">Expand Now Playing dialog</string>
+    <string name="nowplaying_lyrics_mode_title">Lyrics mode</string>
+    <string name="nowplaying_lyrics_mode_summary">Show synced lyrics instead of track title and icon</string>
+    <string name="nowplaying_pixel_native_footer">This device already provides Now Playing natively through Pixel\'s ambient indication. These settings are unavailable while the built-in version is active.</string>
+    <string name="status_bar_lyric_title">Status bar lyrics</string>
+    <string name="status_bar_lyric_summary">Show lyrics in status bar</string>
 
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>

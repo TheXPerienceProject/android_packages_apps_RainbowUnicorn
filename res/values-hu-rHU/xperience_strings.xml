@@ -494,4 +494,6 @@ A \'Dinamikus Sziget\' stílust az iOS Dinamikus Szigete inspirálta, majd átal
     <string name="dynamic_bar_event_hotspot">Hotspot</string>
     <!-- Dynamic Island -->
     <!-- IME button space -->
+    <!-- Charging Animation -->
+    <string name="charging_animation_color_mode_default">Alapértelmezett</string>
 </resources>

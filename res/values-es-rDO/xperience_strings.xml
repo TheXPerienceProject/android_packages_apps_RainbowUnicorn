@@ -526,6 +526,10 @@
     <string name="wallpaper_color">Color del fondo de pantalla</string>
     <string name="rainbow_color">Color degradado del arco iris</string>
     <string name="custom_color">Color personalizado</string>
+    <string name="edge_light_spread_title">Extensión del resplandor</string>
+    <string name="edge_light_spread_summary">Hasta qué punto se extiende el resplandor hacia adentro desde el borde</string>
+    <string name="edge_light_intensity_title">Intensidad del brillo</string>
+    <string name="edge_light_intensity_summary">Brillo máximo del efecto de resplandor</string>
     <string name="ios_style">Panel de control al estilo de iOS</string>
     <string name="ios_style_summary">Mostrar controles deslizantes de brillo y volumen al estilo de iOS, así como el reproductor de música, en el menú de ajustes rápidos ampliado</string>
     <!-- Cutout Progress -->
@@ -632,6 +636,7 @@
     <string name="nowplaying_title">Reproduciendo Ahora</string>
     <string name="nowplaying_summary">Mostrar qué está sonando en la Pantalla de bloqueo y Pantalla siempre activa</string>
     <string name="nowplaying_appearance_title">Aspecto</string>
+    <string name="nowplaying_color_mode_title">Modo de color del texto</string>
     <string name="nowplaying_vertical_position_title">Posición vertical</string>
     <string name="nowplaying_vertical_position_summary">Ajustar la posición de arriba abajo en la pantalla</string>
     <string name="nowplaying_track_text_size_title">Tamaño del título de la pista</string>
@@ -652,6 +657,11 @@
     <string name="nowplaying_info_summary">Está sonando muestra el título de la canción y el artista actuales en tu Pantalla de bloqueo y Pantalla siempre activa. Se muestra cuando la canción se reproduce y deja de mostrarse cuando se para. La posición puede ser ajustada para que aparezca desde la parte superior hasta la parte inferior de la pantalla.</string>
     <string name="nowplaying_expand_dialog">Expandir diálogo</string>
     <string name="nowplaying_expand_dialog_summary">Expandir el diálogo de Ahora en reproducción</string>
+    <string name="nowplaying_lyrics_mode_title">Modo de letras</string>
+    <string name="nowplaying_lyrics_mode_summary">Mostrar la letra sincronizada en lugar del título de la canción y el ícono</string>
+    <string name="nowplaying_pixel_native_footer">Este dispositivo ya ofrece la función «Ahora en reproducción» de forma nativa a través de la indicación ambiental de Pixel. Estas opciones no están disponibles mientras la versión integrada esté activa.</string>
+    <string name="status_bar_lyric_title">Letras en la barra de estado</string>
+    <string name="status_bar_lyric_summary">Mostrar letras en la barra de estado</string>
     <string name="enable">Activar</string>
     <string name="disable">Deshabilitar</string>
     <!-- Ripple Shape -->
@@ -985,9 +995,33 @@
     <string name="dynamic_island_calls_title">Llamadas en curso</string>
     <string name="dynamic_island_calls_summary">Muestra el estado de tu llamada actual con duración y controles rápidos</string>
     <!-- IME button space -->
+    <string name="show_ime_space_title">Mostrar espacio de botón IME</string>
+    <string name="show_ime_space_summary">Activa la función de cambio rápido de método de entrada para cambiar de método de entrada u ocultar el teclado en pantalla desde la barra de funciones situada en la parte inferior de la pantalla mientras escribes</string>
     <!-- Charging Animation -->
+    <string name="charging_animation_enable_title">Activar animación de carga</string>
+    <string name="charging_animation_style_title">Estilo de animación</string>
+    <string name="charging_animation_style_ripple">AOSP circle ripple</string>
+    <string name="charging_animation_style_warp_pulse">Flash energy</string>
+    <string name="charging_animation_style_xiaomi">Xiaomi HyperOS (Turbo Charge)</string>
+    <string name="charging_animation_style_oneplus">OnePlus / Oppo SUPERVOOC</string>
+    <string name="charging_animation_style_bubble">Flujo de burbujas</string>
+    <string name="charging_animation_style_neon">Ciberneón</string>
+    <string name="charging_animation_style_beam">Rayo de energia</string>
+    <string name="charging_animation_style_plasma">Orbe de plasma</string>
+    <string name="charging_animation_style_quantum">Quantum sparks</string>
+    <string name="charging_animation_style_nebula">Nebulosa cósmica</string>
+    <string name="charging_animation_style_matrix">Matrix digital</string>
+    <string name="charging_animation_style_geoflow">Formas Geoflow</string>
     <string name="charging_animation_color_mode_title">Modo de color</string>
     <string name="charging_animation_color_mode_default">Predeterminado</string>
     <string name="charging_animation_color_mode_accent">Acento del sistema</string>
+    <string name="charging_animation_color_mode_rainbow">Arcoíris dinámico</string>
+    <string name="charging_animation_ripple_opacity_title">Opacidad del efecto</string>
+    <string name="charging_animation_ripple_opacity_summary">Establecer la transparencia de los elementos de efectos</string>
+    <string name="charging_animation_glow_intensity_title">Intensidad del brillo</string>
+    <string name="charging_animation_glow_intensity_summary">Brillo del aura energética y resplandor</string>
     <string name="charging_animation_show_on_lockscreen_title">Mostrar en pantalla de bloqueo</string>
+    <string name="charging_animation_show_on_lockscreen_summary">Reproducir animación al conectarlo en la pantalla de bloqueo</string>
+    <string name="charging_animation_show_on_aod_title">Mostrar en pantalla ambiental (AOD)</string>
+    <string name="charging_animation_show_on_aod_summary">Reproducir la animación al conectarlo mientras la pantalla está en modo ambiental o siempre encendida</string>
 </resources>

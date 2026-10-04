@@ -125,4 +125,6 @@
     <!-- Dynamic Bar -->
     <string name="dynamic_bar_chip_style_circle">Cerchio</string>
     <!-- Dynamic Island -->
+    <!-- IME button space -->
+    <!-- Charging Animation -->
 </resources>

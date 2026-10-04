@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/charging_animation_title">
+
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="charging_animation_preview"
+        android:layout="@layout/charging_animation_preview"
+        android:selectable="false"
+        app:allowDividerBelow="false"
+        settings:searchable="false" />
+
+    <mx.xperience.framework.preference.SystemSettingMainSwitchPreference
+        android:key="charging_animation_enabled"
+        android:title="@string/charging_animation_enable_title"
+        android:summary="@string/charging_animation_summary"
+        android:defaultValue="true" />
+
+    <mx.xperience.framework.preference.SystemSettingListPreference
+        android:key="charging_animation_style"
+        android:title="@string/charging_animation_style_title"
+        android:entries="@array/charging_animation_style_entries"
+        android:entryValues="@array/charging_animation_style_values"
+        android:summary="%s"
+        android:defaultValue="1"
+        android:dependency="charging_animation_enabled" />
+
+    <mx.xperience.framework.preference.SystemSettingListPreference
+        android:key="charging_color_mode"
+        android:title="@string/charging_animation_color_mode_title"
+        android:entries="@array/charging_animation_color_mode_entries"
+        android:entryValues="@array/charging_animation_color_mode_values"
+        android:summary="%s"
+        android:defaultValue="0"
+        android:dependency="charging_animation_enabled" />
+
+    <mx.xperience.framework.preference.SystemSettingSeekBarPreference
+        android:key="charging_glow_intensity"
+        android:title="@string/charging_animation_glow_intensity_title"
+        android:summary="@string/charging_animation_glow_intensity_summary"
+        android:defaultValue="80"
+        android:max="100"
+        settings:min="10"
+        settings:interval="5"
+        settings:units="%"
+        android:dependency="charging_animation_enabled" />
+
+    <mx.xperience.framework.preference.SystemSettingSeekBarPreference
+        android:key="charging_ripple_opacity"
+        android:title="@string/charging_animation_ripple_opacity_title"
+        android:summary="@string/charging_animation_ripple_opacity_summary"
+        android:defaultValue="60"
+        android:max="100"
+        settings:min="10"
+        settings:interval="5"
+        settings:units="%"
+        android:dependency="charging_animation_enabled" />
+
+    <PreferenceCategory
+        android:title="@string/lock_screen_charging_category">
+
+        <mx.xperience.framework.preference.SystemSettingSwitchPreference
+            android:key="charging_show_on_lockscreen"
+            android:title="@string/charging_animation_show_on_lockscreen_title"
+            android:summary="@string/charging_animation_show_on_lockscreen_summary"
+            android:defaultValue="true"
+            android:dependency="charging_animation_enabled" />
+
+        <mx.xperience.framework.preference.SystemSettingSwitchPreference
+            android:key="charging_show_on_aod"
+            android:title="@string/charging_animation_show_on_aod_title"
+            android:summary="@string/charging_animation_show_on_aod_summary"
+            android:defaultValue="true"
+            android:dependency="charging_animation_enabled" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2025 The XPerience Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -1111,4 +1111,33 @@
     <!-- IME button space -->
     <string name="show_ime_space_title">Show IME button space</string>
     <string name="show_ime_space_summary">Enable the input method quick switch feature to switch input methods or hide the on-screen keyboard from the feature bar at the bottom of the screen when typing</string>
+
+    <!-- Charging Animation -->
+    <string name="charging_animation_enable_title">Enable charging animation</string>
+    <string name="charging_animation_style_title">Animation style</string>
+    <string name="charging_animation_style_ripple">AOSP circle ripple</string>
+    <string name="charging_animation_style_xperience">XPerience</string>
+    <string name="charging_animation_style_warp_pulse">Flash energy</string>
+    <string name="charging_animation_style_xiaomi">Xiaomi HyperOS (Turbo Charge)</string>
+    <string name="charging_animation_style_oneplus">OnePlus / Oppo SUPERVOOC</string>
+    <string name="charging_animation_style_bubble">Bubble stream</string>
+    <string name="charging_animation_style_neon">Cyber neon</string>
+    <string name="charging_animation_style_beam">Energy beam</string>
+    <string name="charging_animation_style_plasma">Plasma orb</string>
+    <string name="charging_animation_style_quantum">Quantum sparks</string>
+    <string name="charging_animation_style_nebula">Cosmic nebula</string>
+    <string name="charging_animation_style_matrix">Digital matrix</string>
+    <string name="charging_animation_style_geoflow">Geoflow shapes</string>
+    <string name="charging_animation_color_mode_title">Color mode</string>
+    <string name="charging_animation_color_mode_default">Default</string>
+    <string name="charging_animation_color_mode_accent">System accent</string>
+    <string name="charging_animation_color_mode_rainbow">Dynamic rainbow</string>
+    <string name="charging_animation_ripple_opacity_title">Effect opacity</string>
+    <string name="charging_animation_ripple_opacity_summary">Set transparency for effect elements</string>
+    <string name="charging_animation_glow_intensity_title">Glow intensity</string>
+    <string name="charging_animation_glow_intensity_summary">Brightness of the energy aura and glow</string>
+    <string name="charging_animation_show_on_lockscreen_title">Show on lockscreen</string>
+    <string name="charging_animation_show_on_lockscreen_summary">Play animation when plugged in on lockscreen</string>
+    <string name="charging_animation_show_on_aod_title">Show on ambient display (AOD)</string>
+    <string name="charging_animation_show_on_aod_summary">Play animation when plugged in while screen is in ambient/always-on display</string>
 </resources>

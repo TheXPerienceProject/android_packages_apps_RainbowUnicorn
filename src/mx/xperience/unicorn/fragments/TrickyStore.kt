@@ -136,7 +136,6 @@ class TrickyStore : SettingsPreferenceFragment() {
          * cleared last, so the refresh sees a fully reset state.
          */
         @JvmStatic
-        @JvmStatic
         fun resetAllSpoofDefaults(context: Context) {
             val resolver = context.contentResolver
             Settings.Secure.putLong(resolver, PlayIntegrityFix.LAST_AUTO_FETCH_KEY, 0L)

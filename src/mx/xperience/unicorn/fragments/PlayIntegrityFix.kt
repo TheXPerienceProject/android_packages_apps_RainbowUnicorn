@@ -4,6 +4,7 @@
  */
 
 package mx.xperience.unicorn.fragments;
+
 import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
@@ -22,7 +23,6 @@ import com.android.internal.logging.nano.MetricsProto
 import com.android.internal.util.xperience.PixelDeviceRepository
 import com.android.settings.R
 import com.android.settings.SettingsPreferenceFragment
-import java.net.URL
 import java.nio.charset.StandardCharsets
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -119,11 +119,28 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
         }
 
         findPreference<SwitchPreferenceCompat>("pif_spoof_vending_sdk")?.apply {
-            isChecked = activeConfigData["spoofVendingSdk"].let { it == "1" || it == "true" }
+            isChecked = isVendingSdkOn(activeConfigData["spoofVendingSdk"])
             setOnPreferenceChangeListener { _, newValue ->
+                // The framework reads this as a level: 1 = SDK 32, N > 1 = SDK N, capped at the
+                // real SDK. The switch writes 1 or 0.
                 updateConfigValue("spoofVendingSdk", if (newValue as Boolean) "1" else "0")
                 true
             }
+        }
+
+        FLAG_PREFS.forEach { (prefKey, flag) ->
+            findPreference<SwitchPreferenceCompat>(prefKey)?.apply {
+                isChecked = isFlagOn(activeConfigData[flag.name], flag.default)
+                setOnPreferenceChangeListener { _, newValue ->
+                    updateConfigValue(flag.name, if (newValue as Boolean) "1" else "0")
+                    true
+                }
+            }
+        }
+
+        findPreference<Preference>("pif_reset_advanced")?.setOnPreferenceClickListener {
+            showResetAdvancedDialog()
+            true
         }
 
         refreshStatus()
@@ -194,36 +211,16 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                     PixelDeviceRepository.getProfileByCodename(requireContext(), defaultCodename, false)
                 } ?: return@launch
 
-                val localPatch = try {
-                    if (!content.isNullOrEmpty()) JSONObject(content).optString("SECURITY_PATCH", "") else ""
-                } catch (_: Exception) { "" }
-
-                val localPatchDate = parsePatchDate(localPatch)
-                val serverPatchDate = parsePatchDate(matched.securityPatch)
-
-                // Only replace once genuinely newer, or once the current one has expired.
-                val shouldReplace = (serverPatchDate != null &&
-                    (localPatchDate == null || serverPatchDate.after(localPatchDate))) ||
-                    (daysLeft != null && daysLeft <= 0)
-
-                if (!shouldReplace) return@launch
-
                 if (!PixelDeviceRepository.isValidFingerprint(matched.fingerprint)) return@launch
 
-                val canaryMonth = matched.securityPatch.take(7) // YYYY-MM from YYYY-MM-DD
-                val toSave = JSONObject().apply {
-                    put("MANUFACTURER", matched.brand.replaceFirstChar { it.uppercase() })
-                    put("BRAND", matched.brand)
-                    put("MODEL", matched.model)
-                    put("PRODUCT", matched.product)
-                    put("DEVICE", matched.device)
-                    put("FINGERPRINT", matched.fingerprint)
-                    put("SECURITY_PATCH", matched.securityPatch)
-                    put("DEVICE_INITIAL_SDK_INT", "32")
-                    if (matched.isCanary && canaryMonth.length == 7) put("_canary_month", canaryMonth)
-                    if (matched.isCanary) matched.releaseDate?.let { put("_canary_release_date", it) }
-                    put("manually_imported", false)
-                }
+                // Same rule as AxSpoofManager.refreshPixelFingerprintIfStale(): nothing to do
+                // when it is already the current fingerprint (the daily cooldown has started).
+                val currentFingerprint = try {
+                    if (!content.isNullOrEmpty()) JSONObject(content).optString("FINGERPRINT", "") else ""
+                } catch (_: Exception) { "" }
+                if (matched.fingerprint == currentFingerprint) return@launch
+
+                val toSave = buildProfileConfig(content, matched)
                 Settings.Secure.putString(
                     requireContext().contentResolver,
                     PIF_CONFIG_KEY,
@@ -268,10 +265,57 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
 
         populateConfigDetails(activeConfigData)
 
-        findPreference<ListPreference>("pif_spoof_vending_finger")?.value =
-            activeConfigData["spoofVendingFinger"] ?: "0"
-        findPreference<SwitchPreferenceCompat>("pif_spoof_vending_sdk")?.isChecked =
-            activeConfigData["spoofVendingSdk"].let { it == "1" || it == "true" }
+        // The framework stops bootstrapping a fingerprint once the config is non-empty, and a
+        // toggle on an empty config would create one holding only that flag.
+        findPreference<ListPreference>("pif_spoof_vending_finger")?.apply {
+            val current = activeConfigData["spoofVendingFinger"].orEmpty()
+            // PIFork and the framework also accept a literal FINGERPRINT here. The list can't
+            // show one, so leave the stored value alone and say what is set.
+            val isCustom = current.isNotEmpty() && current !in listOf("0", "1", "true", "false")
+            value = when {
+                isCustom -> current
+                current == "1" || current.equals("true", true) -> "1"
+                else -> "0"
+            }
+            summary = if (isCustom) getString(R.string.pif_vending_finger_custom_summary, current)
+                else getString(R.string.pif_spoof_vending_finger_summary)
+            isEnabled = exists
+        }
+        findPreference<SwitchPreferenceCompat>("pif_spoof_vending_sdk")?.apply {
+            isChecked = isVendingSdkOn(activeConfigData["spoofVendingSdk"])
+            isEnabled = exists
+        }
+        FLAG_PREFS.forEach { (prefKey, flag) ->
+            findPreference<SwitchPreferenceCompat>(prefKey)?.apply {
+                isChecked = isFlagOn(activeConfigData[flag.name], flag.default)
+                isEnabled = exists
+            }
+        }
+        findPreference<Preference>("pif_reset_advanced")?.isEnabled = exists
+    }
+
+    /** Drops every spoof* flag so the framework's defaults apply again. Keeps the fingerprint. */
+    private fun showResetAdvancedDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.pif_reset_advanced_title)
+            .setMessage(R.string.pif_reset_advanced_message)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                try {
+                    val existing = Settings.Secure.getString(
+                        requireContext().contentResolver, PIF_CONFIG_KEY)
+                    val json = JSONObject(existing ?: return@setPositiveButton)
+                    json.keys().asSequence().filter { it.startsWith("spoof") }.toList()
+                        .forEach { json.remove(it) }
+                    Settings.Secure.putString(
+                        requireContext().contentResolver, PIF_CONFIG_KEY, json.toString(2))
+                    stopGmsPackages()
+                    refreshStatus()
+                } catch (e: Exception) {
+                    toast(getString(R.string.pif_failed, e.message ?: ""))
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun populateConfigDetails(data: Map<String, String>) {
@@ -304,7 +348,11 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                         toast(getString(R.string.pif_failed, "Must be a valid integer"))
                         return@setOnPreferenceChangeListener false
                     }
-                    updateConfigValue(key, v)
+                    if (key == "FINGERPRINT" && !PixelDeviceRepository.isValidFingerprint(v)) {
+                        toast(getString(R.string.pif_failed, getString(R.string.pif_invalid_fingerprint)))
+                        return@setOnPreferenceChangeListener false
+                    }
+                    updateConfigValue(key, v, manualEdit = true)
                     true
                 }
             })
@@ -334,7 +382,7 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                             toast(getString(R.string.pif_failed, "Must be a valid integer"))
                             return@setOnPreferenceChangeListener false
                         }
-                        updateConfigValue(key, v)
+                        updateConfigValue(key, v, manualEdit = true)
                         true
                     }
                 })
@@ -380,19 +428,31 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                 }
 
                 val currentDevice = android.os.SystemProperties.get(MATCH_DEVICE_PROP, "")
+                val preferredASeries = PixelDeviceRepository.getPreferredASeriesCodename(profiles)
                 val sortedProfiles = profiles.sortedWith(
                     compareByDescending<PixelDeviceRepository.PixelProfile> {
                         it.device == currentDevice
+                    }.thenByDescending {
+                        PixelDeviceRepository.A_SERIES_ORDER.contains(it.codename)
                     }.thenByDescending {
                         PixelDeviceRepository.GENERATION_ORDER.indexOf(it.codename)
                             .let { idx -> if (idx < 0) -1 else PixelDeviceRepository.GENERATION_ORDER.size - idx }
                     }
                 )
-                val modelNames = sortedProfiles.map { it.model }.toTypedArray()
+                val modelNames = sortedProfiles.map {
+                    if (PixelDeviceRepository.A_SERIES_ORDER.contains(it.codename)) {
+                        "${it.model} — ${getString(R.string.pif_recommended_suffix)}"
+                    } else {
+                        it.model
+                    }
+                }.toTypedArray()
+                val preselectedIndex = sortedProfiles.indexOfFirst { it.codename == preferredASeries }
+                    .let { if (it < 0) 0 else it }
 
                 AlertDialog.Builder(requireContext())
                     .setTitle(R.string.pif_select_device)
-                    .setItems(modelNames) { _, which ->
+                    .setSingleChoiceItems(modelNames, preselectedIndex) { dialog, which ->
+                        dialog.dismiss()
                         saveProfileAsPif(sortedProfiles[which])
                     }
                     .setNegativeButton(android.R.string.cancel, null)
@@ -418,20 +478,10 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                     toast(getString(R.string.pif_failed, getString(R.string.pif_invalid_fingerprint)))
                     return@launch
                 }
-                val canaryMonth = profile.securityPatch.take(7) // YYYY-MM from YYYY-MM-DD
-                val pifJson = JSONObject().apply {
-                    put("MANUFACTURER", profile.brand.replaceFirstChar { it.uppercase() })
-                    put("BRAND", profile.brand)
-                    put("MODEL", profile.model)
-                    put("PRODUCT", profile.product)
-                    put("DEVICE", profile.device)
-                    put("FINGERPRINT", profile.fingerprint)
-                    put("SECURITY_PATCH", profile.securityPatch)
-                    put("DEVICE_INITIAL_SDK_INT", "32")
-                    if (profile.isCanary && canaryMonth.length == 7) put("_canary_month", canaryMonth)
-                    if (profile.isCanary) profile.releaseDate?.let { put("_canary_release_date", it) }
-                    put("manually_imported", false)
-                }
+                val pifJson = buildProfileConfig(
+                    Settings.Secure.getString(requireContext().contentResolver, PIF_CONFIG_KEY),
+                    profile,
+                )
                 withContext(Dispatchers.IO) {
                     Settings.Secure.putString(
                         requireContext().contentResolver,
@@ -457,16 +507,25 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
      * Updates a key-value pair in the active config stored in Settings.Secure.
      * If no config exists yet, creates a new JSON object with just this value.
      */
-    private fun updateConfigValue(key: String, value: String) {
+    private fun updateConfigValue(key: String, value: String, manualEdit: Boolean = false) {
         try {
             val existing = Settings.Secure.getString(requireContext().contentResolver, PIF_CONFIG_KEY)
             val json = try { JSONObject(existing ?: "") } catch (e: Exception) { JSONObject() }
             json.put(key, value)
+            if (key == "FINGERPRINT") {
+                // These describe the old fingerprint. Drop them so the framework derives them
+                // from the new one (PlayIntegritySpoofService.deriveFieldsFromFingerprint).
+                listOf("ID", "INCREMENTAL", "TYPE", "TAGS", "RELEASE",
+                    "_canary_month", "_canary_release_date").forEach { json.remove(it) }
+            }
+            // A hand-edited field must survive the auto-refresh, which skips manually_imported.
+            if (manualEdit) json.put("manually_imported", true)
             Settings.Secure.putString(
                 requireContext().contentResolver,
                 PIF_CONFIG_KEY,
                 json.toString(2)
             )
+            stopGmsPackages()
             refreshStatus()
         } catch (e: Exception) {
             toast(getString(R.string.pif_failed, e.message ?: ""))
@@ -524,13 +583,8 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
 
     companion object {
         private const val TAG = "PlayIntegrityFix"
-        private const val PIF_CONFIG_KEY = "spoof_pif_config"
+        internal const val PIF_CONFIG_KEY = "spoof_pif_config"
         private const val PIF_CONFIG_NAME = "pif.json"
-        private const val GOOGLE_URL = "https://developer.android.com"
-        private const val FLASH_URL = "https://flash.android.com"
-        private const val FLASH_API = "https://content-flashstation-pa.googleapis.com/v1/builds"
-        private const val PIXEL_BULLETIN_URL = "https://source.android.com/docs/security/bulletin/pixel"
-        private const val FALLBACK_PIF_URL = "https://raw.githubusercontent.com/Evolution-X/.github/refs/heads/main/profile/pif.json"
         private const val VENDING_PACKAGE           = "com.android.vending"
         private const val DROIDGUARD_PACKAGE        = "com.google.android.gms.unstable"
         private const val GMS_PACKAGE               = "com.google.android.gms"
@@ -542,10 +596,60 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
         private const val VELVET_PACKAGE            = "com.google.android.googlequicksearchbox"
         private const val REFETCH_WINDOW_DAYS = 15L
         private const val PIF_ENABLED_KEY = "spoof_pif_enabled"
-        private const val LAST_AUTO_FETCH_KEY = "spoof_pif_last_auto_fetch"
+        internal const val LAST_AUTO_FETCH_KEY = "spoof_pif_last_auto_fetch"
         private const val MATCH_DEVICE_PROP = "ro.xpe.device"
 
+        private data class Flag(val name: String, val default: Boolean)
+
+        // PIFork's advanced flags with the framework's defaults (PlayIntegritySpoofService).
+        // spoofProvider is off there, where PIFork defaults it to on, because it would bypass
+        // the keybox attestation done in the same call.
+        private val FLAG_PREFS = mapOf(
+            "pif_spoof_build" to Flag("spoofBuild", true),
+            "pif_spoof_props" to Flag("spoofProps", true),
+            "pif_spoof_provider" to Flag("spoofProvider", false),
+            "pif_spoof_signature" to Flag("spoofSignature", false),
+        )
+
+        private fun isFlagOn(value: String?, default: Boolean): Boolean =
+            if (value.isNullOrEmpty()) default else value == "1" || value.equals("true", true)
+
+        /** spoofVendingSdk is a level: 0 off, 1 = SDK 32, N > 1 = SDK N. */
+        private fun isVendingSdkOn(value: String?): Boolean =
+            value.equals("true", true) || (value?.toIntOrNull() ?: 0) > 0
+
         // PIXEL_DEVICE_GENERATION removed — use PixelDeviceRepository.GENERATION_ORDER
+
+        /**
+         * Config for [profile]. Only the spoof flags (spoofVendingFinger,
+         * spoofVendingSdk, ...) and log settings are carried over from [existing],
+         * so picking or refreshing a fingerprint doesn't silently put them back to
+         * the service's defaults; everything describing the old fingerprint is
+         * dropped.
+         */
+        private fun buildProfileConfig(
+            existing: String?,
+            profile: PixelDeviceRepository.PixelProfile,
+        ): JSONObject {
+            val old = try { JSONObject(existing ?: "") } catch (_: Exception) { JSONObject() }
+            val canaryMonth = profile.securityPatch.take(7) // YYYY-MM from YYYY-MM-DD
+            return JSONObject().apply {
+                old.keys().asSequence()
+                    .filter { it.startsWith("spoof") || it == "verboseLogs" || it == "DEBUG" }
+                    .forEach { put(it, old.get(it)) }
+                put("MANUFACTURER", profile.brand.replaceFirstChar { it.uppercase() })
+                put("BRAND", profile.brand)
+                put("MODEL", profile.model)
+                put("PRODUCT", profile.product)
+                put("DEVICE", profile.device)
+                put("FINGERPRINT", profile.fingerprint)
+                put("SECURITY_PATCH", profile.securityPatch)
+                put("DEVICE_INITIAL_SDK_INT", "32")
+                if (profile.isCanary && canaryMonth.length == 7) put("_canary_month", canaryMonth)
+                if (profile.isCanary) profile.releaseDate?.let { put("_canary_release_date", it) }
+                put("manually_imported", false)
+            }
+        }
 
         /**
          * Writes [patch] to PATCH_KEY only when the existing value is empty or
@@ -564,10 +668,6 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                 Settings.Secure.putString(resolver, TrickyStore.PATCH_KEY, patch)
             }
         }
-
-        private fun parsePatchDate(patch: String): java.util.Date? = try {
-            java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).parse(patch)
-        } catch (_: Exception) { null }
 
         /**
          * Given a canary month string (YYYY-MM), estimates the expiry date as

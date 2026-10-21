@@ -129,7 +129,6 @@
     <!-- Miscellaneous/Spoofing -->
     <string name="app_spoofing_disabled">Nonaktifkan</string>
     <!-- Miscellaneous/Play Integrity & TrickyStore -->
-    <!-- TrickyStore: security patch -->
     <!-- TrickyStore: revocation status -->
     <!-- TrickyStore: automatic keybox replacement -->
     <!-- TrickyStore: untrusted root dialog -->

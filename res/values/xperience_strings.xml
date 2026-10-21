@@ -947,8 +947,6 @@
     <string name="ts_fetch_keybox_auto_replaced">Keybox automatically replaced with a valid one</string>
     <string name="ts_fetch_keybox_soft_banned_refetch">Keybox soft-banned, keeping it and attempting to fetch a better one…</string>
     <string name="ts_fetch_keybox_no_valid_found">No valid keybox available yet, will retry tomorrow</string>
-    <!-- TrickyStore: security patch -->
-    <string name="ts_patch_stale_warning">Security patch date %1$s is more than 12 months old</string>
 
     <!-- TrickyStore: revocation status -->
     <string name="ts_revocation_expiring_soon">Keybox certificate is expiring soon</string>

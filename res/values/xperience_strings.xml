@@ -902,6 +902,7 @@
     <string name="ts_import_target_list_summary">Import target.txt from a file</string>
     <string name="ts_invalid_patch_date">Invalid date format. Use YYYY-MM-DD</string>
     <string name="ts_target_list_imported">Target list imported</string>
+    <string name="ts_target_list_invalid">Target list rejected near: %s</string>
     <string name="ts_targets_saved">Target list saved</string>
     <string name="ts_failed">Failed: %s</string>
     <string name="ts_footer_title">Passing strong integrity</string>
@@ -924,6 +925,7 @@
     <string name="ts_verification_auto_count">%1$d auto</string>
     <string name="ts_verification_cert_count">%1$d cert</string>
     <string name="ts_verification_leaf_count">%1$d leaf</string>
+    <string name="ts_verification_skip_count">%1$d skip</string>
     <string name="ts_revocation_status">Revocation status</string>
     <string name="ts_revocation_checking">Checking revocation status…</string>
     <string name="ts_revocation_no_keybox">No keybox installed</string>

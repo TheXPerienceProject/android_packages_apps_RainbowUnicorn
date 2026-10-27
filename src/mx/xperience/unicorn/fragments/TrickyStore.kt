@@ -41,6 +41,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.xmlpull.v1.XmlPullParser
+import org.json.JSONArray
 import org.json.JSONObject
 
 class TrickyStore : SettingsPreferenceFragment() {
@@ -67,6 +68,13 @@ class TrickyStore : SettingsPreferenceFragment() {
 
     companion object {
         private const val TAG = "TrickyStore"
+
+        private val PACKAGE_REGEX = Regex("""[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*""")
+        private val TARGET_LINE_REGEX = Regex("""[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*\s*[?!-]?""")
+
+        // Mode strings TrickyStoreService.parseTargetsJson accepts; anything else there
+        // falls back to AUTO, so the UI refuses it rather than let it degrade silently.
+        private val VALID_TARGET_MODES = setOf("AUTO", "LEAF_HACK", "GENERATE", "SKIP")
 
         // Fallback trust anchors, used only if the live roots fetch fails and
         // no cached copy exists yet. Google may add/rotate roots at any time;
@@ -204,14 +212,50 @@ class TrickyStore : SettingsPreferenceFragment() {
             try {
                 val text = requireContext().contentResolver.openInputStream(uri)
                     ?.use { it.readBytes().toString(StandardCharsets.UTF_8) } ?: ""
-                Settings.Secure.putString(
-                    requireContext().contentResolver, TARGET_KEY, text)
-                toast(getString(R.string.ts_target_list_imported))
-                refreshStatus()
+                importTargets(text)
             } catch (e: Exception) {
                 toast(getString(R.string.ts_failed, e.message ?: ""))
             }
         }
+    }
+
+    /**
+     * Accepts the framework's two target formats: one package per line with an optional
+     * mode suffix (`?` leaf, `!` cert, `-` skip, `#` comments), or a JSON array of
+     * {"package", "mode"} objects. Anything else is refused instead of being stored.
+     */
+    private fun importTargets(raw: String) {
+        val text = raw.removePrefix("\uFEFF").trim()
+        if (text.isEmpty()) {
+            toast(getString(R.string.ts_target_list_invalid, "-"))
+            return
+        }
+        if (text.startsWith("[")) {
+            try {
+                val array = JSONArray(text)
+                for (i in 0 until array.length()) {
+                    val obj = array.get(i) as JSONObject
+                    val pkg = obj.getString("package")
+                    require(PACKAGE_REGEX.matches(pkg)) { pkg }
+                    obj.optString("mode").takeIf { it.isNotEmpty() }?.let { mode ->
+                        require(mode.uppercase() in VALID_TARGET_MODES) { "mode: $mode" }
+                    }
+                }
+            } catch (e: Exception) {
+                toast(getString(R.string.ts_target_list_invalid, e.message ?: "JSON"))
+                return
+            }
+        } else {
+            val bad = text.lines().map { it.trim() }
+                .firstOrNull { it.isNotEmpty() && !it.startsWith("#") && !TARGET_LINE_REGEX.matches(it) }
+            if (bad != null) {
+                toast(getString(R.string.ts_target_list_invalid, bad))
+                return
+            }
+        }
+        Settings.Secure.putString(requireContext().contentResolver, TARGET_KEY, text)
+        toast(getString(R.string.ts_target_list_imported))
+        refreshStatus()
     }
 
     // ---- Lifecycle ----------------------------------------------------------
@@ -296,12 +340,17 @@ class TrickyStore : SettingsPreferenceFragment() {
     // ---- UI refresh ---------------------------------------------------------
 
     private fun refreshStatus() {
+        val resolver = requireContext().contentResolver
         val keyboxExists = !Settings.Secure.getString(
-            requireContext().contentResolver, KEYBOX_KEY).isNullOrEmpty()
+            resolver, KEYBOX_KEY).isNullOrEmpty()
 
-        val targetContent = Settings.Secure.getString(
-            requireContext().contentResolver, TARGET_KEY)
-        val targetCount = targetContent?.lines()?.count { it.isNotBlank() } ?: 0
+        // Count only installed targets: uninstalled defaults stay in the stored list so they
+        // apply once installed, but they aren't "configured" from the user's view.
+        val targets = TrickyStoreAppSettings.installedTargets(
+            requireContext().packageManager,
+            TrickyStoreAppSettings.parseTargetList(Settings.Secure.getString(resolver, TARGET_KEY)),
+        )
+        val targetCount = targets.size
 
         findPreference<Preference>("ts_import_keybox")?.summary =
             if (keyboxExists) getString(R.string.ts_keybox_installed)
@@ -313,7 +362,7 @@ class TrickyStore : SettingsPreferenceFragment() {
             if (targetCount > 0) getString(R.string.ts_target_apps_count, targetCount)
             else getString(R.string.ts_no_targets)
 
-        val patchDate = Settings.Secure.getString(requireContext().contentResolver, PATCH_KEY)
+        val patchDate = Settings.Secure.getString(resolver, PATCH_KEY)
         findPreference<Preference>("ts_security_patch")?.summary =
             if (!patchDate.isNullOrEmpty()) {
                 if (isPatchDateStale(patchDate)) {
@@ -325,7 +374,7 @@ class TrickyStore : SettingsPreferenceFragment() {
                 getString(R.string.ts_no_patch)
             }
 
-        findPreference<Preference>("ts_verification_mode")?.summary = buildVerificationSummary()
+        findPreference<Preference>("ts_verification_mode")?.summary = buildVerificationSummary(targets)
 
         applyRevocationUi(currentRevocationStatus, currentRevocationReason)
         updateFetchButtonState(keyboxExists)
@@ -1020,28 +1069,14 @@ class TrickyStore : SettingsPreferenceFragment() {
 
     // ---- Verification-mode summary ------------------------------------------
 
-    private fun buildVerificationSummary(): String {
-        val content = Settings.Secure.getString(
-            requireContext().contentResolver, TARGET_KEY)
-            ?: return getString(R.string.ts_verification_mode_auto)
-
-        var auto = 0; var cert = 0; var leaf = 0
-        content.lines().forEach { line ->
-            val t = line.trim()
-            if (t.isNotBlank()) when {
-                t.endsWith("!") -> cert++
-                t.endsWith("?") -> leaf++
-                else            -> auto++
-            }
-        }
-
-        if (auto == 0 && cert == 0 && leaf == 0)
-            return getString(R.string.ts_verification_mode_auto)
-
+    private fun buildVerificationSummary(targets: Map<String, TargetMode>): String {
+        if (targets.isEmpty()) return getString(R.string.ts_verification_mode_auto)
+        val counts = targets.values.groupingBy { it }.eachCount()
         return buildList {
-            if (auto > 0) add(getString(R.string.ts_verification_auto_count, auto))
-            if (cert > 0) add(getString(R.string.ts_verification_cert_count, cert))
-            if (leaf > 0) add(getString(R.string.ts_verification_leaf_count, leaf))
+            counts[TargetMode.AUTO]?.let { add(getString(R.string.ts_verification_auto_count, it)) }
+            counts[TargetMode.CERT_GEN]?.let { add(getString(R.string.ts_verification_cert_count, it)) }
+            counts[TargetMode.LEAF_HACK]?.let { add(getString(R.string.ts_verification_leaf_count, it)) }
+            counts[TargetMode.SKIP]?.let { add(getString(R.string.ts_verification_skip_count, it)) }
         }.joinToString(" · ")
     }
 

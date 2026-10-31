@@ -1258,7 +1258,12 @@ class TrickyStore : SettingsPreferenceFragment() {
     private fun showPatchDateDialog() {
         val current = Settings.Secure.getString(
             requireContext().contentResolver, PATCH_KEY) ?: ""
-        val input = android.widget.EditText(requireContext()).apply {
+        val context = requireContext()
+        val layout = android.widget.LinearLayout(context).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            setPadding(48, 24, 48, 0)
+        }
+        val input = android.widget.EditText(context).apply {
             setText(current)
             hint = getString(R.string.ts_patch_date_hint)
             inputType = android.text.InputType.TYPE_CLASS_TEXT or
@@ -1266,11 +1271,37 @@ class TrickyStore : SettingsPreferenceFragment() {
             minLines = 3
             maxLines = 10
             setHorizontallyScrolling(false)
-            setPadding(48, 24, 48, 24)
         }
-        val dialog = AlertDialog.Builder(requireContext())
+        val resolvedView = android.widget.TextView(context).apply {
+            setPadding(8, 8, 8, 16)
+            visibility = android.view.View.GONE
+        }
+        layout.addView(input)
+        layout.addView(resolvedView)
+
+        val updateResolved = {
+            val v = input.text.toString().trim()
+            val resolved = if (v.isEmpty() || v.contains('\n') || v.contains('=')) null
+            else TrickyStoreService.resolvePatchTemplate(v).takeIf { it != v }
+            if (resolved != null) {
+                resolvedView.text = getString(R.string.ts_patch_resolves_to, resolved)
+                resolvedView.visibility = android.view.View.VISIBLE
+            } else {
+                resolvedView.visibility = android.view.View.GONE
+            }
+        }
+        input.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateResolved()
+            }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
+        updateResolved()
+
+        val dialog = AlertDialog.Builder(context)
             .setTitle(R.string.ts_security_patch)
-            .setView(input)
+            .setView(layout)
             .setPositiveButton(android.R.string.ok, null)
             .setNegativeButton(android.R.string.cancel, null)
             .setNeutralButton(R.string.action_delete) { _, _ ->

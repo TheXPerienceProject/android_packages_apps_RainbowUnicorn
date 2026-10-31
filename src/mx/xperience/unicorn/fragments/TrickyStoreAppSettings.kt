@@ -382,41 +382,71 @@ private fun TrickyStoreAppSettingsContent(
                         }
                     } else null,
                 )
-                TextButton(
-                    onClick = {
-                        val previouslySelected = allApps
-                            .filter { it.entry.isSelected }
-                            .map { it.entry.packageName }
-                            .toSet()
-
-                        allApps.indices.forEach { i ->
-                            val pkg = allApps[i].entry.packageName
-                            allApps[i] = allApps[i].copy(
-                                entry = allApps[i].entry.copy(
-                                    isSelected = pkg in TrickyStoreAppSettings.DEFAULT_TARGETS ||
-                                            pkg in TrickyStoreAppSettings.DEFAULT_TARGET_MODES,
-                                ),
-                                mode = TrickyStoreAppSettings.DEFAULT_TARGET_MODES[pkg]
-                                    ?: TargetMode.AUTO,
-                            )
-                        }
-
-                        val newSelected = allApps
-                            .filter { it.entry.isSelected }
-                            .map { it.entry.packageName }
-                            .toSet()
-
-                        // Kill anything that was added or removed by the reset
-                        val toKill = (previouslySelected + newSelected) -
-                            previouslySelected.intersect(newSelected)
-
-                        scope.launch(Dispatchers.IO) {
-                            saveTargets()
-                            killPackages(activityManager, toKill)
-                        }
-                    },
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(stringResource(R.string.action_reset))
+                    TextButton(
+                        onClick = {
+                            val deselected = allApps
+                                .filter {
+                                    it.entry.isSelected &&
+                                        it.entry.packageName in TrickyStoreService.UNNECESSARY_PACKAGES
+                                }
+                                .map { it.entry.packageName }
+                                .toSet()
+                            if (deselected.isNotEmpty()) {
+                                allApps.indices.forEach { i ->
+                                    if (allApps[i].entry.packageName in deselected) {
+                                        allApps[i] = allApps[i].copy(
+                                            entry = allApps[i].entry.copy(isSelected = false))
+                                    }
+                                }
+                                scope.launch(Dispatchers.IO) {
+                                    saveTargets()
+                                    killPackages(activityManager, deselected)
+                                }
+                            }
+                        },
+                    ) {
+                        Text(stringResource(R.string.action_deselect_unnecessary))
+                    }
+                    TextButton(
+                        onClick = {
+                            val previouslySelected = allApps
+                                .filter { it.entry.isSelected }
+                                .map { it.entry.packageName }
+                                .toSet()
+
+                            allApps.indices.forEach { i ->
+                                val pkg = allApps[i].entry.packageName
+                                allApps[i] = allApps[i].copy(
+                                    entry = allApps[i].entry.copy(
+                                        isSelected = pkg in TrickyStoreAppSettings.DEFAULT_TARGETS ||
+                                                pkg in TrickyStoreAppSettings.DEFAULT_TARGET_MODES,
+                                    ),
+                                    mode = TrickyStoreAppSettings.DEFAULT_TARGET_MODES[pkg]
+                                        ?: TargetMode.AUTO,
+                                )
+                            }
+
+                            val newSelected = allApps
+                                .filter { it.entry.isSelected }
+                                .map { it.entry.packageName }
+                                .toSet()
+
+                            // Kill anything that was added or removed by the reset
+                            val toKill = (previouslySelected + newSelected) -
+                                previouslySelected.intersect(newSelected)
+
+                            scope.launch(Dispatchers.IO) {
+                                saveTargets()
+                                killPackages(activityManager, toKill)
+                            }
+                        },
+                    ) {
+                        Text(stringResource(R.string.action_reset))
+                    }
                 }
             }
 

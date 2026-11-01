@@ -23,8 +23,10 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -63,6 +65,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.android.internal.logging.nano.MetricsProto
 import com.android.settings.R
@@ -365,7 +368,7 @@ private fun TrickyStoreAppSettingsContent(
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 FilterChip(
@@ -382,76 +385,14 @@ private fun TrickyStoreAppSettingsContent(
                         }
                     } else null,
                 )
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    TextButton(
-                        onClick = {
-                            val deselected = allApps
-                                .filter {
-                                    it.entry.isSelected &&
-                                        it.entry.packageName in TrickyStoreService.UNNECESSARY_PACKAGES
-                                }
-                                .map { it.entry.packageName }
-                                .toSet()
-                            if (deselected.isNotEmpty()) {
-                                allApps.indices.forEach { i ->
-                                    if (allApps[i].entry.packageName in deselected) {
-                                        allApps[i] = allApps[i].copy(
-                                            entry = allApps[i].entry.copy(isSelected = false))
-                                    }
-                                }
-                                scope.launch(Dispatchers.IO) {
-                                    saveTargets()
-                                    killPackages(activityManager, deselected)
-                                }
-                            }
-                        },
-                    ) {
-                        Text(stringResource(R.string.action_deselect_unnecessary))
-                    }
-                    TextButton(
-                        onClick = {
-                            val previouslySelected = allApps
-                                .filter { it.entry.isSelected }
-                                .map { it.entry.packageName }
-                                .toSet()
-
-                            allApps.indices.forEach { i ->
-                                val pkg = allApps[i].entry.packageName
-                                allApps[i] = allApps[i].copy(
-                                    entry = allApps[i].entry.copy(
-                                        isSelected = pkg in TrickyStoreAppSettings.DEFAULT_TARGETS ||
-                                                pkg in TrickyStoreAppSettings.DEFAULT_TARGET_MODES,
-                                    ),
-                                    mode = TrickyStoreAppSettings.DEFAULT_TARGET_MODES[pkg]
-                                        ?: TargetMode.AUTO,
-                                )
-                            }
-
-                            val newSelected = allApps
-                                .filter { it.entry.isSelected }
-                                .map { it.entry.packageName }
-                                .toSet()
-
-                            // Kill anything that was added or removed by the reset
-                            val toKill = (previouslySelected + newSelected) -
-                                previouslySelected.intersect(newSelected)
-
-                            scope.launch(Dispatchers.IO) {
-                                saveTargets()
-                                killPackages(activityManager, toKill)
-                            }
-                        },
-                    ) {
-                        Text(stringResource(R.string.action_reset))
-                    }
-                }
             }
 
+            Spacer(modifier = Modifier.height(8.dp))
+
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 FilledTonalButton(
@@ -465,12 +406,15 @@ private fun TrickyStoreAppSettingsContent(
                         }
                         scope.launch(Dispatchers.IO) { saveTargets() }
                     },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
                     shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(
                         stringResource(R.string.action_select_all),
                         style = MaterialTheme.typography.labelMedium,
+                        textAlign = TextAlign.Center,
                     )
                 }
 
@@ -517,12 +461,103 @@ private fun TrickyStoreAppSettingsContent(
                             }
                         }
                     },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
                     shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(
                         stringResource(R.string.action_add_installed),
                         style = MaterialTheme.typography.labelMedium,
+                        textAlign = TextAlign.Center,
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                OutlinedButton(
+                    onClick = {
+                        val deselected = allApps
+                            .filter {
+                                it.entry.isSelected &&
+                                    it.entry.packageName in TrickyStoreService.UNNECESSARY_PACKAGES
+                            }
+                            .map { it.entry.packageName }
+                            .toSet()
+                        if (deselected.isNotEmpty()) {
+                            allApps.indices.forEach { i ->
+                                if (allApps[i].entry.packageName in deselected) {
+                                    allApps[i] = allApps[i].copy(
+                                        entry = allApps[i].entry.copy(isSelected = false))
+                                }
+                            }
+                            scope.launch(Dispatchers.IO) {
+                                saveTargets()
+                                killPackages(activityManager, deselected)
+                            }
+                        }
+                    },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
+                    shape = RoundedCornerShape(10.dp),
+                ) {
+                    Text(
+                        stringResource(R.string.action_deselect_unnecessary),
+                        style = MaterialTheme.typography.labelMedium,
+                        textAlign = TextAlign.Center,
+                    )
+                }
+
+                OutlinedButton(
+                    onClick = {
+                        val previouslySelected = allApps
+                            .filter { it.entry.isSelected }
+                            .map { it.entry.packageName }
+                            .toSet()
+
+                        allApps.indices.forEach { i ->
+                            val pkg = allApps[i].entry.packageName
+                            allApps[i] = allApps[i].copy(
+                                entry = allApps[i].entry.copy(
+                                    isSelected = pkg in TrickyStoreAppSettings.DEFAULT_TARGETS ||
+                                            pkg in TrickyStoreAppSettings.DEFAULT_TARGET_MODES,
+                                ),
+                                mode = TrickyStoreAppSettings.DEFAULT_TARGET_MODES[pkg]
+                                    ?: TargetMode.AUTO,
+                            )
+                        }
+
+                        val newSelected = allApps
+                            .filter { it.entry.isSelected }
+                            .map { it.entry.packageName }
+                            .toSet()
+
+                        // Kill anything that was added or removed by the reset
+                        val toKill = (previouslySelected + newSelected) -
+                            previouslySelected.intersect(newSelected)
+
+                        scope.launch(Dispatchers.IO) {
+                            saveTargets()
+                            killPackages(activityManager, toKill)
+                        }
+                    },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
+                    shape = RoundedCornerShape(10.dp),
+                ) {
+                    Text(
+                        stringResource(R.string.action_reset),
+                        style = MaterialTheme.typography.labelMedium,
+                        textAlign = TextAlign.Center,
                     )
                 }
             }

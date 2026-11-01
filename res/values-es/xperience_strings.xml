@@ -6,4 +6,5 @@
 <resources>
     <string name="rainbow_misc_summary">Comportamiento del sistema, gestos y extras de uso diario</string>
     <string name="rainbow_spoofing_summary">Identidad del dispositivo y controles de compatibilidad</string>
+    <string name="action_deselect_unnecessary">Deseleccionar innecesarias</string>
 </resources>

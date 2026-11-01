@@ -469,9 +469,9 @@ A \'Dinamikus Sziget\' stílust az iOS Dinamikus Szigete inspirálta, majd átal
     <!-- Miscellaneous/Spoofing -->
     <string name="spoofing_title">Hamisítás, álcázás</string>
     <string name="spoofing_integrity_category">Google Play Integritás</string>
+    <string name="spoofing_reset_defaults_confirm">Visszaállítás</string>
     <string name="app_spoofing_disabled">Kikapcsolva</string>
     <!-- Miscellaneous/Play Integrity & TrickyStore -->
-    <!-- TrickyStore: security patch -->
     <!-- TrickyStore: revocation status -->
     <!-- TrickyStore: automatic keybox replacement -->
     <!-- TrickyStore: untrusted root dialog -->

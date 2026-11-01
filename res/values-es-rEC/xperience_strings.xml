@@ -692,6 +692,7 @@
     <string name="spoofing_snap_title">SnapChat</string>
     <string name="spoofing_snap_summary">Suplanta el dispositivo como Pixel XL en la aplicación Snapchat para solucionar posibles problemas con el chat</string>
     <string name="spoofing_applying_changes">Aplicando cambios de simulación\u2026</string>
+    <string name="spoofing_reset_defaults_confirm">Restablecer</string>
     <string name="tensor_spoof_title">Características de Tensor</string>
     <string name="tensor_spoof_summary">Permitir a las aplicaciones seleccionadas acceder a las funciones de IA exclusivas de Pixel Tensor</string>
     <string name="tensor_spoof_enable">Simulación de Tensor</string>
@@ -760,13 +761,8 @@
     <string name="pif_select_device">Seleccionar dispositivo</string>
     <string name="pif_generating">Generando configuración\u2026</string>
     <string name="pif_footer_title">Superando integridad BASIC</string>
-    <string name="pif_footer_body">1. Toca \"Obtener huella de compilación Pixel Beta\" y selecciona un dispositivo de la lista.\n2. Si no se encuentran dispositivos, importa una configuración PIF funcional desde una fuente confiable. Los archivos de configuración no se incluyen.\n3. Vuelve a verificar tu estado de Play Integrity.\n\nSiempre elimina la configuración activa antes de cargar una nueva. Cargar una configuración PIF caducada hará que la integridad fuerte de TrickyStore falle, incluso con un Keybox válido.</string>
-    <string name="pif_select_channel">Seleccionar canal</string>
-    <string name="pif_channel_latest_release">Última actualización estable</string>
-    <string name="pif_channel_canary_release">Versión experimental (Canary)</string>
     <string name="pif_invalid_fingerprint">Formato de huella inválido</string>
     <string name="pif_no_devices_found">No se encontraron dispositivos</string>
-    <string name="pif_no_api_key">Error al extraer la API key de Flash Tool</string>
     <string name="pif_master_switch_title">Activar Play Integrity Fix</string>
     <string name="tricky_store_title">TrickyStore</string>
     <string name="tricky_store_summary">Gestionar Keybox y aplicaciones objetivo para atestación de integridad strong</string>
@@ -833,8 +829,6 @@
     <string name="ts_fetch_keybox_auto_replaced">Keybox reemplazado automáticamente por uno válido</string>
     <string name="ts_fetch_keybox_soft_banned_refetch">Keybox con restricción temporal, conservándolo e intentando obtener uno mejor…</string>
     <string name="ts_fetch_keybox_no_valid_found">Aún no hay un Keybox válido disponible, se reintentará mañana</string>
-    <!-- TrickyStore: security patch -->
-    <string name="ts_patch_stale_warning">La fecha del parche de seguridad %1$s tiene más de 12 meses</string>
     <!-- TrickyStore: revocation status -->
     <string name="ts_revocation_expiring_soon">El certificado Keybox caducará pronto</string>
     <string name="ts_revocation_chain_invalid">La cadena de certificado Keybox no es válida</string>

@@ -44,11 +44,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String PREF_SHOW_REFRESH_RATE = "show_refresh_rate";
+    private static final String KEY_QS_SAMSUNG_STYLE = "qs_samsung_style";
     private static final String KEY_QS_IOS_CONTROL_PANEL = "qs_ios_control_panel";
     private static final String KEY_DYNAMIC_ISLAND_CATEGORY = "dynamic_island_category";
     private static final String KEY_DYNAMIC_ISLAND = "status_bar_dynamic_island";
 
     private SwitchPreferenceCompat mShowRefreshRatePref;
+    private SystemSettingSwitchPreference mQsSamsungStyle;
     private SystemSettingSwitchPreference mQsIosControlPanel;
 
     @Override
@@ -67,6 +69,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     0,
                     UserHandle.USER_CURRENT) == 1;
             mShowRefreshRatePref.setChecked(refreshRateEnabled);
+        }
+
+        mQsSamsungStyle = findPreference(KEY_QS_SAMSUNG_STYLE);
+        if (mQsSamsungStyle != null) {
+            mQsSamsungStyle.setOnPreferenceChangeListener(this);
         }
 
         mQsIosControlPanel = findPreference(KEY_QS_IOS_CONTROL_PANEL);
@@ -91,6 +98,16 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putIntForUser(
                     resolver,
                     Settings.System.SHOW_REFRESH_RATE,
+                    enabled ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            return true;
+        }
+
+        if (preference == mQsSamsungStyle) {
+            boolean enabled = (Boolean) newValue;
+            Settings.System.putIntForUser(
+                    resolver,
+                    KEY_QS_SAMSUNG_STYLE,
                     enabled ? 1 : 0,
                     UserHandle.USER_CURRENT);
             return true;

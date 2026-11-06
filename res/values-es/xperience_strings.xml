@@ -7,4 +7,6 @@
     <string name="rainbow_misc_summary">Comportamiento del sistema, gestos y extras de uso diario</string>
     <string name="rainbow_spoofing_summary">Identidad del dispositivo y controles de compatibilidad</string>
     <string name="action_deselect_unnecessary">Deseleccionar innecesarias</string>
+    <string name="qs_samsung_style_title">Panel de control estilo Samsung</string>
+    <string name="qs_samsung_style_summary">Mostrar panel de control flotante estilo One UI con controles deslizantes dobles y tarjetas</string>
 </resources>

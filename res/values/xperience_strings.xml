@@ -609,6 +609,9 @@
     <string name="ios_style">iOS-style control panel</string>
     <string name="ios_style_summary">Show iOS-style brightness, volume sliders and music player in expanded quick settings</string>
 
+    <string name="qs_samsung_style_title">Samsung One UI control center</string>
+    <string name="qs_samsung_style_summary">Show Samsung One UI floating control panel with dual sliders and card layout</string>
+
 
     <!-- Cutout Progress -->
     <string name="cutout_progress_title">Cutout Progress Ring</string>

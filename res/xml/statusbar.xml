@@ -29,7 +29,7 @@
         android:title="@string/battery_settings_title"
         android:summary="@string/battery_settings_summary" />
 
-    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+    <mx.xperience.unicorn.preferences.BetaSystemSettingSwitchPreference
         android:key="qs_samsung_style"
         android:title="@string/qs_samsung_style_title"
         android:summary="@string/qs_samsung_style_summary"

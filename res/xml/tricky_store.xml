@@ -23,6 +23,28 @@
         android:defaultValue="true" />
 
     <PreferenceCategory
+        android:key="ts_rkp_category"
+        android:title="@string/ts_rkp_title"
+        android:dependency="spoof_trickystore_enabled">
+
+        <mx.xperience.framework.preference.SecureSettingSwitchPreference
+            android:key="spoof_duck_rkp_enabled"
+            android:title="@string/ts_rkp_enabled"
+            android:summary="@string/ts_rkp_enabled_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="ts_rkp_provision"
+            android:title="@string/ts_rkp_provision"
+            android:summary="@string/ts_rkp_provision_summary" />
+
+        <Preference
+            android:key="ts_rkp_status"
+            android:title="@string/ts_rkp_status"
+            android:selectable="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="ts_keybox_category"
         android:title="@string/ts_keybox_management"
         android:dependency="spoof_trickystore_enabled">

@@ -9,6 +9,8 @@
     <string name="action_deselect_unnecessary">Deseleccionar innecesarias</string>
     <string name="qs_samsung_style_title">Panel de control estilo Samsung</string>
     <string name="qs_samsung_style_summary">Mostrar panel de control flotante estilo One UI con controles deslizantes dobles y tarjetas inspirado en One UI 9</string>
+    <string name="qs_media_wave_progress_title">Barra de progreso de onda multimedia</string>
+    <string name="qs_media_wave_progress_summary">Mostrar onda fluida inspirada en One UI 9 en los reproductores de la pantalla de bloqueo y panel de notificaciones</string>
     <string name="beta_feature_title">Función Beta</string>
     <string name="beta_feature_desc">Esta función está en desarrollo. Puede contener errores visuales o de rendimiento.</string>
 </resources>

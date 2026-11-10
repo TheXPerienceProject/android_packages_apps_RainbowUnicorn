@@ -35,6 +35,12 @@
         android:summary="@string/qs_samsung_style_summary"
         android:defaultValue="true" />
 
+    <mx.xperience.framework.preference.SystemSettingSwitchPreference
+        android:key="qs_media_wave_progress"
+        android:title="@string/qs_media_wave_progress_title"
+        android:summary="@string/qs_media_wave_progress_summary"
+        android:defaultValue="true" />
+
     <!--<mx.xperience.framework.preference.SystemSettingSwitchPreference
         android:key="qs_ios_control_panel"
         android:title="@string/ios_style"

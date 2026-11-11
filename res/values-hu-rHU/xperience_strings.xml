@@ -477,6 +477,7 @@ A \'Dinamikus Sziget\' stílust az iOS Dinamikus Szigete inspirálta, majd átal
     <!-- TrickyStore: untrusted root dialog -->
     <!-- TrickyStore: invalid chain dialog -->
     <!-- TrickyStore: expiring certificate dialog -->
+    <!-- Device RKP (Duck) keybox generation in TrickyStore -->
     <!-- TrickyStore app list -->
     <!-- Generic actions & labels -->
     <string name="action_enable">Engedélyezés</string>

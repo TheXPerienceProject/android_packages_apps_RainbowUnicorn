@@ -847,6 +847,7 @@
     <string name="ts_expiry_unknown">fecha desconocida</string>
     <string name="ts_expiring_soon_title">Keybox caduca pronto</string>
     <string name="ts_expiring_soon_message">El certificado actual del keybox expira en %1$s. ¿Desea mantenerlo o reemplazarlo?</string>
+    <!-- Device RKP (Duck) keybox generation in TrickyStore -->
     <!-- TrickyStore app list -->
     <string name="action_add_installed">Añadir aplicaciones instaladas</string>
     <plurals name="ts_added_installed_count">
